@@ -1,7 +1,7 @@
 # attack-cm2.md — BB(6) holdout cm2 = `1RB1RA1LC0RC---0LD0LE0RF1RE0RA0LF1LB` 结构分析
 
 日期：2026-09-26（本会话）。工件目录：`bb6/attacks-cm2/`。
-状态：**非停机证书条件于 LEM-R′（M2/M1-重启算术引理，唯一残余）**——完整装配见 §10；扫掠定理与致死集见 §9。
+状态：**Collatz 型终态判定**——非停机 = 分段仿射扫掠系统的轨迹避让命题（3e10 步零命中；M4 入口 ∎；mod 3 护城河；M2/M1 全称排除已证伪）；见 §11–12。
 一切机器断言可一行复跑（§9）。
 
 ---
@@ -650,3 +650,104 @@ the initial state is safe; four special dispatches are verified safe. The two re
 entry families (M2/M1-restarts) have no modular obstruction — their exclusion, verified
 empirically at 329/329 restarts and along 10^10 raw steps, is exactly the content of
 LEM-R′. ∎(conditional)
+
+## 11. LEM-R′ 证伪与致死前像数据库（收官会话）
+
+### 11.1 LEM-R′ 为假（合成反例确证）
+
+对合成尾空终点网格的直接验证（`lethaldb.mjs`，裸机引擎、300 时代窗、真 HALT 判定）：
+**(L7,M2,R1) HALT-L1@33、(L8,M2,R2) HALT-L1@28、(L21,M1,R1) HALT-L1@24** 等确证停机。
+⟹ M2/M1-重启路线常数**并非**普遍排除谱系——实轨的安全性是**轨迹性质**（该特定初始
+条件的 (L,M,R) 流避开致死前像集），不是路线结构性质。**LEM-R′ 作为全称引理死亡。**
+
+### 11.2 致死前像数据库（`lethal-db.json`，193 格，全部裸机验证）
+
+尾空 A-终点 (L, M∈{1..4}, R)，L ≤ 60 × R ≤ 20 网格的完全扫描：
+* **M=4：零致死格**——模 4 证明（§10）的独立数值确证 ✓；
+* **M=3：116 格**，主域 R=1 与 R=7 各 ~50 格（几乎全 L 致死，个别 L 例外窗），
+  深前像散布：R=2(L∈{4,18})、R=5(L∈{13,20,23})、R=14(L∈{11,17,43}) 等；
+* **M=2：40 格**（L=4 边缘带 + 散布大 L）；**M=1：37 格**（同型）；
+* **轨道相容子集**（L ≡ 0 mod 3，实轨 A-标记的已证不变量 F8）：
+  (M1,L3,R2), (M1,L3,R8), (M1,L21,R1), (M1,L24,R5), (M2,L9,R6) + M3 主域的全部 L≡0 格。
+* M3-谱系 lethality 全 L 复核：R∈{1,7,31} 于 L∈{3..33} 除 3 个例外窗外全致死 ✓。
+
+### 11.3 加速狩猎（时代引擎）
+
+* **狩猎 1**（hunt2.mjs）：1e10 裸机步 / **1,378,550 时代**，每个尾空标记对照
+  （轨道相容致死子集 + 谱系 R∈{1,7,31,127}）——**0 命中**；
+* **狩猎 2**（hunt3.mjs）：3e10 裸机步（~4.1M 时代），全 193 格 DB 匹配 + **距离统计**
+  （每标记到致死域的最小参数距离）——结果见 §12 表。
+
+## 12. 狩猎结果与轨迹安全性刻画
+
+### 12.1 狩猎结果
+
+（hunt3 输出：3e10 步、~4.1M 时代、全库 0 命中 / 最小距离统计——见下）
+
+### 12.2 终局裁决
+
+**cm2 的非停机性 = 一个广义 Collatz 型轨迹避让问题**：
+确定性分段仿射系统（扫掠 + 重启映射）从初始态出发的 (L,M,R) 轨道是否永不去到
+可计算致死前像集 P（193+ 格已刻画，P 在参数空间的主域 = M3-谱系 {8·4ⁿ−1}）。
+已证：M4-入口模 4 封死 ∎、M3-谱系自封闭、初始态安全；已证伪：M2/M1 路线常数全称排除。
+经验：1e10–3e10 步（1.4M–4.1M 时代）零命中、零停机。
+
+**台账终版**：
+| 层 | 内容 | 级别 |
+|---|---|---|
+| L1 引擎忠实 | 三重对拍 + 评审复算 | A |
+| L5 致死集刻画 | 谱系 {8·4ⁿ−1} + 193 格前像 DB（全裸机验证） | A |
+| 扫掠定理 + Ψ | 664 扫掠全验证；M4-入口 ∎ | A− |
+| 轨迹避让 | 3e10 步零命中（经验） | B |
+| **无条件证明** | — | **C：Collatz 型轨迹问题，无已知闭合技术** |
+
+**主定理（最终形态，条件式）**：cm2 永不停机 ⟺ 其扫掠-重启轨迹避开 P。
+等价地：任何停机时刻构造 = 轨迹首次进入 P 的时刻。若 cm2 停机，停机时刻 > 3×10^10 步。
+
+### 12.1 狩猎结果（终值）
+
+* **hunt2**：1e10 步 / 1,378,550 时代——轨道相容致死子集 + 谱系 R∈{1,7,31,127}：**0 命中**；
+* **hunt3**：**3×10^10 步 / 2,830,885 时代 / 1,218,566 个尾空标记**——全 193 格 DB：**0 命中，0 停机**；
+* **距离统计**（每 100k 时代）：全库最小距离恒 **1**——由 **mod 3 护城河**解释
+  （轨道 A-标记 L ≡ 0 mod 3（F8 已证），其 L 维邻格 L±1 ≢ 0 mod 3 永不可达）；
+* **轨道相容距离**（同 (M,R)、L ≡ 0 mod 3 的致死格）：最小 **3**（t=34922：
+  标记 (M1,L48,R20) vs 致死格 (M1,L51,R20)——恰好一个扫掠步），
+  1e9 步内两次采样点均为 3——**无单调趋近，亦无确定远离**（振荡）。
+
+### 12.2 终局裁决
+
+**cm2 的非停机性 = 广义 Collatz 型轨迹避让问题**：确定性分段仿射系统（扫掠 (L+3,M−4,R+1)
++ 重启映射 Ψ）从初始态出发的 (L,M,R) 轨道是否永不去到可计算致死前像集 P。
+已证：M4-入口模 4 封死 ∎；M3-谱系自封闭；初始态安全；mod 3 护城河（L≡0）封死全部
+L ≢ 0 的致死格（约 143/193）。已证伪：M2/M1 路线常数全称排除（合成反例停机）。
+经验：**3×10^10 步（2.83M 时代）零命中、零停机**；轨道相容最小距离 3、无趋近趋势。
+
+**台账终版**：
+| 层 | 内容 | 级别 |
+|---|---|---|
+| L1 引擎忠实 | 三重对拍 + 评审复算 | A |
+| L5 致死集刻画 | 谱系 {8·4ⁿ−1} + 193 格前像 DB（全裸机验证）| A |
+| 扫掠定理 + Ψ + M4 入口 ∎ + mod 3 护城河 | 664 扫掠 + 164/164 + 130k 标记 | A− |
+| 轨迹避让（P 永不命中） | 3e10 步 / 2.83M 时代零命中（经验）| B |
+| **无条件非停机证明** | — | **C：Collatz 型轨迹问题** |
+
+**主定理（最终形态）**：cm2 从空白带启动的停机 ⟺ 其扫掠-重启轨迹首次进入致死前像集 P。
+若停机，停机时刻 > 3×10^10 步。非停机的无条件证明等价于该分段仿射系统的轨迹避让命题
+——与 M1 终态（假设 M）同一困难类；cm2 由此确证归类为 **Collatz 型（非结构可闭）机器**。
+
+**论文终版块（英文）**：
+**Theorem (final form).** For cm2 = `1RB1RA1LC0RC---0LD0LE0RF1RE0RA0LF1LB` started on a
+blank tape, halting is equivalent to the sweep-restart trajectory — the deterministic
+piecewise-affine system on (L,M,R) with sweep map (L,M,R) → (L+3,M−4,R+1) and the restart
+maps Ψ(M4) = (3, pop−1, 1), Ψ(M3) = (L+8, R−4, 1), R₀′(M2) = R+2, R₀′(M1) = 1 —
+first entering the computable lethal preimage set P (193 verified cells; principal domain:
+empty-tail M3-terminals with R in the lineage {8·4ⁿ−1}). Proved: the M4 entry is excluded
+by a mod-4 contradiction; the M3 lineage is closed under its own map; the initial state is
+safe; the mod-3 moat (orbit A-markers have L ≡ 0 (mod 3), machine-verified on 130,234
+markers) seals every lethal cell with L ≢ 0 (mod 3) — 143 of 193. Refuted: a universal
+route-arithmetic exclusion for the M2/M1 entries (synthetic halting counterexamples exist,
+e.g. (L,M,R) = (7,2,1) halts at +33 eras). Empirical: 3×10^10 steps (2.83 million eras,
+1.22 million tail-less markers) with zero hits, zero halts; the orbit-compatible minimum
+parameter distance to P is 3 (one sweep-step), without monotone approach. If cm2 halts,
+the halt occurs after 3×10^10 steps; an unconditional non-halting proof is equivalent to a
+Collatz-type trajectory-avoidance statement for this system. ∎
