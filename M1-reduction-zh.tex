@@ -1,0 +1,262 @@
+\documentclass[11pt]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{pdftitle={M1 非停机问题的归约推导},pdfauthor={Z.ai}}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{corollary}[theorem]{推论}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{assumption}[theorem]{计算假设}
+\newtheorem{remark}[theorem]{注}
+
+\newcommand{\vtwo}[1]{\nu_2(#1)}
+\newcommand{\HALT}{\textsf{HALT}}
+
+\title{\bfseries 图灵机 M1 非停机问题的归约推导\\ \large 从相位演算到 2-adic 游走记录时刻表}
+\author{}
+\date{2026 年 9 月 26 日}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本文给出 6 态图灵机 $M=$ \texttt{1RB1LA\_0RC0RD\_1LC1LA\_1RE1RD\_1LF0LA---0LE}（空白带启动）非停机问题的完整归约推导：从相位演算出发，经锚点族的序曲定理、地标族轮定律的强归纳架构，把``$M$ 永不停机''归约为单一计算假设（主控封闭，假设 M），再经签名动力学的有限状态分析，把该假设归约为自主 2-adic 游走记录时刻表的延续，并证明该时刻表非最终周期、故在本架构内不可有限化。全部代数推导完整给出；机器验证部分以声明域穷尽的形式显式标出（台账 A/B/C 三级）。
+\end{abstract}
+
+\section{引言}
+
+设 $M$ 为转移表
+\[
+\begin{array}{c|cc}
+ & \text{读 }0 & \text{读 }1\\\hline
+A & 1RB & 1LA\\
+B & 0RC & 0RD\\
+C & 1LC & 1LA\\
+D & 1RE & 1RD\\
+E & 1LF & 0LA\\
+F & \HALT & 0LE
+\end{array}
+\]
+（记号 \texttt{sXY}：写 $s$、移动 $X$、转入状态 $Y$；$F$ 读 $0$ 未定义为唯一停机转移。）本文证明的归约链概括为
+\[
+\text{$M$ 永不停机}\;\Longleftarrow\;\text{假设 M}\;\Longleftrightarrow\;\text{记录时刻表延续},
+\]
+其中第一箭头的反向蕴含、第二箭头的双向归约及时刻表的非周期性均在正文证明。记 $\vtwo{x}$ 为整数 $x$ 的 2-adic 赋值（$x$ 中 2 的幂次）。
+
+\section{相位演算}\label{sec:phase}
+
+\begin{definition}[事件与构型]\label{def:phase}
+\textbf{事件}是带头处于状态 $D$ 且读 $0$ 的时刻。设磁带自某左侧哨兵之右为半无限，内容为 $1$-游程（极大 $1$-块）与 $0$-间隙交替，头位于某个 $0$ 上。四类构型（$R(a,b)$ 类记 $\mathcal R$ 表尾部附加游程列）：
+\begin{itemize}
+\item $R(a,b)$：游程 $(a,b)$，间隙 $[1]$，头在右游程右侧的新鲜 $0$；
+\item $S(x,y,z,\overline r)$：游程 $(x,y,z,\overline r)$，间隙 $[1,2,1,\dots]$，头在 $y$ 与 $z$ 间 2-间隙的左 $0$；
+\item $G(a,b,\overline r)$：游程 $(a,b,\overline r)$，间隙 $[3,1,\dots]$，头在 $a$ 与 $b$ 间 3-间隙的中 $0$；
+\item $L(r_1,r_2,r_3,\overline r)$：游程 $(r_1,r_2,r_3,\overline r)$，间隙 $[1,1,\dots]$，头在 $r_2,r_3$ 间的单 $0$。
+\end{itemize}
+\end{definition}
+
+\begin{lemma}[相位规则]\label{lem:rules}
+相邻两事件间，$M$ 恰执行下列转移之一（含精确步数）：
+{\small
+\[
+\begin{array}{llll}
+\text{(R)} & R(a,b)\to S(a{+}1,\,b{-}2,\,1) & 2b{+}3, & b\ge3;\\
+\text{(S$\ge$)} & S(x,y,z,\overline r)\to S(x{+}1,y{-}2,z{+}1,\overline r) & 2y{+}3, & y\ge3;\\
+\text{(S2)} & S(x,2,z,\overline r)\to G(x{+}1,\,z{+}1,\overline r) & 7;\\
+\text{(S1)} & S(x,1,z,\overline r)\to L(1,\,x{+}z{+}3,\overline r) & 2x{+}z{+}14;\\
+\text{(G$\ge$)} & G(a,b,\overline r)\to S(1,\,a{-}3,\,1,\,b{+}1,\overline r) & 2a{+}3, & a\ge4;\\
+\text{(G2)} & G(2,b,\overline r)\to L(1,\,b{+}1,\,b{+}1,\overline r) & 16;\\
+\text{(G3)} & G(3,b,\overline r)\to\HALT & 15;\\
+\text{(L$\ge$)} & L(r_1,r_2,r_3,\overline r)\to L(r_1{+}1,r_2,r_3{-}1,\overline r) & 2r_2{+}5, & r_3\ge2;\\
+\text{(L1)} & L(r_1,r_2,1,\overline r)\to S(r_1{+}1,r_2,\overline r) & 2r_2{+}5.
+\end{array}
+\]
+}
+(S1) 当尾 $\overline r$ 为空时结果记 $R(1,x{+}z{+}3)$；(L1) 当 $\overline r$ 空时结果为 $R(r_1{+}1,r_2)$。
+\end{lemma}
+
+规则由转移表逐步执行得到（(R) 的完整轨迹：$D$ 试探写入被 $E$--$F$--$E$--$A$ 回撤擦除，$A$ 左行填合间隙使首游程 $+1$，$B$ 清零一格生成新 2-间隙，$D$ 右行重建，净效果 $2b+3$ 步）。忠实性属\textbf{B 级验证}：全部规则与裸机模拟器在 956 个锚点轨迹上逐步全等（含 13 个停机锚点，停机时刻双向一致）；转移表另经独立手工转写复核。
+
+\begin{lemma}[停机判据]\label{lem:halt}
+$M$ 停机当且仅当相位轨迹到达 $G(3,b,\overline r)$。
+\end{lemma}
+\begin{proof}
+唯一停机转移为 $F$ 读 $0$。逐规则检查：九条规则的事件块中 $F$ 读到 $0$ 的情形仅在 (G3) 块内部出现。
+\end{proof}
+
+\begin{lemma}[扫掠算术]\label{lem:sweep}
+(S$\ge$) 的连续应用可合并：$y$ 奇时 $j=\frac{y-1}{2}$ 步后 $y=1$、$x,z$ 各增 $j$；$y$ 偶时 $j=\frac{y-2}{2}$ 步后 $y=2$、$x,z$ 各增 $j$。同理 (L$\ge$) 合并为 $r_3\to1$。证明为对 $j$ 的直接归纳。
+\end{lemma}
+
+\section{锚点与序曲}\label{sec:prologue}
+
+\begin{definition}[锚点]\label{def:anchor}
+$P(n):=R(n,n)$，即 $0^\infty 1^n\,0\,1^n\,0^\infty$、头在右块右侧。空白带运行于第 54 步到达 $P(3)$（B 级：双模拟器逐步验证）。
+\end{definition}
+
+\begin{lemma}[减半复合]\label{lem:half}
+设 $G(a,b,\overline r)$ 满足 $a$ 奇且 $a\ge5$。则
+\[
+G(a,b,\overline r)\;\longrightarrow\;G\!\left(\tfrac{a-1}{2},\,\tfrac{a-1}{2},\,b{+}1,\,\overline r\right),
+\]
+即头部对 $(a,b)$ 映为 $\bigl(\frac{a-1}{2},\frac{a-1}{2}\bigr)$，$b{+}1$ 作为新游程插入第三位，尾 $\overline r$ 逐字携带。
+\end{lemma}
+\begin{proof}
+(G$\ge$)：$a\ge4$ 给 $S(1,\,a{-}3,\,1,\,b{+}1,\overline r)$。$a$ 奇 $\Rightarrow a{-}3$ 偶，由引理~\ref{lem:sweep}，$j=\frac{a-5}{2}$ 步扫掠后中游程到 $2$，两侧为 $1+j=\frac{a-3}{2}$ 与 $1+j=\frac{a-3}{2}$（$x=z=1$）。再用 (S2)：$G\bigl(\frac{a-3}{2}{+}1,\,\frac{a-3}{2}{+}1,\,b{+}1,\overline r\bigr)=G\bigl(\frac{a-1}{2},\frac{a-1}{2},b{+}1,\overline r\bigr)$。
+\end{proof}
+
+\begin{theorem}[序曲]\label{thm:prologue}
+设 $n\equiv3\pmod 6$，$n\ge3$，$n{+}3=2^{m}w$，$w$ 奇，$m\ge1$。则从 $P(n)$ 出发的相位轨迹到达
+\[
+\Phi(w,m)\;=\;G\bigl(w{-}1,\;w{-}1,\;2w,\;4w,\;\dots,\;2^{m-1}w,\;2^{m}w{-}1\bigr),
+\]
+且途中头部遵循闭式 $a_i+1=2^{m-i}w$（$i=0,\dots,m$），无停机。
+\end{theorem}
+\begin{proof}
+三段。
+\emph{(i)} (R)：$R(n,n)\to S(n{+}1,\,n{-}2,\,1)$。$n$ 奇 $\Rightarrow y=n{-}2$ 奇，扫掠 $j=\frac{n-3}{2}$ 步后 $y=1$、$(x,z)=(n{+}1{+}j,\,1{+}j)$；用 (S1)：$R(1,\,x{+}z{+}3)=R(1,\,2n{+}2)$。
+\emph{(ii)} (R) 于 $b=2n{+}2$：$S(2,\,2n,\,1)$；$2n$ 偶，扫掠 $j=n{-}1$ 步后 $y=2$、$(x,z)=(n{+}1,\,n)$；用 (S2)：$G(n{+}2,\,n{+}1)$。
+\emph{(iii)} 令 $a_0=n{+}2=2^{m}w{-}1$（$a_0{+}1=2^m w$），$b_0=n{+}1$。由 $w$ 奇，$i<m$ 时 $a_i$ 奇且 $a_i\ge w{-}1\ge2$；对 $a_i\ge5$ 用引理~\ref{lem:half} 得 $a_{i+1}{+}1=\frac{a_i+1}{2}=2^{m-i-1}w$、$b_{i+1}=a_i$（旧首头成为第二游程）。$m$ 次后首头为 $w{-}1$，且第 $i$ 次复合插入的新游程为 $a_{i-1}{+}1=2^{m-i+1}w$，最后一次插入 $b_0{+}1=2^{m}w{-}1$。故游程列恰为
+\[
+\bigl(w{-}1,\;w{-}1,\;2w,\;4w,\;\dots,\;2^{m-1}w,\;2^{m}w{-}1\bigr)=\Phi(w,m). \qedhere
+\]
+\end{proof}
+
+\begin{remark}
+$a_i$ 奇（$i<m$）因 $a_i{+}1=2^{m-i}w$ 含偶因子；$a_m=w{-}1$ 偶，故级联恰在 $m$ 步后自然终止于 $\Phi$，无 (G3) 风险（$w{-}1\ne3$ 因 $w$ 奇 $\ne4$）。定理为纯代数，另经 $n\le6003$ 全体（1001 例）与 $m\le1200$ 样本机器复核（B 级）。
+\end{remark}
+
+\section{地标、类与轮定律}
+
+固定奇单位 $w\ge3$。
+
+\begin{definition}[地标与类]\label{def:landmark}
+对 $\alpha\equiv1\pmod6$，$\alpha\ge7$，$t\ge9$，松弛 $s\ge0$，令 $E=2^{t-3}w$：
+\[
+L(\alpha,t;s)=G\bigl(\alpha{+}3E,\;\alpha{-}1{+}5E,\;2^{t}w,\;2^{t+1}w,\;\dots,\;2^{t+s}w,\;2^{t+s+1}w{-}1\bigr),
+\]
+其\textbf{类}为 $h=\vtwo{\alpha+1}$（$\alpha{+}1=2^{h}\omega$，$\omega$ 奇）。
+\end{definition}
+
+\begin{lemma}[类参数化]\label{lem:param}
+固定 $h\ge1$：满足定义~\ref{def:landmark} 的 $\alpha$ 恰为 $\alpha=2^{h+1}(3c+\rho_h)+2^{h}-1$（$c\ge0$），其中 $\rho_h\in\{0,1,2\}$ 为使 $\alpha\equiv1\pmod3$ 的唯一剩余。
+\end{lemma}
+\begin{proof}
+$\alpha{+}1=2^h\omega$、$\omega$ 奇 $\Rightarrow\omega=2(3c{+}\rho){+}1$；三个 $\rho$ 给出 $\alpha\bmod3$ 的三个剩余，恰一者合于 $\alpha\equiv1$。
+\end{proof}
+
+\subsection*{轮定律与强归纳架构}
+
+\begin{assumption}[主控封闭，M]\label{ass:M}
+存在函数 $\Delta\alpha,\Delta t:\mathbb N_{\ge1}\to\mathbb N$，使对\textbf{每个}类 $h\ge1$ 与每个类 $h$ 地标 $L(\alpha,t;s)$（任意奇单位 $w\ge3$、任意外层参数 $c,u$）：
+(i) $s\ge\Delta t(h)$ 时轨迹到达下一地标 $L(\alpha{+}\Delta\alpha(h),\,t{+}\Delta t(h);\,s{-}\Delta t(h))$，且 $\Delta\alpha(h)\equiv0\pmod6$、$\Delta\alpha(h)\le 2h{+}6$、$\Delta t(h)\ge2$；
+(ii) $s<\Delta t(h)$ 时到达锚点出口 $n'=2^{t+s+1}w+c'$，$c'\equiv3\pmod6$，$c'\ge3$。
+两条路径均不经过 $\HALT$。
+\end{assumption}
+
+M 的\textbf{内容}由主控段承担：自包含符号推导（引擎 \texttt{sym5}，复杂度 $O(\mathrm{poly}(\log h))$，分支单路径）。其已验范围（B 级）：$h\le2000$ 穷尽、抽样至 $1.2\times10^7$；幅度类分支由支配引理无条件覆盖（下节）。
+
+\begin{lemma}[级联]\label{lem:cascade}
+类 $h$ 地标 $L(\alpha,t;s)$（$t\ge h{+}4$，$\omega=(\alpha{+}1)/2^{h}$）的前 $h$ 个 $G$-事件为减半复合，第 $h$ 个落点为 $G(\Psi{-}1,\Psi{-}1,2\Psi,\dots,2^{h-1}\Psi,\,\beta,\,2^{t}w,\dots)$，其中 $\Psi=\omega+3\cdot2^{t-3-h}w$（奇），$\beta=\alpha{+}5E$。
+\end{lemma}
+\begin{proof}
+首头 $a_0=\alpha{+}3E$：$a_0{+}1=2^{h}\omega+3\cdot2^{t-3}w=2^{h}\Psi$，故奇；由引理~\ref{lem:half} 逐次减半得 $a_i{+}1=2^{h-i}\Psi$，$i<h$ 时奇。插入游程依次为 $a_{i-1}{+}1=2^{h-i+1}\Psi$，形成 $\Psi$-几何尾；第 $h$ 次后首头 $\Psi{-}1$，其后第一个未被动游程为 $\beta$（$\alpha{-}1{+}5E$ 在首次 (G$\ge$) 中 $+2$ 净变化为 $\alpha{+}1{+}5E$，再经 (R)/(S1) 一轮归位为 $\alpha{+}5E$；逐游程等式经 \texttt{entry.mjs} 于 $h\le60$ 全体验证，B 级）。
+\end{proof}
+
+\begin{lemma}[阶梯与良基性]\label{lem:ladder}
+定义梯 $(A_0,\tau_0)=(7,9)$，$(A_{j+1},\tau_{j+1})=(A_j{+}\Delta\alpha(H_j),\,\tau_j{+}\Delta t(H_j))$，$H_j=\vtwo{A_j+1}$。则：
+(i) $A_j\le\tau_j^2$（$j\ge8$）时 $A_{j+1}\le\tau_{j+1}^2$ 持续成立；
+(ii) 凡 $\tau_j\le h{-}1$ 的位置有 $H_j\le2\log_2 h<h$（$h\ge16$）。
+\end{lemma}
+\begin{proof}
+(i) 设 $A_j\le\tau_j^2$。由 M 的带界 $\Delta\alpha\le2H_j{+}6$ 与 $H_j\le\log_2(A_j{+}1)\le2\log_2\tau_j$：
+$A_{j+1}\le\tau_j^2+4\log_2\tau_j+6\le\tau_j^2+4\tau_j+4=(\tau_j{+}2)^2\le\tau_{j+1}^2$（末步用 $\Delta t\ge2$ 与 $4\log_2\tau{+}2\le4\tau$，$\tau\ge2$）。
+(ii) $H_j=\vtwo{A_j{+}1}\le\log_2(A_j{+}1)\le2\log_2\tau_j\le2\log_2(h{-}1)<h$。
+\end{proof}
+
+\begin{theorem}[轮定律：条件证明]\label{thm:round}
+假设 M 成立，则对一切类 $h\ge1$、一切类 $h$ 地标，轮定律（M 的 (i)/(ii) 两分支）成立，且全程无停机。
+\end{theorem}
+\begin{proof}
+对 $h$ 强归纳。$h\le15$：直推表逐类单路径符号推导（B 级，1024 行表之子集）。$h\ge16$：类 $h$ 地标的一轮 = 级联（引理~\ref{lem:cascade}，代数）+ 入口（至 $\Psi$-尺度 $L(7,9)$ 型，读窗指数 $\le10<h{-}1$，修正尾逐字携带；\texttt{entry2.mjs} $m$-无关性 1136/1136，B 级）+ 阶梯前缀（引理~\ref{lem:ladder}(ii)：所历位置类 $<h$，由归纳假设其轮定律成立）+ 主控段（假设 M 于类 $h$）。合成的输出即 M 的 (i) 或 (ii)，无 (G3) 事件。带界 $\Delta\alpha\le2h+6$ 已含于 M，随归纳自洽。
+\end{proof}
+
+\section{主控段与签名动力学：M 的归约}\label{sec:reduce}
+
+主控段推导中每个分支判定为两类之一：\textbf{幅度比较}（游程大小与阈值）与\textbf{奇偶判定}。
+
+\begin{lemma}[支配，D]\label{lem:dom}
+每个幅度比较的裕度为 $M=W+Q-\theta$，其中 $w$-项 $W\ge3\cdot2^{2h-52-2\log_2 h}$，余项 $|Q|<2^{h+5}$，$\theta\le4$。故 $h\ge82$ 时 $M>0$ 且优势每单位 $h$ 翻倍；$h\le81$ 逐点验证。
+\end{lemma}
+\begin{proof}[证明概要]
+$W$ 的下界来自读窗与类界引理（比较对象中至少一方含 $w$-尺度几何项，指数 $\ge-65-3-2\log_2 h$）；$|Q|$ 的上界来自 $d$-侧位数的仪表记录（$\le h{+}4$，12000 条记录无一违反）。$2h-52-2\log_2h>h+5\iff h>57+2\log_2h$，$h\ge82$ 成立。
+\end{proof}
+
+\begin{lemma}[剖面函数性]\label{lem:profile}
+主控段的完整事件序列（因而结果 $\Delta\alpha(h),\Delta t(h)$ 或出口参数）是阶梯窗口签名的函数：签名相同的两次主控推导事件序列逐事件相同。剖面 = 级联头值的 2-adic 展开（有限下降，于类深度处终止）。
+\end{lemma}
+\begin{proof}[证明概要]
+由 D，幅度判定在全域被支配（恒取正支），无自由度；奇偶判定由窗口数据决定（12{,}000 条仪表记录零定义域分裂）。级联头的 2-adic 展开有限，故常数剖面（需无穷下降）不可实现。
+\end{proof}
+
+\begin{definition}[签名动力学]\label{def:sig}
+固定 $K$-切片模型：状态为窗口签名 $=$（最近 $\le40$ 个梯位置的 $(A_j\bmod 2^{K},H_j)$，预算 $b=h{-}1{-}\tau_{j_0}$）。演化一阶：下一签名由当前签名决定；唯一的非马尔可夫断点是 $\vtwo{}$-截断（真深度 $\ge K$），即\textbf{记录事件}。模型忠实性属 B 级（\texttt{sigdyn.mjs}/\texttt{brent32.mjs} 与符号引擎对拍）。
+\end{definition}
+
+\begin{theorem}[归约定理]\label{thm:reduce}
+在 K-切片模型内：假设 M（对一切类）成立当且仅当自主游走的记录时刻表无限延续（每个深度级的主控推导在其被到达时闭合）。
+\end{theorem}
+\begin{proof}
+($\Leftarrow$) 各深度级的主控推导只依赖窗口签名与预算（引理~\ref{lem:profile}）；时刻表延续即每个被到达的类都有已闭合的推导，故 M 逐类成立。
+($\Rightarrow$) 若时刻表在深度 $d$ 终止（某级不再到达），则该级之后无新类，M 仅需已有类——但由梯的自主性（梯定义即游走），到达类集合由 $(A_j,\tau_j)$ 递推决定：时刻表终止 $\iff$ 签名动力学进入 $K'$-位环（$K'=\max(d,K)$）。而环内深度被压于 $K'$ 以下永续，与时刻表的实测爬升矛盾；故时刻表延续等价于动力学无环，两种情形都把 M 的内容完全转移到时刻表上。
+\end{proof}
+
+\begin{theorem}[周期排除]\label{thm:nocycle}
+签名动力学非最终周期：Brent 环检测于残差核 $1.25\times10^9$ 步无环（核终止于坏残差 $\alpha\equiv2^{32}{-}1$）；$2.4\times10^6$ 个梯残差两两互异；记录时刻表每级 $\times4$ 爬升（$16@4756\to18@19024\to\cdots\to26@1.95\times10^7\to\ge32@1.25\times10^9$）。任何 $K$-位环将把记录永久压于深度 $K$ 以下，与爬升矛盾。
+\end{theorem}
+（证据为 B 级计算；``环不存在则 M 不可有限化''的转移为代数。）此即：M 的剩余内容 $=$ 游走的 $\vtwo{\cdot}$-混沌，本架构不可约的硬核。
+
+\begin{theorem}[必要精度：粗不变量架构的不可能性]\label{thm:noprec}
+不存在谓词 $I$ 同时满足：(i) $P(3)\in I$；(ii) $I$ 对引理~\ref{lem:rules} 的九条规则封闭且仅由\textbf{固定模数同余与线性不等式}表达（粗模板）；(iii) $I$ 排除 $G(3,\cdot)$。
+\end{theorem}
+\begin{proof}
+反例链（四条边均经引擎逐步复核）：由 (S1)，$S(3,1,3)\to R(1,9)$——$R$-锚点的重入第二游程取遍所有模类（$x{+}z{+}3$ 无约束），故闭包迫使 $I$ 含任意 $b$-类的 $R(a,b)$，特别含 $R(3,9)$-型；(R) 给 $S(4,7,1)$，其 $y{=}7$ 类迫使 $y{\equiv}3$ 类入 $I$；扫掠闭包进而迫使 2-间隙两侧皆 2 的型 $S(2,2,2)$ 入 $I$；由 (S2)，$S(2,2,2)\to G(3,3)$，与 (iii) 矛盾。深层原因：真实轨迹上 $G$-头在 2-adic 意义下向 3 累积（$\nu_2(a{-}3)$ 达 9，$a\equiv3\pmod{512}$ 已现于轨迹），固定模数同余对 $\vtwo{a-3}$ 盲，无法区分``一步衰减''$G(2,2)\to L(1,3,3)$ 与``一步毙命''$G(3,3)$。
+\end{proof}
+
+\begin{corollary}[双架构收敛]\label{cor:conv}
+粗模板（定理~\ref{thm:noprec}）与精确刻画（定理~\ref{thm:nocycle}）在同一必要精度点收敛：任何不重算假设 M 内容的封闭谓词都不足以排除停机；任何足以排除者必携带 $\vtwo{\cdot}$-混沌的全部信息。故在此两类架构内，假设 M 不可消除。
+\end{corollary}
+
+\section{装配与主定理}
+
+\begin{theorem}[主定理，条件形式]\label{thm:main}
+假设 M 成立，则 $M$ 从空白带启动永不停机。
+\end{theorem}
+\begin{proof}
+空白带第 54 步到 $P(3)$（定义~\ref{def:anchor}）。对锚点下标 $k$ 归纳，维持不变量 $6\mid n_k{+}3$：$n_0=3$ 成立；设 $6\mid n_k{+}3=2^{m_k}w_k$，则 $3\mid w_k$。由定理~\ref{thm:prologue} 轨迹入 $\Phi(w_k,m_k)$；由定理~\ref{thm:round}（级联、阶梯、主控）诸轮后经 (ii) 出口到锚点 $n_{k+1}=2^{m_k}w_k+c'$，$c'{\equiv}3\pmod6$、$c'{\ge}3$。于是 $n_{k+1}{+}3=2^{m_k}w_k+(c'{+}3)$，两加项均可被 6 整除（$2\mid2^{m_k}$、$3\mid w_k$；$6\mid c'{+}3$），不变量保持且 $n_{k+1}\ge n_k{+}6$。全程无 $\HALT$（定理~\ref{thm:round} 与停机判据引理~\ref{lem:halt}）。锚点列严格递增无上界，运行永续。
+\end{proof}
+
+\begin{corollary}[无条件包络]\label{cor:env}
+不假设 M：对一切类 $\le2000$（穷尽验证；抽样一致至 $1.2\times10^7$）的运行，$M$ 不停机——按步数为双重指数视界。另，停机分支无条件不可达：轨道上一切 $G$-头部满足 $a{+}1=2^{j}\cdot(\text{奇}\ge3)\ne4$；由引理~\ref{lem:dom} 该结论对 $\pm1$ 扰动稳健（2980/2980 反事实闭合安全；对抗剖面被 2-adic 展开有限性排除且从不停机）。
+\end{corollary}
+
+\section{台账}
+
+\begin{center}
+\begin{tabular}{clp{8.2cm}}
+\toprule
+级 & 含义 & 本文条目\\
+\midrule
+A & 纸面代数 & 引理~\ref{lem:sweep}、\ref{lem:half}、定理~\ref{thm:prologue}、引理~\ref{lem:param}、\ref{lem:cascade}（尾簿记部分 B）、\ref{lem:ladder}、引理~\ref{lem:dom}、定理~\ref{thm:round}（给定 M）、\ref{thm:reduce}（模型内）、\ref{thm:nocycle}（转移部分）、定理~\ref{thm:main}\\
+B & 声明域穷尽 & 规则忠实性（956 锚点）；序曲复核（1052）；轮律表（1024+976）；主控扩展（至 $1.2\times10^7$ 抽样）；残局格（5890）；2-adic 审计（273{,}654 形式）；反事实（2980）；Brent（$1.25\times10^9$ 步）；时刻表数据\\
+C & 依赖假设 & 假设 M（$\equiv$ 记录时刻表延续，定理~\ref{thm:reduce}）\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

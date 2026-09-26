@@ -1,0 +1,80 @@
+1. Matrix formulation of BMO1
+
+BMO1 can be stated as the following question:
+
+Start with (0, 0) = (1, 2), and iterate it under the following map:
+
+(+1,  +1)  =      {(-,4+2) if >
+
+                    (2+1,-) if <
+
+Does  =  for some n?
+
+We can rewrite the iteration in a matrix form:
+
+      1 -1 0         2 01         
+
+ = (0 4 2),  = (-1 1 0),   = ()
+      001            0 01         1
+
+ +1  =  {     if  >
+              if  <
+
+I claim BMO1 is equivalent to the following question:
+
+Q1. Does there exist a finite product P of A and B such that
+
+                      1
+
+(-1 1 0) (2) = 0?
+
+                      1
+
+Proof: If BMO1 halts, then P representing the actual evolution of the
+machine satisfies the above equation. If some P satisfies the above
+equation, either it represents the true evolution of the machine, or it
+takes a "wrong" step somewhere. It can be checked that this will cause
+ and  to have opposite signs, after which no further
+multiplications by A or B can change their signs again. Therefore, 
+and  can never be equal if P takes a wrong step. 
+
+2. Zero-in-the-corner form
+
+Define the following:
+
+             110
+
+ = (2 1 0),  = -1,  = -1
+
+             101
+
+I claim the following question is equivalent to Q1:
+Q2: Does there exist a finite product P' of A' and B' such that
+
+                     1
+
+(1 0 0) (0) = 0?
+
+                     0
+
+           1                      1
+Proof: Notice that (0) = -1(2) and (1 0 0) = (-1 1 0). The
+
+           0                      1
+
+natural mapping between P and P' shows the equivalence. 
+
+Q2 is also equivalent to asking: can P' have a 0 in its upper-left corner?
+This is known as a "zero-in-the-corner" problem. Such problems are
+known to be undecidable in the general case, but it is unknown if it is
+decidable with 2 3x3 matrices.1
+
+For concreteness, here are A' and B' given explicitly:
+
+11 4 2        -2 -2 -1
+ = (-12 -4 -2),  = ( 5 4 2 )
+
+-10 -4 -1     322
+
+1https://arxiv.org/pdf/1404.0644
+

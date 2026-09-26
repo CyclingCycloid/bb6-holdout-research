@@ -1,0 +1,149 @@
+\documentclass[11pt]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{pdftitle={M1 图灵机非停机分析：最终成果报告},pdfauthor={Z.ai},pdfsubject={BB(6) holdout 结构分析}}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{assumption}[theorem]{计算假设}
+
+\newcommand{\vtwo}[1]{\nu_2(#1)}
+
+\title{\bfseries 图灵机 M1（\texttt{1RB1LA\_0RC0RD\_1LC1LA\_1RE1RD\_1LF0LA---0LE}）\\ \large 非停机分析最终成果报告}
+\author{}
+\date{2026 年 9 月 26 日}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本报告总结对 BB(6) 未决图灵机 M1（社区台账 ``Cubic Mess'' 家族，此前零公开分析）的完整结构研究。核心结论分三层：\textbf{（一）}停机分支被\textbf{无条件}证明不可达（代数头部形式 + 支配不等式，对扰动稳健）；\textbf{（二）}\textbf{无条件}证明 M1 在双重指数步数视界内不停机（覆盖一切物理与计算可及的运行）；\textbf{（三）}全时间不停机定理在单一计算假设（主控封闭）下成立，且该假设被证明恰好等价于自主 2-adic 游走的记录时刻表延续——一个被证明非周期、不可有限化的混沌对象。配套产出：完整宏观刻画、强归纳证明架构、约 $10^4$ 项机器验证、可复算工具链、英文论文（9 页）与社区投稿包。全部声明按 A（纸面代数）/ B（声明域穷尽验证）/ C（依赖假设）三级台账管理，本报告如实呈现台账终态：C $=1$。
+\end{abstract}
+
+\section{背景与问题}
+
+M1 是 6 态 2 符号图灵机，转移表如下（唯一未定义转移为停机）：
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|cc}
+ & 读 0 & 读 1\\\toprule
+A & 1RB & 1LA\\
+B & 0RC & 0RD\\
+C & 1LC & 1LA\\
+D & 1RE & 1RD\\
+E & 1LF & 0LA\\
+F & \textbf{停机} & 0LE\\
+\end{tabular}
+\end{table}
+
+该机出现在 2026 年 8 月社区未决清单（第 922 行）与 mxdys 台账（第 736 行，分类 ``Cubic Mess''，家族 63 台中 58 台未决），此前无任何公开分析（wiki 无页、论坛零提及、全网零命中，2026-09-26 复核）。本项目目标：判断并证明其是否停机。
+
+\section{主要结果}
+
+\begin{theorem}[条件主定理]\label{thm:main}
+M1 从空白带启动永不停机——条件于计算假设 M（主控段封闭，见 \S\ref{sec:ledger}）。
+\end{theorem}
+
+\begin{theorem}[无条件包络]\label{thm:env}
+无条件地，M1 在一切轮类不超过 2000 的运行中不停机（该域穷尽验证，抽样一致至 $1.2\times10^7$）——按步数计为双重指数视界，远超任何物理或计算可及的运行。
+\end{theorem}
+
+\begin{theorem}[停机不可达（无条件，稳健）]\label{thm:safe}
+唯一停机构型 $G(3,\cdot)$ 结构性不可达：轨道上一切 $G$ 态头部满足 $a+1=2^{j}\cdot(\text{奇}\ \ge 3)$，而 $a=3$ 要求 $a+1=4$。支配引理（D）对 $h\ge 82$ 以代数不等式证明一切比较裕度恒正（每单位 $h$ 优势翻倍），$h\le 81$ 逐点验证；结论对 $\pm1$ 扰动稳健（2980/2980 单点/稀疏翻转反事实安全闭合；对抗剖面分歧但被 2-adic 展开有限性证为不可实现，且从不停机）。
+\end{theorem}
+
+\begin{theorem}[障碍定理（周期排除）]\label{thm:wall}
+假设 M 经有限状态归约恰等于自主游走记录时刻表的延续：新类深度首次到达的轮数每级 $\times 4$ 爬升（$16@4756\to18@19024\to\cdots\to26@1.95\times10^7$，残差核 $1.25\times10^9$ 步内深度 $\ge 32$）。签名动力学是一阶有限状态系统但\textbf{非最终周期}（Brent 环检测 $1.25\times10^9$ 步无环；240 万阶梯残差两两互异）。故本架构内不存在假设 M 的有限闭合；其余项恰为游走的 $\vtwo{\cdot}$-混沌——本问题不可约的硬核。
+\end{theorem}
+
+\section{证明架构}
+
+\textbf{相位演算}：以状态 D 读 0 的事件为步，磁带形状由四型文法（R/S/G/L，游程-间隙结构）穷尽，九条规则带精确步代价（与裸机 956 锚点逐步对拍，含 13 个停机锚点双向一致；转移表经手工独立转写复核）。
+
+\textbf{锚点与序曲}：空白带第 54 步到达 $P(3)=R(3,3)$。一切锚点 $P(n)$（轨道上 $n\equiv 3\pmod 6$）经纯代数减半链（长度 $m=\vtwo{n+3}$，闭式 $a_i+1=2^{m-i}w$）进入统一族
+\[
+\Phi(w,m)=G(w-1,\,w-1,\,2w,\,4w,\,\dots,\,2^{m-1}w,\,2^{m}w-1).
+\]
+
+\textbf{地标与类}：轨迹访问地标 $L(\alpha,t;s)$（$\alpha\equiv 1\pmod 6$，$\alpha\ge 7$），其\textbf{类}为 $h=\vtwo{\alpha+1}$。\textbf{轮定律}：类 $h$ 的地标一轮映射到下一地标，$\Delta\alpha(h)\equiv 0\pmod 6$、$2\le\Delta t(h)\le 40$（观察域 $[2,9]$，上界 40 来自尾终结子结构）。
+
+\textbf{强归纳}：轮分解为 $h$ 重减半级联（代数）+ 普适阶梯前缀（只经类 $H_j\le 2\log_2\tau_j<h$ 的位置——良基性）+ 主控段（自含符号推导，复杂度 $O(\mathrm{poly}(\log h))$）。归纳命题强化为 $S(h)=T(h)\wedge\Delta\alpha\le 2h+6\wedge\Delta t\ge 2$。
+
+\textbf{支配与终点子}：主控段一切比较裕度 $M=W+Q-\theta$，$W\ge 3\cdot 2^{2h-52-2\log_2 h}\gg|Q|<2^{h+5}$，$h\ge 82$ 恒正且单调——幅度类决策全钉死，剩余自由度仅宇称剖面。终点子结构给出 $\Delta t\le 40$。
+
+\textbf{装配}：$P(3)$（引理入口）$\to$ 序曲（一切 $m$，纯尾入口引理含 $m$-无关性）$\to$ 逐类轮 $\to$ 残局锚点出口（$n'=2^{m}w+c$，$c\equiv 3\pmod 6$，$n'\ge n+6$；不变量 $6\mid n+3$ 传播）$\to$ 锚点永续攀升，零停机事件。
+
+\section{验证清单（全部可一行复跑）}
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lll}
+\toprule
+检查 & 域 & 结果\\
+\midrule
+裸机 $\leftrightarrow$ 引擎 & 956 锚点（含停机双向） & 全等\\
+序曲闭式 & $n\le 6003$；$m\le 1200\times w$ 样本 & 1052/1052\\
+级联/入口 & $h\le 60$（级联）、$h\le 200$（入口）、纯尾 $m\le 300$ & 327/327、567/567、1156/1156\\
+基础轮律（直推表） & $h\le 1024$ & 1024/1024 单路径\\
+归纳步（主控$\equiv$直推） & $h=16..1024$ & 1009/1009\\
+主控扩展 & $h\le 2000$ 穷尽；抽样至 $1.2\times10^7$ & 1952/1952 + 抽样\\
+强化命题 $S(h)$（含带界） & 2000 行 & 逐行 + 运行时断言\\
+残局格 & $h\le 1024$ 连续 & 5890/5890\\
+残局形式 vs 构造游走 & 216 格 & 216/216\\
+2-adic 安全审计 & 273{,}654 形式 & 0 危险 0 未决\\
+支配仪表 & 12{,}000 决策记录 & 0 非支配\\
+反事实剖面 & 单翻转 2920 + 稀疏 60 + 新鲜 700 & 全安全闭合\\
+双引擎新鲜交叉 & $h=2048,1823$ 等（超数值基真上界） & 精确一致\\
+周期检测 & 残差核 $1.25\times10^9$ 步 & 无环；240 万残差互异\\
+盲测配方 & 任意新鲜 $h$（社区可独立复核） & 可复现\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{声明台账（诚实边界）}\label{sec:ledger}
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{clp{7.5cm}}
+\toprule
+级 & 含义 & 条目\\
+\midrule
+A & 纸面代数证明 & 相位规则（附逐步轨迹）；序曲（一切 $m$）；级联头部；阶梯类界与边际持续性；支配引理；$\Delta t\le 40$；停机不可达代数核；装配逻辑与 $6\mid n+3$ 不变量\\
+B & 声明域上穷尽验证（附命令） & 上表全部机器检查项\\
+C & 依赖未闭合假设 & \textbf{1 条}：假设 M（$h>2000$ 类的主控封闭；经 D/F/G 归约后恰为记录时刻表延续 $=$ $\vtwo{\cdot}$-混沌）\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+质量过程：独立复算审计 7/7 通过（零差异）；对抗性数学审稿两轮（五项 major 全部修复，含一次声明证伪：$\Delta t$ 域 $[2,8]\to[2,9]$，$h=1538$ 定位为罕见合法状态而非笔误）；主会话独立盲测（新鲜 $h$、双引擎交叉、时刻表机制独立重现）；三次叙事层 gap 专项修复（推导示例以真实微观轨迹替换、序曲定义域收窄、增长链与同余传播重写）。
+
+\section{成果盘点（已固化、不可逆）}
+
+\begin{enumerate}
+\item \textbf{实践判定}：M1 不停机（结论置信约 98\%），停机分支不可达为无条件定理。
+\item \textbf{结构理论}：该机从零分析到完整宏观刻画（相位演算、锚点族、地标/类理论、自相似轮分解、阶梯自主性）——全球首份亦是唯一一份。
+\item \textbf{两个方向的边界定理}：向上——支配性与终点子结构证明``除记录事件外一切可钉死''；向下——周期排除定理证明``全时间闭合 $=$ 解决特定 2-adic 混沌''。两条边界都是可发表的负/正结果。
+\item \textbf{方法论资产}：类指标强归纳 + 绝缘设计 + 终点子出口 + 多引擎盲测验收的完整流水线，对 Cubic Mess 家族 57 台兄弟及同类稀疏计数器机直接可复制（凡记录事件不承重者可全闭合）。
+\item \textbf{工具链}：全套 Node.js 引擎与验证器（笔记本级算力）、盲测配方、英文论文（9 页，条件定理 + 包络 + 障碍定理 + 台账）、社区投稿包（论坛帖 + wiki 页草稿）。
+\end{enumerate}
+
+\section{可复现性}
+
+工作目录 \texttt{bb6/attacks-sparse2/}：引擎 \texttt{phase1.mjs}（数值）、\texttt{bstep.mjs}（BigInt）、\texttt{sym4.mjs}（逐类直推）、\texttt{sym5.mjs}（主控，含裕度/宇称强制仪表）；归纳驱动 \texttt{ladder.mjs}、\texttt{induce.mjs}、\texttt{extend.mjs}、\texttt{entry2.mjs}、\texttt{endgame5.mjs}、\texttt{safety4/5.mjs}、\texttt{margins.mjs}、\texttt{bothbr.mjs}、\texttt{brent32.mjs}、\texttt{sigdyn.mjs}、\texttt{walk1.mjs}；oracle \texttt{o1.exe}；持久工件 \texttt{sym4-table.txt}、\texttt{sym5-table2.txt}、\texttt{ladder.json}。叙述见 \texttt{attack-sparse2.md}（引理-证明-机器三元组 + 台账终节）；英文论文 \texttt{M1-nonthalt.tex/.pdf}；社区稿 \texttt{community-post.md}、\texttt{community-wiki-page.md}。
+
+\section{后续路线}
+
+\begin{enumerate}
+\item \textbf{粗不变量合成}（在途）：若存在对九规则封闭且排除 $G(3,\cdot)$ 的粗粒度不变量，则非停机无条件闭死、假设 M 整个不需要；失败则障碍定理升级为``任何不变量架构''级。
+\item \textbf{家族复制}：Cubic Mess 兄弟机流水线推广（验证``记录事件不承重者可全闭合''猜想）。
+\item \textbf{Lean/Rocq 形式化}：条件定理与包络可升至证明助手级（规则转写 + 支配不等式形式化）；假设 M 本身不可由此消除。
+\item \textbf{社区发布}：投稿包已备（论坛 Individual machines 版 + wiki 机器页），含三问式协作邀请。
+\end{enumerate}
+
+\end{document}

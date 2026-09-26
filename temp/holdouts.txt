@@ -1,0 +1,1127 @@
+A '''holdout''' (or undecided machine) is a [[Turing machine]] for which it is not known whether the machine halts or not from an all-0 input tape. Holdouts are the machines which [[Decider|deciders]] are yet unable to decide. Contributors have shared lists of holdouts. Some lists exclude known equivalent machines, i.e., machines whose halting status is implied by the halting status of another machine. If a holdout machine with more than one undefined transitions is found to reach a undefined transition, the number of holdouts may increase as a consequence of [[Tree Normal Form|TNF enumeration]].
+
+{| class="wikitable"
+|+Number of holdouts
+!
+!2-state
+!3-state
+!4-state
+!5-state
+!6-state
+!7-state
+|-
+!2-symbol
+|0
+|0
+|0
+|0
+|855
+|15,743,264
+|-
+!3-symbol
+|0
+|4
+|4,720,332
+|
+|
+|
+|-
+!4-symbol
+|0
+|11,362,197
+|
+|
+|
+|
+|-
+!5-symbol
+|60
+|
+|
+|
+|
+|
+|-
+!6-symbol
+|412,086
+|
+|
+|
+|
+|
+|-
+!7-symbol
+|<i>2,873,381,794</i>(Enumerating)
+|
+|
+|
+|
+|
+|}
+
+== Downloadable Holdouts Lists ==
+This is a table where people have added lists with no restriction or independent verification. For some of the entries there is a reference to a spreadsheet that documents what was run to achieve the result. For others, there is additional documentation on the specific BB pages. 
+
+=== BB(5) ===
+{| class="wikitable sortable"
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|July 2nd, 2024
+|bbchallenge
+|0
+|[https://cable.ayra.ch/empty/?id=0 List of 0 holdouts]
+|'''BB(5) is solved!'''
+|-
+|[https://skelet.ludost.net/bb/nreg.html circa May 13th, 2003]
+|Georgi Georgiev (Skelet)
+|43
+|[https://bbchallenge.org/skelet List of 43 holdouts]
+|
+|}
+
+=== BB(6) ===
+{| class="wikitable sortable"
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1549771931677364264 September 16th, 2026]
+|@mxdys
+|855
+|(To be done)
+|Most holdouts solved between holdout lists since November 28, 2025.
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1546881471556620339 September 8th, 2026]
+|@mxdys
+|964
+|(To be done)
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1543878992195620884 August 31st, 2026]
+|@mxdys
+|999
+|(To be done)
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1543436534831906926 August 30th, 2026]
+|@mxdys
+|1003
+|[https://wiki.bbchallenge.org/w/images/e/e0/BB6_holdouts_1003.txt BB6_holdouts_1003.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1538109685033607198 August 15th, 2026]
+|@mxdys
+|1016
+|[https://wiki.bbchallenge.org/w/images/c/cf/BB6_holdouts_1016.txt BB6_holdouts_1016.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1531681818439319604 July 28th, 2026]
+|@mxdys
+|1064
+|[https://wiki.bbchallenge.org/w/images/e/e9/BB6_holdouts_1064.txt BB6_holdouts_1064.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1521203430046171146 June 29th, 2026]
+|@mxdys
+|1094
+|[https://wiki.bbchallenge.org/w/images/9/90/BB6_holdouts_1094.txt BB6_holdouts_1094.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1499000732236382358 April 29th, 2026]
+|@mxdys
+|1104
+|[https://wiki.bbchallenge.org/w/images/b/bf/BB6_holdouts_1104.txt BB6_holdouts_1104.txt]
+|More reduction by equivalences
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1497651809773289552 April 25th, 2026]
+|@mxdys
+|1119
+|[https://wiki.bbchallenge.org/w/images/a/ab/BB6_holdouts_1119.txt BB6_holdouts_1119.txt]
+|Reduction by equivalences, one halting TM
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1486207538843222116 March 25th, 2026]
+|@mxdys
+|1161
+|[https://wiki.bbchallenge.org/w/images/2/2a/BB6_holdouts_1161.txt BB6_holdouts_1161.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1477224991136419983 February 28th, 2026]
+|@mxdys
+|1214
+|[https://wiki.bbchallenge.org/w/images/0/0e/BB6_holdouts_1214.txt BB6_holdouts_1214.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1473945366821998684 February 19th, 2026]
+|@mxdys
+|1226
+|[https://wiki.bbchallenge.org/w/images/8/80/BB6_holdouts_1226.txt BB6_holdouts_1226.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1466438332677619956 January 29th, 2026]
+|@mxdys
+|1314
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1466438332677619956 BB6_holdouts_1314.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1455369448264568904 December 30th, 2025]
+|@mxdys
+|1326
+|[https://wiki.bbchallenge.org/w/images/f/f0/BB6_holdouts_1326.txt BB6_holdouts_1326.txt]
+|
+|-
+|November 22nd, 2025
+|Robin Rovenszky
+|Variable
+|[https://docs.google.com/spreadsheets/d/1mMp8bAcTFT91j7azn72liX8NSTwc2E_ozKnOGTfRCfw/edit?gid=1330361301#gid=1330361301 Google Sheets]
+|Annotated list, including links to Discord discussions, often up-to-date.
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1450455364179857410 December 16th, 2025]
+|@mxdys
+|1343
+|[https://wiki.bbchallenge.org/w/images/9/9a/BB6_holdouts_classified_1343.txt BB6_holdouts_1343.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1443989662019354647 November 28th, 2025]
+|@mxdys
+|1416
+|[https://wiki.bbchallenge.org/w/images/9/98/BB6_holdouts_1416.txt BB6_holdouts_1416.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1438983076662477004 November 14th, 2025]
+|@mxdys
+|1534
+|[https://wiki.bbchallenge.org/w/images/0/02/BB6_holdouts_1534.txt BB6_holdouts_1534.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1429892916763033601 October 20th, 2025]
+|@mxdys
+|1618
+|[https://wiki.bbchallenge.org/w/images/e/e3/BB6_holdouts_1618.txt BB6 holdouts 1618.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1419290767767240734 September 21, 2025]
+|@mxdys
+|1691
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1419290767767240734 BB6_holdouts_1691.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1411308408220549140 August 30 2025]
+|@mxdys
+|2592
+|[[:File:BB6 holdouts 2592.txt|BB6 holdouts 2592.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1399783936019664896 July 29 2025]
+|@mxdys
+|2728
+|[[:File:BB6 holdouts 2728.txt|BB6 holdouts 2728.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1393808719615361205 July 13, 2025]
+|@mxdys
+|2891
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1393808719615361205 BB6_holdouts_2891.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1390953522379489401 July 5, 2025]
+|@mxdys
+|3094
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1390953522379489401 BB6_holdouts_3094.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1384957116376158228 June 18, 2025]
+|@mxdys
+|3335
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1384957116376158228 BB6_holdouts_3335.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1345246656769163284 March 1, 2025]
+|@mxdys
+|3571
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1345246656769163284 BB6_holdouts_3571.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1310648046576730124 November 25, 2024 (@icy)]
+|@tjligocki
+|4319
+|[https://docs.google.com/spreadsheets/d/1grhW_0neb2I8TfceN5-v70_3W42Z2U159r9L6FhPGf8/edit?usp=sharing Spreadsheet of holdouts]
+|Keeping track of BB(6) progress - informal.
+|-
+|[https://discordapp.com/channels/960643023006490684/1239205785913790465/1304303803213942846 November 8, 2024]
+|@mxdys
+|4408
+|[[:File:BB6 holdouts 4408.txt|BB6_holdouts_4408.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1297163115179278336 October 19, 2024]
+|@mxdys
+|4521
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1297163115179278336 BB6_holdouts_4521.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1287580515938865225 September 23, 2024]
+|@mxdys
+|4741
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1287580515938865225 BB6_holdouts_4741.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1282002734912110655 September 7, 2024]
+|@mxdys
+|4986
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1282002734912110655 BB6_holdouts_4986.txt]
+|
+|-
+|[https://discordapp.com/channels/960643023006490684/1239205785913790465/1280185195877634098 September 2, 2024]
+|@mxdys
+|5394
+|[[:File:BB6 holdouts 5394.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1269612923127599164 August 4, 2024]
+|@mxdys
+|5877
+|[[:File:BB6 holdouts 5877.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1267013907910758451 July 28, 2024]
+|@mxdys
+|6417
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1267013907910758451 BB6_holdouts_6417.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1262276904887521300 July 15, 2024]
+|@mxdys
+|7013
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1262276904887521300 BB6_holdouts_7013.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1262126923321180250 July 14, 2024]
+|@Justin Blanchard
+|7255
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1262126923321180250 BB6_holdouts_7255.txt]
+|Work done by Justin Blanchard
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1259131753176498216 July 6, 2024]
+|@mxdys
+|7296
+|[[:File:BB6 holdouts 7296.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1259011186192552068 July 6, 2024]
+|@Justin Blanchard
+|7430
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1259011186192552068 BB6_holdouts_7430.txt]
+|Work done by Justin Blanchard
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1258810921879605298 July 5, 2024]
+|@mxdys
+|7449
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1258810921879605298 BB6_holdouts_7449.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1256254912573079572 June 28, 2024]
+|@mxdys
+|9366
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1256254912573079572 BB6_holdouts_9366.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1254684723955896362 June 24, 2024]
+|@Justin Blanchard
+|9853
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1254684723955896362 BB6_holdouts_9853.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1253478694798884934 June 21, 2024]
+|@mxdys
+|10,020
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1253478694798884934 BB6_holdouts_10020.txt]
+|Work done by Justin Blanchard
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1253466035189846056 June 20, 2024]
+|@mxdys
+|10,944
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1253466035189846056 BB6_holdouts_10944.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1250895665719148595 June 13, 2024]
+|@tjligocki
+|12,091
+|[[:File:BB6 holdouts 12091.txt]]
+|Work done with @Shawn Ligocki
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1248708916381220954 June 7, 2024]
+|@mxdys
+|12,325
+|[[:File:BB6 holdouts 12325.txt]]
+|Some equivalent machines are removed.
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1245116022873264129 May 28, 2024]
+|@mxdys
+|18,560
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1245116022873264129 BB6_holdouts_18560.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1239628496184279080 May 13, 2024]
+|@mxdys
+|35,788
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1239628496184279080 BB6_holdouts_35788.txt]
+|C++ version of the deciders from [[Coq-BB5]] ran on Shawns 181,851 holdouts<ref>https://discord.com/channels/960643023006490684/1239205785913790465/1239275863699361813</ref>
+|-
+|May 27, 2023
+|@sligocki
+|181,851
+|[https://drive.google.com/file/d/1YNwFCN6XJeDNKxxK5KbGHOAFOdIBvDb6/view?usp=drive_link 6x2.holdouts_181851.txt.gz]
+|This was posted to the BBChallenge Forum (before Discord)
+|-
+|May 10, 2023
+|@sligocki
+|1,458,704
+|[https://drive.google.com/file/d/14bDnBt0OwuHATFBiubc_5jub0220EyXf/view?usp=drive_link 6x2.holdouts_1458704.txt.gz]
+|This was posted to the BBChallenge Forum (before Discord)
+|}
+
+=== BB(7) ===
+{| class="wikitable sortable"
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|[https://discord.com/channels/960643023006490684/1369339127652159509/1512553945837605016 June 5th, 2026]
+|@davidsg7829
+|16,949,557
+|[https://drive.google.com/drive/folders/1mxNs8v9dg2V2TZ-lRRyWN0QdujM1Yh2s undecided_06.06.2026_16,949,557.txt.gz]
+|
+|-
+|[https://drive.google.com/drive/folders/1_lIqfvj4_J7WWl5LOBUp_pntoI99QYui May 25th, 2026]
+|
+|17,823,260
+|[https://drive.google.com/file/d/1GFumm3tzm58Yxza_sD_BdJ3RMY_DKmRv/view 7x2_holdouts_17823260.txt.zip]
+|Work done by Andrew Ducharme
+|-
+|[https://drive.google.com/drive/folders/1_lIqfvj4_J7WWl5LOBUp_pntoI99QYui October 25th, 2025]
+|
+|20,405,295
+|[https://drive.google.com/file/d/12riXHC3Vz4tk_5mMV7__gZsF7hqAsZ_S/view bb7_holdouts_20405295.txt.gz]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1369339127652159509/1423806362072256676 October 4th, 2025]
+|Andrew Ducharme
+|22,721,168
+|[https://drive.google.com/file/d/1xAFSPh6qAR8VxsF4QVipmdc0UpdPC1hn/view bb7_holdouts_22721168.txt.zip]
+|
+|}
+
+=== BB(3,3) ===
+{| class="wikitable sortable"
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|November 10, 2024
+|
+|6
+|[[:File:3x3 holdout 6.txt|3x3 holdout 6.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1249142547217907772 June 9, 2024]
+|@Justin Blanchard
+|22
+|[[:File:3x3.todo.txt]], [[:File:Mugshots small.pdf]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1116351783040716830 June 8, 2023]
+|@Iijil
+|925
+|[[:File:2023 06 08.3x3.holdouts intersect sligocki iijil 925.txt]]
+|Intersection of @sligocki and @Iijil from below
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1116351783040716830 June 8, 2023]
+|@Iijil
+|2,480
+|[[:File:2023 06 08.3x3.holdouts iijil 2380.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1116178334620070000 June 7, 2023]
+|@sligocki
+|2,417
+|[[:File:2023 06 07.3x3.holdouts 2417.txt]]
+|
+|}
+
+=== BB(4,3) ===
+{| class="wikitable sortable"
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|[https://drive.google.com/drive/folders/1HBPZ17llVE_8wCy5FvRUFQ5MJsaYXAW- May 9th, 2026]
+|@Andrew Ducharme
+|5,127,263
+|[https://drive.google.com/file/d/1xHukBgJnm1zctZkOMR0UzdQyzr4Fx5pC/view 4x3_holdouts_5127263.txt.zip]
+|Work done by Andrew Ducharme
+|-
+|[https://drive.google.com/drive/folders/1HBPZ17llVE_8wCy5FvRUFQ5MJsaYXAW- April 26th, 2026]
+|@Andrew Ducharme
+|5,641,006
+|[https://drive.google.com/file/d/1z8oBXUECL5dpUNAIqik2z_yI5JGmW79t/view 4x3_holdouts_5641006.txt.zip]
+|Work done by Andrew Ducharme
+|-
+|[https://drive.google.com/drive/folders/1HBPZ17llVE_8wCy5FvRUFQ5MJsaYXAW- October 26th, 2025]
+|
+|9,401,447
+|[https://drive.google.com/file/d/1r99v3dcdNTgGkmaydLKiZCp5KD3jGWeE/view 4x3_holdouts_9401447.txt.gz]
+|
+|-
+|[https://drive.google.com/drive/folders/1qNssnvK3W2jJ68VBq9FJZMy9TvwbQk4_ October 20th, 2025]
+|@tjligocki
+|18,138,027
+|[https://drive.google.com/file/d/1vHufk09pI7JcTSAOj1XOzcZXJoX1Wa2a/view 4x3_holdouts_18138027.txt.gz]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1320172124509311004 December 21, 2024]
+|@tjligocki
+|460,916,384
+|[https://drive.google.com/file/d/1hKy0TuPuI62rN95j6ZLjXgE-Pue8tRsK/view?usp=drive_link 4x3_holdouts_460916384.txt.gz]
+|[https://drive.google.com/drive/folders/1HBPZ17llVE_8wCy5FvRUFQ5MJsaYXAW-?usp=drive_link Google Drive directory for 4x3 TMs]
+|}
+
+=== BB(3,4) ===
+{| class="wikitable sortable"
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|[https://drive.google.com/drive/folders/1uGWJMYYuVGJj581GX_vlm3Wv1adYbcRs May 11th, 2026]
+|@XnoobSpeakable
+|11,362,197
+|[https://drive.google.com/file/d/1-Fnexjfq0mWyZDPa2MNFmU64EpSu-3Ig/view 3x4_holdouts_11362197.zip]
+|Work done by [[User:XnoobSpeakable|XnoobSpeakable]]
+|-
+|[https://drive.google.com/drive/folders/1lNKc_GF2sa5ZfosleAlMNBQ3uJV4qClo April 30th, 2026]
+|@Andrew Ducharme
+|12,049,358
+|[https://drive.google.com/file/d/1xCtI58doiCoI3lU_oQjK_21zsLFLF9g3/view 3x4_holdouts_12049358.txt.zip]
+|Work done by Andrew Ducharme
+|-
+|[https://drive.google.com/drive/folders/1pj0MJBCA1hk6NxSj0mYvu5iXbTtVRt64 December 31st, 2025]
+|
+|12,435,284
+|[https://drive.google.com/file/d/15e-Lwl_F6Jn_HoYFPA2a94jLTjX1mmHd/view 3x4st10c_holdouts_12435284.txt]
+|Work done by [[User:XnoobSpeakable|XnoobSpeakable]] and [[User:WarpedWartWars|Lúkos]].
+|-
+|[https://drive.google.com/drive/folders/1_5j19qrvo1q7jN_c0pYnjBOrIXAP6b7i October 4th, 2025]
+|@tjligocki
+|64,777,377
+|[https://drive.google.com/file/d/1I3s3w-T4NPLn-eCdaZLPgC2Mya51pyvH/view?usp=drive_link 3x4_holdouts_64777377.txt.gz]
+|Work done by [[User:XnoobSpeakable|XnoobSpeakable]] and [[User:WarpedWartWars|Lúkos]].
+|-
+|[https://discord.com/channels/960643023006490684/960643023530762341/1302767449476694188 November 3, 2024]
+|@tjligocki
+|434,787,751
+|[https://drive.google.com/file/d/1PLzN3wLw-MRgk1OFmYh4RTwNc30nflR7/view?usp=drive_link 3x4_holdouts_434787751.txt.gz]
+|[https://drive.google.com/drive/folders/1bZxl7jg5q9IVvHQNZwItx1kPusAWznZk?usp=drive_link Google Drive directory for 3x4 TMs]
+|}
+
+=== BB(2,5) ===
+{| class="wikitable sortable"
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|[https://discord.com/channels/960643023006490684/1259770421046411285/1546880921318326282 September 8, 2026]
+|@mxdys
+|60
+|(To be done)
+|-
+|[https://discord.com/channels/960643023006490684/1259770421046411285/1355593937531961365 March 29, 2025]
+|@mxdys
+|83
+|[[:File:BB2x5 Coq holdouts 83.txt]]
+|-
+|[https://discord.com/channels/960643023006490684/1259770421046411285/1355608270810648759 March 17, 2025]
+|@Peacemaker II
+|Variable (from 217 list)
+|[https://docs.google.com/spreadsheets/d/1qiZ3PJb_q4j9kddm0zZMionJhYCI_uEHr1bSmsBOlZs/edit?usp=drivesdk Google sheets]
+|Annotated spreadsheet of holdouts, often up-to-date
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1252989316175499284 June 19, 2024]
+|@mxdys
+|217
+|[[:File:2x5_holdouts_217.txt]]
+|273 holdouts minus machines solved by CTL
+|-
+|June 15th 2024
+|@dyuan01
+| 273
+|[[:File:2x5_holdouts_273.txt]]
+|@Justin Blanchard's 499 holdouts minus machines solved by @mxdys
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1242679236142170203 May 22, 2024]
+|@Justin Blanchard
+|499
+|[[:File:2x5.todo.txt]]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1233154495635259543 April 25, 2024]
+|@Justin Blanchard
+|920
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1233154495635259543 2x5.todo.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1232667326126489710 April 24, 2024]
+|@Justin Blanchard
+|1045
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1232667326126489710 2x5.todo.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1231941302975987844 April 22, 2024]
+|@Justin Blanchard
+|1588
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1231941302975987844 2x5.todo.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1230737657076650066 April 19, 2024]
+|@Justin Blanchard
+|1835
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1230737657076650066 2x5.todo.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1230491507287523409 April 18, 2024]
+|@Justin Blanchard
+|1921
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1230491507287523409 2x5.todo.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1230132897583857756 April 17, 2024]
+|@Justin Blanchard
+|2354
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1230132897583857756 2x5.todo.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1229770471898087506 April 16, 2024]
+|@Justin Blanchard
+|2438
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1229770471898087506 2x5.todo.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1229406059274305546 April 15, 2024]
+|@Justin Blanchard
+|2564
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1229406059274305546 2x5.todo.txt]
+|
+|-
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1228351493745152083 April 12, 2024]
+|@Justin Blanchard
+|3364
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1228351493745152083 2x5.todo.txt]
+|
+|}
+
+=== BB(2,6) ===
+{| class="wikitable sortable"
+|+
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|[https://drive.google.com/drive/folders/1TsSpW27x3LBlu5qmk-cjzCJzgo_3ehyT October 6th, 2025]
+|@tjligocki
+|870,085
+|[https://drive.google.com/file/d/1xZqEZFPke02pwBHX0EYsyDVaNU5o_OuO/view 2x6_holdouts_870085.txt.zip]
+|Work done by Andrew Ducharme.
+|-
+|[https://drive.google.com/drive/folders/1TsSpW27x3LBlu5qmk-cjzCJzgo_3ehyT September 16, 2025]
+|
+|970,101
+|[https://drive.google.com/file/d/1Vjm3Qf-4a-Zr-E3EocjPWI5bjqH2YGil/view 2x6_holdouts_970101.txt.gz]
+|Work done by Terry Ligocki
+|-
+|[https://drive.google.com/drive/folders/1TsSpW27x3LBlu5qmk-cjzCJzgo_3ehyT September 12, 2025]
+|
+|20,358,011
+|[https://drive.google.com/file/d/1YOoh4Zh2Jn5zaq9-C638S6VR_4jzd6pa/view 2x6_holdouts_20358011.zip]
+|Work done by Andrew Ducharme
+|-
+|[https://discord.com/channels/960643023006490684/960643023530762341/1303219184221683733 November 4, 2024]
+|@tjligocki
+|22,302,296
+|[https://drive.google.com/file/d/1xRLIjdiqImFP2SL38gvhxVlAaX0L1cYO/view?usp=drive_link 2x6_holdouts_22302296.txt.gz]
+|[https://drive.google.com/drive/folders/1p9b5g-Id3WEMUYIwEnaKWRBGIW66ADjM?usp=drive_link Google Drive directory for 2x6 TMs]
+|}
+
+== Busy Beaver adjacent holdouts lists ==
+
+=== Beeping Busy Beaver ===
+{| class="wikitable sortable"
+|+
+!Domain
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|BBB(4)
+|August 2nd, 2026
+|bbchallenge
+|0
+|
+|BBB(4) had been proven to be 32,779,478 by August 2nd, 2026. See [https://github.com/carrino/Coq-BBB4 Coq-BBB4] for more details.
+|-
+|BBB(4)
+|[https://discord.com/channels/960643023006490684/1385498968011575366/1387585253928992831 June 26, 2025]
+|@mxdys
+|3713
+|[https://wiki.bbchallenge.org/w/images/6/62/BBB4_holdouts_3713.txt BBB4_holdouts_3713.txt]
+|
+|}
+
+=== Reversible Turing machines ===
+{| class="wikitable sortable"
+|+
+!Domain
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|BBrev(6)
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1400313138611490897 July 31, 2025]
+|@Sligocki
+|388
+|[https://wiki.bbchallenge.org/w/images/8/86/BBrev6_holdouts_388.txt BBrev6_holdouts_388.txt]
+|
+|-
+|BBrev(6)
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1400253700986900692 July 31, 2025]
+|@Sligocki
+|409
+|[https://discord.com/channels/960643023006490684/1239205785913790465/1400253700986900692 BBrev6_holdouts_409.txt]
+|
+|}
+
+=== Instruction-limited Busy Beaver ===
+{| class="wikitable sortable"
+|+
+!Domain
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|BBi(8)
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1425234398919266405 October 7, 2025]
+|@Shawn Ligocki
+|348
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1425234398919266405 bbi8_holdouts_348.txt]
+|
+|-
+|BBi(8)
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1424786698537271347 October 6, 2025]
+|@Peacemaker II
+|441
+|[https://discord.com/channels/960643023006490684/1084047886494470185/1424786698537271347 BBi8_holdouts_441.txt]
+|
+|}
+
+=== Fractran ===
+{| class="wikitable sortable"
+|+
+!Domain
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|BBf(24)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1548561426262790144 September 13, 2026]
+|@-d
+|10,838
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz24_10838_unofficial.txt sz24_10838_unofficial.txt]
+|Unofficial holdouts list
+|-
+|BBf(24)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1548561426262790144 September 13, 2026]
+|@-d
+|231,432
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz24_231432.txt sz24_231432.txt]
+|
+|-
+|BBf(24)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1547198004019331243 September 9, 2026]
+|@-d
+|6,733,785
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz24_6733785.zip sz24_6733785.zip]
+|
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout August 5, 2026]
+|@-d
+|13
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_13_unofficial.txt sz23_13_unofficial.txt]
+|Unofficial holdouts list, up to equivalences and implications (only hardest cases listed from 24 holdouts up to equivalences)
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout July 25, 2026]
+|@-d
+|694
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_694_unofficial.txt sz23_694_unofficial.txt]
+|Unofficial holdouts list, reduction by Claude
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout July 25, 2026]
+|@-d
+|703
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_703_unofficial.txt sz23_703_unofficial.txt]
+|Unofficial holdouts list, reduction by Claude
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout July 24, 2026]
+|@-d
+|8,021
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_8021_unofficial.txt sz23_8021_unofficial.txt]
+|Unofficial holdouts list, reduction by Claude
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout July 11, 2026]
+|@-d
+|21,233
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_21233.txt sz23_21233.txt]
+|Programs simulated to halting were removed
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout June 3, 2026]
+|@-d
+|21,295
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_21295.txt sz23_21295.txt]
+|Programs simulated to halting were removed
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout June 2, 2026]
+|@-d
+|21,320
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_21320.txt sz23_21320.txt]
+|Programs simluated to halting were removed
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout June 2, 2026]
+|@-d
+|28,100
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_28100.txt sz23_28100.txt]
+|
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout June 2, 2026]
+|@-d
+|29,188
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_29188.txt sz23_29188.txt]
+|
+|-
+|BBf(23)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1510749997392724190 May 31, 2026]
+|@-d
+|29,250
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_29250.txt sz23_29250.txt]
+|
+|-
+|BBf(23)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1510749997392724190 May 31, 2026]
+|@-d
+|94,367
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_94367.txt sz23_94367.txt]
+|
+|-
+|BBf(23)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout May 30, 2026]
+|@-d
+|790,335
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz23_790335.txt sz23_790335.txt]
+|
+|-
+|BBf(22)
+|[https://github.com/int-y1/BBFractran/tree/main/holdout April 4, 2026]
+|@-d
+|3
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz22_3.txt sz22_3.txt]
+|Holdout reduction by Claude Opus 4.6
+|-
+|BBf(21)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1485168251997786173 March 28, 2026]
+|@-d
+|0
+|
+|Claude Opus 4.6's proof of nonhalting of all the 140 remaining BBf(21) holdouts: [https://discord.com/channels/960643023006490684/1438019511155691521/1485168251997786173 March 28th, 2026]
+|-
+|BBf(22)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1464873923647639703 January 25, 2026]
+|@-d
+|2,003
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz22_2003_unofficial.txt sz22_2003_unofficial.txt]
+|Result of the beeping permutation decider being run on sz22_5682.txt
+|- 
+|BBf(21)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1464873923647639703 January 25, 2026]
+|@-d
+|140
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz21_140_unofficial.txt sz21_140_unofficial.txt]
+|Result of the beeping permutation decider being run on sz21_345.txt
+|-
+|BBf(21)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1463862950203887811 January 22, 2026]
+|@-d
+|143
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1463862950203887811 sz21_143_workinprogress.txt]
+|
+|-
+|BBf(22)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1456498841334317210 January 2, 2026]
+|@-d
+|5,682
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz22_5682.txt sz22_5682.txt]
+|
+|-
+|BBf(21)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1456498841334317210 January 2, 2026]
+|@-d
+|345
+|[https://github.com/int-y1/BBFractran/blob/main/holdout/sz21_345.txt sz21_345.txt]
+|
+|- 
+|BBf(21)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1450186358474936533 December 15, 2025]
+|@Sligocki
+|394
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1450186358474936533 sz21_394.txt]
+|
+|-
+|BBf(20)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1450186358474936533 December 15, 2025]
+|@Sligocki
+|6
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1450186358474936533 sz20_6.txt]
+|BBf(20) has since been solved
+|-
+|BBf(22)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1449536000098308236 December 13, 2025]
+|@Sligocki
+|10,441
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1449536000098308236 sz22_10441.txt]
+|17 known halters are removed
+|-
+|BBf(22)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1448806255261913199 December 11, 2025]
+|@Sligocki
+|10,458
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1448806255261913199 sz22_10457.txt]
+|Known halters are removed
+|-
+|BBf(22)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1448729669263163596 December 11, 2025]
+|@dyuan01
+|11,130
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1448729669263163596 message.txt]
+|
+|-
+|BBf(22)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1448214077028569098 December 10, 2025]
+|@-d
+|91,123
+|[https://raw.githubusercontent.com/int-y1/BBFractran/refs/heads/main/holdout/sz22_91123.txt sz22_91123.txt]
+|Initial enumeration
+|-
+|BBf(21)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1439799813758648421 November 17, 2025]
+|@Sligocki
+|760
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1439799813758648421 sz21_760.txt]
+|23 halting machines are removed
+|-
+|BBf(21)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1439725735211303003 November 16, 2025]
+|@dyuan01
+|783
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1439725735211303003 message.txt]
+|
+|-
+|BBf(20)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1438560626329784321 November 13, 2025]
+|@dyuan01
+|279
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1438560626329784321 message.txt]
+|
+|-
+|BBf(20)
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1438483146864590900 November 13, 2025]
+|@-d
+|902
+|[https://discord.com/channels/960643023006490684/1438019511155691521/1438483146864590900 sz20_902.txt]
+|
+|}
+
+=== Terminating Turmites ===
+{| class="wikitable sortable"
+|+
+!Domain
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|TT(3,3)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1536748429089448036 August 11, 2026]
+|@creeperman7002
+|19368
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1536748429089448036 3x3_holdouts_19368.txt]
+|
+|-
+|TT(2,4)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1533832727441178644 August 3, 2026]
+|@creeperman7002
+|630
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1533832727441178644 TT2x4_holdouts_630.txt]
+|
+|-
+|TT(2,4)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1400609116103118870 August 1, 2025]
+|@creeperman7002
+|2298
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1400609116103118870 holdout_2x4_2298.txt]
+|
+|-
+|TT(4)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1393363926871310508 July 12, 2025]
+|@creeperman7002
+|99
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1393363926871310508 holdout4x2.txt]
+|
+|}
+
+=== Busy Beaver for Lambda Calculus ===
+{| class="wikitable sortable"
+|+
+!Domain
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|BBλ(42)
+|[https://discord.com/channels/960643023006490684/1355653587824283678/1517130491512492083 June 18, 2026]
+|@C++DSucker
+|Variable (156)
+|[https://docs.google.com/spreadsheets/d/1jZ6TK9m3xmXUlC69727T-8WwvhALcsp8FrK6DzgThtw/edit?gid=1544675322#gid=1544675322 Spreadsheet]
+|
+|-
+|BBλ(41)
+|[https://discord.com/channels/960643023006490684/1355653587824283678/1516447472044478574 June 17, 2026]
+|@C++DSucker
+|0
+|[https://docs.google.com/spreadsheets/d/1jZ6TK9m3xmXUlC69727T-8WwvhALcsp8FrK6DzgThtw/edit?gid=1502335946#gid=1502335946 Spreadsheet]
+|'''BBλ(41) was solved on August 7th, 2026'''
+|-
+|BBλ(40)
+|[https://discord.com/channels/960643023006490684/1355653587824283678/1514278632695005224 June 10, 2026]
+|@C++DSucker
+|0
+|[https://docs.google.com/spreadsheets/d/1jZ6TK9m3xmXUlC69727T-8WwvhALcsp8FrK6DzgThtw/edit?gid=741510300#gid=741510300 Spreadsheet]
+|'''BBλ(40) was solved on July 20th, 2026'''
+|-
+|BBλ(39)
+|[https://discord.com/channels/960643023006490684/1355653587824283678/1492187654429868062 April 10, 2026]
+|@Sligocki
+|0
+|[https://docs.google.com/spreadsheets/d/1jZ6TK9m3xmXUlC69727T-8WwvhALcsp8FrK6DzgThtw/edit?gid=1717120706#gid=1717120706 Spreadsheet]
+|'''BBλ(39) was solved on June 10th, 2026'''
+|-
+|BBλ(38)
+|[https://discord.com/channels/960643023006490684/1355653587824283678/1362975027154129056 April 19, 2025]
+|@Sligocki
+|0
+|[https://docs.google.com/spreadsheets/d/1jZ6TK9m3xmXUlC69727T-8WwvhALcsp8FrK6DzgThtw/edit?gid=563816005#gid=563816005 Spreadsheet]
+|'''BBλ(38) was solved on April 13th, 2026'''
+|-
+|BBλ(37)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354938497848443032 March 27, 2025]
+|@Racheline
+|92
+|[https://docs.google.com/spreadsheets/d/1yoiez7lDjZ-vRzj8NFWKWOxGlkK9IE_KWMUjeSWYWkw/edit?gid=0#gid=0 BBλ(37) 92 holdouts progress]
+|'''BBλ(37) was solved on April 19th, 2025'''
+|-
+|BBλ(37)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354421317792694292 March 26, 2025]
+|@Racheline
+|216
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354421317792694292 BBL(37)_216.txt]
+|
+|-
+|BBλ(37)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354398010527711345 March 26, 2025]
+|@Racheline
+|278
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354398010527711345 BBL2(37)_278.txt]
+|
+|-
+|BBλ(37)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354355688763031616 March 26, 2025]
+|@Sam
+|317
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354355688763031616 BBL2(37)_317.txt]
+|
+|-
+|BBλ(37)
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354352262562189344 March 26, 2025]
+|@Sam
+|333
+|[https://discord.com/channels/960643023006490684/1243312334907375676/1354352262562189344 BBL(37).txt]
+|
+|}
+
+=== CounterScript ===
+{| class="wikitable sortable"
+|+
+!Domain
+!Date
+!Shared by
+!Number of holdouts
+!File
+!Notes
+|-
+|BBCS(11)
+|September 15, 2026
+|@Etalon
+|0
+|[https://cable.ayra.ch/empty/?id=0 Empty]
+|The holdout was resolved by hand.
+|-
+|BBCS(11)
+|[https://github.com/AzertyWasTaken/CounterScript/tree/main/Holdouts July 10, 2026]
+|@Azerty
+|1
+|[https://github.com/AzertyWasTaken/CounterScript/blob/main/Holdouts/11.txt 11.txt]
+|The holdout may be resolved by hand.
+|}
+
+== References ==

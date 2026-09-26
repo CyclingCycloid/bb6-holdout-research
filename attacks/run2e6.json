@@ -1,0 +1,146 @@
+{
+ "summary": {
+  "N": 2000000,
+  "ms": 28758,
+  "aBits": 435789,
+  "bBits": 435784,
+  "minDiffBits": 1,
+  "minDiffAt": 3,
+  "topClose": [
+   {
+    "step": 3,
+    "d": "1",
+    "bits": 3
+   },
+   {
+    "step": 1,
+    "d": "2",
+    "bits": 2
+   },
+   {
+    "step": 17,
+    "d": "2",
+    "bits": 7
+   },
+   {
+    "step": 2,
+    "d": "4",
+    "bits": 3
+   },
+   {
+    "step": 9,
+    "d": "5",
+    "bits": 5
+   },
+   {
+    "step": 6,
+    "d": "7",
+    "bits": 4
+   },
+   {
+    "step": 7,
+    "d": "8",
+    "bits": 4
+   },
+   {
+    "step": 11,
+    "d": "8",
+    "bits": 5
+   },
+   {
+    "step": 5,
+    "d": "14",
+    "bits": 5
+   },
+   {
+    "step": 4,
+    "d": "17",
+    "bits": 5
+   }
+  ],
+  "nearDiagCount": 15,
+  "nearDiagSample": [
+   "1: a-b=2 (maxbits=2)",
+   "2: a-b=-4 (maxbits=3)",
+   "3: a-b=1 (maxbits=3)",
+   "4: a-b=-17 (maxbits=5)",
+   "5: a-b=-14 (maxbits=5)",
+   "6: a-b=-7 (maxbits=4)",
+   "7: a-b=8 (maxbits=4)",
+   "8: a-b=-22 (maxbits=5)",
+   "9: a-b=-5 (maxbits=5)",
+   "10: a-b=30 (maxbits=6)",
+   "11: a-b=8 (maxbits=5)",
+   "14: a-b=-30 (maxbits=7)",
+   "15: a-b=41 (maxbits=7)",
+   "17: a-b=2 (maxbits=7)",
+   "24: a-b=48 (maxbits=8)"
+  ],
+  "driftBitsPerStep": "0.217894"
+ },
+ "milestones": [
+  {
+   "step": 10,
+   "aBits": 6,
+   "bBits": 3,
+   "diffBits": 5,
+   "minDiffBits": 1,
+   "minDiffAt": 3,
+   "ms": 0
+  },
+  {
+   "step": 100,
+   "aBits": 26,
+   "bBits": 24,
+   "diffBits": 25,
+   "minDiffBits": 1,
+   "minDiffAt": 3,
+   "ms": 2
+  },
+  {
+   "step": 1000,
+   "aBits": 228,
+   "bBits": 225,
+   "diffBits": 227,
+   "minDiffBits": 1,
+   "minDiffAt": 3,
+   "ms": 3
+  },
+  {
+   "step": 10000,
+   "aBits": 2190,
+   "bBits": 2193,
+   "diffBits": 2193,
+   "minDiffBits": 1,
+   "minDiffAt": 3,
+   "ms": 7
+  },
+  {
+   "step": 100000,
+   "aBits": 21781,
+   "bBits": 21782,
+   "diffBits": 21777,
+   "minDiffBits": 1,
+   "minDiffAt": 3,
+   "ms": 95
+  },
+  {
+   "step": 1000000,
+   "aBits": 217962,
+   "bBits": 217957,
+   "diffBits": 217962,
+   "minDiffBits": 1,
+   "minDiffAt": 3,
+   "ms": 7158
+  },
+  {
+   "step": 2000000,
+   "aBits": 435789,
+   "bBits": 435784,
+   "diffBits": 435789,
+   "minDiffBits": 1,
+   "minDiffAt": 3,
+   "ms": 28758
+  }
+ ]
+}

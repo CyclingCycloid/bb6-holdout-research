@@ -1,0 +1,19 @@
+[
+ {
+  "cond": {
+   "mParity": null,
+   "mGE": 1
+  },
+  "events": [
+   "R->S3",
+   "S-sweep->R",
+   "R->S3",
+   "S-sweep->G",
+   "G->S",
+   "S-sweep->G",
+   "G->S",
+   "S-sweep->G"
+  ],
+  "outcome": "G(a={\"a\":0.5,\"b\":3})-edge"
+ }
+]

@@ -1,0 +1,71 @@
+[
+ {
+  "subs": [],
+  "n": 1,
+  "outcome": "S(y=1+12v)-THRESHOLD(var<1 小值待查)",
+  "events": [
+   "R->S3"
+  ]
+ },
+ {
+  "subs": [],
+  "n": 5,
+  "outcome": "S(y=2+12v)-THRESHOLD(var<1 小值待查)",
+  "events": [
+   "R->S3",
+   "Sw->R",
+   "R->S3",
+   "Sw->G",
+   "G->S(big)"
+  ]
+ },
+ {
+  "subs": [],
+  "n": 6,
+  "outcome": "G-a2 @var=0 待查",
+  "events": [
+   "R->S3",
+   "Sw->R",
+   "R->S3",
+   "Sw->G",
+   "G->S(big)",
+   "Sw->G"
+  ]
+ },
+ {
+  "subs": [],
+  "n": 7,
+  "outcome": "S(y=-1+6v)-THRESHOLD(var<1 小值待查)",
+  "events": [
+   "R->S3",
+   "Sw->R",
+   "R->S3",
+   "Sw->G",
+   "G->S(big)",
+   "Sw->G",
+   "G->S(big)"
+  ]
+ },
+ {
+  "subs": [],
+  "n": 15,
+  "outcome": "ANCHOR f=9+12*var",
+  "events": [
+   "R->S3",
+   "Sw->R",
+   "R->S3",
+   "Sw->G",
+   "G->S(big)",
+   "Sw->G",
+   "G->S(big)",
+   "Sw->L",
+   "L-sw->S",
+   "Sw->R",
+   "R->S3",
+   "Sw->G",
+   "G->S(big)",
+   "Sw->L",
+   "L3-sw->R"
+  ]
+ }
+]

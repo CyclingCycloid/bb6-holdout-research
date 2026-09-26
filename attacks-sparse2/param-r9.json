@@ -1,0 +1,20 @@
+[
+ {
+  "cond": {
+   "mParity": null,
+   "mGE": 1
+  },
+  "events": [
+   "R->S3",
+   "S-sweep->R",
+   "R->S3",
+   "S-sweep->G",
+   "G->S",
+   "S-sweep->G",
+   "G->S",
+   "S-sweep->G",
+   "G->S"
+  ],
+  "outcome": "S(y={\"a\":-1,\"b\":3})-edge(mAt=1)"
+ }
+]
