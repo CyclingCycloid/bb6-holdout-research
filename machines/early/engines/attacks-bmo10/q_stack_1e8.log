@@ -1,0 +1,6 @@
+at 20000000 minDanger 1 maxRegion 222 maxMats 21 rules [ 6666768, 6666256, 239, 6666737 ] 24s
+at 40000000 minDanger 1 maxRegion 231 maxMats 22 rules [ 13333441, 13332888, 258, 13333413 ] 56s
+at 60000000 minDanger 1 maxRegion 238 maxMats 25 rules [ 20000112, 19999533, 272, 20000083 ] 109s
+at 80000000 minDanger 1 maxRegion 245 maxMats 25 rules [ 26666789, 26666169, 289, 26666753 ] 152s
+at 100000000 minDanger 1 maxRegion 245 maxMats 25 rules [ 33333455, 33332834, 290, 33333421 ] 193s
+DONE 1e8: {"minDanger":1,"maxRegion":245,"maxMats":25,"rules":[33333455,33332834,290,33333421],"ms":193186}

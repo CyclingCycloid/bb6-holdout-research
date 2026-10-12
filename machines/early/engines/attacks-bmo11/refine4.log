@@ -1,0 +1,57 @@
+DICHOTOMY VERIFIED: rightmost # inactive <=> tail starts 10111
+corpus: 752083 states from corpus70.txt,corpus-rand.txt
+round 0 |F| 3 added "000#" for viol "1#01" R1(#0->1)
+round 1 |F| 4 added "1#0" for viol "1#01" R1(#0->1)
+round 2 |F| 5 added "0#0#" for viol "1#0" R1(#0->1)
+round 3 |F| 6 added "001#" for viol "#10111" R1(#0->1)
+round 4 |F| 7 added "#0011" for viol "#10111" R1(#0->1)
+round 5 |F| 8 added "#0#0" for viol "1#0" R1(#0->1)
+round 6 |F| 9 added "#00#" for viol "#0011" R1(#0->1)
+round 7 |F| 10 added "11000" for viol "#10111" R1(#0->1)
+round 8 |F| 11 added "10000" for viol "11000" R1(#0->1)
+round 9 |F| 12 added "010#00" for viol "10000" R1(#0->1)
+round 10 |F| 13 added "#01000" for viol "11000" R1(#0->1)
+round 11 |F| 14 added "00#00" for viol "10000" R1(#0->1)
+round 12 |F| 15 added "##000" for viol "10000" R1(#0->1)
+round 13 |F| 16 added "110#00" for viol "10000" R1(#0->1)
+round 14 |F| 17 added "00#10#00" for viol "10000" R1(#0->1)
+round 15 |F| 18 added "010#10#00" for viol "10000" R1(#0->1)
+round 16 |F| 19 added "#01100" for viol "#10111" R1(#0->1)
+round 17 |F| 20 added "#10#011" for viol "#10111" R1(#0->1)
+round 18 |F| 21 added "11#" for viol "10000" R1(#0->1)
+round 19 |F| 22 added "#01#" for viol "11#" R1(#0->1)
+round 20 |F| 23 added "00101#" for viol "10000" R1(#0->1)
+round 21 |F| 24 added "##10#00" for viol "10000" R1(#0->1)
+round 22 |F| 25 added "00110#10#" for viol "10000" R1(#0->1)
+round 23 |F| 26 added "00001" for viol "00110#10#" R1(#0->1)
+round 24 |F| 27 added "00010100#" for viol "00110#10#" R1(#0->1)
+round 25 |F| 28 added "11100" for viol "00110#10#" R1(#0->1)
+round 26 |F| 29 added "0100100#" for viol "00110#10#" R1(#0->1)
+round 27 |F| 30 added "1100#" for viol "00110#10#" R1(#0->1)
+round 28 |F| 31 added "#0100#" for viol "1100#" R1(#0->1)
+round 29 |F| 32 added "0010#100#" for viol "00110#10#" R1(#0->1)
+round 30 |F| 33 added "0110100#" for viol "00110#10#" R1(#0->1)
+round 31 |F| 34 added "0#010100#0" for viol "0110100#" R1(#0->1)
+round 32 |F| 35 added "0001000" for viol "0110100#" R1(#0->1)
+round 33 |F| 36 added "00010011" for viol "0110100#" R1(#0->1)
+round 34 |F| 37 added "000100#" for viol "0110100#" R1(#0->1)
+round 35 |F| 38 added "0#010100#10" for viol "0110100#" R1(#0->1)
+
+<--- Last few GCs --->
+
+[2056:000001AAEBE0D000]  1960126 ms: Scavenge (interleaved) 5997.5 (6001.3) -> 5995.5 (6001.3) MB, pooled: 0 MB, 3.12 / 0.00 ms  (average mu = 0.289, current mu = 0.175) allocation failure; 
+[2056:000001AAEBE0D000]  1962594 ms: Mark-Compact (reduce) 5995.6 (6001.3) -> 5995.5 (5998.3) MB, pooled: 0 MB, 2457.49 / 0.00 ms  (+ 0.6 ms in 1 steps since start of marking, biggest step 0.6 ms, walltime since start of marking 2467 ms) (average mu = 0.2
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF75E010CCF node::OnFatalError+1343
+ 2: 00007FF75EC5F697 v8::Function::NewInstance+423
+ 3: 00007FF75EA600C7 v8::base::AddressSpaceReservation::AddressSpaceReservation+322071
+ 4: 00007FF75EA63DD4 v8::base::AddressSpaceReservation::AddressSpaceReservation+337700
+ 5: 00007FF75EA72D2C v8::internal::StrongRootAllocatorBase::deallocate_impl+16604
+ 6: 00007FF75EA7256B v8::internal::StrongRootAllocatorBase::deallocate_impl+14619
+ 7: 00007FF75FEFE86D v8::base::UnsignedDivisionByConstant<unsigned __int64>+2794685
+ 8: 00007FF75EA5DB90 v8::base::AddressSpaceReservation::AddressSpaceReservation+312544
+ 9: 00007FF75EAE18C9 v8::Unlocker::~Unlocker+9273
+10: 00007FF75E6560B2 v8::String::Value::~Value+142914
+11: 000001AAA7E775FA 

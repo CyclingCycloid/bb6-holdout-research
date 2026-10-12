@@ -1,5 +1,0 @@
-# machine=1RB1LA1LC0RE---0LD1LA0LF1RA1RE1LA0LB CAP=2e7 MAXREC=600
-# 强制事件 A1
-# 粗形状类: r9/d10/g1,2,3,3×9   r7/d8/g1,2,3×6   r5/d6/g1,2×5   r11/d12/g1,2,3,3,3×4
-
-# 诚实声明: 映射由前 ≤MAXREC 个事件拟合; 轨道为模型外推; BOUNDED = 模型+验证深度内结论。

@@ -1,0 +1,7 @@
+A1-orbit: 8/8 later real-orbit (N, absolute-step) checkpoints matched exactly
+after 20000 A1-steps: alive, N has 18725 bits, t ~ 2^56169
+first 16 N: 2 5 9 16 40 100 250 625 1094 2735 2994 7485 13099 18012 45030 112575
+mean growth ratio per A1-step over 3999 steps: 1.995357 (=> per 2 steps ~1.995, geometric)
+halt condition (N = Mersenne) ever fired in 20001 A1-steps: false
+Part A (exact orbit vs Mersenne residues): separating M<=64: NONE
+Part B (both-branch closure, full t range): separating M<=64: NONE

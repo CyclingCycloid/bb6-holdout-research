@@ -1,0 +1,32 @@
+layer 0: 100000 seeds
+depth 1: new=74999 frontier=74999 total=174999
+depth 2: new=56249 frontier=56249 total=231248
+depth 3: new=42185 frontier=42185 total=273433
+depth 4: new=31636 frontier=31636 total=305069
+depth 5: new=23724 frontier=23724 total=328793
+depth 6: new=17793 frontier=17793 total=346586
+depth 7: new=13341 frontier=13341 total=359927
+depth 8: new=10012 frontier=10012 total=369939
+depth 9: new=7511 frontier=7511 total=377450
+depth 10: new=5644 frontier=5644 total=383094
+depth 11: new=4268 frontier=4268 total=387362
+depth 12: new=3148 frontier=3148 total=390510
+depth 13: new=2407 frontier=2407 total=392917
+depth 14: new=1796 frontier=1796 total=394713
+depth 15: new=1307 frontier=1307 total=396020
+depth 16: new=1000 frontier=1000 total=397020
+depth 17: new=763 frontier=763 total=397783
+depth 18: new=580 frontier=580 total=398363
+depth 19: new=441 frontier=441 total=398804
+depth 20: new=339 frontier=339 total=399143
+depth 21: new=259 frontier=259 total=399402
+depth 22: new=194 frontier=194 total=399596
+depth 23: new=135 frontier=135 total=399731
+depth 24: new=98 frontier=98 total=399829
+depth 25: new=70 frontier=70 total=399899
+depth 26: new=62 frontier=62 total=399961
+depth 27: new=45 frontier=45 total=400006
+depth 28: new=32 frontier=32 total=400038
+depth 29: new=21 frontier=21 total=400059
+depth 30: new=18 frontier=18 total=400077
+total nodes=400077  found(1,2)=0

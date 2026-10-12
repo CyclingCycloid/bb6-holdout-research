@@ -1,0 +1,22 @@
+depth 5: visited 12 (frontier 4), maxlen 24, 111:0 1#01:0, 0.0s
+depth 10: visited 61 (frontier 16), maxlen 44, 111:0 1#01:0, 0.0s
+depth 15: visited 211 (frontier 42), maxlen 64, 111:0 1#01:0, 0.0s
+depth 20: visited 600 (frontier 110), maxlen 84, 111:0 1#01:0, 0.0s
+depth 25: visited 1617 (frontier 287), maxlen 104, 111:0 1#01:0, 0.0s
+depth 30: visited 4122 (frontier 683), maxlen 124, 111:0 1#01:0, 0.0s
+depth 35: visited 9771 (frontier 1497), maxlen 144, 111:0 1#01:0, 0.1s
+depth 40: visited 21296 (frontier 2949), maxlen 164, 111:0 1#01:0, 0.1s
+depth 45: visited 42779 (frontier 5350), maxlen 184, 111:0 1#01:0, 0.2s
+depth 50: visited 80614 (frontier 9308), maxlen 204, 111:0 1#01:0, 0.5s
+depth 55: visited 145325 (frontier 15779), maxlen 224, 111:0 1#01:0, 0.9s
+depth 60: visited 253604 (frontier 26240), maxlen 244, 111:0 1#01:0, 1.6s
+depth 65: visited 431910 (frontier 42964), maxlen 264, 111:0 1#01:0, 2.9s
+depth 70: visited 721156 (frontier 69355), maxlen 284, 111:0 1#01:0, 5.1s
+depth 75: visited 1184723 (frontier 110775), maxlen 304, 111:0 1#01:0, 8.8s
+depth 80: visited 1922245 (frontier 175902), maxlen 324, 111:0 1#01:0, 14.7s
+depth 85: visited 3090666 (frontier 278415), maxlen 344, 111:0 1#01:0, 25.0s
+depth 90: visited 4938171 (frontier 439934), maxlen 364, 111:0 1#01:0, 42.0s
+depth 95: visited 7851921 (frontier 692913), maxlen 384, 111:0 1#01:0, 69.8s
+depth 100: visited 12426451 (frontier 1085627), maxlen 404, 111:0 1#01:0, 116.7s
+BFS DONE depth 100: total states 12426451, maxlen 404, 111-count 0, 1#01-count 0, goal none, 116s
+heapUsed MB: 2181

@@ -1,0 +1,64 @@
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+'.' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
+���������ļ���
+xval 3..400 step 1: ok=0 bad=21 (oracle halts: 0)
+  n=3: eng={"n2":9,"cost":573} oracle={"weird":"ERR:Command failed: ./o1.exe start 3 3 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ����"}
+  n=4: eng={"n2":13,"cost":1510} oracle={"weird":"ERR:Command failed: ./o1.exe start 4 4 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ����"}
+  n=5: eng={"halt":true,"cost":204} oracle={"weird":"ERR:Command failed: ./o1.exe start 5 5 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ����"}
+  n=6: eng={"n2":21,"cost":5228} oracle={"weird":"ERR:Command failed: ./o1.exe start 6 6 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ����"}
+  n=7: eng={"n2":13,"cost":1249} oracle={"weird":"ERR:Command failed: ./o1.exe start 7 7 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ����"}
+  n=8: eng={"n2":17,"cost":2850} oracle={"weird":"ERR:Command failed: ./o1.exe start 8 8 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ����"}
+  n=9: eng={"n2":21,"cost":4860} oracle={"weird":"ERR:Command failed: ./o1.exe start 9 9 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ����"}
+  n=10: eng={"halt":true,"cost":260} oracle={"weird":"ERR:Command failed: ./o1.exe start 10 10 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=11: eng={"n2":17,"cost":2189} oracle={"weird":"ERR:Command failed: ./o1.exe start 11 11 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=12: eng={"n2":21,"cost":4638} oracle={"weird":"ERR:Command failed: ./o1.exe start 12 12 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=13: eng={"halt":true,"cost":819} oracle={"weird":"ERR:Command failed: ./o1.exe start 13 13 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=14: eng={"n2":29,"cost":11532} oracle={"weird":"ERR:Command failed: ./o1.exe start 14 14 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=15: eng={"n2":21,"cost":3393} oracle={"weird":"ERR:Command failed: ./o1.exe start 15 15 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=16: eng={"n2":25,"cost":6874} oracle={"weird":"ERR:Command failed: ./o1.exe start 16 16 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=17: eng={"n2":29,"cost":10184} oracle={"weird":"ERR:Command failed: ./o1.exe start 17 17 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=18: eng={"n2":33,"cost":14186} oracle={"weird":"ERR:Command failed: ./o1.exe start 18 18 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=19: eng={"n2":25,"cost":4861} oracle={"weird":"ERR:Command failed: ./o1.exe start 19 19 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=20: eng={"n2":29,"cost":9558} oracle={"weird":"ERR:Command failed: ./o1.exe start 20 20 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=21: eng={"n2":33,"cost":12251} oracle={"weird":"ERR:Command failed: ./o1.exe start 21 21 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=22: eng={"n2":37,"cost":20444} oracle={"weird":"ERR:Command failed: ./o1.exe start 22 22 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}
+  n=23: eng={"n2":29,"cost":6593} oracle={"weird":"ERR:Command failed: ./o1.exe start 23 23 2000000000 quiet\n'.' �����ڲ����ⲿ���Ҳ���ǿ��"}

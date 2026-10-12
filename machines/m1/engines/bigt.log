@@ -1,0 +1,3 @@
+large-t spot check (t in {99991,100003,999983,104729}): 40 ok, 0 bad
+ROUND LAW t-UNIFORM (holds identically at t ~ 10^6)
+EXIT=0

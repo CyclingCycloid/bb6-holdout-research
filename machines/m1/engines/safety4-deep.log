@@ -1,0 +1,3 @@
+safety4 [rounds h=65..1024]: head forms=888327 auto-safe=888327 full-tested=0 dangers=0 undecided=0
+ALL G-STATE HEAD FORMS SAFE (no a+1 = 2^j on-domain, no G(2,3))
+EXIT=0

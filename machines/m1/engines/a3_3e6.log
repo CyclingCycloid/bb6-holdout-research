@@ -1,0 +1,17 @@
+DZ 3 w=1 last=0 n=1 2 g:
+DZ 13 w=1 last=0 n=2 2 1 g: 1
+DZ 32 w=1 last=0 n=1 5 g:
+DZ 59 w=2 last=0 n=2 2 3 g: 2
+DZ 67 w=1 last=0 n=2 2 5 g: 1
+DZ 86 w=1 last=0 n=1 9 g:
+DZ 151 w=2 last=0 n=2 4 5 g: 2
+DZ 172 w=1 last=0 n=2 4 8 g: 1
+DZ 239 w=1 last=0 n=1 16 g:
+DZ 634 w=1 last=0 n=2 16 8 g: 1
+DZ 2557 w=1 last=0 n=1 40 g:
+DZ 6500 w=1 last=0 n=2 40 20 g: 1
+DZ 31143 w=1 last=0 n=1 100 g:
+DZ 80496 w=1 last=0 n=2 100 50 g: 1
+DZ 434099 w=1 last=0 n=1 250 g:
+DZ 1132477 w=1 last=0 n=2 250 125 g: 1
+DONE 3000000

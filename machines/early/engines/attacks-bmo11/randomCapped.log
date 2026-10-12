@@ -1,0 +1,29 @@
+  seed 0 step 0 len 7 111soFar 0 nearMiss 0 t=0.0s
+seed 0 first 111 at step 1124 context: ####1010#01011101
+  seed 0 step 200000 len 2275 111soFar 1346 nearMiss 2315 t=13.5s
+  seed 0 step 400000 len 1212 111soFar 2736 nearMiss 4346 t=27.2s
+seed 0: 500000 steps done, len range [7,4000], max# 3065, 33.9s
+  seed 1 step 0 len 7 111soFar 3219 nearMiss 5436 t=0.0s
+  seed 1 step 200000 len 3045 111soFar 4390 nearMiss 7877 t=13.7s
+  seed 1 step 400000 len 2142 111soFar 5849 nearMiss 10037 t=27.2s
+seed 1: 500000 steps done, len range [7,4000], max# 3074, 34.1s
+  seed 2 step 0 len 7 111soFar 6542 nearMiss 11097 t=0.0s
+  seed 2 step 200000 len 1334 111soFar 7896 nearMiss 13188 t=13.5s
+  seed 2 step 400000 len 3357 111soFar 9044 nearMiss 15547 t=27.2s
+seed 2: 500000 steps done, len range [7,4000], max# 3092, 34.0s
+  seed 3 step 0 len 7 111soFar 9740 nearMiss 16654 t=0.0s
+  seed 3 step 200000 len 2288 111soFar 10883 nearMiss 18995 t=13.5s
+  seed 3 step 400000 len 798 111soFar 12136 nearMiss 21218 t=27.2s
+seed 3: 500000 steps done, len range [7,4000], max# 3077, 34.0s
+  seed 4 step 0 len 7 111soFar 12733 nearMiss 22318 t=0.0s
+  seed 4 step 200000 len 1929 111soFar 13794 nearMiss 24658 t=13.5s
+  seed 4 step 400000 len 779 111soFar 15034 nearMiss 27000 t=27.0s
+seed 4: 500000 steps done, len range [7,4000], max# 3068, 33.8s
+  seed 5 step 0 len 7 111soFar 15831 nearMiss 28127 t=0.0s
+  seed 5 step 200000 len 2259 111soFar 17236 nearMiss 30293 t=13.5s
+  seed 5 step 400000 len 567 111soFar 18627 nearMiss 32482 t=27.1s
+seed 5: 500000 steps done, len range [7,4000], max# 3093, 33.8s
+111 occurrences: 19466  1#01 occurrences: 0  goal: false
+distinct tail-heads: 20
+top tail-heads: ["10010","11010","01010","10011","11011","10001","11001","01011","10101","01001","00000","10000","10100","01000","11000","10110","01101","00100","11101","00101"]
+tail-heads containing 111: ["11101"]

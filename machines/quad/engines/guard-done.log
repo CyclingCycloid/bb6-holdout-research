@@ -1,0 +1,8 @@
+m51 done
+m16 done
+m26 done
+m52 done
+m26: GUARD steps=200000000000 hole-threats=0
+m52: GUARD steps=200000000000 hole-threats=0
+m51: GUARD steps=200000000000 hole-threats=0
+m16: GUARD steps=200000000000 hole-threats=0

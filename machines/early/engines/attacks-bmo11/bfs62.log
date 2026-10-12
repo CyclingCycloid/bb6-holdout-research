@@ -1,0 +1,15 @@
+depth 5: visited 12 (frontier 4), maxlen 24, 111:0 1#01:0, 0.0s
+depth 10: visited 61 (frontier 16), maxlen 44, 111:0 1#01:0, 0.0s
+depth 15: visited 211 (frontier 42), maxlen 64, 111:0 1#01:0, 0.0s
+depth 20: visited 600 (frontier 110), maxlen 84, 111:0 1#01:0, 0.0s
+depth 25: visited 1617 (frontier 287), maxlen 104, 111:0 1#01:0, 0.0s
+depth 30: visited 4122 (frontier 683), maxlen 124, 111:0 1#01:0, 0.0s
+depth 35: visited 9771 (frontier 1497), maxlen 144, 111:0 1#01:0, 0.1s
+depth 40: visited 21296 (frontier 2949), maxlen 164, 111:0 1#01:0, 0.1s
+depth 45: visited 42779 (frontier 5350), maxlen 184, 111:0 1#01:0, 0.3s
+depth 50: visited 80614 (frontier 9308), maxlen 204, 111:0 1#01:0, 0.5s
+depth 55: visited 145325 (frontier 15779), maxlen 224, 111:0 1#01:0, 0.9s
+depth 60: visited 253604 (frontier 26240), maxlen 244, 111:0 1#01:0, 1.6s
+depth 62: visited 314629 (frontier 32025), maxlen 252, 111:0 1#01:0, 2.0s
+BFS DONE depth 62: total states 314629, maxlen 252, 111-count 0, 1#01-count 0, goal none, 1s
+heapUsed MB: 124

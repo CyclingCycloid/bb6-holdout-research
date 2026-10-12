@@ -1,0 +1,2881 @@
+h=32: cells=92 symbolic-clean=92 unresolved=0 bads=0
+h=64: cells=279 symbolic-clean=279 unresolved=0 bads=0
+h=96: cells=463 symbolic-clean=463 unresolved=0 bads=0
+h=128: cells=643 symbolic-clean=643 unresolved=0 bads=0
+h=160: cells=835 symbolic-clean=835 unresolved=0 bads=0
+h=192: cells=1021 symbolic-clean=1021 unresolved=0 bads=0
+h=224: cells=1210 symbolic-clean=1210 unresolved=0 bads=0
+h=256: cells=1392 symbolic-clean=1392 unresolved=0 bads=0
+h=288: cells=1578 symbolic-clean=1578 unresolved=0 bads=0
+h=320: cells=1768 symbolic-clean=1768 unresolved=0 bads=0
+h=352: cells=1956 symbolic-clean=1956 unresolved=0 bads=0
+h=384: cells=2140 symbolic-clean=2140 unresolved=0 bads=0
+h=416: cells=2331 symbolic-clean=2331 unresolved=0 bads=0
+h=448: cells=2518 symbolic-clean=2518 unresolved=0 bads=0
+h=480: cells=2709 symbolic-clean=2709 unresolved=0 bads=0
+h=512: cells=2899 symbolic-clean=2899 unresolved=0 bads=0
+h=544: cells=3086 symbolic-clean=3086 unresolved=0 bads=0
+h=576: cells=3272 symbolic-clean=3272 unresolved=0 bads=0
+h=608: cells=3462 symbolic-clean=3462 unresolved=0 bads=0
+h=640: cells=3647 symbolic-clean=3647 unresolved=0 bads=0
+h=672: cells=3834 symbolic-clean=3834 unresolved=0 bads=0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+h=704: cells=4012 symbolic-clean=3927 unresolved=85 bads=0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+node:fs:2422
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOSPC: no space left on device, write
+    at writeFileSync (node:fs:2422:20)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-sparse2/sym4.mjs:276:26
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -4055,
+  code: 'ENOSPC',
+  syscall: 'write'
+}
+
+Node.js v24.16.0
+h=704: cells=178 symbolic-clean=178 unresolved=0 bads=0
+h=736: cells=367 symbolic-clean=367 unresolved=0 bads=0
+h=768: cells=554 symbolic-clean=554 unresolved=0 bads=0
+h=800: cells=739 symbolic-clean=739 unresolved=0 bads=0
+h=832: cells=926h=864: cells=4947 symbolic-clean=4769 unh=864: cells=1113 syh=896: cells=5137 symbolic-clean=4959 h=896: cells=1303 symbh=928: cells=5324 symbolic-clean=514h=928: cells=1490 symbolh=960: cells=5508 symbolic-clean=5h=960: cells=1674 symbolich=992: cells=5697 symbolic-cleanh=992: cells=1863 symbolic-ch=1024: cells=5884 symbolic-clh=1024: cells=2050 symbolic-clean=2050 unresolved=0 bads=0
+TOTAL h=673..1024: 2050 cells; symbolic 2050; unresolved(numeric-verified) 0; numeric bads 0
+ENDGAME SWEEP CLEAN (symbolic where counted, numeric-verified elsewhere)
+691 r=1 h=692 r=0 h=692 r=1 h=692 r=2 h=692 r=3 h=692 r=4 h=692 r=5 h=692 r=6 h=692 r=7 h=693 r=0 h=693 r=1 h=693 r=2 h=693 r=3 h=693 r=4 h=693 r=5 h=693 r=6 h=694 r=0 h=694 r=1 h=694 r=2 h=694 r=3 h=694 r=4 h=694 r=5 h=695 r=0 h=695 r=1 h=695 r=2 h=695 r=3 h=696 r=0 h=696 r=1 h=696 r=2 h=696 r=3 h=697 r=0 h=697 r=1 h=697 r=2 h=697 r=3 h=697 r=4 h=697 r=5 h=697 r=6 h=697 r=7 h=698 r=0 h=698 r=1 h=698 r=2 h=698 r=3 ...
+ENDGAME SWEEP CLEAN (symbolic where counted, numeric-verified elsewhere)
+EXIT=0
+EXIT=0

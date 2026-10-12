@@ -1,0 +1,4 @@
+TM steps: 40000000, game states matched in order: 0/100000 (next unmatched g=4)
+max TM steps between consecutive game-state matches: 0
+stalls >2M steps: []
+tape span at end: 205, state C

@@ -1,0 +1,57 @@
+  h=1000: single-flips so far 700/700
+  h=1000: sparse-flips 20/20
+
+<--- Last few GCs --->
+
+[42644:0000029A1BC48000]     9546 ms: Mark-Compact 4087.6 (4103.5) -> 4085.4 (4112.6) MB, pooled: 0 MB, 549.34 / 0.00 ms  (average mu = 0.114, current mu = 0.008) allocation failure; scavenge might not succeed
+[42644:0000029A1BC48000]    10483 ms: Mark-Compact 4092.8 (4113.6) -> 4088.3 (4115.4) MB, pooled: 0 MB, 932.32 / 0.00 ms  (average mu = 0.045, current mu = 0.005) allocation failure; scavenge might not succeed
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF75E010CCF node::OnFatalError+1343
+ 2: 00007FF75EC5F697 v8::Function::NewInstance+423
+ 3: 00007FF75EA600C7 v8::base::AddressSpaceReservation::AddressSpaceReservation+322071
+ 4: 00007FF75EA5DD66 v8::base::AddressSpaceReservation::AddressSpaceReservation+313014
+ 5: 00007FF75EA783DA X509_STORE_set_cleanup+5098
+ 6: 00007FF75EA84238 uv_timer_set_repeat+19096
+ 7: 00007FF75EA9B73C uv_timer_set_repeat+114588
+ 8: 00007FF75E87C601 v8::TypecheckWitness::TypecheckWitness+106305
+ 9: 00007FF75E87B37C v8::TypecheckWitness::TypecheckWitness+101564
+10: 00007FF75E665458 v8::String::Value::~Value+205288
+11: 0000029A542F75FA 
+  h=1000 baseline all0: ok=false (CRASH/TIMEOUT)
+  h=1000 baseline all1: ok=false (DEPTH-CAP)
+  h=1000 baseline alt: ok=false (CRASH/TIMEOUT)
+  h=1000 baseline alt1: ok=false (CRASH/TIMEOUT)
+  h=100000: single-flips so far 1400/1400
+  h=100000: sparse-flips 20/20
+  h=100000 baseline all0: ok=false (CRASH/TIMEOUT)
+  h=100000 baseline all1: ok=false (CRASH/TIMEOUT)
+  h=100000 baseline alt: ok=false (CRASH/TIMEOUT)
+  h=100000 baseline alt1: ok=false (CRASH/TIMEOUT)
+SINGLE-FLIP TOTAL: 1400/1400
+  h=12000000: single-flips so far 700/700
+  h=12000000: sparse-flips 20/20
+
+<--- Last few GCs --->
+
+[11808:000001EC759F1000]    23142 ms: Scavenge (interleaved) 4092.1 (4106.2) -> 4092.1 (4110.2) MB, pooled: 0 MB, 0.24 / 0.00 ms  (average mu = 0.440, current mu = 0.184) allocation failure; 
+[11808:000001EC759F1000]    23144 ms: Mark-Compact (reduce) 4094.9 (4113.0) -> 4094.9 (4106.0) MB, pooled: 0 MB, 1.78 / 0.00 ms  (+ 0.0 ms in 1 steps since start of marking, biggest step 0.0 ms, walltime since start of marking 3 ms) (average mu = 0.474, c
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF75E010CCF node::OnFatalError+1343
+ 2: 00007FF75EC5F697 v8::Function::NewInstance+423
+ 3: 00007FF75EA600C7 v8::base::AddressSpaceReservation::AddressSpaceReservation+322071
+ 4: 00007FF75EA5DD66 v8::base::AddressSpaceReservation::AddressSpaceReservation+313014
+ 5: 00007FF75EA783DA X509_STORE_set_cleanup+5098
+ 6: 00007FF75EA84876 uv_timer_set_repeat+20694
+ 7: 00007FF75E6565B7 v8::String::Value::~Value+144199
+ 8: 000001EC2FE775FA 
+  h=12000000 baseline all0: ok=false (CRASH/TIMEOUT)
+  h=12000000 baseline all1: ok=false (CRASH/TIMEOUT)
+  h=12000000 baseline alt: ok=false (CRASH/TIMEOUT)
+  h=12000000 baseline alt1: ok=false (CRASH/TIMEOUT)
+SINGLE-FLIP TOTAL: 700/700
+DONE

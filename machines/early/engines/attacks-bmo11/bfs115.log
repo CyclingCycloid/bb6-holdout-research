@@ -1,0 +1,32 @@
+depth 5: visited 12 (frontier 4), maxlen 24, 111:0 1#01:0, 0.0s
+depth 10: visited 61 (frontier 16), maxlen 44, 111:0 1#01:0, 0.0s
+depth 15: visited 211 (frontier 42), maxlen 64, 111:0 1#01:0, 0.0s
+depth 20: visited 600 (frontier 110), maxlen 84, 111:0 1#01:0, 0.0s
+depth 25: visited 1617 (frontier 287), maxlen 104, 111:0 1#01:0, 0.0s
+depth 30: visited 4122 (frontier 683), maxlen 124, 111:0 1#01:0, 0.0s
+depth 35: visited 9771 (frontier 1497), maxlen 144, 111:0 1#01:0, 0.1s
+depth 40: visited 21296 (frontier 2949), maxlen 164, 111:0 1#01:0, 0.1s
+depth 45: visited 42779 (frontier 5350), maxlen 184, 111:0 1#01:0, 0.2s
+depth 50: visited 80614 (frontier 9308), maxlen 204, 111:0 1#01:0, 0.5s
+depth 55: visited 145325 (frontier 15779), maxlen 224, 111:0 1#01:0, 1.0s
+depth 60: visited 253604 (frontier 26240), maxlen 244, 111:0 1#01:0, 1.8s
+depth 65: visited 431910 (frontier 42964), maxlen 264, 111:0 1#01:0, 3.3s
+depth 70: visited 721156 (frontier 69355), maxlen 284, 111:0 1#01:0, 5.8s
+depth 75: visited 1184723 (frontier 110775), maxlen 304, 111:0 1#01:0, 10.1s
+depth 80: visited 1922245 (frontier 175902), maxlen 324, 111:0 1#01:0, 16.9s
+depth 85: visited 3090666 (frontier 278415), maxlen 344, 111:0 1#01:0, 28.4s
+depth 90: visited 4938171 (frontier 439934), maxlen 364, 111:0 1#01:0, 48.0s
+depth 95: visited 7851921 (frontier 692913), maxlen 384, 111:0 1#01:0, 78.9s
+depth 100: visited 12426451 (frontier 1085627), maxlen 404, 111:0 1#01:0, 130.7s
+file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-bmo11/bfs11.mjs:26
+      visited.add(ns);
+              ^
+
+RangeError: Set maximum size exceeded
+    at Set.add (<anonymous>)
+    at file:///C:/Users/Cyclingcycloid/.zcode/workspace/default/bb6/attacks-bmo11/bfs11.mjs:26:15
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.16.0

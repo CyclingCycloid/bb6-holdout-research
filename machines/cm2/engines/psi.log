@@ -1,0 +1,211 @@
+transitions: 381
+=== class M4 count 95
+   L0'=3, R0'=1, dPop=3   x 95 M0'−pop ∈ -1
+=== class M3 count 97
+   L0'=X, R0'=1, dPop=2   x 93 M0'−pop ∈ -25,-55,-84,-82,-94,-97
+   L0'=6, R0'=2, dPop=8   x  1 M0'−pop ∈ 0
+   L0'=3, R0'=1, dPop=5   x  1 M0'−pop ∈ 1
+   L0'=3, R0'=1, dPop=7   x  1 M0'−pop ∈ 3
+   L0'=3, R0'=2, dPop=4   x  1 M0'−pop ∈ -1
+=== class M2 count 92
+   L0'=3, R0'=15, dPop=2  x  2 M0'−pop ∈ -16
+   L0'=3, R0'=108, dPop=2 x  2 M0'−pop ∈ -109
+   L0'=6, R0'=74, dPop=3  x  2 M0'−pop ∈ -77
+   L0'=3, R0'=3, dPop=2   x  1 M0'−pop ∈ -4
+   L0'=3, R0'=12, dPop=2  x  1 M0'−pop ∈ -13
+   L0'=3, R0'=16, dPop=2  x  1 M0'−pop ∈ -17
+   L0'=3, R0'=5, dPop=2   x  1 M0'−pop ∈ -6
+   L0'=3, R0'=19, dPop=2  x  1 M0'−pop ∈ -20
+   L0'=6, R0'=14, dPop=3  x  1 M0'−pop ∈ -17
+   L0'=6, R0'=9, dPop=11  x  1 M0'−pop ∈ -4
+   L0'=9, R0'=38, dPop=4  x  1 M0'−pop ∈ -43
+   L0'=X, R0'=66, dPop=2  x  1 M0'−pop ∈ -120
+   L0'=6, R0'=42, dPop=5  x  1 M0'−pop ∈ -43
+   L0'=X, R0'=49, dPop=1  x  1 M0'−pop ∈ -158
+   L0'=X, R0'=50, dPop=2  x  1 M0'−pop ∈ -154
+   L0'=X, R0'=52, dPop=1  x  1 M0'−pop ∈ -170
+   L0'=6, R0'=59, dPop=4  x  1 M0'−pop ∈ -61
+   L0'=6, R0'=16, dPop=18 x  1 M0'−pop ∈ -4
+   L0'=X, R0'=18, dPop=7  x  1 M0'−pop ∈ -81
+   L0'=6, R0'=74, dPop=6  x  1 M0'−pop ∈ -74
+   L0'=X, R0'=20, dPop=1  x  1 M0'−pop ∈ -234
+   L0'=X, R0'=21, dPop=11 x  1 M0'−pop ∈ -129
+   L0'=X, R0'=22, dPop=2  x  1 M0'−pop ∈ -202
+   L0'=3, R0'=40, dPop=2  x  1 M0'−pop ∈ -41
+   L0'=3, R0'=52, dPop=3  x  1 M0'−pop ∈ -52
+   L0'=3, R0'=96, dPop=2  x  1 M0'−pop ∈ -97
+   L0'=6, R0'=26, dPop=3  x  1 M0'−pop ∈ -29
+   L0'=3, R0'=27, dPop=2  x  1 M0'−pop ∈ -28
+   L0'=9, R0'=50, dPop=5  x  1 M0'−pop ∈ -54
+   L0'=3, R0'=112, dPop=2 x  1 M0'−pop ∈ -113
+   L0'=X, R0'=73, dPop=1  x  1 M0'−pop ∈ -383
+   L0'=3, R0'=123, dPop=2 x  1 M0'−pop ∈ -124
+   L0'=X, R0'=126, dPop=20 x  1 M0'−pop ∈ -255
+   L0'=3, R0'=48, dPop=5  x  1 M0'−pop ∈ -46
+   L0'=X, R0'=168, dPop=1 x  1 M0'−pop ∈ -439
+   L0'=X, R0'=191, dPop=8 x  1 M0'−pop ∈ -256
+   L0'=3, R0'=260, dPop=2 x  1 M0'−pop ∈ -261
+   L0'=X, R0'=96, dPop=10 x  1 M0'−pop ∈ -159
+   L0'=X, R0'=36, dPop=1  x  1 M0'−pop ∈ -430
+   L0'=X, R0'=112, dPop=2 x  1 M0'−pop ∈ -441
+   L0'=X, R0'=44, dPop=7  x  1 M0'−pop ∈ -276
+   L0'=3, R0'=39, dPop=2  x  1 M0'−pop ∈ -40
+   L0'=X, R0'=41, dPop=18 x  1 M0'−pop ∈ -238
+   L0'=X, R0'=170, dPop=6 x  1 M0'−pop ∈ -298
+   L0'=X, R0'=45, dPop=2  x  1 M0'−pop ∈ -509
+   L0'=X, R0'=178, dPop=2 x  1 M0'−pop ∈ -552
+   L0'=3, R0'=218, dPop=2 x  1 M0'−pop ∈ -219
+   L0'=9, R0'=14, dPop=4  x  1 M0'−pop ∈ -19
+   L0'=X, R0'=202, dPop=2 x  1 M0'−pop ∈ -526
+   L0'=3, R0'=67, dPop=2  x  1 M0'−pop ∈ -68
+   L0'=6, R0'=95, dPop=4  x  1 M0'−pop ∈ -97
+   L0'=3, R0'=151, dPop=2 x  1 M0'−pop ∈ -152
+   L0'=X, R0'=214, dPop=5 x  1 M0'−pop ∈ -421
+   L0'=X, R0'=56, dPop=1  x  1 M0'−pop ∈ -675
+   L0'=3, R0'=29, dPop=6  x  1 M0'−pop ∈ -26
+   L0'=X, R0'=226, dPop=11 x  1 M0'−pop ∈ -414
+   L0'=3, R0'=59, dPop=2  x  1 M0'−pop ∈ -60
+   L0'=X, R0'=103, dPop=1 x  1 M0'−pop ∈ -731
+   L0'=9, R0'=237, dPop=8 x  1 M0'−pop ∈ -238
+   L0'=3, R0'=80, dPop=2  x  1 M0'−pop ∈ -81
+   L0'=X, R0'=247, dPop=3 x  1 M0'−pop ∈ -564
+   L0'=6, R0'=353, dPop=11 x  1 M0'−pop ∈ -348
+   L0'=X, R0'=254, dPop=2 x  1 M0'−pop ∈ -686
+   L0'=X, R0'=66, dPop=5  x  1 M0'−pop ∈ -539
+   L0'=3, R0'=192, dPop=2 x  1 M0'−pop ∈ -193
+   L0'=X, R0'=142, dPop=1 x  1 M0'−pop ∈ -824
+   L0'=X, R0'=67, dPop=1  x  1 M0'−pop ∈ -812
+   L0'=3, R0'=33, dPop=2  x  1 M0'−pop ∈ -34
+   L0'=6, R0'=274, dPop=3 x  1 M0'−pop ∈ -277
+   L0'=X, R0'=70, dPop=2  x  1 M0'−pop ∈ -655
+   L0'=X, R0'=183, dPop=9 x  1 M0'−pop ∈ -612
+   L0'=9, R0'=280, dPop=12 x  1 M0'−pop ∈ -277
+   L0'=3, R0'=493, dPop=2 x  1 M0'−pop ∈ -494
+   L0'=6, R0'=290, dPop=3 x  1 M0'−pop ∈ -293
+   L0'=3, R0'=75, dPop=2  x  1 M0'−pop ∈ -76
+   L0'=3, R0'=304, dPop=2 x  1 M0'−pop ∈ -305
+   L0'=X, R0'=78, dPop=4  x  1 M0'−pop ∈ -451
+   L0'=X, R0'=274, dPop=9 x  1 M0'−pop ∈ -510
+   L0'=X, R0'=115, dPop=1 x  1 M0'−pop ∈ -965
+   L0'=6, R0'=314, dPop=20 x  1 M0'−pop ∈ -300
+   L0'=X, R0'=553, dPop=1 x  1 M0'−pop ∈ -1094
+   L0'=3, R0'=320, dPop=2 x  1 M0'−pop ∈ -321
+   L0'=3, R0'=143, dPop=5 x  1 M0'−pop ∈ -141
+   L0'=X, R0'=435, dPop=1 x  1 M0'−pop ∈ -1093
+   L0'=X, R0'=330, dPop=16 x  1 M0'−pop ∈ -685
+   L0'=3, R0'=124, dPop=2 x  1 M0'−pop ∈ -125
+   L0'=X, R0'=343, dPop=7 x  1 M0'−pop ∈ -354
+   L0'=X, R0'=88, dPop=1  x  1 M0'−pop ∈ -1067
+   L0'=3, R0'=170, dPop=4 x  1 M0'−pop ∈ -169
+=== class M1 count 97
+   L0'=X, R0'=1, dPop=3   x 30 M0'−pop ∈ -36,-54,-153,-204,-189,-225
+   L0'=6, R0'=1, dPop=4   x 27 M0'−pop ∈ -3
+   L0'=X, R0'=1, dPop=4   x  9 M0'−pop ∈ -20,-47,-155,-196,-128,-331
+   L0'=X, R0'=1, dPop=9   x  6 M0'−pop ∈ -56,-65,-191,-234,-4,-207
+   L0'=9, R0'=1, dPop=5   x  5 M0'−pop ∈ -5
+   L0'=X, R0'=1, dPop=8   x  3 M0'−pop ∈ -130,-5,-568
+   L0'=9, R0'=1, dPop=7   x  2 M0'−pop ∈ -3
+   L0'=X, R0'=1, dPop=5   x  2 M0'−pop ∈ -63,-855
+   L0'=9, R0'=1, dPop=6   x  2 M0'−pop ∈ -4
+   L0'=X, R0'=1, dPop=11  x  2 M0'−pop ∈ -431
+   L0'=9, R0'=1, dPop=14  x  1 M0'−pop ∈ 4
+   L0'=X, R0'=1, dPop=7   x  1 M0'−pop ∈ -167
+   L0'=9, R0'=1, dPop=11  x  1 M0'−pop ∈ 1
+   L0'=X, R0'=1, dPop=6   x  1 M0'−pop ∈ -261
+   L0'=X, R0'=1, dPop=20  x  1 M0'−pop ∈ -199
+   L0'=X, R0'=1, dPop=23  x  1 M0'−pop ∈ -318
+   L0'=6, R0'=1, dPop=14  x  1 M0'−pop ∈ 7
+   L0'=X, R0'=1, dPop=10  x  1 M0'−pop ∈ -236
+   L0'=6, R0'=1, dPop=7   x  1 M0'−pop ∈ 0
+--- intermediate chains (terminal -> ... -> next start) ---
+ 284 
+   3 gE(M60)
+   2 gE(M2)
+   2 gE(M54)
+   2 gE(M48)
+   2 gE(M262)
+   2 gE(M243)
+   1 gE(M4)
+   1 gE(M6)
+   1 gE(M3)
+   1 gE(M14)
+   1 gE(M8)
+   1 gE(M25)
+   1 gE(M28)
+   1 gE(M30)
+   1 gE(M71)
+   1 gE(M17)
+   1 gE(M44)
+   1 gE(M49)
+   1 gE(M52)
+   1 gE(M58)
+   1 gE(M66)
+   1 gE(M69)
+   1 gE(M74)
+   1 gE(M36)
+   1 gE(M76)
+   1 gE(M78)
+   1 gE(M82)
+   1 gE(M96)
+   1 gE(M98)
+   1 gE(M100)
+   1 gE(M102)
+   1 gE(M95)
+   1 gE(M23)
+   1 gE(M5)
+   1 gE(M97)
+   1 gE(M186)
+   1 gE(M138)
+   1 gE(M67)
+   1 gE(M16)
+   1 gE(M145)
+   1 gE(M120)
+   1 gE(M148)
+   1 gE(M150)
+   1 gE(M156)
+   1 gE(M158)
+   1 gE(M140)
+   1 gE(M165)
+   1 gE(M264)
+   1 gE(M172)
+   1 gE(M174)
+   1 gE(M116)
+   1 gE(M183)
+   1 gE(M45)
+   1 gE(M47)
+   1 gE(M11)
+   1 gE(M81)
+   1 gE(M50)
+   1 gE(M195)
+   1 gE(M209)
+   1 gE(M137)
+   1 gE(M218)
+   1 gE(M110)
+   1 gE(M228)
+   1 gE(M230)
+   1 gE(M413)
+   1 gE(M104)
+   1 gE(M157)
+   1 gE(M335)
+   1 gE(M83)
+   1 gE(M20)
+   1 gE(M256)
+   1 gE(M258)
+   1 gE(M197)
+   1 gE(M265)
+   1 gE(M269)
+   1 gE(M126)
+   1 gE(M274)
+   1 gE(M305)
+   1 gE(M285)
+   1 gE(M290)
+   1 gE(M292)
+   1 gE(M294)
+   1 gE(M306)
+   1 gE(M454)
+   1 gE(M184)
+   1 gE(M488)
+   1 gE(M281)
+   1 gE(M344)
+   1 gE(M346)
+   1 gE(M241)

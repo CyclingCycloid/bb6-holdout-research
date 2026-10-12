@@ -1,36 +1,30 @@
-# BB(6) Holdout Research — Campaign Archive
+# BB(6) Holdout Research
 
-Private research archive (2026-09-25 → 2026-10-13). Structural analyses of BB(6) Busy Beaver holdout machines.
+2026-09-25 至 10-13 对 BB(6) holdout 机器的结构分析档案。
 
-**Start here: [`campaign-results.tex`](campaign-results.tex) / [`campaign-results.pdf`](campaign-results.pdf)** — every result stated as: what was obtained (graded A = transition-level exhaustive / full written algebra; A− = finite case tables + structural induction; B = finite-depth orbit observation, depth stated), the precise residual, and the research field the residual belongs to. **No confidence estimates; no unproven claims.** None of the six machines' undecided status changed (ledger checked 2026-10-12).
+**总览文档：[`campaign-results.pdf`](campaign-results.pdf)**——全部结果汇编（每条断言标注证明级别 A / A− / B，残余附所属研究域）。
 
-## The six deep-dive machines
+## 六台深挖机（均未改变 undecided 状态）
 
-| Machine | Code | Conditional theorem | Unconditionally obtained | Residual → research field |
-|---|---|---|---|---|
-| M1 | `1RB1LA_0RC0RD_1LC1LA_1RE1RD_1LF0LA_---0LE` | never halts, conditional on Assumption M | halt-branch unreachable (A); non-halting for all runs with round classes ≤ 2000 (A/A−); step translation ≳2^(2^2000) rests on a B-level timing law | Assumption M ≡ record-timetable continuation of the affine walk α↦α+Δα(ν₂(α+1)) → generalized Collatz / piecewise-affine iterations (undecidability: Conway 1972; independence: Kurtz–Simon 2007); periodicity-exclusion and necessary-precision theorems locate it inside this class |
-| cm2 | `1RB1RA_1LC0RC_---0LD_0LE0RF_1RE0RA_0LF1LB` | never halts, conditional on trajectory-avoidance | halt characterization (A); sweep conservation Q=L−3R (A); lethal preimage set P, 193 cells each bare-machine-verified (A); halts ⟺ orbit enters P (A−); if halts > 3×10^10 steps (B) | trajectory avoidance for the sweep-restart piecewise-affine system; residue-class route proven impossible; three closure techniques deterministically fail at M2/M1 restarts → same Conway-class field |
-| cm16/26/51/52 | (codes in campaign-results §3) | never halts, conditional (per machine) | halt criteria ×4, enumerated and casechecked separately per machine (A, 204,800 configs); island invariant (A−); unified lap grammar verified per machine (A−, ~780k anchors); guard 2×10^11 ×4 zero threats (B) | head-far avoidance of the danger 5-cell pattern — per-machine trajectory property; key-graph local-abstraction route dead (ladder diverges ×3.1/radius); same field by shape analogy (stated as such, not formally restated) |
+| 机器 | 条件定理 | 无条件部分要点 | 残余 → 研究域 |
+|---|---|---|---|
+| [m1](machines/m1/) | 永不停机 ⟸ 假设 M | 停机不可达；类 ≤2000 域非停机（≳2^(2^2000) 步，计时律为观测级） | ν₂ 记录时刻表 → 分段仿射迭代（Conway 1972；Kurtz–Simon 2007） |
+| [cm2](machines/cm2/) | 永不停机 ⟸ 轨迹避让 | 停机刻画；Q=L−3R 守恒；停机 ⟺ 轨道入 P（193 格逐格裸机验证）；>3×10^10 步 | 同域（三闭合技术失效点在档） |
+| [quad](machines/quad/)（cm16/26/51/52） | 各台永不停机 ⟸ 五格规避 | 判据 ×4 独立穷尽；孤岛不变量；guard 2×10^11 零威胁 | 同型轨迹避让（类比归类） |
 
-**Quad machines' relationship**: layered verified correspondence — uniform lap grammar (each machine verified separately), 562-era alignment at constant offsets (B-level observation), frozen-skeleton-only identity — **no isomorphism theorem**; assembly done per machine.
+负结果定理：周期排除、必要精度、剩余类否定、键图发散（详见总览 §各节与撤回记录）。
 
-## Negative-result theorems
+## 目录
 
-M1 periodicity exclusion (no finite-state closure — verified non-periodicity + structural argument); necessary precision (no fixed-modulus/linear invariant excludes the halt state — 4-edge counterexample chain); cm2 residue-class failure (3×3 already collides; M2/M1 restarts not residue-determined); quad key-graph divergence. All retractions on record (mod-3 invariant, pop ranking ×2, D3 formula, bitwise-identity correction, cm2's retracted C=0).
+```
+campaign-results.tex/.pdf   总览（先读这个）
+machines/{m1,cm2,quad,early}/   每台机器：子 README + 论文 + dossier + engines + verification
+surveys/{triage,soc,port}/      91 台 triage、279 台 SOC 勘图、40 对移植审计
+meta/                            范式审计、战役日志、研究笔记、社区草稿
+data/                            台账快照、未决码表、历史清单
+tools/sim/                       通用模拟器（triage 等）
+```
 
-## Maps and port audit (observational, depths stated)
+## 验证纪律
 
-- 91-machine CM/QM triage (10^9 steps each); 279-machine SOC survey (10^7 + 3×10^8 each; four structural prototypes as heuristic labels)
-- 40 Hamming-1 mutant pairs quantified: 13 tight-shadow candidates (main target U shadow-verified to 2×10^10 steps against its Rocq-proven twin), 22 fork-persists, 5 hot-diff; **decided 0** — each requires an original era-map induction (hundreds of lines Rocq-grade), not lemma transfer
-
-## Papers
-
-`campaign-results.tex/.pdf` (start here) · `M1-nonthalt.tex`/`M1-nonthalt-r2.pdf` (conditional main theorem, English) · `M1-reduction-zh.pdf` (complete reduction derivations, Chinese) · `cm2-proof-full-zh.pdf` (its early C=0 claims superseded by the referee round — final ledger in `attack-cm2.md` and campaign-results) · `M1-report-zh.pdf` · unfinalized community drafts (`community-post.md`)
-
-## Verification discipline
-
-Two adversarial refereeing rounds (12 majors found, all fixed); transcription discipline (6 transcription errors caught); independent recomputation 16/16; hand-typed table cross-check closing the shared-transcription risk. Every machine assertion reruns in one line — entry points in campaign-results §6.
-
-## Directory map
-
-`attacks-sparse2/` (M1) · `attacks-cm2/` (incl. `lethal-db.json`) · `attacks-quad/` · `soc-work/`, `soc-port/` (maps/port) · `attack-*.md` (per-machine dossiers) · `REPORT.md`, `SESSION-STATE.md` (chronological log) · `referee-report*.md`, `reverify-report.md`, `cm2-reverify-report.md` (reviews/audits) · `paradigm-audit.md` (Conway-class localization)
+两轮对抗评审（12 major 全修复）、誊写校验（6 处转写错误）、独立复算 16/16、手工转写表对拍。撤回记录五项在档（模 3、pop 排名 ×2、D3 公式、逐位相同修正、cm2 的 C=0 降级）。全部机器断言一行可复跑（入口见各 dossier）。

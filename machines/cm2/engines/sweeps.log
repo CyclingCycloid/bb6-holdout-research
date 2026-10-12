@@ -1,0 +1,296 @@
+markers: 42029
+sweeps: 382 gaps: 97
+--- terminal -> next start (first 40) ---
+term(L3,M4,R1) [start was L3,M4,R1, len1] -> next start (L3,M7,R1)
+term(L6,M3,R2) [start was L3,M7,R1, len2] -> next start (L6,M11,R2)
+term(L12,M3,R4) [start was L6,M11,R2, len3] -> next start (L3,M20,R1)
+term(L15,M4,R5) [start was L3,M20,R1, len5] -> next start (L3,M23,R1)
+term(L18,M3,R6) [start was L3,M23,R1, len6] -> next start (L26,M2,R1)
+term(L26,M2,R1) [start was L26,M2,R1, len1] -> next start (L3,M25,R3)
+term(L21,M1,R9) [start was L3,M25,R3, len7] -> next start (L23,M11,R1)
+term(L29,M3,R3) [start was L23,M11,R1, len3] -> next start (L3,M38,R1)
+term(L30,M2,R10) [start was L3,M38,R1, len10] -> next start (L3,M29,R12)
+term(L24,M1,R19) [start was L3,M29,R12, len8] -> next start (L6,M41,R1)
+term(L36,M1,R11) [start was L6,M41,R1, len11] -> next start (L6,M45,R1)
+term(L39,M1,R12) [start was L6,M45,R1, len12] -> next start (L38,M16,R1)
+term(L47,M4,R4) [start was L38,M16,R1, len4] -> next start (L3,M54,R1)
+term(L42,M2,R14) [start was L3,M54,R1, len14] -> next start (L3,M41,R16)
+term(L33,M1,R26) [start was L3,M41,R16, len11] -> next start (L9,M55,R1)
+term(L48,M3,R14) [start was L9,M55,R1, len14] -> next start (L56,M10,R1)
+term(L62,M2,R3) [start was L56,M10,R1, len3] -> next start (L3,M61,R5)
+term(L48,M1,R20) [start was L3,M61,R5, len16] -> next start (L6,M66,R1)
+term(L54,M2,R17) [start was L6,M66,R1, len17] -> next start (L3,M53,R19)
+term(L42,M1,R32) [start was L3,M53,R19, len14] -> next start (L9,M72,R1)
+term(L60,M4,R18) [start was L9,M72,R1, len18] -> next start (L3,M81,R1)
+term(L63,M1,R21) [start was L3,M81,R1, len21] -> next start (L56,M31,R1)
+term(L77,M3,R8) [start was L56,M31,R1, len8] -> next start (L85,M4,R1)
+term(L85,M4,R1) [start was L85,M4,R1, len1] -> next start (L3,M89,R1)
+term(L69,M1,R23) [start was L3,M89,R1, len23] -> next start (L50,M46,R1)
+term(L83,M2,R12) [start was L50,M46,R1, len12] -> next start (L6,M80,R14)
+term(L63,M4,R33) [start was L6,M80,R14, len20] -> next start (L3,M99,R1)
+term(L75,M3,R25) [start was L3,M99,R1, len25] -> next start (L83,M21,R1)
+term(L98,M1,R6) [start was L83,M21,R1, len6] -> next start (L64,M49,R1)
+term(L100,M1,R13) [start was L64,M49,R1, len13] -> next start (L6,M111,R1)
+term(L87,M3,R28) [start was L6,M111,R1, len28] -> next start (L95,M24,R1)
+term(L110,M4,R6) [start was L95,M24,R1, len6] -> next start (L3,M119,R1)
+term(L90,M3,R30) [start was L3,M119,R1, len30] -> next start (L98,M26,R1)
+term(L116,M2,R7) [start was L98,M26,R1, len7] -> next start (L6,M121,R9)
+term(L96,M1,R39) [start was L6,M121,R9, len31] -> next start (L6,M133,R1)
+term(L105,M1,R34) [start was L6,M133,R1, len34] -> next start (L67,M77,R1)
+term(L124,M1,R20) [start was L67,M77,R1, len20] -> next start (L6,M142,R1)
+term(L111,M2,R36) [start was L6,M142,R1, len36] -> next start (L9,M106,R38)
+term(L87,M2,R64) [start was L9,M106,R38, len27] -> next start (L56,M33,R66)
+term(L80,M1,R74) [start was L56,M33,R66, len9] -> next start (L6,M152,R1)
+poison sweep-cell hits: 0
+--- PSI map (terminal class -> next start class) ---
+term(M4%4=0,R%3=1) ->
+    next(L3%3=0,M0%4=3,R0%3=1) x11
+    next(L3%3=0,M0%4=2,R0%3=1) x7
+    next(L3%3=0,M0%4=1,R0%3=1) x3
+    next(L3%3=0,M0%4=0,R0%3=1) x9
+term(M3%4=3,R%3=2) ->
+    next(L6%3=0,M0%4=3,R0%3=2) x1
+    next(L56%3=2,M0%4=2,R0%3=1) x1
+    next(L85%3=1,M0%4=0,R0%3=1) x1
+    next(L101%3=2,M0%4=3,R0%3=1) x1
+    next(L157%3=1,M0%4=1,R0%3=1) x1
+    next(L146%3=2,M0%4=0,R0%3=1) x1
+    next(L230%3=2,M0%4=2,R0%3=1) x1
+    next(L302%3=2,M0%4=2,R0%3=1) x1
+    next(L363%3=0,M0%4=3,R0%3=1) x1
+    next(L437%3=2,M0%4=3,R0%3=1) x1
+    next(L457%3=1,M0%4=1,R0%3=1) x1
+    next(L482%3=2,M0%4=2,R0%3=1) x1
+    next(L520%3=1,M0%4=0,R0%3=1) x1
+    next(L619%3=1,M0%4=0,R0%3=1) x1
+    next(L700%3=1,M0%4=3,R0%3=1) x1
+    next(L738%3=0,M0%4=3,R0%3=1) x1
+    next(L3%3=0,M0%4=1,R0%3=2) x1
+    next(L718%3=1,M0%4=2,R0%3=1) x1
+    next(L638%3=2,M0%4=1,R0%3=1) x1
+    next(L727%3=1,M0%4=1,R0%3=1) x1
+    next(L662%3=2,M0%4=2,R0%3=1) x1
+    next(L778%3=1,M0%4=2,R0%3=1) x1
+    next(L698%3=2,M0%4=2,R0%3=1) x1
+    next(L545%3=2,M0%4=1,R0%3=1) x1
+    next(L868%3=1,M0%4=0,R0%3=1) x1
+    next(L685%3=1,M0%4=3,R0%3=1) x1
+    next(L939%3=0,M0%4=3,R0%3=1) x1
+    next(L1004%3=2,M0%4=0,R0%3=1) x1
+    next(L856%3=1,M0%4=1,R0%3=1) x1
+    next(L815%3=2,M0%4=1,R0%3=1) x1
+    next(L812%3=2,M0%4=1,R0%3=1) x1
+    next(L878%3=2,M0%4=2,R0%3=1) x1
+    next(L826%3=1,M0%4=0,R0%3=1) x1
+    next(L1063%3=1,M0%4=1,R0%3=1) x1
+    next(L1040%3=2,M0%4=0,R0%3=1) x1
+term(M3%4=3,R%3=1) ->
+    next(L3%3=0,M0%4=0,R0%3=1) x1
+    next(L83%3=2,M0%4=1,R0%3=1) x1
+    next(L95%3=2,M0%4=0,R0%3=1) x1
+    next(L155%3=2,M0%4=1,R0%3=1) x1
+    next(L164%3=2,M0%4=0,R0%3=1) x1
+    next(L185%3=2,M0%4=2,R0%3=1) x1
+    next(L236%3=2,M0%4=0,R0%3=1) x1
+    next(L254%3=2,M0%4=2,R0%3=1) x1
+    next(L308%3=2,M0%4=0,R0%3=1) x1
+    next(L391%3=1,M0%4=1,R0%3=1) x1
+    next(L496%3=1,M0%4=3,R0%3=1) x1
+    next(L549%3=0,M0%4=0,R0%3=1) x1
+    next(L438%3=0,M0%4=1,R0%3=1) x1
+    next(L452%3=2,M0%4=0,R0%3=1) x1
+    next(L524%3=2,M0%4=0,R0%3=1) x1
+    next(L514%3=1,M0%4=2,R0%3=1) x1
+    next(L847%3=1,M0%4=1,R0%3=1) x1
+    next(L776%3=2,M0%4=0,R0%3=1) x1
+    next(L797%3=2,M0%4=2,R0%3=1) x1
+    next(L803%3=2,M0%4=1,R0%3=1) x1
+    next(L830%3=2,M0%4=2,R0%3=1) x1
+    next(L884%3=2,M0%4=0,R0%3=1) x1
+    next(L793%3=1,M0%4=2,R0%3=1) x1
+    next(L1066%3=1,M0%4=0,R0%3=1) x1
+    next(L1046%3=2,M0%4=2,R0%3=1) x1
+    next(L1169%3=2,M0%4=1,R0%3=1) x1
+term(M4%4=0,R%3=2) ->
+    next(L3%3=0,M0%4=3,R0%3=1) x18
+    next(L3%3=0,M0%4=2,R0%3=1) x10
+    next(L3%3=0,M0%4=1,R0%3=1) x5
+    next(L3%3=0,M0%4=0,R0%3=1) x4
+term(M3%4=3,R%3=0) ->
+    next(L26%3=2,M0%4=2,R0%3=1) x1
+    next(L3%3=0,M0%4=2,R0%3=1) x1
+    next(L98%3=2,M0%4=2,R0%3=1) x1
+    next(L151%3=1,M0%4=0,R0%3=1) x1
+    next(L170%3=2,M0%4=2,R0%3=1) x1
+    next(L206%3=2,M0%4=2,R0%3=1) x1
+    next(L215%3=2,M0%4=1,R0%3=1) x1
+    next(L271%3=1,M0%4=0,R0%3=1) x1
+    next(L242%3=2,M0%4=2,R0%3=1) x1
+    next(L286%3=1,M0%4=2,R0%3=1) x1
+    next(L296%3=2,M0%4=0,R0%3=1) x1
+    next(L314%3=2,M0%4=2,R0%3=1) x1
+    next(L337%3=1,M0%4=2,R0%3=1) x1
+    next(L422%3=2,M0%4=2,R0%3=1) x1
+    next(L475%3=1,M0%4=0,R0%3=1) x1
+    next(L458%3=2,M0%4=2,R0%3=1) x1
+    next(L476%3=2,M0%4=0,R0%3=1) x1
+    next(L503%3=2,M0%4=1,R0%3=1) x1
+    next(L625%3=1,M0%4=0,R0%3=1) x1
+    next(L424%3=1,M0%4=0,R0%3=1) x1
+    next(L530%3=2,M0%4=2,R0%3=1) x1
+    next(L557%3=2,M0%4=3,R0%3=1) x1
+    next(L697%3=1,M0%4=1,R0%3=1) x1
+    next(L682%3=1,M0%4=1,R0%3=1) x1
+    next(L596%3=2,M0%4=3,R0%3=1) x1
+    next(L745%3=1,M0%4=0,R0%3=1) x1
+    next(L653%3=2,M0%4=3,R0%3=1) x1
+    next(L838%3=1,M0%4=0,R0%3=1) x1
+    next(L692%3=2,M0%4=0,R0%3=1) x1
+    next(L737%3=2,M0%4=3,R0%3=1) x1
+    next(L922%3=1,M0%4=0,R0%3=1) x1
+    next(L782%3=2,M0%4=2,R0%3=1) x1
+    next(L964%3=1,M0%4=2,R0%3=1) x1
+    next(L863%3=2,M0%4=1,R0%3=1) x1
+    next(L890%3=2,M0%4=2,R0%3=1) x1
+    next(L926%3=2,M0%4=2,R0%3=1) x1
+term(M2%4=2,R%3=1) ->
+    next(L3%3=0,M0%4=1,R0%3=0) x13
+    next(L6%3=0,M0%4=1,R0%3=0) x1
+    next(L56%3=2,M0%4=1,R0%3=0) x1
+    next(L6%3=0,M0%4=3,R0%3=0) x1
+    next(L70%3=1,M0%4=0,R0%3=0) x1
+    next(L119%3=2,M0%4=0,R0%3=0) x1
+    next(L149%3=2,M0%4=3,R0%3=0) x1
+    next(L3%3=0,M0%4=2,R0%3=0) x1
+    next(L272%3=2,M0%4=2,R0%3=0) x1
+    next(L73%3=1,M0%4=0,R0%3=0) x1
+    next(L395%3=2,M0%4=3,R0%3=0) x1
+    next(L466%3=1,M0%4=0,R0%3=0) x1
+    next(L9%3=0,M0%4=3,R0%3=0) x1
+    next(L478%3=1,M0%4=2,R0%3=0) x1
+    next(L438%3=0,M0%4=3,R0%3=0) x1
+    next(L377%3=2,M0%4=2,R0%3=0) x1
+    next(L659%3=2,M0%4=3,R0%3=0) x1
+    next(L371%3=2,M0%4=1,R0%3=0) x1
+term(M1%4=1,R%3=0) ->
+    next(L23%3=2,M0%4=3,R0%3=1) x1
+    next(L38%3=2,M0%4=0,R0%3=1) x1
+    next(L56%3=2,M0%4=3,R0%3=1) x1
+    next(L64%3=1,M0%4=1,R0%3=1) x1
+    next(L6%3=0,M0%4=1,R0%3=1) x1
+    next(L6%3=0,M0%4=2,R0%3=1) x6
+    next(L6%3=0,M0%4=0,R0%3=1) x1
+    next(L199%3=1,M0%4=1,R0%3=1) x1
+    next(L173%3=2,M0%4=2,R0%3=1) x1
+    next(L227%3=2,M0%4=2,R0%3=1) x1
+    next(L254%3=2,M0%4=0,R0%3=1) x1
+    next(L326%3=2,M0%4=1,R0%3=1) x1
+    next(L416%3=2,M0%4=2,R0%3=1) x1
+    next(L9%3=0,M0%4=0,R0%3=1) x2
+    next(L242%3=2,M0%4=1,R0%3=1) x1
+    next(L407%3=2,M0%4=2,R0%3=1) x1
+    next(L218%3=2,M0%4=2,R0%3=1) x1
+    next(L311%3=2,M0%4=3,R0%3=1) x1
+    next(L443%3=2,M0%4=3,R0%3=1) x1
+    next(L551%3=2,M0%4=3,R0%3=1) x1
+    next(L575%3=2,M0%4=1,R0%3=1) x1
+    next(L632%3=2,M0%4=1,R0%3=1) x1
+    next(L686%3=2,M0%4=0,R0%3=1) x1
+    next(L245%3=2,M0%4=0,R0%3=1) x1
+    next(L740%3=2,M0%4=2,R0%3=1) x1
+    next(L441%3=0,M0%4=1,R0%3=1) x1
+term(M1%4=1,R%3=1) ->
+    next(L6%3=0,M0%4=1,R0%3=1) x5
+    next(L6%3=0,M0%4=3,R0%3=1) x3
+    next(L67%3=1,M0%4=1,R0%3=1) x1
+    next(L9%3=0,M0%4=3,R0%3=1) x1
+    next(L9%3=0,M0%4=0,R0%3=1) x2
+    next(L131%3=2,M0%4=0,R0%3=1) x1
+    next(L199%3=1,M0%4=2,R0%3=1) x1
+    next(L6%3=0,M0%4=0,R0%3=1) x1
+    next(L164%3=2,M0%4=2,R0%3=1) x1
+    next(L137%3=2,M0%4=2,R0%3=1) x1
+    next(L334%3=1,M0%4=2,R0%3=1) x1
+    next(L9%3=0,M0%4=1,R0%3=1) x1
+    next(L266%3=2,M0%4=3,R0%3=1) x1
+    next(L434%3=2,M0%4=3,R0%3=1) x1
+    next(L340%3=1,M0%4=1,R0%3=1) x1
+    next(L602%3=2,M0%4=0,R0%3=1) x1
+    next(L12%3=0,M0%4=0,R0%3=1) x1
+    next(L559%3=1,M0%4=1,R0%3=1) x1
+    next(L647%3=2,M0%4=2,R0%3=1) x1
+    next(L581%3=2,M0%4=3,R0%3=1) x1
+    next(L12%3=0,M0%4=2,R0%3=1) x1
+    next(L215%3=2,M0%4=3,R0%3=1) x1
+    next(L859%3=1,M0%4=2,R0%3=1) x1
+    next(L441%3=0,M0%4=3,R0%3=1) x1
+term(M1%4=1,R%3=2) ->
+    next(L6%3=0,M0%4=1,R0%3=1) x5
+    next(L9%3=0,M0%4=3,R0%3=1) x1
+    next(L6%3=0,M0%4=2,R0%3=1) x3
+    next(L9%3=0,M0%4=0,R0%3=1) x3
+    next(L50%3=2,M0%4=2,R0%3=1) x1
+    next(L6%3=0,M0%4=0,R0%3=1) x2
+    next(L6%3=0,M0%4=3,R0%3=1) x2
+    next(L155%3=2,M0%4=0,R0%3=1) x1
+    next(L206%3=2,M0%4=1,R0%3=1) x1
+    next(L206%3=2,M0%4=0,R0%3=1) x1
+    next(L191%3=2,M0%4=2,R0%3=1) x1
+    next(L158%3=2,M0%4=1,R0%3=1) x1
+    next(L73%3=1,M0%4=3,R0%3=1) x1
+    next(L476%3=2,M0%4=3,R0%3=1) x1
+    next(L554%3=2,M0%4=3,R0%3=1) x1
+    next(L9%3=0,M0%4=1,R0%3=1) x1
+    next(L563%3=2,M0%4=3,R0%3=1) x1
+    next(L497%3=2,M0%4=0,R0%3=1) x1
+    next(L533%3=2,M0%4=2,R0%3=1) x1
+    next(L371%3=2,M0%4=3,R0%3=1) x1
+    next(L488%3=2,M0%4=2,R0%3=1) x1
+    next(L719%3=2,M0%4=0,R0%3=1) x1
+    next(L371%3=2,M0%4=0,R0%3=1) x1
+    next(L695%3=2,M0%4=0,R0%3=1) x1
+term(M2%4=2,R%3=2) ->
+    next(L3%3=0,M0%4=1,R0%3=1) x9
+    next(L110%3=2,M0%4=0,R0%3=1) x1
+    next(L119%3=2,M0%4=3,R0%3=1) x1
+    next(L6%3=0,M0%4=0,R0%3=1) x2
+    next(L182%3=2,M0%4=3,R0%3=1) x1
+    next(L3%3=0,M0%4=0,R0%3=1) x1
+    next(L311%3=2,M0%4=3,R0%3=1) x1
+    next(L331%3=1,M0%4=3,R0%3=1) x1
+    next(L376%3=1,M0%4=2,R0%3=1) x1
+    next(L326%3=2,M0%4=3,R0%3=1) x1
+    next(L212%3=2,M0%4=1,R0%3=1) x1
+    next(L199%3=1,M0%4=0,R0%3=1) x1
+    next(L629%3=2,M0%4=1,R0%3=1) x1
+    next(L320%3=2,M0%4=2,R0%3=1) x1
+    next(L683%3=2,M0%4=3,R0%3=1) x1
+    next(L746%3=2,M0%4=0,R0%3=1) x1
+    next(L587%3=2,M0%4=2,R0%3=1) x1
+    next(L9%3=0,M0%4=2,R0%3=1) x1
+    next(L245%3=2,M0%4=3,R0%3=1) x1
+    next(L851%3=2,M0%4=3,R0%3=1) x1
+    next(L542%3=2,M0%4=0,R0%3=1) x1
+    next(L18%3=0,M0%4=0,R0%3=1) x1
+    next(L980%3=2,M0%4=2,R0%3=1) x1
+term(M2%4=2,R%3=0) ->
+    next(L3%3=0,M0%4=1,R0%3=2) x7
+    next(L6%3=0,M0%4=0,R0%3=2) x6
+    next(L9%3=0,M0%4=2,R0%3=2) x2
+    next(L106%3=1,M0%4=0,R0%3=2) x1
+    next(L6%3=0,M0%4=1,R0%3=2) x3
+    next(L215%3=2,M0%4=3,R0%3=2) x2
+    next(L9%3=0,M0%4=0,R0%3=2) x1
+    next(L73%3=1,M0%4=2,R0%3=2) x1
+    next(L239%3=2,M0%4=3,R0%3=2) x1
+    next(L134%3=2,M0%4=3,R0%3=2) x1
+    next(L620%3=2,M0%4=2,R0%3=2) x1
+    next(L3%3=0,M0%4=3,R0%3=2) x1
+    next(L434%3=2,M0%4=3,R0%3=2) x1
+    next(L6%3=0,M0%4=2,R0%3=2) x1
+    next(L3%3=0,M0%4=2,R0%3=2) x1
+term(M4%4=0,R%3=0) ->
+    next(L3%3=0,M0%4=1,R0%3=1) x6
+    next(L3%3=0,M0%4=3,R0%3=1) x13
+    next(L3%3=0,M0%4=0,R0%3=1) x7
+    next(L3%3=0,M0%4=2,R0%3=1) x2

@@ -1,0 +1,4 @@
+playing game to g = 500000 ...
+game done; distinct (len,key): 22380
+anchors: 0
+TM ran 5200000 steps, no halt; final span -42 142

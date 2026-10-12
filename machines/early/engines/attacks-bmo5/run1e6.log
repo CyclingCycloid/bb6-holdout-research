@@ -1,0 +1,40 @@
+  ... phase 200000 i=200001 bits=199999 elapsed=43.0s
+  ... phase 400000 i=400001 bits=400004 elapsed=186.8s
+  ... phase 600000 i=600001 bits=600003 elapsed=422.1s
+  ... phase 800000 i=800001 bits=800004 elapsed=740.0s
+== sim: phases=1000000 halted=false
+   final i=1000000 b bits=1000003 states=3499691 triples=1499691 subs=1000000 time=1146.3s
+   global minGap=3 at phase 0 (i=0, k=1)
+   k histogram: 1:667242 2:221639 3:73988 4:24668 5:8280 6:2802 7:925 8:318 9:95 10:29 11:10 12:3 13:1
+   maxAlpha=24 (i=295970)  alpha>=: {"8":5908,"12":374,"16":25,"20":1,"24":1,"32":0,"40":0,"48":0,"56":0,"64":0}
+   maxBeta=21 (i=712866)   beta>=: {"8":3951,"12":238,"16":19,"20":1,"24":0,"32":0,"40":0,"48":0,"56":0,"64":0}
+   IDENTITY v2(cross_i-tgt)==v2(entry_{i+1}+1): mismatches=0 ; beta_i==v2(entry_{i+1}-tgt): mismatches=0
+   (A)-candidate phases (k_i <= g(i)): 250020/1000000 ; maxAlphaG=18 ; alphaG>=: {"8":1513,"12":95,"16":4,"20":0,"24":0}
+   k-consistency violations (i mod K -> k), i.e. same class maps to different k:
+     K=2: k-violations=499803 ns-violations=0
+     K=3: k-violations=499251 ns-violations=0
+     K=4: k-violations=499436 ns-violations=0
+     K=6: k-violations=499071 ns-violations=0
+     K=8: k-violations=499266 ns-violations=0
+     K=12: k-violations=499305 ns-violations=0
+     K=16: k-violations=498983 ns-violations=0
+     K=24: k-violations=499633 ns-violations=0
+     K=32: k-violations=499762 ns-violations=0
+     K=48: k-violations=499268 ns-violations=0
+     K=64: k-violations=499791 ns-violations=0
+     K=96: k-violations=499120 ns-violations=0
+     K=128: k-violations=498932 ns-violations=0
+     K=192: k-violations=499467 ns-violations=0
+     K=256: k-violations=499532 ns-violations=0
+     K=384: k-violations=499488 ns-violations=0
+     K=512: k-violations=499684 ns-violations=0
+     K=768: k-violations=498357 ns-violations=0
+     K=1024: k-violations=499335 ns-violations=0
+     K=1536: k-violations=499286 ns-violations=0
+     K=2048: k-violations=498546 ns-violations=0
+     K=3072: k-violations=498193 ns-violations=0
+     K=4096: k-violations=497586 ns-violations=0
+     K=6144: k-violations=496037 ns-violations=0
+     K=8192: k-violations=496290 ns-violations=0
+   K with ZERO k/ns violations (k determined by i mod K): 
+   dump written: dump1e6.bin (82000016 bytes)

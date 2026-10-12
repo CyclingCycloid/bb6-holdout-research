@@ -1,0 +1,5 @@
+progress n=2013 ok=11
+progress n=4128 ok=26
+progress n=6102 ok=40
+progress n=8076 ok=54
+xval-mid (n=603..9003 step 141): ok=60 bad=0
