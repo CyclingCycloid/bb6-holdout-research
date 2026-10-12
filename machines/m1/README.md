@@ -13,7 +13,8 @@ Cubic Mess 家族（mxdys 台账行 736）。本战役第一台深挖机。
 
 | 文件 | 内容 |
 |---|---|
-| `paper-en.tex/.pdf` | 条件主定理 + 包络 + 周期排除定理（英文论文） |
+| `paper-en.tex/.pdf` | Complete paper (English): conditional main theorem + envelope + exclusion theorem |
+| `reduction-zh.tex/.pdf` | 数学论文（中文）：归约链完全推导 |
 | `reduction-zh.tex/.pdf` | 归约链完整推导（中文，定理-证明体） |
 | `report-zh.tex/.pdf` | 成果报告（中文） |
 | `dossier.md` | 完整方法叙述（引理-证明-机器三元组 + 台账） |

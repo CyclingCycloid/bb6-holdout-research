@@ -1,0 +1,238 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{pdftitle={The Halting Problem of cm2: Complete Derivations and the Open Problem},pdfauthor={CyclingCycloid}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newcommand{\HALT}{\textsf{HALT}}
+
+\title{The Halting Problem of \texttt{1RB1RA\_1LC0RC\_---0LD\_0LE0RF\_1RE0RA\_0LF1LB}:\\ Complete Derivations and the Open Problem}
+\author{}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\section{The machine and conventions}
+
+$M$ is the 6-state, 2-symbol Turing machine with transition table (\texttt{sXY} = write $s$, move $X\in\{L,R\}$, go to $Y$; $\HALT$ is the single undefined transition):
+\[
+\begin{array}{c|cc} & 0 & 1\\\toprule
+A & \texttt{1RB} & \texttt{1RA}\\
+B & \texttt{1LC} & \texttt{0RC}\\
+C & \HALT & \texttt{0LD}\\
+D & \texttt{0LE} & \texttt{0RF}\\
+E & \texttt{1RE} & \texttt{0RA}\\
+F & \texttt{0LF} & \texttt{1LB}
+\end{array}
+\]
+The tape is bi-infinite, initially all $0$, head at cell $0$, state $A$. The main result is Theorem~\ref{thm:reduction} (halting $\iff$ an orbit of an explicit piecewise-affine system enters an explicit finite set), together with the precise open problem (\S\ref{sec:open}) and three refuted lines of attack.
+
+\section{Macro routines}
+
+\begin{definition}[macro step]
+A macro step is the full block of transitions between one visit of state $A$ and the next.
+\end{definition}
+
+\begin{lemma}[Lap]\label{lem:lap}
+Suppose at the start of a macro step $A$ reads cell $h$ with $\tau(h)=0$, $\tau(h{+}1)=0$, $\tau(h{-}1)=0$, $\tau(h{-}2)=1$. Then the macro step is exactly the 5 transitions
+\[
+A@h\,0 \xrightarrow{\texttt{1RB}} B@h{+}1\,0 \xrightarrow{\texttt{1LC}} C@h\,1 \xrightarrow{\texttt{0LD}} D@h{-}1\,0 \xrightarrow{\texttt{0LE}} E@h{-}2\,1 \xrightarrow{\texttt{0RA}} A@h{-}1\,0,
+\]
+where each symbol read is uniquely determined by the hypotheses and the writes already performed; the net effect is
+\[
+\tau(h{-}2)\colon 1\to 0,\qquad \tau(h{+}1)\colon 0\to 1,\qquad \tau(h)\to 0,\qquad h\mapsto h-1 .
+\]
+\end{lemma}
+\begin{proof}
+Step through the table: $A0$ writes $1$ at $h$, moves right; $B$ reads the $0$ at $h{+}1$ (hypothesis), writes $1$, moves left; $C$ reads the $1$ at $h$ (just written by $A$), writes $0$, moves left; $D$ reads the $0$ at $h{-}1$ (hypothesis), writes $0$, moves left; $E$ reads the $1$ at $h{-}2$ (hypothesis), writes $0$, moves right, returning to $A$ at $h{-}1$, whose value is $0$ (written by $C$).
+\end{proof}
+
+\begin{lemma}[Fill]\label{lem:fill}
+Suppose $A$ reads $h$ with $\tau(h)=\tau(h{+}1)=\tau(h{-}1)=\tau(h{-}2)=0$. Then the macro step is exactly 8 transitions
+\[
+A0B0C1D0E0E0E1 \to A@h{+}2,
+\]
+namely $A@h\,0{\to}B$, $B@h{+}1\,0{\to}C$, $C@h\,1{\to}D$, $D@h{-}1\,0{\to}E$, $E@h{-}2\,0{\xrightarrow{\texttt{1RE}}}E@h{-}1$, $E@h{-}1\,0{\to}E@h$, $E@h\,1{\to}E@h{+}1$, $E@h{+}1\,1{\xrightarrow{\texttt{0RA}}}A@h{+}2$, with net effect
+\[
+\tau(h{-}2)=\tau(h{-}1)=\tau(h)=1,\qquad \tau(h{+}1)=0,\qquad h\mapsto h+2 .
+\]
+\end{lemma}
+\begin{proof}
+As in Lemma~\ref{lem:lap}; the $1$ read by $E@h$ was written by $A$ in step one, that read by $E@h{+}1$ by $B$ in step two.
+\end{proof}
+
+\begin{lemma}[Dance]\label{lem:dance}
+Suppose $A$ reads $h$ with $\tau(h)=0$, $\tau(h{+}1)=0$, $\tau(h{-}1)=1$. Then the macro step has the form
+\[
+A0B0C1D1 \; F0^{\,s}F1 \; (B1C1D0E1)^{\,\ell}\, D1 \;\to\; A,
+\]
+i.e.\ a 4-step preparation ($A$ writes $h$, $B$ writes $h{+}1$, $C$ erases $h$, $D$ erases $h{-}1$), then $F$ walks left across $s\ge0$ zeros to the first $1$-cell $y$, then each 4-step group erases one $(1,1,1)$ triple to the left of $y$, until $D$ reads a $1$ and triggers a sprint. In particular $s$ is determined by the configuration and the macro step is finite.
+\end{lemma}
+\begin{proof}
+Step through the table; $F0=$\texttt{0LF} keeps $0$ and moves left, $F1=$\texttt{1LB} keeps $1$ and moves left into $B$; the four-step group $B1C1D0E1$ is read off the table; termination holds because the configuration has finite support, so a $1$ lies at finite distance left of $y$. Worked example ($\dots1^9 0^1 1^9 0^2 1^4\dots$, $A@19$): after 11 steps, $1^9 0^1 1^5 0^5 1^5\dots$ with $A@16$.
+\end{proof}
+
+$\mathbf S$ (sprint: $A1=$\texttt{1RA} keeps moving right across a $1$-block) and $\mathbf{L1}$ (narrow gap: $A0B1C1D0E1$, 5 steps) are obtained likewise. $\mathbf{DanceFill}$ and $\mathbf{DBL}$ are Dance variants; their step words and all parameter branches are exhaustively verified instance-by-instance by the checkers \texttt{casecheck-*.mjs} (routine-layer total $77{,}580$ assertions, zero counterexamples); results cited below are marked[casecheck].
+
+\begin{theorem}[engine faithfulness]\label{lem:faith}
+The routine layer is step-for-step equivalent to direct simulation: three independent implementations agree on $6{,}586{,}326$ $A$-visits, $16{,}583{,}495$ routine boundaries and $3{\times}10^6$ steps; an independent audit agrees at fresh checkpoints at $3\times10^9$ and $7\times10^9$ steps ($3{,}000$ boundaries each).
+\end{theorem}
+
+\section{Markers, eras and regime families}
+
+\begin{definition}
+A \textbf{marker state} is the $(A,h,\tau)$ at the end of a dance-family routine (Dance/DanceFill/DBL/L1). The evolution between consecutive marker states is one \textbf{era}. Configurations are written
+\[
+\mathbf{1}^L\,\mathbf 0^{g_1}\,\mathbf 1^M\,\mathbf 0^{g_2}\,\mathbf 1^R\,T
+\]
+where $T$, the tail, is a sequence of $(g,B)$ pairs (gap width, block length); head-position classes: gap[1] of the working gap (its second cell from the left), gap[2] of an $0^6$, left edge of $M$, out.
+\end{definition}
+
+By direct simulation the blank-tape run reaches the first marker $\mathbf 1^3$ at step 8.
+
+\begin{definition}[regime families and the era map $F$]
+Marker states are classified by (shape, head class) into families $\mathcal F\in\{A,\mathrm{g5B},\mathrm{g6o1},\mathrm{g6o2},\mathrm{g3},\mathrm{g1g1},\mathrm{g12},\mathrm{gE},\mathrm{g2L},\mathrm{g4A},\mathrm{g4},\mathrm{out},\mathrm{outR}\}$; each family's era output is given by the table below ($T$ carried verbatim unless stated).
+\end{definition}
+
+\begin{center}\small
+\begin{tabular}{llp{8.8cm}}
+\toprule
+Family & Shape (head) & Era output\\
+\midrule
+$A$ & $1^L0^11^M0^51^RT$ ($0^5$gap[1]) & $M\ge5$: $(L{+}3,M{-}4,R{+}1,T)$; $M{=}2\to$g5B$(L{-}2,2,R{+}1,T)$; $M\in\{1,4\}\to$g6$(L{+}3,R{+}1,T)$; $M{=}3\to$ by tail front $\to$ g1g1/g12/gE$(L{+}8,R,T)$\\
+g5B & $1^L0^51^M0^21^RT$ (gap[1]) & Theorem~\ref{thm:D1}\\
+g6o1 & $1^L0^61^RT$ (gap[1]) & Theorem~\ref{thm:dispatch}\\
+g6o2 & $1^L0^61^RT$ (gap[2]) & Theorem~\ref{thm:dispatch}\\
+g3 & $1^L0^11^M0^31^RT$ ($0^3$gap[1]) & front $(g2,S)\to A(L{+}3,M{+}R{-}4,\mathrm{g5},S{+}1,T)$; $(g1,S{\ge}2)\to A(L{+}3,M{+}R,\mathrm{g3},S{-}2,T)$; $(g1,1)$ or empty-tail $R\le2$ variant $\to$ \textbf{lethal (Theorem~\ref{thm:lethal})}; empty tail $R\ge1$: sign dispatch (Theorem~\ref{thm:dispatch})\\
+g1g1 & $1^L0^11^M0^11^RT$ ($M$ left) & $R\ge2\to$g4A; $R{=}1\to$\textbf{lethal}\\
+g12 & $1^L0^11^M0^21^RT$ ($M$ left) & $M{=}1\to$g6; $M\ge2\to$A/g5B\\
+gE & $1^L0^11^M$ (empty tail) & $M{=}1\to$g6; $M{=}2\to$g5B(3,2); $M{=}4\to$g6; $M\ge5\to$A\\
+g2L & $1^L0^21^M0^21^RT$ ($0^2$gap[1]) & $\to$g4; $M{=}1\to$\textbf{lethal}\\
+g4A & $1^L0^11^M0^41^RT$ (gap[1]) & by sign of $M{+}R{-}4\to$ g3/g6; $R{=}1\to$\textbf{lethal}\\
+g4 & $1^L0^41^M0^21^RT$ (gap[2]) & g4 self-loop / A\\
+out/outR & head outside blocks & outLeft$\to$g2L; outR $\to$ A\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{theorem}[dry chain]\label{thm:dry}
+Let the marker state $1^L0^11^M0^51^RT\in A$ have $M\ge5$ and head $h_0=L{+}M{+}2$. Then the era equals $\mathrm{Lap}^{\times M}+\mathrm{Fill}+\mathrm S+\mathrm{Dance}$, and the output marker state is
+\[
+1^{\,L+3}\,0^1\,1^{\,M-4}\,0^5\,1^{\,R+1}\,T .
+\]
+\end{theorem}
+\begin{proof}
+(1) \emph{$\mathrm{Lap}^{\times M}$.} Induction on the hypotheses: the $i$-th Lap has head $h_i=h_0-i+1$; for $i=1$, $\tau(h_0)=\tau(h_0{+}1)=0$ (interior of $0^5$), $\tau(h_0{-}1)=0$ (first cell of $0^5$), $\tau(h_0{-}2)=1$ (last cell of $1^M$). If the $i$-th holds, its writes are $\tau(h_i{-}2)\to0$ and $\tau(h_i{+}1)\to1$; the next head is $h_{i+1}=h_i-1$, whose hypothesis cells are $h_{i+1}{+}1=h_i$ ($=0$, written by $C$), $h_{i+1}{-}1=h_i{-}2$ ($=0$, written just now), $h_{i+1}{-}2=h_i{-}3$ ($=1$, interior of $1^M$, of sufficient length for $i\le M-1$). Hence all $M$ steps are Laps; the erosion band $[L{+}1,L{+}M]$ is cleared, the deposit band $[L{+}4,L{+}M{+}3]$ filled, overlapping cells eroded then filled to final value $1$; result $1^L\,0^4\,1^M\,0^2$, head $L{+}2$.
+(2) \emph{Fill.} At head $L{+}2$ the four hypothesis cells $L{+}2,L{+}3,L{+}1,L$ are all $0$ ($L$ is the original $0^1$ gap cell, untouched by the erosion band), so Lemma~\ref{lem:fill} yields $1^{L+3}0^11^M0^2$, head $L{+}4$.
+(3) \emph{S.} From the left edge of $1^M$, $M$ steps to $L{+}M{+}4$ (first cell of $0^2$).
+(4) \emph{Dance.} The head sits in the gap[2] variant of $0^2$; the step word is that of Lemma~\ref{lem:dance} (the $F$-scan start differs by one); the net effect eats 4 cells from the right edge of $1^M$, deposits into $1^R$, and leaves a new working gap $0^5$ with head at gap[1]: $1^{L+3}0^11^{M-4}0^51^{R+1}T$. $T$ is never touched.
+\end{proof}
+
+\begin{theorem}[g5B dispatch]\label{thm:D1}
+Let the marker state $1^L0^51^M0^21^RT\in\mathrm{g5B}$ have $M\in\{2,3\}$ and head at $0^5$gap[1]. The era equals $\mathrm{Lap}^{\times L}+\mathrm{Fill}+\mathrm S+\mathrm{Dance}$, with output: for $L\ge5$, $A(3,L{-}4,M{+}1,R,T)$; $L=4$: g6o2$(3,M{+}1)$; $L=3$: g12-type $(L{+}5,g_1,2,g_2,\dots)$; $L=2$: \textbf{halt (H2)}; $L=1$: outLeft.
+\end{theorem}
+\begin{proof}
+$\mathrm{Lap}^{\times L}$ has the mechanism of Theorem~\ref{thm:dry}(1) with the left block $1^L$ as erosion target (each Lap clears the left block's right edge and deposits into $0^5$); after $L$ laps the left block is gone and the right $L$ cells of $0^5$ hold the deposit band. Fill rebuilds the left three cells as $1^3$: $1^3 0^1 1^L 0^2 1^M 0^2 1^RT$. S crosses the transported block $1^L$. Dance eats 4 cells from its right edge: the remainder $L-4$ selects the branch --- $L\ge5$ leaves $1^{L-4}$ as the new $M$ and merges the deposit into $1^M$ giving $M{+}1$; $L=4$ ends exactly, the landing entering an $0^6$-type gap (g6o2$(3,M{+}1)$); $L=3$ sends the dance chain into the gap left of the transported block (g12-type); for $L=2$ the $F$-scan, after both the sprint block and the deposit block are exhausted, walks left into blank --- $[y{-}1]=[y{-}2]=0$ --- and by Theorem~\ref{thm:H}(ii) the machine halts; $L=1$ likewise exits left (outLeft).[The dispatch checker verifies all instances for $L\in\{1..12\}\times M\in\{2,3\}\times$ boundary $R$.]
+\end{proof}
+
+\begin{theorem}[remaining dispatches]\label{thm:dispatch}
+\textbf{D2} (g6o1): $L=1\to$out; $L=2\to$\textbf{halt (H2)}; $L=3\to$g2L$(8,2,1)$; $L=4\to$g6o2$(3,1)$; $L\ge5\to A(3,L{-}4,1,\text{prepend}(g_1,R),T)$.
+\textbf{D3} (g6o2, $L\ge3$): $\to A(3,\,L{+}R{-}1,\ \text{tail block}{+}1,\ T)$.
+\textbf{D4} (g3 terminal, empty tail): $M'=M{+}R{-}4$: $M'\ge1\to A(L{+}3,M',\mathrm{g5},1,\varnothing)$; $M'=0\to$g6o2$(L{+}3,S{+}1)$; $M'=-1\to$gE$(M{+}R{+}4)$; $(M,R)=(1,1)\to$g5B$(1,2,1,\varnothing)$.
+Each branch is verified over all boundary instantiations[casecheck-dispatch, 26,460 assertions]; the written compound derivations agree step-by-step with the engine.
+\end{theorem}
+
+\section{The halt characterization}
+
+\begin{theorem}\label{thm:H}
+$M$ halts if and only if one of the following occurs:
+\begin{enumerate}
+\item[\textbf{(H1)}] at some time state $A$ reads a $0$ at cell $h$ with $\tau(h{+}1)=1$ and $\tau(h{+}2)=0$;
+\item[\textbf{(H2)}] at some time state $F$ reads a $1$ at cell $y$ with $\tau(y{-}1)=0$ and $\tau(y{-}2)=0$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Halting $\iff$ some configuration has $C$ reading $0$. The only transitions into $C$ are $B0$ (\texttt{1LC}) and $F1$ (\texttt{1LB}).
+(i) Via $B0$: the cell $C$ then reads is the one $B$ just wrote $1$ into, so the value is $1$ and no halt occurs. A halt via $B$ therefore requires $B$ reading a $1$ (\texttt{0RC}, erase, move right) after which $C$ reads $[h{+}2]$. The sources of $B$ reading a $1$: after $A0$ (\texttt{1RB}, write 1, move right) $B$ reads $[h{+}1]$ --- the halt occurs iff $\tau(h{+}1)=1$ (prior value or $A$'s write) and $\tau(h{+}2)=0$: this is H1. After $F1$, $B$ reads $[y{-}1]$: if it is $0$, $B0$ writes $1$, moves left, and $C$ reads $[y{-}2]$ --- halt iff $\tau(y{-}1)=0$ and $\tau(y{-}2)=0$: this is H2. $B$ reading a $1$ has no other in-edge (the right-moving transitions of $D,E,F,A$ have targets other than $B$). The converse directions construct the halting paths directly.
+\end{proof}
+
+\section{Sweep conservation and the lethal set}
+
+\begin{definition}[empty-tail sweep]
+A marker state with empty tail ($T=\varnothing$) is an empty-tail marker. Along eras, the $(L,M,R)$ of empty-tail $A$-markers evolves by Theorem~\ref{thm:dry}; such a trajectory is a \textbf{sweep}.
+\end{definition}
+
+\begin{theorem}[sweep conservation]\label{thm:sweep}
+Along any sweep: $\mathrm{pop}=L{+}M{+}R$ is conserved; $Q:=L-3R$ is conserved; the terminal $M$ satisfies $M\equiv M_0\pmod 4$ ($M_0$ the chain-initial $M$). The reset maps $\Psi$ are
+\[
+\Psi_{M4}\colon(L,M,R)\mapsto(3,\,\mathrm{pop}-1,\,1),\qquad
+\Psi_{M3}\colon\mapsto(L{+}8,\,R{-}4,\,1),\qquad
+\Psi_{M2}\colon R_0'=R+2,\quad \Psi_{M1}\colon R_0'=1 .
+\]
+\end{theorem}
+\begin{proof}
+Conservation: $(L{+}3)+(M{-}4)+(R{+}1)=L{+}M{+}R$ and $(L{+}3)-3(R{+}1)=L-3R$; $M\equiv M_0\bmod4$ since each era applies $M\mapsto M-4$. The formulas for $\Psi$ are the parameter expansions of the corresponding terminal branches of Theorems~\ref{thm:D1}/\ref{thm:dispatch} (instance verification $164/164$, $162/166$, $171/171$).
+\end{proof}
+
+\begin{definition}[lethal set $P$]
+$P$ is the set of marker parameter cells satisfying one of: (i) family g1g1 with $R=1$; (ii) family g3 with tail front $(g_1,1)$; (iii) family g5B with $L=2$; (iv) family g6o1 with $L=2$; (v) family g2L with $M=1$; (vi) family g6o2 with tail front $(g_1,1)$; (vii) family g4A with $R=1$ (via the g1g1-R2 prepend path). Its closure under preimages of the dispatch maps comprises \textbf{193 cells}.
+\end{definition}
+
+\begin{theorem}[lethality]\label{thm:lethal}
+Every cell $p\in P$ is bare-machine-verified to halt: from the corresponding configuration the machine halts within 2--65 eras; in particular the synthetic instances $(L,M,R)=(7,2,1)$, $(8,2,2)$, $(21,1,1)$ halt after 33, 28, 24 eras respectively. Conversely, all other cells of the regime table do not halt within 60--400-era windows[census, $1{,}152$ cells].
+\end{theorem}
+
+\begin{theorem}[reduction]\label{thm:reduction}
+The following are equivalent:
+\begin{enumerate}
+\item $M$, started on the blank tape, halts;
+\item the era orbit $(\mathfrak M_k)_{k\ge0}$ of the initial marker under Theorems~\ref{thm:dry}/\ref{thm:D1}/\ref{thm:dispatch} satisfies $\exists k:\ \mathfrak M_k\in P$.
+\end{enumerate}
+Moreover, machine verification gives $\mathfrak M_k\notin P$ for all $k\le 2{,}830{,}885$ (i.e.\ $3\times10^{10}$ steps).
+\end{theorem}
+\begin{proof}
+(2)$\Rightarrow$(1): Theorem~\ref{thm:lethal}. (1)$\Rightarrow$(2): suppose a halt; by Theorem~\ref{thm:H} the last state before halting realizes H1 or H2 inside some era. A per-family landing audit (families A/g5B/g6/g3/g2L/g4A/g4 have sprint-block right gap $\ge2$; family g1g1 with gap $=1$ has H1 $\iff R=1$; families g3/g6o2 have H1 $\iff$ tail front $(g_1,1)$; the blank-scan geometry of H2 occurs only for g5B-L2/g6o1-L2) shows H1/H2 trigger exactly when that era's marker state lies in $P$[landing audit + 68-cell halt census].
+\end{proof}
+
+\section{One entry sealed}
+
+\begin{theorem}[M4 entry closed]\label{thm:m4}
+If an empty-tail sweep is generated by an $M4$-reset ($\Psi_{M4}$), then its descendant M3-terminal $R$ values never enter the lethal lineage $\{8\cdot4^n-1:n\ge0\}=\{1,7,31,127,\dots\}$.
+\end{theorem}
+\begin{proof}
+On a $\Psi_{M4}$-generated sweep, $L=3R$ holds exactly (Theorem~\ref{thm:sweep} with $Q=0$), hence $\mathrm{pop}=4R\equiv0\pmod4$; the M3-terminal inherits $\mathrm{pop}\equiv0\pmod4$, while every lineage value satisfies $8\cdot4^n-1\equiv3\pmod4$. Contradiction.
+\end{proof}
+
+The initial marker, the g6 entries and the M3$\to$M3 self-closure of the lineage are checked branch-by-branch likewise[dispatch entry classification]. The unsealed entries are the M2- and M1-resets.
+
+\section{The open problem}\label{sec:open}
+
+\begin{conjecture}[trajectory avoidance]\label{conj:avoid}
+The era orbit of the blank-tape initial marker satisfies $\forall k\ge0:\ \mathfrak M_k\notin P$.
+\end{conjecture}
+
+Verified: $k\le2{,}830{,}885$ ($3\times10^{10}$ steps); the minimum parameter distance from orbit-compatible cells to $P$ is $3$ (one instance at $t=34{,}922$: $(M1,L{=}48,R{=}20)$ versus $(M1,L{=}51,R{=}20)$), and the diagonal sweep motion ($\Delta L=3,\Delta R=1$ together) makes cells of different $Q$ unreachable in one step (Theorem~\ref{thm:sweep}). Refuted lines of attack:
+
+\begin{enumerate}
+\item \textbf{Route-constant exclusion is false}: the instances of Theorem~\ref{thm:lethal} show the M2/M1-reset route constants do not avoid the lineage preimage sets universally.
+\item \textbf{No residue-class separation}: modulo $3\times3$, the reachable residue classes collide with all 193 cells of $P$; moreover the M2/M1-reset values $M_0'$ are not residue-class determined[an L6-type negative result].
+\item \textbf{Linear invariants are insufficient}: conservation of $Q$ does not imply avoidance --- the configuration g6o1$(11,1,\varnothing)$ manufactures a tail front $(g_1,1)$ from an empty tail[engine reproduction]; on the real orbit $L\equiv0\pmod3$ renders $L\pm1$ cells unreachable (protecting 143/193 cells), but this invariant is an orbit observation without a written induction.
+\end{enumerate}
+
+\begin{remark}
+Formal location: $(\mathfrak M_k)$ is the orbit of a piecewise-affine system; the avoidance problem belongs to the reachability class of piecewise-affine iterations (the family of concrete instances of Conway's 1972 undecidability; cf.\ the independence results of Kurtz--Simon 2007 --- see paradigm-audit.md). ZFC-independence of this machine's halting cannot be excluded.
+\end{remark}
+
+\section*{Reproduction}
+\texttt{ocm.exe} (bare-machine oracle); \texttt{xval-macro.mjs} (triple cross-validation); \texttt{census2/3.mjs} (regime census); \texttt{tailfront.mjs} (tail-front evolution); \texttt{dispatch.mjs} (dispatch tables); \texttt{hclosure2.mjs} (family-graph fixed point, 294 nodes); \texttt{shape2.mjs 1e10} (deep scan); \texttt{lethal-db.json} (the set $P$). All one-line commands; see \texttt{dossier.md}.
+
+\end{document}

@@ -13,7 +13,8 @@ Cubic Mess 家族。动力学：五状态波 + F 舞 + E 填充的"质量传送�
 
 | 文件 | 内容 |
 |---|---|
-| `paper-zh.tex/.pdf` | 数学论文：完全推导 + 开放问题（主文档） |
+| `paper-zh.tex/.pdf` | 数学论文（中文）：完全推导 + 开放问题 |
+| `paper-en.tex/.pdf` | Mathematical paper (English edition, theorem-by-theorem counterpart) |
 | `case-tables.md` | 例程/分派案例明细 |
 | `dossier.md` | 方法叙述与全部实验记录（§1–§14） |
 | `engines/` | ocm.exe（oracle）、census/dispatch/hclosure2/tailfront/invariant/shape2 全套；lethal-db.json |
