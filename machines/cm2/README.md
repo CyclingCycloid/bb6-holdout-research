@@ -4,18 +4,17 @@ Cubic Mess 家族。动力学：五状态波 + F 舞 + E 填充的"质量传送�
 
 ## 结果
 
-- **条件定理**：cm2 永不停机，条件于轨迹避让命题（见下）。
-- **无条件部分**：停机刻画（H1/H2，转移级穷尽）；扫掠守恒 Q=L−3R（逐格代数）；致死前像集 P 共 193 格、每格独立裸机验证；**cm2 停机 ⟺ 扫掠-重启分段仿射轨迹首次进入 P**（归约定理）；若停机则 > 3×10^10 步（狩猎 3×10^10 步 / 283 万时代零命中）。
-- **障碍**：三族闭合技术（路线常数、剩余类、线性不变量）均确定性失效于 M2/M1 重启（各有反例或否定定理）。研究域：分段仿射迭代可达性（Conway 类；ZFC 独立性不可排除——Kurtz–Simon 谱系）。
+- 主定理（归约，paper-zh 定理 6.4）：cm2 停机 ⟺ 时代轨道进入显式有限集 P（193 格，逐格裸机验证）；已验 k ≤ 2,830,885（3×10^10 步）不进入。
+- 无条件组件：停机刻画 H1/H2（转移级穷尽）；干链定理与 g5B 分派（完整代数推导）；扫掠守恒（pop、Q=L−3R、M mod 4）；M4 入口封闭（mod 4 矛盾，完整证明）。
+- 开放问题（paper-zh §7）：轨迹避让猜想——三条进攻路线（路线常数、剩余类、线性不变量）的否证在册；范式定位：分段仿射迭代可达性（Conway 1972 / Kurtz–Simon 2007 谱系）。
 - undecided 状态未改变。
 
 ## 文件
 
 | 文件 | 内容 |
 |---|---|
-| `proof-full-zh.tex/.pdf` | 完整证明版（注意：早期 C=0 表述已被评审轮修正，终版以 dossier 台账为准） |
-| `paper-zh.tex/.pdf` | 紧凑版论文 |
+| `paper-zh.tex/.pdf` | 数学论文：完全推导 + 开放问题（主文档） |
 | `case-tables.md` | 例程/分派案例明细 |
-| `dossier.md` | 完整方法叙述（§1–§14，含致死库与修复轮全记录） |
-| `engines/` | `ocm.exe`（oracle）、`macro2/3`、census/dispatch/hclosure2/tailfront/invariant/shape2 全套（一行可跑）；`lethal-db.json` 致死前像库 |
-| `verification/` | 对抗评审报告（7 major 修复记录）、独立复算报告（9 项 PASS） |
+| `dossier.md` | 方法叙述与全部实验记录（§1–§14） |
+| `engines/` | ocm.exe（oracle）、census/dispatch/hclosure2/tailfront/invariant/shape2 全套；lethal-db.json |
+| `verification/` | 对抗评审报告、独立复算报告 |

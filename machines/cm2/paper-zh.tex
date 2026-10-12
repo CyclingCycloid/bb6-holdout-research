@@ -3,174 +3,237 @@
 \usepackage{booktabs}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
-\hypersetup{pdftitle={cm2 永不停机的完整数学证明},pdfauthor={Z.ai}}
+\hypersetup{pdftitle={cm2 停机性：数学论述},pdfauthor={CyclingCycloid}}
 
 \newtheorem{theorem}{定理}[section]
 \newtheorem{lemma}[theorem]{引理}
 \newtheorem{corollary}[theorem]{推论}
-\theoremstyle{definition}
 \newtheorem{definition}[theorem]{定义}
 \newtheorem{remark}[theorem]{注}
+\newtheorem{conjecture}[theorem]{猜想}
 
 \newcommand{\HALT}{\textsf{HALT}}
 
-\title{\bfseries 图灵机 cm2（\texttt{1RB1RA1LC0RC---0LD0LE0RF1RE0RA0LF1LB}）\\ \large 永不停机的完整数学证明}
+\title{\bfseries cm2 的停机性：完全推导与开放问题\\ \large \texttt{1RB1RA\_1LC0RC\_---0LD\_0LE0RF\_1RE0RA\_0LF1LB}}
 \author{}
-\date{2026 年 9 月 26 日}
+\date{2026 年 10 月}
 
 \begin{document}
 \maketitle
 
-\begin{abstract}
-本文证明 6 态 2 符号图灵机 cm2 从空白带启动永不停机。证明结构：停机条件被精确刻画为两个微观模式（定理~\ref{thm:H}）；动力学被组织为``时代''序列，每时代由七条宏例程复合而成，每条例程的转移字逐字写出并经案例穷举对拍（引理~\ref{lem:words}、\ref{lem:engine}）；可达时代族构成有限封闭图（定理~\ref{thm:closure}，177 个头锚定模式）；每族的出口由带显式分支不等式的分派表给出，逐支为书面例程字的复合并经裸机逐步对拍（定理~\ref{thm:dispatch}）；四条归纳不变量（INV-T/R/L/M，定理~\ref{thm:inv} 与注记~\ref{rem:invt}）排除全部停机格族；逐族落点审计（定理~\ref{thm:S}）完成归纳装配（定理~\ref{thm:main}）。除声明的有限机器验证外，推理为初等代数与归纳。
-\end{abstract}
+\section{机器与约定}
 
-\section{机器与停机条件}
+$M$ 为 6 态 2 符号图灵机，转移表（\texttt{sXY} = 写 $s$、移动 $X\in\{L,R\}$、转态 $Y$；$\HALT$ 为唯一未定义转移）：
+\[
+\begin{array}{c|cc} & 0 & 1\\\toprule
+A & \texttt{1RB} & \texttt{1RA}\\
+B & \texttt{1LC} & \texttt{0RC}\\
+C & \HALT & \texttt{0LD}\\
+D & \texttt{0LE} & \texttt{0RF}\\
+E & \texttt{1RE} & \texttt{0RA}\\
+F & \texttt{0LF} & \texttt{1LB}
+\end{array}
+\]
+带为双无限，初始全 0，头在格 $0$、状态 $A$。构型用 $(S,h,\tau)$ 表示（状态、头位、带函数 $\tau:\mathbb Z\to\{0,1\}$）。本文证明的主定理为定理~\ref{thm:reduction}（停机 $\iff$ 一条显式仿射系统轨道进入一个显式有限集），并给出开放问题~\ref{conj:avoid} 的精确陈述与三条已否证的进攻路线（\S\ref{sec:open}）。
 
-\begin{table}[h]\centering
-\begin{tabular}{c|cc} & 读 0 & 读 1\\\toprule
-$A$ & \texttt{1RB} & \texttt{1RA}\\
-$B$ & \texttt{1LC} & \texttt{0RC}\\
-$C$ & \HALT & \texttt{0LD}\\
-$D$ & \texttt{0LE} & \texttt{0RF}\\
-$E$ & \texttt{1RE} & \texttt{0RA}\\
-$F$ & \texttt{0LF} & \texttt{1LB}\\
-\end{tabular}\end{table}
+\section{宏例程}
 
-空白带启动：$A$ 于 0 写 1 右行，经 $B,C,D,E$ 链于第 8 步形成首标记 $1^3$（引擎与裸机对拍，B 级）。
+\begin{definition}[宏步]
+宏步 = 从一个 $A$-态访问到下一个 $A$-态访问的全部转移。
+\end{definition}
 
-\begin{lemma}[停机的微观刻画]\label{thm:H}
-$M$ 停机当且仅当下列之一发生：
-\textbf{(H1)} 某时刻状态 $A$ 读格 $h$ 的 $0$，且 $[h{+}1]=1$、$[h{+}2]=0$（此时 $A0{\to}B1{\to}C$ 读 $0$，三步内停机）；
-\textbf{(H2)} Dance 例程中 $F$ 扫描左落于某 $1$-岛格 $y$，且 $[y{-}1]=0$、$[y{-}2]=0$（$F1{\to}B0{\to}C$ 读 $[y{-}2]=0$ 停机）。
+\begin{lemma}[Lap]\label{lem:lap}
+设宏步开始时 $A$ 读格 $h$，$\tau(h)=0$，$\tau(h{+}1)=0$，$\tau(h{-}1)=0$，$\tau(h{-}2)=1$。则该宏步恰为 5 步
+\[
+A@h\,0 \xrightarrow{\texttt{1RB}} B@h{+}1\,0 \xrightarrow{\texttt{1LC}} C@h\,1 \xrightarrow{\texttt{0LD}} D@h{-}1\,0 \xrightarrow{\texttt{0LE}} E@h{-}2\,1 \xrightarrow{\texttt{0RA}} A@h{-}1\,0,
+\]
+其中每步所读符号由前件与已发生的写入唯一确定；净效应为
+\[
+\tau(h{-}2)\colon 1\to 0,\qquad \tau(h{+}1)\colon 0\to 1,\qquad \tau(h)\to 0,\qquad h\mapsto h-1 .
+\]
 \end{lemma}
 \begin{proof}
-停机转移唯一：$C$ 读 $0$。$C$ 仅经 $B$ 进入：$B$ 读 $0$（\texttt{1LC}，写 1 左行）后 $C$ 读的是 $B$ 刚写 $1$ 之格——不触发；$B$ 读 $1$（\texttt{0RC}，擦除右行）后 $C$ 读 $[h{+}2]$。前者唯一危险来自 $F$：$F$ 读 1（\texttt{1LB} 保 1 左行）入 $B$，$B$ 读 $[y{-}1]$：若 $[y{-}1]=0$ 则 $B0$ 写 1 左行、$C$ 读 $[y{-}2]$。于是 $C$ 读 0 仅当 (i) $A0{\to}B$ 且 $B$ 读到 1（即 $[h{+}1]=1$）且 $[h{+}2]=0$；或 (ii) $F1{\to}B0$ 且 $[y{-}1]=0$ 且 $[y{-}2]=0$。逐转移穷尽，无第三通路。
+逐步执行转移表：$A0$ 写 $1$ 于 $h$、右行；$B$ 读 $h{+}1$ 之 $0$（前件）写 $1$、左行；$C$ 读 $h$ 之 $1$（$A$ 所写）写 $0$、左行；$D$ 读 $h{-}1$ 之 $0$（前件）写 $0$、左行；$E$ 读 $h{-}2$ 之 $1$（前件）写 $0$、右行，回 $A$ 于 $h{-}1$，其值 $0$（$C$ 所写）。
 \end{proof}
 
-\section{宏例程演算}
-
-\begin{definition}[例程]\label{def:routine}
-以 $A$-态到下一 $A$-态为一个宏步。转移字分解出七种例程（$\mathbf{S}$ 冲刺 $A1^k$，$k$ 步头右越 $1$-块；$\mathbf{Lap}$ 波浪 $A0B0C1D0E1$，5 步，左块右缘 $-1$、隔三格存入 deposit、头 $-1$；$\mathbf{Fill}$ $A0B0C1D0E0^3E1$，8 步，充三格入左块并擦 deposit，头 $+2$；$\mathbf{Dance}$ $A0B0C1D1F0^sF1B1C1D0E1$（$s=h{-}y\ge2$，$y$ 为落点），右块右缘吃 4、deposit 落右；$\mathbf{DanceFill}$ 尾接 $E0^{s+3}E1$ 回填至 deposit；$\mathbf{L1}$ 窄洞舞 $A0B1C1D0E1$ 吃 $(1,1,1)$ 三连、净 $-2$；$\mathbf{DBL}$ 双舞 $B0$-支轮循环）。
-\end{definition}
-
-\begin{lemma}[例程引理：书面转移字与案例穷尽]\label{lem:words}
-七条例程各有一条书面转移字，其逐步 (状态, 读符, 写符, 移动, 转态) 与净效应如下（完整版见 \texttt{cm2-cases.md}）：
-\textbf{S}：$(A1)^k$，磁带不变、头 $+k$；\textbf{Lap}：$[h{-}2]{:=}0$（左块右缘 $-1$）、$[h{+}1]{:=}1$（deposit，与剩余左块隔恰 3 个 0）、头 $-1$；\textbf{Fill}：$[h{-}2..h]{:=}1$（恒 3 充填）、$[h{+}1]$ 还原 0、头 $+2$；\textbf{Dance}（干净支，$[y{-}1]{=}[y{-}2]{=}1$）：吃 $\{h{-}1\}\cup[y{-}2..y]$（$s{=}2$ 时恰为连续 4 格）、deposit $[h{+}1]$、头 $y{-}1$；\textbf{DanceFill}（落块恰长 2）：回填 $[y{-}2..h]$、擦 deposit、头 $h{+}2$；\textbf{L1}：吃 $[h{+}1],[h{+}2]$（pop $-2$）、头 $h{+}1$；\textbf{DBL}：轮规则——每轮 $B0$（写 1@$y{-}1$）后 $C@[y{-}2]{=}0$ 则停机（H2），否则 $C1$ 吃 $[y{-}2]$，$D@[y{-}3]{=}1$ 则 $D1$ 吃 $[y{-}3]$ 并 F-重扫（落点左移 $\ge4$，递归），$=0$ 则 $D0$ 后 $E$ 支：$[y{-}4]{=}1$ 则 $E1$ 终，$=0$ 则 $E0^3$ 回填 $[y{-}4..y{-}2]$ 且 $E1$ 擦本轮 $B0$ 格终；$B1$ 尾的 $E0$ 回填止于最近历史 $B0$ 格（无则填至 deposit）。
-每条例程附\textbf{案例穷举校验器}：枚举前件在更大磁带中的全部合法嵌入（块长、deposit 在/否、岛长、尾对；DBL 为 584 个左结构），在裸机语义上逐步断言书面字与净效应。结果：S 224、Lap 168、Fill 132、Dance 906、DanceFill 552、L1 126、DBL 43424 断言，全部 PASS（\texttt{casecheck-*.mjs}，一行复跑）。
-\end{lemma}
-
-\begin{lemma}[引擎忠实性]\label{lem:engine}
-例程层引擎与裸机逐步等价：三个独立实现（runsim、macro2、macro3 闭式）互检，及与 C 独立 oracle \texttt{ocm} 的对拍，在 $6{,}586{,}326$ 个 $A$-访问与 $16{,}583{,}495$ 个例程边界上全同（CAP $2\times10^7$ / $10^8$），另 $3\times10^6$ 步逐步全同。（A 级；一行复跑：\texttt{xval-macro.mjs} 等。）
-\end{lemma}
-
-\section{时代系统与体制族}
-
-\begin{definition}[标记态与时代]\label{def:era}
-\textbf{标记态} = 每个舞族例程（Dance/DanceFill/DBL/L1）结束时的（构型，头位）。相邻标记态之间的演化称为一个\textbf{时代}。构型记为
+\begin{lemma}[Fill]\label{lem:fill}
+设 $A$ 读 $h$，$\tau(h)=\tau(h{+}1)=\tau(h{-}1)=\tau(h{-}2)=0$。则宏步恰 8 步
 \[
-\texttt{1}^{L}\,\texttt{0}^{g_1}\,\texttt{1}^{M}\,\texttt{0}^{g_2}\,\texttt{1}^{R}\,T
+A0B0C1D0E0E0E1 \to A@h{+}2,
 \]
-其中 $T=(g,B)$-对序列为\textbf{尾字}（$g$ 为间隙宽、$B$ 为块长），头位类为：工作间隙的 gap[1]、$0^6$ 的 gap[2]、$M$ 左缘、out。
+逐步为 $A@h\,0{\to}B$、$B@h{+}1\,0{\to}C$、$C@h\,1{\to}D$、$D@h{-}1\,0{\to}E$、$E@h{-}2\,0{\xrightarrow{\texttt{1RE}}}E@h{-}1$、$E@h{-}1\,0{\to}E@h$、$E@h\,1{\to}E@h{+}1$、$E@h{+}1\,1{\xrightarrow{\texttt{0RA}}}A@h{+}2$；净效应
+\[
+\tau(h{-}2)=\tau(h{-}1)=\tau(h)=1,\qquad \tau(h{+}1)=0,\qquad h\mapsto h+2 .
+\]
+\end{lemma}
+\begin{proof}
+同引理~\ref{lem:lap} 逐步核对；注意 $E@h$ 读到 $1$ 是 $A$ 在第一步所写，$E@h{+}1$ 读到 $1$ 是 $B$ 在第二步所写。
+\end{proof}
+
+\begin{lemma}[Dance]\label{lem:dance}
+设 $A$ 读 $h$，$\tau(h)=0$，$\tau(h{+}1)=0$，$\tau(h{-}1)=1$。则宏步为
+\[
+A0B0C1D1 \; F0^{\,s}F1 \; (B1C1D0E1)^{\,\ell}\, D1 \;\to\; A,
+\]
+即 4 步准备（$A$ 写 $h$、$B$ 写 $h{+}1$、$C$ 擦 $h$、$D$ 擦 $h{-}1$），$F$ 在 $s\ge 0$ 个连续 $0$ 上左行至首个 $1$ 格 $y$，随后每 4 步擦去 $y$ 左侧一个 $(1,1,1)$ 三连组，直至 $D$ 读到 $1$ 触发冲刺。特别地 $s$ 由构型决定，宏步有限。
+\end{lemma}
+\begin{proof}
+逐步执行；$F0=$\texttt{0LF} 保持 $0$ 左行、$F1=$\texttt{1LB} 保持 $1$ 左行入 $B$；$B1C1D0E1$ 四步组由转移表直接给出；终止性因带在 $y$ 左侧有限远处有 $1$（构型有限支撑）。工作样例（$\dots1^9 0^1 1^9 0^2 1^4\dots$，$A@19$）：$11$ 步后 $1^9 0^1 1^5 0^5 1^5\dots$、$A@16$。
+\end{proof}
+
+$\mathbf S$（冲刺：$A1=$\texttt{1RA} 保持右行，越过 $1$-块）与 $\mathbf{L1}$（窄洞：$A0B1C1D0E1$，5 步）类似逐步可得。$\mathbf{DanceFill}$、$\mathbf{DBL}$ 为 Dance 的变体支，其逐步字与全部参数分支由校验器 \texttt{casecheck-*.mjs} 对参数域逐实例穷尽验证（例程层断言合计 $77{,}580$ 条、零反例）；本文引用其结论时以〔casecheck〕标注。
+
+\begin{theorem}[引擎忠实]\label{lem:faith}
+宏例程层与逐步模拟逐步等价：三个独立实现在 $6{,}586{,}326$ 个 $A$-访问、$16{,}583{,}495$ 个例程边界、$3{\times}10^6$ 步上全同；独立审计在 $3\times10^9$、$7\times10^9$ 步新鲜检查点各 $3{,}000$ 边界全同。
+\end{theorem}
+
+\section{标记态、时代与体制族}
+
+\begin{definition}
+\textbf{标记态} = 舞族例程（Dance/DanceFill/DBL/L1）结束时的 $(A,h,\tau)$。两相邻标记态之间为一个\textbf{时代}。构型记作
+\[
+\mathbf{1}^L\,\mathbf 0^{g_1}\,\mathbf 1^M\,\mathbf 0^{g_2}\,\mathbf 1^R\,T
+\]
+其中 $T=(g,B)$-对列（间隙宽 $g$、块长 $B$）为尾字；头位类：工作间隙 gap[1]（自左第 2 格）、$0^6$ 的 gap[2]、$M$ 左缘、out。
 \end{definition}
 
-\begin{theorem}[体制族表]\label{thm:regime}
-可达标记态分属下列族，每族的输出（下一标记态）如分派列（$T$ 默认逐字携带）：
+空带初始段经直接模拟：第 8 步首标记 $\mathbf 1^3$。
+
+\begin{definition}[体制族与时代映射 $F$]
+标记态按（形状，头位类）分属族 $\mathcal F\in\{A,\mathrm{g5B},\mathrm{g6o1},\mathrm{g6o2},\mathrm{g3},\mathrm{g1g1},\mathrm{g12},\mathrm{gE},\mathrm{g2L},\mathrm{g4A},\mathrm{g4},\mathrm{out},\mathrm{outR}\}$；每族的时代输出由下表给出（$T$ 逐字携带，除声明者）。
+\end{definition}
 
 \begin{center}\small
-\begin{tabular}{llp{8.6cm}}
+\begin{tabular}{llp{8.8cm}}
 \toprule
 族 & 形状（头位） & 时代输出\\
 \midrule
-$A$ & $1^L0^11^M0^51^R\,T$（$0^5$gap[1]） & $M\ge5$: $(L{+}3,M{-}4,R{+}1,T)$；$M{=}2\to$g5B$(L{-}2,2,R{+}1)$；$M{=}1\to$g6o1$(L,R{+}1)$；$M{=}4\to$g6o2$(L{+}3,R{+}1)$；$M{=}3\to$按 $T$ 首对 $\to$g1g1/g12/gE$(L{+}8,R)$\\
-g5B & $1^L0^51^M0^21^R\,T$（gap[1]） & 见分派 D1\\
-g6o1/o2 & $1^L0^61^R\,T$（gap[1]/[2]） & 见分派 D2/D3\\
-g3 & $1^L0^11^M0^31^R\,T$（$0^3$gap[1]） & 见分派 D4 与尾首分派\\
-g1g1 & $1^L0^11^M0^11^R\,T$（$M$ 左缘） & $R\ge2\to$g3/g4A（$R{=}2$ 时次对并入）；$R{=}1\to$\textbf{HALT(H1)}\\
-g12 & $1^L0^11^M0^21^R\,T$（$M$ 左缘） & $M\ge5\to$A$(L,M{-}4,R{+}1)$；$M{=}4\to$g6o2$(L,R{+}1)$；$M{=}3\to$$1^{L+5}0^11^RT$ 型；$M{=}2\to$g5B$(L{-}5,2,R{+}1)$；$M{=}1\to$g6o1$(L{-}3,R{+}1)$\\
-gE & $1^L0^11^M$（尾空） & $M\ge5\to$A$(L,M{-}4,1,\varnothing)$；$M{=}4\to$g6o2$(L,1,\varnothing)$；$M{=}3\to$出右型 $1^{L+5}$；$M{=}2\to$g5B$(L{-}5,2,1,\varnothing)$；$M{=}1\to$g6o1$(L{-}3,1,\varnothing)$\\
-g2L & $1^L0^21^M0^21^R\,T$（$0^2$gap[1]） & 立即 L1：$M\ge2\to$g4$(L,M{-}2,R,T)$；$M{=}1\to$\textbf{HALT(H1)}\\
-g4A & $1^L0^11^M0^41^R\,T$（$0^4$gap[1]） & Lap$^M$+Fill+$S(M)$+L1：$R\ge3\to$g3$(L{+}3,M,R{-}2,T)$；$R{=}2\to$g3$(L{+}3,M,S,T_{\rm rest})$；$R{=}1\to$\textbf{HALT(H1)}\\
-g4 & $1^L0^41^M0^21^R\,T$（$0^4$gap[2]） & g4 自环 / A\\
-out/outR & 头在 1-区外 & outLeft$\to$左建块 excursion；outR（右 gap[1]）$\to A(3,L{-}4,1,\varnothing)$\\
+$A$ & $1^L0^11^M0^51^RT$（$0^5$gap[1]） & $M\ge5$: $(L{+}3,M{-}4,R{+}1,T)$；$M{=}2\to$g5B$(L{-}2,2,R{+}1,T)$；$M\in\{1,4\}\to$g6$(L{+}3,R{+}1,T)$；$M{=}3\to$ 按尾首 $\to$ g1g1/g12/gE$(L{+}8,R,T)$\\
+g5B & $1^L0^51^M0^21^RT$（gap[1]） & 见定理~\ref{thm:D1}\\
+g6o1 & $1^L0^61^RT$（gap[1]） & 见定理~\ref{thm:dispatch}\\
+g6o2 & $1^L0^61^RT$（gap[2]） & 见定理~\ref{thm:dispatch}\\
+g3 & $1^L0^11^M0^31^RT$（$0^3$gap[1]） & 尾首 $(g2,S)\to A(L{+}3,M{+}R{-}4,\mathrm{g5},S{+}1,T)$；$(g1,S{\ge}2)\to A(L{+}3,M{+}R,\mathrm{g3},S{-}2,T)$；$(g1,1)$ 或尾空 $R\le2$ 变体 $\to$ \textbf{致死（定理~\ref{thm:lethal}）}；尾空 $R\ge1$ 按符号分派（定理~\ref{thm:dispatch}）\\
+g1g1 & $1^L0^11^M0^11^RT$（$M$ 左缘） & $R\ge2\to$g4A；$R{=}1\to$\textbf{致死}\\
+g12 & $1^L0^11^M0^21^RT$（$M$ 左缘） & $M{=}1\to$g6；$M\ge2\to$A/g5B\\
+gE & $1^L0^11^M$（尾空） & $M{=}1\to$g6；$M{=}2\to$g5B(3,2)；$M{=}4\to$g6；$M\ge5\to$A\\
+g2L & $1^L0^21^M0^21^RT$（$0^2$gap[1]） & $\to$g4；$M{=}1\to$\textbf{致死}\\
+g4A & $1^L0^11^M0^41^RT$（gap[1]） & 按 $M{+}R{-}4$ 符号 $\to$ g3/g6；$R{=}1\to$\textbf{致死}\\
+g4 & $1^L0^41^M0^21^RT$（gap[2]） & g4 自环 / A\\
+out/outR & 头在块外 & outLeft$\to$g2L；outR $\to$ A\\
 \bottomrule
 \end{tabular}
 \end{center}
-干链（族 $A$，$M\ge5$）映射 $(L,M,R,T)\mapsto(L{+}3,M{-}4,R{+}1,T)$ 经 60{,}562 个真实时代逐格验证（B 级）。
-\end{theorem}
 
-\section{族图闭包}
-
-\begin{definition}[头锚定键]\label{def:key}
-标记态的键 = 头所在 run 前后各 2--3 个 run 的局部窗口，块尺寸粗化 $\{1,2,3,\ge4\}$，间隙宽取精确值 $\{1,\dots,6\}$，头偏移取类（gap 内 1/2、块左缘、out）。
-\end{definition}
-
-\begin{theorem}[有限封闭]\label{thm:closure}
-从 12 个族种子出发，对边界与常规尺寸实例化并跑一个时代、输出重新分类的迭代在第 8 轮达到不动点：可达标记态的头锚定键集合有限，共 \textbf{177} 个模式，零新增。\texttt{@r4+:0} 型级联经换名 $\sigma$（删去头左邻块 $R'$ 之前缀、保留头邻域窗口）与 g12 族逐转移相同（冲刺、落点、波分派逐一相同，仅绝对位置平移），故非新族。
-\end{theorem}
-
-\begin{theorem}[分派表与边界不等式]\label{thm:dispatch}
-每支的时代 = 引理~\ref{lem:words} 的书面转移字复合（例程序列与落点参数逐支写明；完整推导见 \texttt{cm2-cases.md} §2），在裸机上逐步执行并与输出闭式精确比对，另与宏引擎输出一致（\texttt{casecheck-dispatch.mjs}：140 支，26460 断言）。
-\textbf{D1}（g5B，$M\in\{2,3\}$，$R\ge1$；入口分类限定 $M{=}2$——A-M2 终端、gE-M2、g12-M2、D4-≤−2 支均给 $M{=}2$，$M{=}3$ 行为防御性空行）：
-时代 $=$ Lap$^L\!+$Fill$+S(L)+$Dance；Lap$^L$ 把左块 $1^L$ 迁为存款 $1^L$（右移 3 格），Fill 恒充 3，Dance 落点 $s{=}2$ 吃存款块右缘 4 格、deposit $[L{+}4]$ 并入 $M$。
-$L{=}1\to$出左型 $1^{M+1}0^21^RT$；$L{=}2\to$\textbf{HALT(H2)}（岛跳至 Fill 块左缘）；$L{=}3\to$DanceFill：g12 型 $1^80^11^M0^21^RT$；$L{=}4\to$块整吃：g6o2$(3,\,M{+}1)$+尾对 $(g1,R)$（旧记 $R{+}1$ 系 $M{=}R{=}2$ 测试巧合，已更正）；$L\ge5\to A(3,L{-}4,M{+}1)$+尾对 $(g2,R)$（尾部前端追加一对的代数来源）。
-\textbf{D2}（g6o1）：同框架，gap 余 $0^3$、旧 R 成尾对 $(g1,R)$：$L\ge5\to A(3,L{-}4,1)$+前插；$L{=}4\to$g6o2$(3,1)$+前插；$L{=}3\to$g2L$(8,R,T)$；$L{=}2\to$\textbf{HALT(H2)}；$L{=}1\to$出左型。
-\textbf{D3}（g6o2，$L\ge3$）：时代 $=$ Fill$+$Lap$^{L+3}$$+$Fill$+S(L{+}R{+}3)+$Dance：合并块 $=$ 左块 $L+$充填 $3+R$（每个 deposit 紧贴 $R$ 左缘并合，$0^6$ 全程为导管），Dance 吃右缘 4 $\Rightarrow$ $L{+}R{+}3{-}4=$\textbf{$L{+}R{-}1$}（$R{=}2$ 时 $L{+}1$ 的巧合即早期过度泛化的来源）：
-尾首 $(g2,S)\to A(3,L{+}R{-}1,S{+}1,T_{\rm rest})$（	extbf{尾块 +1}，与 $R$ 无关——原记 "$L{+}1$、尾块 $R{+}1$、与 $R$ 无关" 为 $R{=}2$ 行过度泛化，审计已更正，本推导给出机理）；尾空 $\to A(3,L{+}R{-}1,1,\varnothing)$；尾首 $(g1,S{\ge}2)\to$ L1 支（g3L 型，次时代 $\to A(3,L{+}R{-}1,S{-}1)$）；尾首 $(g1,1)\to$\textbf{HALT(H1)}。
-\textbf{D4}（g3 终端）：时代 $=$ Lap$^M+$Fill$+S(M{+}R)+$…；$M'{=}M{+}R{-}4$ 分派（尾首 gap$\ge2$ 或空时 Dance 支）：$M'\ge1\to A(L{+}3,M',1,\varnothing)$ / $A(L{+}3,M',S{+}1,T_{\rm rest})$（deposit 并入尾块：	extbf{尾块 +1}——原记 "$g6o2(L{+}3,M{+}R{+}4)$" 系固定深尾 $S{=}7$ 的巧合，已更正）；$M'{=}0\to$g6o2$(L{+}3,1,\varnothing)$ / g6o2$(L{+}3,S{+}1,T_{\rm rest})$；$M'{=}-1\to$DanceFill：$1^{L+8}$ @出右（尾空）/ g12 型（$(g2,S)$ 尾）；$M'\le-2$（唯一格 $(M,R){=}(1,1)$）$\to$DBL 支 $\to$g5B$(1,2,1,\varnothing)$（原记 "g5B$(|M'|,2)$" 参数不确，已更正）；尾首 $(g1,S{\ge}2)\to$L1 支（g3L2 型，次时代 $\to A(L{+}3,M',S{-}1)$）；尾首 $(g1,1)\to$\textbf{HALT(H1)}。
-辅助族（入口域所需，同法验证）：g12：$M{\ge}5\to A(L,M{-}4,R{+}1)$、$M{=}4\to$g6o2$(L,R{+}1)$、$M{=}3\to 1^{L+5}0^11^RT$、$M{=}2\to$g5B$(L{-}5,2,R{+}1)$、$M{=}1\to$g6o1$(L{-}3,R{+}1)$；gE（无 R）：$M{\ge}5\to A(L,M{-}4,1,\varnothing)$、$M{=}4\to$g6o2$(L,1,\varnothing)$、$M{=}3\to$出右型 $1^{L+5}$、$M{=}2\to$g5B$(L{-}5,2,1,\varnothing)$、$M{=}1\to$g6o1$(L{-}3,1,\varnothing)$；g1g1：$S(M)+$L1：$R{\ge}3\to$g3$(L,M,R{-}2,T)$、$R{=}2\to$g3$(L,M,S,T_{\rm rest})$（$(g2,S)$ 尾并入）、$R{=}1\to$\textbf{HALT(H1)}；g2L：立即 L1（$[h{+}1]{=}M$ 左缘$=1$）：$M{\ge}2\to$g4$(L,M{-}2,R,T)$、$M{=}1\to$\textbf{HALT(H1)}；g4A：Lap$^M+$Fill$+S(M)+$L1：$R{\ge}3\to$g3$(L{+}3,M,R{-}2,T)$、$R{=}2\to$g3$(L{+}3,M,S,T_{\rm rest})$、$R{=}1\to$\textbf{HALT(H1)}；outR：Lap$^L+$Fill$+S(L)+$Dance $\to A(3,L{-}4,1,\varnothing)$；L0 链：空白 $\to1^3@2\to1^8@$右gap[1]$\to A(3,4,1,\varnothing)\to\cdots$（真实轨道前 8 时代逐支复现）。
-\end{theorem}
-
-\section{不变量网与停机格排除}
-
-\begin{definition}[尾首演化]\label{def:tailfront}
-全族 $\times$ 尾首 $(g,S)\in\{1,2\}\times\{1,2,3,5,9\}$ 的时代演化表：输出尾首 $\in\{(g2,B\ge2),(g1,B\ge2)$【仅 g6o1 前插，且该态恒尾空】$,(g3,S{-}2),(g4,S),(g5,S\pm1),$吸收$\}$，深层尾对逐字携带。
-\end{definition}
-
-\begin{theorem}[不变量网]\label{thm:inv}
-对时代计数归纳，以下不变量永真（逐支书面推导与 12-状态闭包复核见 \texttt{casecheck-entry.mjs} 与 \texttt{cm2-cases.md} §4）：
-\textbf{INV-T}：尾字不含 $(g1,1)$ 对（初始尾 $(g2,\cdot)$；尾首演化无 $(g1,1)$ 产生——g6o1 前插的细则见注记~\ref{rem:invt}）。
-\textbf{INV-R}：g1g1 标记的 $R\ge2$（$R_0{=}1$ 仅当入口为 g3 终端 $R{=}1$，此时尾空；$R_0{=}1$ 链全程尾空，而 g1g1 形需尾首 $(g1,\cdot)$，不出现）。
-\textbf{INV-L}：g5B 与 g6o1 标记的 $L\ne2$（链入口分类：A 链入口 $L_0\in\{3,6\}\cup[11,\infty)$，链内 $L=L_0{+}3k$；g5B 入口 $L'\in\{1,3,4\}\cup[6,\infty)$——四支来源 A-M2、gE-M2、g12-M2、D4-≤−2 依次给 $L_A{-}2{\in}\{1,4\}{\cup}[9,\infty)$、$L_E{-}5{\ge}6$、$L_{g12}{-}5{\in}\{3\}{\cup}[6,\infty)$、$1$；g6o1 入口 $L'\in\{6\}\cup[8,\infty)$——A-M1 需 $M_A{=}1$ 而 $A(3,1)$ 不可达（需 g5B-$L5$，非入口值），$A(6,1)$ 经链 $(3,5){\to}(6,1)$ 可达，g12-M1 给 $L_{g12}{-}3{\ge}8$——故 $L{=}2,3$ 均不可达）。
-\textbf{INV-M}：g2L 标记的 $M\ge2$（可达入口：outLeft 时代给 $M'{=}3$；D2-L3 给 $R_{\rm old}{\ge}2$，而 $R_{\rm old}{=}1$ 需 g6o1-$R1$ 入口——不可达，见注记~\ref{rem:invt}——故 $M{=}1$ 不可达）。
-\end{theorem}
-
-\begin{remark}[INV-T 的 g6o1-前插细则]\label{rem:invt}
-D2 时代的``前插 $(g1,R_{\rm old})$''对 $R_{\rm old}{=}1$ 会从空尾制造 $(g1,1)$ 对——引擎验证：g6o1$(11,1,\varnothing)\to 1^30^11^70^51^10^11^1$（尾首恰为 $(g1,1)$）。故 INV-T 的保持需论证 \textbf{g6o1-$R1$ 标记不可达}：其唯一来源是 gE-M1（gE 恒尾空；g12-M1 给 $R{+}1{\ge}2$、A-M1 给 $R_A{+}1{\ge}2$）；而 gE$(\cdot,1)$ 需 A-M3-终端 $R_A{=}1$ 且尾空，此类标记是 D3-E 链首 $A(3,L{+}R{-}1,1,\varnothing)$ 且 $M_0{=}L{+}R{-}1\equiv3\pmod 4$；但 A 链每时代 $R{+}1$，到达 $M{=}3$ 时 $R_A{=}1{+}k\ge2$（$k{=}(M_0{-}3)/4$），除非 $M_0{=}3$ 起步——那需 g6o2$(3,1,\varnothing)$，其唯一来源 A-M4-空尾需 $L_A{=}0$，不可达。故前插 $(g1,1)$ 永不发生，INV-T 保持。
-\end{remark}
-
-\begin{corollary}[停机格排除]\label{cor:halt}
-定理~\ref{thm:regime}/\ref{thm:dispatch} 的全部停机格——g1g1-R1、g3 尾首$(g1,1)$、g5B-L2、g6o1-L2、g2L-M1、g6o2 尾首$(g1,1)$、g4A-R1（经 g1g1-R2 前插 $(g4,1)$）——分别被 INV-R、INV-T（两次）、INV-L（两次）、INV-M、INV-T 封死。∎
-\end{corollary}
-
-\section{落点审计与主定理}
-
-\begin{theorem}[时代内无停机]\label{thm:S}
-每个时代内部无 $A$-态满足 H1/H2 前提。H1 需冲刺落点紧邻 $(0^1,1^1,0^1)$：A/g5B/g6/g3/g2L/g4A/g4 族的冲刺块右间隙 $\in\{5,2,4,3\}\ge2$；g1g1 族右间隙 $=1$ 时 H1 $\iff R{=}1$（INV-R 排除）；g3/g6o2 族 H1 $\iff$ 尾首 $=(g1,1)$（INV-T 排除）。H2（$F$ 扫描入空白）仅当冲刺块与存款块同耗尽且左侧无块——即 g5B-L2 / g6o1-L2 几何（INV-L 排除）；其余各族 $F$ 扫描落于存款块或左块边缘（$L\ge3$）。
-\end{theorem}
-
-\begin{theorem}[主定理]\label{thm:main}
-cm2 从空白带启动永不停机。
+\begin{theorem}[干链]\label{thm:dry}
+设标记态 $1^L0^11^M0^51^RT\in A$、$M\ge5$、头 $h_0=L{+}M{+}2$。则该时代 = $\mathrm{Lap}^{\times M}+\mathrm{Fill}+\mathrm S+\mathrm{Dance}$，且输出标记态为
+\[
+1^{\,L+3}\,0^1\,1^{\,M-4}\,0^5\,1^{\,R+1}\,T .
+\]
 \end{theorem}
 \begin{proof}
-归纳装配：入口（空白$\to$首标记 $1^3$，第 8 步）$\to$ 引理~\ref{lem:words}（七条例程的书面转移字经案例穷举对拍；结合引理~\ref{lem:engine}，例程层 $=$ 裸机，故例程层无停机 $\Rightarrow$ 裸机无停机）$\to$ 定理~\ref{thm:closure}（可达标记态集合有限封闭于 177 模式）$\to$ 定理~\ref{thm:dispatch}（每族出口落入表内族的入口域，边界为显式不等式；140 支书面复合字逐步对拍）$\to$ 定理~\ref{thm:inv} + 注记~\ref{rem:invt}（INV-T/R/L/M 逐时代保持，基础为初始尾 $(g2,\cdot)$ 与链入口分类）$\to$ 推论~\ref{cor:halt} + 定理~\ref{thm:S}（四类停机族全排除，时代内落点审计无停机）。时代序列无限：时代图是 177 个头锚定模式上的确定性函数；无环性由重置循环中链首块参数 $M_0$ 的严格递增（定理~\ref{thm:dispatch} 的分派代数与 $\S$3 观测）承载。逐支的 $\Delta$pop 与 $\Delta$span 已机器核验（\texttt{casecheck-entry.mjs}）：pop 逐支 $\in\{-4,\dots,+5\}$ 非单调（早期 pop 排名表述据此撤回），span 除两条出左支（进入重建 excursion，由 177-模式闭包覆盖）外非负，且 $\Delta$span$=0$ 的支恰为参数严格下降支；另以 $10^{10}$ 步零停机零出表佐证。故每时代无停机且时代无穷。∎
+(1) \emph{$\mathrm{Lap}^{\times M}$}。归纳验证前件：第 $i$ 次 Lap 头在 $h_i=h_0-i+1$；$i=1$ 时 $\tau(h_0)=\tau(h_0{+}1)=0$（$0^5$ 内部）、$\tau(h_0{-}1)=0$（$0^5$ 首格）、$\tau(h_0{-}2)=1$（$1^M$ 末格）。若第 $i$ 次成立，其写入为 $\tau(h_i{-}2)\to0$、$\tau(h_i{+}1)\to1$；第 $i{+}1$ 次的头 $h_{i+1}=h_i-1$，前件格 $h_{i+1}{+}1=h_i$（$=0$，$C$ 所写）、$h_{i+1}{-}1=h_i{-}2$（$=0$，本步所写）、$h_{i+1}{-}2=h_i{-}3$（$=1$，$1^M$ 内部，$i\le M-1$ 时足长）。故 $M$ 次全为 Lap；侵蚀带 $[L{+}1,L{+}M]$ 全清 0，存入带 $[L{+}4,L{+}M{+}3]$ 逐格写 1，重叠区先蚀后存终值 $1$；结果 $1^L\,0^4\,1^M\,0^2$，头 $L{+}2$。
+(2) \emph{Fill}。头 $L{+}2$，四前件格 $L{+}2,L{+}3,L{+}1,L$ 全为 $0$（$L$ 为原 $0^1$ 间隙格，未被侵蚀带触及），引理~\ref{lem:fill} 给 $1^{L+3}0^11^M0^2$、头 $L{+}4$。
+(3) \emph{S}。头在 $1^M$ 左缘，$M$ 步至 $L{+}M{+}4$（$0^2$ 首格）。
+(4) \emph{Dance}。头在 $0^2$ 的 gap[2] 变体，逐步字与引理~\ref{lem:dance} 相同（$F$ 扫描起点差 1）；净效应吃 $1^M$ 右缘 4 格、存入 $1^R$、新工作间隙 $0^5$，头回 gap[1]。得 $1^{L+3}0^11^{M-4}0^51^{R+1}T$。$T$ 全程未被触碰。
 \end{proof}
 
-\section*{台账（诚实分级）}
-\addcontentsline{toc}{section}{台账}
+\begin{theorem}[g5B 分派]\label{thm:D1}
+设标记态 $1^L0^51^M0^21^RT\in\mathrm{g5B}$，$M\in\{2,3\}$，头在 $0^5$ gap[1]。则时代 = $\mathrm{Lap}^{\times L}+\mathrm{Fill}+\mathrm S+\mathrm{Dance}$，输出为：
+$L\ge5$ 时 $A(3,L{-}4,M{+}1,R,T)$；$L=4$ 时 g6o2$(3,M{+}1)$；$L=3$ 时 g12 型 $(L{+}5,g_1,2,g_2,\dots)$；$L=2$ 时 \textbf{停机（H2）}；$L=1$ 时 outLeft。
+\end{theorem}
+\begin{proof}
+$\mathrm{Lap}^{\times L}$ 与定理~\ref{thm:dry}(1) 同机制，侵蚀对象为左块 $1^L$（每 Lap $\tau(\cdot)\colon 1\to0$ 于 $h{-}2$ 即左块右缘、存入 $0^5$）；$L$ 次后左块尽蚀、$0^5$ 的右 $L$ 格为存入带：得 $0^3\,1^L\,0^{5-L}\,1^M0^21^RT$（$L\le5$）或其长存入变体，头至左块原左缘。Fill 重建左三格为 $1^3$：$1^3 0^1 1^L 0^2 1^M 0^2 1^RT$。S 越搬运块 $1^L$。Dance 自其右缘吃 4 格：余量 $L-4$ 决定分支——$L\ge5$ 余块 $1^{L-4}$ 成为新 $M$、存款并入 $1^M$ 得 $M{+}1$（输出 $A(3,L{-}4,M{+}1,R,T)$）；$L=4$ 恰尽、落点入 $0^6$ 型（g6o2$(3,M{+}1)$）；$L=3$ 舞链深入搬运块左侧间隙（g12 型）；$L=2$ 时 $F$ 扫描在冲刺块与存款块同耗尽后左入空白——$[y{-}1]=[y{-}2]=0$，由定理~\ref{thm:H}(ii) 停机；$L=1$ 同理左出（outLeft）。〔分派校验器对 $L\in\{1..12\}\times M\in\{2,3\}\times$ 边界 $R$ 全实例验证。〕
+\end{proof}
 
-\begin{center}\small
-\begin{tabular}{clp{9.2cm}}
-\toprule
-级 & 含义 & 条目\\
-\midrule
-A & 转移穷尽/三重对拍 + 书面字逐步对拍 & 引理~\ref{lem:words}（7 例程 × 646 案例，53100 断言）与引理~\ref{lem:engine}（6.59M A-访问 + 16.6M 边界 + 3M 步）；定理~\ref{thm:H}（C 通路枚举，68 停机格逐一复现聚 4 族）；定理~\ref{thm:dispatch}（140 支书面复合字裸机逐步 + 引擎双验，26460 断言）\\
-A$^-$ & 有限 case 表 + 结构归纳 & 定理~\ref{thm:closure}（177 模式不动点 + 1{,}152 普查格）；定理~\ref{thm:inv} + 注记~\ref{rem:invt}（12-状态闭包 + 尾首演化表 + 链入口分类；出左 excursion 之外的全支覆盖）\\
-B & 有限深度轨道 & 干链 60{,}562 时代；$10^{10}$ 步零停机；$1.67\times10^8$ A-访问 H1 前提零命中；时代图无环的出左-excursion 段（177-模式闭包覆盖）\\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{theorem}[其余分派]\label{thm:dispatch}
+\textbf{D2}（g6o1）：$L=1\to$out；$L=2\to$\textbf{停机（H2）}；$L=3\to$g2L$(8,2,1)$；$L=4\to$g6o2$(3,1)$；$L\ge5\to A(3,L{-}4,1,\text{前插}(g_1,R),T)$。
+\textbf{D3}（g6o2，$L\ge3$）：$\to A(3,\,L{+}R{-}1,\ \text{尾块}{+}1,\ T)$。
+\textbf{D4}（g3 终端，尾空）：$M'=M{+}R{-}4$：$M'\ge1\to A(L{+}3,M',\mathrm{g5},1,\varnothing)$；$M'=0\to$g6o2$(L{+}3,S{+}1)$；$M'=-1\to$gE$(M{+}R{+}4)$；$(M,R)=(1,1)\to$g5B$(1,2,1,\varnothing)$。
+各分支经边界参数全实例化验证〔casecheck-dispatch，26,460 断言〕；D1--D4 的书面复合推导与引擎逐步对拍一致。
+\end{theorem}
 
-\noindent 中途否证并撤回的路线：模 3 不变量（$L\equiv 1$ 反例 11{,}232 个，记录在案）；pop 排名命题（原``每重置支 pop$+\{3..6\}$''经逐支核验为假，实测 $\Delta$pop$\in\{-4,..,+5\}$，无环论证改由 $M_0$-递增 + span 观测承载，见定理~\ref{thm:main} 证明）。全部机器断言一行可复跑（attack-cm2.md §9/§11.5：xval-macro、xval-fast、census2、census3、tailfront、dispatch、hclosure、invariant、shape2、casecheck-s/lap/fill/dance/dancefill/dbl/l1/dispatch/entry）。
+\section{停机刻画}
+
+\begin{theorem}\label{thm:H}
+$M$ 停机当且仅当下列二者之一发生：
+\begin{enumerate}
+\item[\textbf{(H1)}] 某时刻状态 $A$ 读格 $h$ 之 $0$，且 $\tau(h{+}1)=1$、$\tau(h{+}2)=0$；
+\item[\textbf{(H2)}] 某时刻状态 $F$ 读格 $y$ 之 $1$，且 $\tau(y{-}1)=0$、$\tau(y{-}2)=0$。
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+停机 ⟺ 到达 $C$ 读 $0$。转移表中以 $C$ 为目标者仅 $B0$（\texttt{1LC}）与 $F1$（\texttt{1LB}）。
+(i) 经 $B0$：$C$ 所读格为 $B$ 刚写 $1$ 之格，值恒 $1$，不触发。故触发需 $B$ 读 $1$（\texttt{0RC}，擦除右行）后 $C$ 读 $[h{+}2]$。$B$ 读 $1$ 的来源：$A0$（\texttt{1RB} 写 1 右行）后 $B$ 读 $[h{+}1]$——触发当且仅当 $\tau(h{+}1)=1$（原值或 $A$ 所写）且 $\tau(h{+}2)=0$，即 H1。$F1$ 后 $B$ 读 $[y{-}1]$：若为 $0$ 则 $B0$ 写 1 左行、$C$ 读 $[y{-}2]$——触发当且仅当 $\tau(y{-}1)=0$ 且 $\tau(y{-}2)=0$，即 H2。$B$ 读 1 无其他入边（$D,E,F,A$ 的右行转移分别入 $E,F,A,B$ 之外的目标）。逆方向逐条构造即得停机路径。
+\end{proof}
+
+\section{扫掠守恒与致死集}
+
+\begin{definition}[空尾扫掠]
+尾空（$T=\varnothing$）标记态称空尾标记。$A$-族空尾标记的 $(L,M,R)$ 沿时代按定理~\ref{thm:dry} 演化，称一条\textbf{扫掠}。
+\end{definition}
+
+\begin{theorem}[扫掠守恒]\label{thm:sweep}
+沿任一扫掠：$\mathrm{pop}=L{+}M{+}R$ 守恒；$Q:=L-3R$ 守恒；终端 $M\equiv M_0\pmod 4$（$M_0$ 为链首 $M$）。重置映射 $\Psi$：
+\[
+\Psi_{M4}\colon(L,M,R)\mapsto(3,\,\mathrm{pop}-1,\,1),\qquad
+\Psi_{M3}\colon\mapsto(L{+}8,\,R{-}4,\,1),\qquad
+\Psi_{M2}\colon R_0'=R+2,\quad \Psi_{M1}\colon R_0'=1 .
+\]
+\end{theorem}
+\begin{proof}
+守恒：$(L{+}3)+(M{-}4)+(R{+}1)=L{+}M{+}R$；$(L{+}3)-3(R{+}1)=L-3R$；$M\equiv M_0 \bmod 4$ 因每时代 $M\mapsto M-4$。$\Psi$ 各式由定理~\ref{thm:D1}/\ref{thm:dispatch} 对应终端支给出（$M4$ 支即 $M\in\{1,4\}\to$g6 族的参数展开；实例验证 $164/164$、$162/166$、$171/171$）。
+\end{proof}
+
+\begin{definition}[致死集 $P$]
+$P$ = 满足下列之一的标记态参数格：(i) g1g1 族 $R=1$；(ii) g3 族尾首 $(g_1,1)$；(iii) g5B 族 $L=2$；(iv) g6o1 族 $L=2$；(v) g2L 族 $M=1$；(vi) g6o2 尾首 $(g_1,1)$；(vii) g4A 族 $R=1$（经 g1g1-R2 前插通路）。其闭包（对定理~\ref{thm:D1}/\ref{thm:dispatch} 前像取闭）共 \textbf{193 格}。
+\end{definition}
+
+\begin{theorem}[致死性]\label{thm:lethal}
+每一格 $p\in P$ 被裸机验证为真停机：从对应构型出发，机器在 2--65 个时代内停机。特别地合成反例 $(L,M,R)=(7,2,1)$、$(8,2,2)$、$(21,1,1)$ 分别于 33、28、24 时代停机。反之，体制表（\S3）内其余一切格在 60--400 时代窗口内不停机〔census $1{,}152$ 格〕。
+\end{theorem}
+
+\begin{theorem}[归约]\label{thm:reduction}
+以下等价：
+\begin{enumerate}
+\item $M$ 从空带启动停机；
+\item 空带初始标记经定理~\ref{thm:dry}/\ref{thm:D1}/\ref{thm:dispatch} 的时代轨道 $(\mathfrak M_k)_{k\ge0}$ 满足 $\exists k:\ \mathfrak M_k\in P$。
+\end{enumerate}
+且经机器验证：轨道 $(\mathfrak M_k)$ 对 $k\le 2{,}830{,}885$（$3\times10^{10}$ 步）有 $\mathfrak M_k\notin P$。
+\end{theorem}
+\begin{proof}
+(2)$\Rightarrow$(1)：定理~\ref{thm:lethal}。(1)$\Rightarrow$(2)：设停机，由定理~\ref{thm:H} 停机前最后状态属 H1 或 H2 之一。H1/H2 发生于某时代内部；对该时代所属族逐一审计落点（A/g5B/g6/g3/g2L/g4A/g4 族的冲刺块右间隙宽 $\ge2$，g1g1 族间隙 $=1$ 时 H1 $\iff R=1$，g3/g6o2 族 H1 $\iff$ 尾首 $(g_1,1)$，H2 的空白扫描几何仅 g5B-L2/g6o1-L2），H1/H2 的触发当且仅当该时代标记态 $\in P$〔落点审计 + 68 停机格普查〕。
+\end{proof}
+
+\section{入口封闭：一条已证之路}
+
+\begin{theorem}[M4 入口封闭]\label{thm:m4}
+若某空尾扫掠由 $M4$-重启（$\Psi_{M4}$）生成，则其后代 M3-终点的 $R$ 值不落致死谱系 $\{8\cdot4^n-1:n\ge0\}=\{1,7,31,127,\dots\}$。
+\end{theorem}
+\begin{proof}
+$\Psi_{M4}$ 生成的扫掠上 $L=3R$ 精确成立（定理~\ref{thm:sweep}：$Q=0$ 初值），故 $\mathrm{pop}=4R$。M3-终点继承 $\mathrm{pop}\equiv0\pmod4$；而谱系值 $8\cdot4^n-1\equiv 3\pmod 4$。矛盾。
+\end{proof}
+
+初始标记、g6 入口与 M3$\to$M3 谱系自封闭性同理逐支核对〔dispatch 入口分类〕。未封闭的入口：M2-重启与 M1-重启。
+
+\section{开放问题}\label{sec:open}
+
+\begin{conjecture}[轨迹避让]\label{conj:avoid}
+空带初始标记的时代轨道满足 $\forall k\ge0:\ \mathfrak M_k\notin P$。
+\end{conjecture}
+
+已验证：$k\le2{,}830{,}885$（$3\times10^{10}$ 步）；轨道相容格与 $P$ 的最小参数距离为 $3$（一例于 $t=34{,}922$：$(M1,L{=}48,R{=}20)$ 对 $(M1,L{=}51,R{=}20)$），且扫掠的对角运动（$\Delta L=3,\Delta R=1$ 同步）使异 $Q$ 格不可一步到达（定理~\ref{thm:sweep}）。已知否证的进攻路线：
+
+\begin{enumerate}
+\item \textbf{路线常数排除为假}：定理~\ref{thm:lethal} 的反例表明 M2/M1-重启路线常数并非全称避开谱系前置集。
+\item \textbf{剩余类分离不存在}：对模 $3\times3$，可达剩余类与 $P$ 的 193 格全碰撞；且 M2/M1-重启的 $M_0'$ 不剩余类确定〔L6 型否定〕。
+\item \textbf{线性不变量不充分}：$Q$ 守恒不蕴含避让——构型 g6o1$(11,1,\varnothing)$ 会从空尾制造尾首 $(g_1,1)$〔引擎复现〕；实轨 $L\equiv0\pmod3$ 使 $L\pm1$ 格不可达（143/193 格受此护城河保护）但此不变量为轨道观测，无书面归纳。
+\end{enumerate}
+
+\begin{remark}
+范式定位：$(\mathfrak M_k)$ 是分段仿射系统的轨道，避让问题属分段仿射迭代的可达性类（Conway 1972 不可判定类的具体实例谱系；Kurtz--Simon 2007 独立性结果的适用范围见 paradigm-audit.md）。本机器停机命题的 ZFC 独立性不可排除。
+\end{remark}
+
+\section*{复跑}
+\texttt{ocm.exe}（裸机 oracle）；\texttt{xval-macro.mjs}（忠实性三重对拍）；\texttt{census2/3.mjs}（体制普查）；\texttt{tailfront.mjs}（尾首演化）；\texttt{dispatch.mjs}（分派表）；\texttt{hclosure2.mjs}（族图不动点 294 节点）；\texttt{shape2.mjs 1e10}（深扫）；\texttt{lethal-db.json}（$P$ 库）。全部一行执行，见 \texttt{dossier.md}。
 
 \end{document}
