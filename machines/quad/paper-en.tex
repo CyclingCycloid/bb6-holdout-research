@@ -77,6 +77,24 @@ The word is read off the transition table step by step; the parameter branches (
 One era = the lap chain up to reservoir exhaustion + the drain routine + the reset. Reservoir parameters $(L,M,R)$ evolve along the chain by Lemma~\ref{lem:lap}; draining triggers a churn cascade (reseeding). Era key sets (key = (position class, neighborhood block count)) collected from deep scans: cm16/26/51 share 78 keys identically; cm52 has 89.
 \end{definition}
 
+\section{The era system: data and structure}
+
+\begin{definition}[reservoir configuration]
+The marker tape consists of: a left reservoir $1$-block, a right reservoir $1$-block and a deposit block, separated by $0^2$ seams, with the frozen skeleton as tail (identical bit-for-bit across the four machines, fixed by deep scans); the working triple $(x,R,z)$ records the working-block, right-reservoir and deposit lengths.
+\end{definition}
+
+\begin{remark}[era-chain example (cm16, near $10^9$ steps)]
+The measured working-triple sequence of eras:
+\[
+(5392,\,22850,\,1818)\ \longrightarrow\ (1787,\,16815,\,1)\ \xrightarrow{\ \text{churn}\ }\ (14188,\,11225,\,946)\ \longrightarrow\ \cdots
+\]
+The right reservoir decreases by steps of 2 along the lap chain until exhaustion, triggering the drain and the churn cascade (reseeding into a new reservoir layout); the chain truncations and reset branches form the era key set.
+\end{remark}
+
+\begin{remark}[cross-machine alignment data]
+The large-era $(L_0,R_0)$ sequences of the four machines align over 562 measured pairs at constant offsets ($0$ or $+1$) with zero misalignment (deep-scan prefix, at the $5\times10^9$-step scale); the era key sets are 78 keys, identical key-by-key, for cm16/26/51 and 89 for cm52 (due to criterion and skeleton differences). These are observations (grade B), not used as theorems.
+\end{remark}
+
 \section{Verified correspondence facts between the four machines}
 
 \begin{remark}
@@ -98,6 +116,10 @@ An island is the pattern $(0^1,1^1,0^1)$ (a single-cell $1$-island). A danger ev
 \begin{theorem}[island invariant]\label{thm:island}
 Within the verified domain ($2\times10^7$ steps per machine, 892 island moments): every island occurrence is co-located with the destroyer wave (head distance $\le1$); island occurrences are transient --- within each lap islands exist in \emph{two} segments (correcting the earlier ``only the boundary $R{=}1$ segment''), with creator and destroyer the same passing wave and existence window shorter than one lap [casecheck-island, 39 assertions].
 \end{theorem}
+
+\begin{definition}[vocabulary, audit and guard]
+The \emph{verified vocabulary} is the set of routine branches actually occurring and catalogued in deep scans and censuses (the standard lap word with its parameter branches, drain branches, churn reseed branches; the authoritative inventory is the era data and the classifier of \texttt{quad.c}). \emph{Audit mode}: at every $A$-state landing, check whether the danger pattern (a head-far $(0^1,1^1,0^1)$) appears in the five-cell window (head neighborhood $\pm2$), stepping to a given depth. \emph{Guard mode}: at every step, check directly whether the machine's criterion (the two-cell condition of Theorems~\ref{thm:h16}--\ref{thm:h52}) holds, stepping to a given depth.
+\end{definition}
 
 \begin{theorem}[safety within the vocabulary]\label{thm:vocab}
 At every $A$-state landing covered by the verified routine vocabulary, the pattern preconditions of Theorems~\ref{thm:h16}--\ref{thm:h52} do not occur (sprint-landing right gaps $\ge2$; island positions excluded by Theorem~\ref{thm:island}).
