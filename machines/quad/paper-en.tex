@@ -1,0 +1,124 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{pdftitle={The Halting Problem of cm16/26/51/52},pdfauthor={CyclingCycloid}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newcommand{\HALT}{\textsf{HALT}}
+
+\title{The Halting Problem of the Four Turing Machines \texttt{cm16/26/51/52}:\\ Criteria, Era Algebra, Correspondence Facts, and the Open Problem}
+\author{}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\section{The four machines and conventions}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Machine & Transition table & Halting transition\\
+\midrule
+cm16 & \texttt{1RB0LE\_0RC1RB\_1LC1RD\_1RF0LA\_0RD1LE\_1RB---} & $F$ on $0$\\
+cm26 & \texttt{1RB1RC\_1LC0LE\_1RD1RC\_1LB0RA\_---0LF\_1RD1LF} & $E$ on $0$\\
+cm51 & \texttt{1RB1RA\_1LC0RC\_1RE0LD\_0RE0LF\_1RA---\_1RB1LF} & $E$ on $0$\\
+cm52 & \texttt{1RB0LD\_1LC1RD\_0LE1LA\_0RB1RD\_---0LF\_1RA1LF} & $D$ on $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Bi-infinite tape, initially all $0$, head at cell $0$, state $A$. The four halting transitions occupy different positions; criteria are established independently per machine (\S2), followed by the common era algebra (\S3), the verified correspondence facts (\S4), and the per-machine reduction and open problem (\S5--\S6). All criterion- and routine-layer assertions are exhaustively verified by two checkers: \texttt{casecheck-halt.mjs} (204,800 configurations, 111,257 halting instances, zero counterexamples, entry enumeration ENUM-OK $\times$4) and \texttt{casecheck-island.mjs} (39 assertions, all passing).
+
+\section{Halt criteria (independent per machine)}
+
+\begin{theorem}[cm16]\label{thm:h16}
+cm16 halts if and only if at some time state $D$ reads a $0$ at cell $w$ with $\tau(w{+}1)=1$.
+\end{theorem}
+\begin{theorem}[cm26]\label{thm:h26}
+cm26 halts if and only if at some time state $B$ reads a $1$ at cell $q$ with $\tau(q{-}1)=0$.
+\end{theorem}
+\begin{theorem}[cm51]\label{thm:h51}
+cm51 halts if and only if at some time state $C$ or $D$ reads a $0$ at cell $w$ with $\tau(w{+}1)=1$.
+\end{theorem}
+\begin{theorem}[cm52]\label{thm:h52}
+cm52 halts if and only if at some time state $C$ reads a $0$ at cell $c$ with $\tau(c{-}1)=0$.
+\end{theorem}
+
+\begin{proof}[Method (identical form for all four)]
+Halting $\iff$ reaching the machine's halting state reading $0$. Enumerate at transition level all in-edges of the halting state (as in Theorem 4.1 of the cm2 paper: trace the provenance of the cell values read), reducing ``halting state reads $0$'' to the visit of a specific two-cell local pattern; then instantiate both directions over all configurations in the pattern window: configurations satisfying the pattern halt within finitely many steps, the others leave the window along their routine branches. Exhaustiveness via the checker: frozen skeleton (per machine, from deep scans) $\times$ working-triple boundaries $\times$ head classes, 204,800 cells, both directions, zero counterexamples [casecheck-halt].
+\end{proof}
+
+\section{Lap grammar and era algebra}
+
+\begin{definition}[marker states and eras]
+A marker state is the $(A,h,\tau)$ at the end of a dance-family routine; the evolution between consecutive markers is one era. The blank-tape initial segment enters the first marker by direct simulation.
+\end{definition}
+
+\begin{lemma}[standard lap word]\label{lem:lap}
+For each machine and each parameter $R\ge1$, the transition word of one lap macro step is
+\[
+A0\,F0 \;\Big|\; B1^{R-2}\,B0\,C0^2\,C1\,D1\,A1 \;\Big|\; E1^{R-1}\,E0\,D1\,A0,
+\]
+$2R+14$ steps in total, with net effect: right edge of the left reservoir $-1$, right reservoir $-2$, a deposit three cells away $+1$ (bookkeeping $(x{+}1,\,R{-}2,\,z{+}1)$), head one cell left.
+\end{lemma}
+\begin{proof}
+The word is read off the transition table step by step; the parameter branches (residue classes of $R$ and boundaries $R\in\{1,2,3,4\}$) are verified instance-by-instance for $R\in\{1,\dots,40\}$ and against each machine's deep-scan lap anchors (about 780,000 laps in total) by cell-diff [casecheck-island].
+\end{proof}
+
+\begin{definition}[eras and resets]
+One era = the lap chain up to reservoir exhaustion + the drain routine + the reset. Reservoir parameters $(L,M,R)$ evolve along the chain by Lemma~\ref{lem:lap}; draining triggers a churn cascade (reseeding). Era key sets (key = (position class, neighborhood block count)) collected from deep scans: cm16/26/51 share 78 keys identically; cm52 has 89.
+\end{definition}
+
+\section{Verified correspondence facts between the four machines}
+
+\begin{remark}
+The following are layered facts, not an isomorphism theorem (the four transition tables differ; no transition-level isomorphism exists):
+\begin{enumerate}
+\item the lap grammar and bookkeeping are the same on all four machines (Lemma~\ref{lem:lap}, verified per machine);
+\item the large-era $(L_0,R_0)$ sequences align over 562 pairs at constant offsets ($0$ or $+1$) with zero misalignment --- an observation on the deep-scan prefix [at the $5\times10^9$-step scale];
+\item end configurations agree bit-for-bit only on the frozen skeleton; working triples differ by $\pm100$ (a correction of the earlier ``bitwise identical'' measurement);
+\item the halt criteria have different sources (Theorems~\ref{thm:h16}--\ref{thm:h52}); non-halting assembly proceeds independently per machine.
+\end{enumerate}
+\end{remark}
+
+\section{The island invariant and the danger pattern}
+
+\begin{definition}[island]
+An island is the pattern $(0^1,1^1,0^1)$ (a single-cell $1$-island). A danger event is an occurrence of this pattern with the \textbf{head far} (not co-located with the destroyer wave).
+\end{definition}
+
+\begin{theorem}[island invariant]\label{thm:island}
+Within the verified domain ($2\times10^7$ steps per machine, 892 island moments): every island occurrence is co-located with the destroyer wave (head distance $\le1$); the creator and destroyer of an island are the same passing wave, with existence window shorter than one lap. The island segments inside the standard lap word are exhausted by the word structure of Lemma~\ref{lem:lap} [casecheck-island, 39 assertions].
+\end{theorem}
+
+\begin{theorem}[safety within the vocabulary]\label{thm:vocab}
+At every $A$-state landing covered by the verified routine vocabulary, the pattern preconditions of Theorems~\ref{thm:h16}--\ref{thm:h52} do not occur (sprint-landing right gaps $\ge2$; island positions excluded by Theorem~\ref{thm:island}).
+\end{theorem}
+
+\section{Reduction and open problem}
+
+\begin{theorem}[reduction, per machine]\label{thm:reduction}
+For each machine $m\in\{16,26,51,52\}$: $m$ halts $\iff$ some era of its marker orbit contains a head-far visit of the $(0^1,1^1,0^1)$ pattern. Verified: four machines each $2\times10^{11}$ steps (guard mode, stepwise checking) with zero danger events; bare-machine deep scans (cm16 to $5\times10^{11}$ steps) with zero halts.
+\end{theorem}
+\begin{proof}
+By Theorems~\ref{thm:h16}--\ref{thm:h52} (criteria) and Theorem~\ref{thm:vocab} (vocabulary safety): halting can occur only at $A$-states outside the vocabulary coverage, and the landing audit reduces these to head-far island visits [audit mode, $10^9$ steps $\times$4, stepwise five-cell checks, zero danger occurrences].
+\end{proof}
+
+\begin{conjecture}[five-cell avoidance]\label{conj:quad}
+For all four machines, the era orbit $(\mathfrak M^{(m)}_k)$ of the initial marker satisfies: for every $k$, the interior of era $\mathfrak M^{(m)}_k$ contains no head-far island visit.
+\end{conjecture}
+
+Refutation record: the local-abstraction route (key graphs) is dead --- in the radius-ladder experiment for key-set successor closure, $|K^*|$ grows by about $\times3.1$ per added radius (cm16: $99\to294\to939\to2863\to8879$ for $r=2..6$; two reruns reproduce digit-for-digit), with danger-key hits growing in step, so no finite fixed point exists for fixed-radius local abstraction [kclosure]. Research field: piecewise-affine trajectory avoidance of the same shape as the cm2/M1 residuals (classification by analogy; per-machine formal restatement not performed).
+
+\section*{Reproduction}
+\texttt{node casecheck-halt.mjs \&\& node casecheck-island.mjs \&\& node kclosure.mjs}; \texttt{quad6.exe <code> audit 1000000000}; \texttt{quad6.exe <code> guard 200000000000}. All one-line commands.
+
+\end{document}

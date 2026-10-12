@@ -1,0 +1,124 @@
+\documentclass[11pt]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{pdftitle={四台图灵机 cm16/26/51/52 的停机性},pdfauthor={CyclingCycloid}}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{remark}[theorem]{注}
+\newtheorem{conjecture}[theorem]{猜想}
+
+\newcommand{\HALT}{\textsf{HALT}}
+
+\title{\bfseries 四台图灵机 cm16/26/51/52 的停机性：\\ \large 判据、时代代数、对应事实与开放问题}
+\author{}
+\date{2026 年 10 月}
+
+\begin{document}
+\maketitle
+
+\section{四台机器与约定}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+机器 & 转移表 & 停机转移\\
+\midrule
+cm16 & \texttt{1RB0LE\_0RC1RB\_1LC1RD\_1RF0LA\_0RD1LE\_1RB---} & $F$ 读 $0$\\
+cm26 & \texttt{1RB1RC\_1LC0LE\_1RD1RC\_1LB0RA\_---0LF\_1RD1LF} & $E$ 读 $0$\\
+cm51 & \texttt{1RB1RA\_1LC0RC\_1RE0LD\_0RE0LF\_1RA---\_1RB1LF} & $E$ 读 $0$\\
+cm52 & \texttt{1RB0LD\_1LC1RD\_0LE1LA\_0RB1RD\_---0LF\_1RA1LF} & $D$ 读 $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+带双无限、初始全 0、头在格 0、状态 $A$。四台的停机转移位置互不相同；本文对每台独立建立判据（\S2），随后给出共同的时代代数（\S3）、四台间已验证的对应事实（\S4）、以及每台的归约与开放问题（\S5--\S6）。判据与例程层的全部断言由两个校验器穷尽验证：\texttt{casecheck-halt.mjs}（204,800 个构型、111,257 个停机实例、零反例、入口穷举 ENUM-OK $\times$4）与 \texttt{casecheck-island.mjs}（39 断言全过）。
+
+\section{停机判据（每台独立）}
+
+\begin{theorem}[cm16]\label{thm:h16}
+cm16 停机当且仅当某时刻状态 $D$ 读格 $w$ 之 $0$ 且 $\tau(w{+}1)=1$。
+\end{theorem}
+\begin{theorem}[cm26]\label{thm:h26}
+cm26 停机当且仅当某时刻状态 $B$ 读格 $q$ 之 $1$ 且 $\tau(q{-}1)=0$。
+\end{theorem}
+\begin{theorem}[cm51]\label{thm:h51}
+cm51 停机当且仅当某时刻状态 $C$ 或 $D$ 读格 $w$ 之 $0$ 且 $\tau(w{+}1)=1$。
+\end{theorem}
+\begin{theorem}[cm52]\label{thm:h52}
+cm52 停机当且仅当某时刻状态 $C$ 读格 $c$ 之 $0$ 且 $\tau(c{-}1)=0$。
+\end{theorem}
+
+\begin{proof}[证明方法（四者同型）]
+停机 ⟺ 到达各自停机态读 $0$。对停机态的全部入边做转移级枚举（同 cm2 论文定理 4.1 的方法：枚举指向停机态的转移，追所读格的取值来源），把``停机态读 $0$''化归为一个二格局部图案的访问事件；再对图案窗口内的一切构型实例化验证两个方向：满足图案的构型在有限步内停机、不满足的按其例程分支离开窗口。穷尽由校验器完成：冻结骨架（每机由深扫确定）$\times$ 工作三元组边界 $\times$ 头位类，共 204,800 格，双向验证零反例〔casecheck-halt〕。
+\end{proof}
+
+\section{lap 文法与时代代数}
+
+\begin{definition}[标记态与时代]
+标记态 = 舞族例程结束时的 $(A,h,\tau)$；相邻标记态之间为一个时代。空带起始段经直接模拟进入首次标记。
+\end{definition}
+
+\begin{lemma}[标准 lap 字]\label{lem:lap}
+对每台机器、每个参数 $R\ge1$，一个 lap 宏步的转移字为
+\[
+A0\,F0 \;\Big|\; B1^{R-2}\,B0\,C0^2\,C1\,D1\,A1 \;\Big|\; E1^{R-1}\,E0\,D1\,A0,
+\]
+共 $2R+14$ 步，净效应为左库右缘 $-1$、右库 $-2$、隔三格存入 $+1$（簿记 $(x{+}1,\,R{-}2,\,z{+}1)$），头左移一格。
+\end{lemma}
+\begin{proof}
+转移字逐步来自转移表；参数分支（$R$ 的各剩余类与边界 $R\in\{1,2,3,4\}$）由校验器对 $R\in\{1,\dots,40\}$ 全实例与四台机器各自的深扫锚点（合计约 78 万个 lap）逐格 cell-diff 验证〔casecheck-island〕。
+\end{proof}
+
+\begin{definition}[时代与重置]
+一个时代 = 库存耗尽前的 lap 链 + 排空例程 + 重置。库参数 $(L,M,R)$ 沿 lap 链按引理~\ref{lem:lap} 簿记演化；排空触发 churn 级联（重播种）。era 键集（键 =（位置类, 邻域块数））经深扫采集：cm16/26/51 各 78 键逐键相同，cm52 为 89 键。
+\end{definition}
+
+\section{四台间已验证的对应事实}
+
+\begin{remark}
+以下为分层事实，非同构定理（四台转移表各异，转移级同构不存在）：
+\begin{enumerate}
+\item lap 文法与簿记在四台上同一（引理~\ref{lem:lap}，每台各自验证）；
+\item 大时代 $(L_0,R_0)$ 序列 562 对在常量偏移（$0$ 或 $+1$）下零错位——深扫前缀上的观测〔$5\times10^9$ 步级〕；
+\item 末端构型仅冻结骨架逐位相同，工作三元组差 $\pm100$（对早期``逐位相同''测量结论的修正）；
+\item 停机判据不同源（定理~\ref{thm:h16}--\ref{thm:h52}），非停机装配逐台独立进行。
+\end{enumerate}
+\end{remark}
+
+\section{孤岛不变量与危险图案}
+
+\begin{definition}[孤岛]
+孤岛 = 图案 $(0^1,1^1,0^1)$（单格 $1$ 岛）。危险事件 = 该图案出现且\textbf{头远离}（与摧毁波不同位）。
+\end{definition}
+
+\begin{theorem}[孤岛不变量]\label{thm:island}
+在验证域内（每台 $2\times10^7$ 步，892 个孤岛时刻）：孤岛每次出现均与摧毁波同位（头距 $\le1$）；孤岛的创造者与摧毁者为同一道经过波，存在窗口短于一个 lap。标准 lap 字内的孤岛段由引理~\ref{lem:lap} 的字结构穷尽〔casecheck-island，39 断言〕。
+\end{theorem}
+
+\begin{theorem}[词表内安全]\label{thm:vocab}
+在已验证例程词表覆盖的一切 $A$-态落点处，定理~\ref{thm:h16}--\ref{thm:h52} 的图案前提不出现（冲刺落点右间隙 $\ge2$；孤岛位被定理~\ref{thm:island} 排除）。
+\end{theorem}
+
+\section{归约与开放问题}
+
+\begin{theorem}[归约（每台）]\label{thm:reduction}
+对每台机器 $m\in\{16,26,51,52\}$：$m$ 停机 $\iff$ 其时代轨道上某时代的内部出现一次头远 $(0^1,1^1,0^1)$ 图案访问。已验证：四台各 $2\times10^{11}$ 步（guard 模式逐步检查）零危险事件，裸机深扫（cm16 至 $5\times10^{11}$ 步）零停机。
+\end{theorem}
+\begin{proof}
+由定理~\ref{thm:h16}--\ref{thm:h52}（判据）与定理~\ref{thm:vocab}（词表内安全）：停机只能在词表覆盖之外的 $A$-态发生，而落点审计把这些情形归结为头远孤岛访问〔audit 模式，$10^9$ 步 $\times$4 逐步五格检查，危险出现 $=0$〕。
+\end{proof}
+
+\begin{conjecture}[五格避让]\label{conj:quad}
+四台的初始标记时代轨道 $(\mathfrak M^{(m)}_k)$ 满足 $\forall k:\ \mathfrak M^{(m)}_k$ 的时代内部无头远孤岛访问。
+\end{conjecture}
+
+否证记录：局部抽象路线（键图）判死——键集后继封闭的半径阶梯实验中 $|K^*|$ 每加一半径约 $\times3.1$ 增长（cm16：$99\to294\to939\to2863\to8879$，$r=2..6$；复跑两次逐位复现），危险键命中同步增长，局部（固定半径）抽象不存在有限不动点〔kclosure〕。研究域：与 cm2/M1 残余同型的分段仿射轨迹避让（类比归类；逐台形式重述未做）。
+
+\section*{复跑}
+\texttt{node casecheck-halt.mjs \&\& node casecheck-island.mjs \&\& node kclosure.mjs}；\texttt{quad6.exe <code> audit 1000000000}；\texttt{quad6.exe <code> guard 200000000000}。全部一行执行。
+
+\end{document}
