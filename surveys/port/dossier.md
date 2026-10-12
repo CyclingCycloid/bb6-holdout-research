@@ -104,7 +104,7 @@ vs P=`…0RF1LC1RC---`（HALT，LongAccHaltv1）。差异三维 write 1→0、ne
 2. **NONHALT 侧（不变量封闭）**：mxdys 的 .v 证书文本不可达（GitHub 搜索 LongAccHaltv1 /
    mxdys 仓库：0 命中；bbchallenge wiki/forum 搜索：0 命中），只能反推。反推需要
    era-map 的完整局部规则表（计数器编码 + 进位链 + 级联扫描规则）——这是每台
-   数百行 Rocq 的原创形式化量级，本轮未能对任何一台完成到"封闭论证"标准。
+   数百行 Rocq 的原创形式化量级，未对任何一台完成到"封闭论证"标准。
    中间产物（影子关系、缺陷集、溢出节奏）已量化存档，见 §4。
 
 ## 6. 失败列表 + 机理（27 台非 robust 对的判死记录，逐对见 portaudit.tsv）
