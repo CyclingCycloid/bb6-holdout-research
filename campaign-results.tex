@@ -4,114 +4,120 @@
 \usepackage{longtable}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
-\hypersetup{pdftitle={BB(6) Holdout 战役总结果},pdfauthor={CyclingCycloid}}
+\hypersetup{pdftitle={BB(6) Holdout 战役总结果（忠实分级版）},pdfauthor={CyclingCycloid}}
 
 \newtheorem{theorem}{定理}[section]
 \newtheorem{lemma}[theorem]{引理}
-\newtheorem{corollary}[theorem]{推论}
 
-\title{\bfseries BB(6) Holdout 战役：全部结果汇编\\ \large M1、cm2、cm16/26/51/52、SOC 制图、范式审计与引理移植}
+\newcommand{\grA}{\textbf{[A]}}
+\newcommand{\grAm}{\textbf{[A$^-$]}}
+\newcommand{\grB}{\textbf{[B]}}
+\newcommand{\grC}{\textbf{[C]}}
+
+\title{\bfseries BB(6) Holdout 战役：全部结果汇编（忠实分级版）\\ \large 六机深挖 · 四负结果 · 两张地图 · 范式审计 · 移植审计——每条断言标注证明级别}
 \author{}
-\date{2026 年 10 月 12 日}
+\date{2026 年 10 月 13 日修订}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-本文汇编本战役对 BB(6) holdout 的全部机器验证结果：六台深挖机（M1、cm2、cm16/26/51/52）的完整结构理论与条件非停机证书；四个负结果定理（周期排除、必要精度、剩余类否定、键图发散）；两张家族地图（Cubic/Quadratic Mess 91 台、Shift-overflow counter 279 台）；范式审计（Conway 类形式定位）；以及 Hamming-1 引理移植的 40 对全量化判定。全部断言按 A（转移级穷尽/完整代数）/ A$^-$（有限 case 表 + 结构归纳）/ B（有限深度轨道）/ C（依赖假设）分级；每台机器的验证链一行可复跑。
+本文汇编本战役的全部结果，每条断言标注级别：\grA{} = 转移级穷尽或完整书面代数；\grAm{} = 有限 case 表逐点机器验证 + 结构归纳；\grB{} = 有限深度轨道观测（声明其深度）；\grC{} = 依赖未闭合假设。凡未达证明地位的陈述一律按观测如实标注。六台深挖机全部为\textbf{条件}非停机证书；无一台的 undecided 状态被改变（截至 2026-10-12 台账）。四连包机器间建立的是\textbf{分层验证的对应关系}（文 \S\ref{sec:quad-eqv}），不是同构定理。
 \end{abstract}
 
 \section{机器清单与终态总表}
 
-\begin{longtable}{lllp{5.2cm}}
+\begin{longtable}{llp{2.2cm}p{5.6cm}}
 \toprule
-机器 & 码 & 判定 & 严格界/残余\\
+机器 & 码 & 判定（置信为作者主观估计） & 无条件部分与残余\\
 \midrule
-M1 & \texttt{1RB1LA\_0RC0RD\_1LC1LA\_1RE1RD\_1LF0LA\_---0LE} & 不停机（条件，置信$\sim$98\%） & 无条件：类$\le$2000 $\Rightarrow$ $\gtrsim 2^{2^{2000}}$ 步；残余 = 假设 M $\equiv \nu_2$ 记录时刻表\\
-cm2 & \texttt{1RB1RA\_1LC0RC\_---0LD\_0LE0RF\_1RE0RA\_0LF1LB} & 不停机（条件，$\sim$90\%） & 无条件：停机刻画 + 扫掠定理 + 致死集地图；若停机 $>3\times10^{10}$ 步；残余 = LEM-R$'$ 型轨迹避让（Conway 类）\\
-cm16 & \texttt{1RB0LE\_0RC1RB\_1LC1RD\_1RF0LA\_0RD1LE\_1RB---} & 不停机（条件） & 无条件：停机判据 A 级 casecheck；若停机 $>2\times10^{11}$；残余 = 危险五格头远规避\\
-cm26 & \texttt{1RB1RC\_1LC0LE\_1RD1RC\_1LB0RA\_---0LF\_1RD1LF} & 同 cm16 & 与 cm16/51/52 共结构（era 层 562 对齐零错位）\\
-cm51 & \texttt{1RB1RA\_1LC0RC\_1RE0LD\_0RE0LF\_1RA---\_1RB1LF} & 同 cm16 & 同上\\
-cm52 & \texttt{1RB0LD\_1LC1RD\_0LE1LA\_0RB1RD\_---0LF\_1RA1LF} & 同 cm16 & 停机判据独立枚举（A1-左隙型）\\
+M1 & \texttt{1RB1LA\_0RC0RD\_1LC1LA\_1RE1RD\_1LF0LA\_---0LE} & 不停机（条件；$\sim$98\%） & \grA{} 停机分支不可达；\grA{} 类 $\le$2000 域内不停机（步数换算 $\gtrsim 2^{2^{2000}}$ 依赖 \grB{} 计时律）；残余 \grC{} 假设 M\\
+cm2 & \texttt{1RB1RA\_1LC0RC\_---0LD\_0LE0RF\_1RE0RA\_0LF1LB} & 不停机（条件；$\sim$90\%） & \grA{} 停机刻画；\grA{} 扫掠守恒；\grAm{} 致死集 193 格逐格裸机验证、覆盖完备性为 \grAm{}；若停机 $>3\times10^{10}$ 步 \grB{}；残余 \grC{} 轨迹避让\\
+cm16 & \texttt{1RB0LE\_0RC1RB\_1LC1RD\_1RF0LA\_0RD1LE\_1RB---} & 不停机（条件） & \grA{} 停机判据（独立枚举）；\grAm{} 孤岛不变量；guard $2\times10^{11}$ 零威胁 \grB{}；残余 \grC{} 五格规避\\
+cm26 & \texttt{1RB1RC\_1LC0LE\_1RD1RC\_1LB0RA\_---0LF\_1RD1LF} & 同上 & 判据独立枚举 \grA{}；与 cm16 的对应关系见 \S\ref{sec:quad-eqv}\\
+cm51 & \texttt{1RB1RA\_1LC0RC\_1RE0LD\_0RE0LF\_1RA---\_1RB1LF} & 同上 & 同上\\
+cm52 & \texttt{1RB0LD\_1LC1RD\_0LE1LA\_0RB1RD\_---0LF\_1RA1LF} & 同上 & 判据独立枚举（A1-左隙型）\grA{}\\
 \bottomrule
 \end{longtable}
 
-六台机器截至 2026-10-12 在 mxdys 台账与 9/24 官方 815 清单中均为未决。
+六台机器截至 2026-10-12 在 mxdys 台账（当日缓存排除拉取）与 2026-09-24 官方 815 等价类清单中均为未决（cm2/16/26/51/52 精确命中；M1 由台账确认为未决，其在 815 清单中的等价类代表元为另一写法）。
 
-\section{M1：结构理论与障碍定理}
+\section{M1：结构理论与障碍}
 
-\subsection{结构}
-相位演算（九规则、精确步代价、956 锚点裸机对拍）；锚点族 $P(n)$；序曲定理（减半链闭式 $a_i+1=2^{m-i}w$，纯代数）；地标族 $L(\alpha,t;s)$ 与类 $h=\nu_2(\alpha+1)$；轮律强归纳（级联 + 普适阶梯 + 主控段）；支配引理（$W\ge 3\cdot2^{2h-52-2\log_2 h}\gg|Q|<2^{h+5}$，$h\ge82$ 恒正）；$\Delta t\le 40$（终点子结构）。
+\subsection{已证结构}
+\begin{itemize}
+\item 相位演算：九规则、精确步代价；与裸机 oracle 916 锚点逐步全等（含 13 个停机锚点双向一致）\grA{}；转移表经独立手工转写对拍（0--200 步零分歧、$10^{5,6,7}$ 检查点全同、停机锚 13025 步复现）\grA{}。
+\item 序曲定理：$P(n)\to R(1,2n{+}2)\to G(n{+}2,n{+}1)\to^{m}\Phi(w,m)$，减半链闭式 $a_i+1=2^{m-i}w$——完整书面代数 \grA{}（另 1052 例机器复核）。
+\item 轮律强归纳架构：级联闭式 \grA{}（头部代数）/尾部簿记 \grAm{}（$h\le60$ 逐游程验证）；阶梯类界 $A_j\le\tau_j^2$ 不等式链 \grA{}；主控段封闭：$h\le2000$ 穷尽（基础 1024 + 扩展 976/976）\grAm{}，抽样一致至 $1.2\times10^7$ \grB{}。
+\item 支配引理：比较裕度 $W+Q-\theta$，$W\ge 3\cdot2^{2h-52-2\log_2h}\gg|Q|<2^{h+5}$，$h\ge82$ 恒正（代数 + 12,000 条仪表记录佐证常数）\grAm{}；$h\le81$ 逐点 \grB{}。
+\item $\Delta t\le40$：终点子结构论证 \grAm{}（观测域 $[2,9]$）。
+\end{itemize}
 
 \subsection{无条件结果}
-\begin{theorem}[停机不可达]
-停机构型 $G(a{=}3)$ 结构性不可达：轨道上一切 $G$-头满足 $a+1=2^j\cdot(\text{奇}\ge3)$；支配性对 $\pm1$ 扰动稳健（2980/2980 反事实闭合；对抗剖面 2-adic 不可实现且从不停机）。
+\begin{theorem}[停机不可达]\grA{}
+轨道上一切 $G$-态头部满足 $a+1=2^{j}\cdot(\text{奇}\ge3)$，故 $G(a{=}3)$ 不可达；代数族（序曲/级联/地标头）部分为纸面证明，主控路径形式集部分为 273,654 形式 2-adic 审计零危险。扰动稳健性：单/稀疏翻转反事实 2980/2980 安全闭合 \grB{}；对抗剖面经 2-adic 展开有限性论证排除且实测从不停机 \grAm{}。
 \end{theorem}
 
-\begin{theorem}[包络]
-类 $\le 2000$ 穷尽（基础表 1024 + 扩展 976/976）$\Rightarrow$ 按记录时刻表经验律（$\times4$/级），$\gtrsim 2^{2^{2000}}$ 步不停机。
+\begin{theorem}[包络]\grA{}
+一切轮类 $\le2000$ 的运行不停机（该域逐类穷尽）。步数换算：按记录时刻表 $\times4$/级爬升律（\grB{}：实测至第 32 级，$1.25\times10^9$ 残差核步），首次触及类 2001 需 $\sim2^{2000}$ 轮，即非停机 $\gtrsim 2^{2^{2000}}$ 步——\textbf{换算的计时部分为经验律，严密度低于类形式}。
 \end{theorem}
 
-\subsection{障碍（墙证硬）}
-\begin{theorem}[周期排除]
-签名动力学一阶有限状态但非最终周期：Brent $1.25\times10^9$ 步无环；$2.4\times10^6$ 梯残差两两互异；记录时刻表每级 $\times4$ 爬升。任何 $K$-位闭合将压制时刻表于深度 $K$ 以下——与爬升矛盾。
+\subsection{障碍}
+\begin{lemma}[周期排除]\grAm{}
+签名动力学一阶有限状态；验证范围内（$1.25\times10^9$ 步 Brent 无环 \grB{}；$2.4\times10^6$ 梯残差两两互异 \grB{}）非最终周期；且任何 $K$-位有限闭合将压制记录时刻表于深度 $K$ 以下，与（观测未终止的）爬升矛盾（结构论证）。故假设 M 的内容 = $\nu_2$-混沌的延续，本架构内不可有限闭合。
+\end{lemma}
+另：不变量合成路线的不可能性（必要精度定理）\grAm{}——固定模数/线性模板在 $S(2,2,2)\to G(3,3)$ 四边反例链（逐边引擎复核）下不封闭；对抗剖面 2-adic 不可实现性论证 \grAm{}。
+
+\section{cm2：质量传送机与 Collatz 型定位}
+
+\subsection{已证结构}
+例程层忠实（三重独立实现：658 万 A-访问 + 1658 万边界 + 300 万步逐步全同；独立审计新鲜点 3/7$\times10^9$ 各 3000 边界全同）\grA{}；时代体制表与干链闭式 $(L{+}3,M{-}4,R{+}1,T)$（60,562 时代逐格）\grAm{}；族图闭包 294 节点不动点（头锚定键，key 修复后）\grAm{}；分派表 D1--D4 逐支显式不等式（誊写轮补齐书面复合字，26,460 断言）\grAm{}；不变量网 INV-T/R/L/M \grAm{}。
+
+\subsection{停机刻画与致死集}
+\begin{theorem}[停机刻画]\grA{}
+cm2 停机 $\iff$ H1（冲刺落点紧邻 $(0^1,1^1,0^1)$）或 H2（F 扫描左入空白）——C 入边转移级穷尽；68 停机格逐一复现、聚 4 族。
 \end{theorem}
-假设 M $\equiv$ 记录时刻表延续 $\equiv$ $\nu_2$-混沌（不可有限化）。
+致死前像集 $P$：193 格\textbf{每格独立裸机验证} \grA{}；``$P$ 覆盖全空间唯一致死''的完备性依赖普查/闭包覆盖 \grAm{}。合成反例 (L7,M2,R1)/(L8,M2,R2)/(L21,M1,R1) 真停机（24--33 时代）\grA{}。
 
-\section{cm2：质量传送机与 Collatz 型归约}
+\subsection{已证守恒与定位}
+\begin{lemma}[扫掠守恒]\grA{}
+$Q=L-3R$ 在扫掠下精确不变（逐格代数）；M4-重启 $Q'=0$ 且 M4-生扫掠上 $L=3R$（结构性）；M3-重启 $Q'=Q+20$。127,694 标记 $\times$ 193 格 $Q$-碰撞为零 \grB{}。
+\end{lemma}
+狩猎：$3\times10^{10}$ 步 / 283 万时代零命中 \grB{}；mod-3 护城河（实轨 $L\equiv0\pmod3$ 下 L$\pm$1 格不可达，143/193 格受护）——$L\equiv0$ 为\textbf{实轨观测} \grB{}（非书面归纳）；轨道相容最小距离 3、振荡无趋近 \grB{}。剩余类论证否定（$3\times3$ 已全碰撞；M2/M1 重启不剩余类确定）\grAm{}。
 
-\subsection{结构}
-五状态波 + F 舞 + E 填充的``质量传送机''：宏例程七种（L1 引擎忠实 A 级：658 万 A-访问 + 1658 万边界三重对拍）；时代体制表（干链闭式 $(L{+}3,M{-}4,R{+}1,T)$，60,562 时代逐格验证）；族图头锚定闭包（294 节点不动点）；分派表 D1--D4（逐支显式不等式）；不变量网 INV-T/R/L/M。
+\begin{lemma}[归约]\grAm{}
+cm2 停机 $\iff$ 扫掠-重启分段仿射轨迹首次进入 $P$（$\Leftarrow$ 方向逐格机器验证 \grA{}；$\Rightarrow$ 方向由停机刻画 \grA{} 与体制覆盖 \grAm{} 承载）。范式审计：该系统为 Conway 型分段仿射迭代的具体实例（Conway 1972 类；逐项排除 VASS/pushdown/SFT）——换语言不改变可解性；cm2 停机之 ZFC 独立性不可排除。
+\end{lemma}
 
-\subsection{停机刻画（A 级）}
-停机 $\iff$ 冲刺落点紧邻 $(0^1,1^1,0^1)$（H1）或 F 扫描左入空白（H2）；68 停机格普查复现、聚 4 族，全部被入口分类 + 不变量封死或确认为真致死域。
+\section{cm16/26/51/52：四连包}\label{sec:quad}
 
-\subsection{终局：Collatz 型}
-\begin{theorem}[归约]
-cm2 停机 $\iff$ 扫掠-重启分段仿射系统轨迹首次进入致死前像集 $P$（193 格全裸机验证）；若停机则 $>3\times10^{10}$ 步。
-\end{theorem}
-狩猎：$3\times10^{10}$ 步 / 283 万时代 / 122 万标记零命中；mod-3 护城河封死距离 1（143/193 格受护）；轨道相容最小距离 3、振荡无趋近。三技术（路线常数/剩余类/$Q$-不变量）全部确定性失效于 M2/M1 重启——墙证硬。扫掠定理（$Q=L-3R$ 守恒 $\square$、M4 生扫掠上 $L=3R$ $\square$）为真定理。
+\subsection{每台独立已证}
+停机判据 $\times4$ \grA{}：每台的判据\textbf{分别枚举、分别穷尽验证}（cm16 = D 读 0 且 $[w{+}1]{=}1$；cm26 = B 读 1 且 $[q{-}1]{=}0$；cm51 = (C 或 D) 读 0 且 $[w{+}1]{=}1$；cm52 = C 读 0 且 $[c{-}1]{=}0$；casecheck 204,800 构型、111,257 停机例零反例、入口穷举 ENUM-OK）。孤岛不变量（修正版：孤岛存在 $\Rightarrow$ 摧毁波同位；casecheck-island 39 断言全通 + 轨道 $2\times10^7$ 步 892 孤岛步全部同位）\grAm{}。五格审计：危险图案 \texttt{1,0,1,0,1} 头远出现 $=0$（$10^9$ 步 $\times4$，C 侧逐步）\grB{}。guard $2\times10^{11}\times4$ 零威胁、裸机最深 $5\times10^{11}$ 零停机 \grB{}。
 
-\section{cm16/26/51/52：四连包}
+\subsection{四台对应关系的实际内容}\label{sec:quad-eqv}
+\textbf{未建立同构定理。}实际验证的分层事实：
+\begin{enumerate}
+\item \textbf{lap 文法统一} \grAm{}：同一例程字（标准 lap：$A0B0C1D0E1\,|\,B1^{R-2}B0C0^2C1D1A1\,|\,E1^{R-1}E0D1A0$，$2R{+}14$ 步）与同一簿记（每 lap $x{+}1/R{-}2/z{+}1$）在四台上分别经逐格 cell-diff 验证（合计约 78 万 lap 锚点；casecheck-island 对 $R\in\{13,20,40\}$ 断言化）。
+\item \textbf{era 层对齐} \grB{}：四台大 era $(L_0,R_0)$ 序列 562 对在常量偏移（0 或 $+1$）下零错位——观测于深扫前缀（$\sim5\times10^9$ 步级），\textbf{不是对一切未来的结构性断言}。
+\item \textbf{triage``逐位相同''的修正}：末端构型仅\textbf{冻结骨架}逐位相同，工作三元组差 $\pm100$；triage 的 hi1 右缘截断 513 格、pop 计数漂移 512--513（测量误差，已在档）。
+\item \textbf{用法边界}：era 层引理（lap 簿记）按``同一引理、每台各自验证''复用；\textbf{装配逐台独立进行}（判据不同源）；残余（五格头远规避）为四台各自的轨迹性质，其键图阶梯发散实验（$|K^*|$ 每半径 $\times3.1$：$99{\to}294{\to}939{\to}2863{\to}8879$；复跑两次逐位复现）\grB{} 判死\textbf{局部抽象}路线——非同构结论的推论。
+\end{enumerate}
 
-微观测停机 $\times4$（A 级，casecheck 204,800 构型 0 反例：cm16 = D 读 0 且 $[w{+}1]{=}1$ 等）；统一 lap 文法（每 lap $x{+}1/R{-}2/z{+}1$，78 万级锚点验证）；era 层四台同构（562 对齐零错位）；孤岛不变量（casecheck-island 全通：孤岛存在 $\Rightarrow$ 摧毁波同位）；五格审计 $\times4$ 危险图案头远出现 $=0$；guard $2\times10^{11}\times4$ 零威胁。
-残余：危险五格 \texttt{1,0,1,0,1} 的头远规避为轨迹性质——键图阶梯发散（$|K^*|$ 每半径 $\times3.1$：$99{\to}294{\to}939{\to}2863{\to}8879$），局部抽象路线判死（第三块墙证硬）。
+\section{家族地图与移植审计（观测级）}
 
-\section{家族地图}
+\begin{itemize}
+\item CM/QM 91 台 triage \grB{}（$10^9$ 步/台）：零停机零循环；CM 立方族（$\alpha\approx0.33$）、QM 平方族（$\alpha\approx0.50$）；无 CYCLER；cm16/26/51/52 为二次亚族（同构性表述见 \S\ref{sec:quad-eqv}）。
+\item SOC 279 台双轮扫描 \grB{}（$10^7$+$3\times10^8$/台）：零 CYCLER/HALT/爆带；FAST 31/MODERATE 129/FROZEN 119；四结构原型（格子计数器/二进制移位/指数迭代器/洗牌器）为启发式标签。
+\item Hamming-1 移植审计 \grB{}：40 对全量化——13 ROBUST-CANDIDATE（含主攻对 U 机与已证 HALT 孪生的影子关系：头距恒 $-6..-10$、$\approx24$ 格冻结缺陷集、实测至 $2\times10^{10}$ 步）/ 22 FORK-PERSISTS / 5 HOT-DIFF；\textbf{decided 0}——每台需数百行 Rocq 量级 era-map 归纳（原创工作，非引理搬运）；mxdys 的 .v 证书文本公开渠道不可得。
+\item 家族级观察：三组残余（M1 $\nu_2$ 记录 / cm2 重启避让 / quad 五格规避）同为轨迹避让性质；cm2 经范式审计正式定位于 Conway 类，M1 与其同源（审计内同型论证），quad 按同型\textbf{类比}归类（未做逐台形式重述）。
+\end{itemize}
 
-\subsection{Cubic/Quadratic Mess（91 台 triage）}
-91 台 $10^9$ 步内零停机零循环；CM = 立方族（$\alpha\approx0.33$）、QM = 平方族（$\alpha\approx0.50$）；无 CYCLER 送分题；cm16/26/51/52 二次亚族四台同构。六台深挖机的残余全部为 Conway 型轨迹避让——家族级结论（三重独立确证）。
+\section{验证纪律记录（全部在档）}
 
-\subsection{Shift-overflow counter（279 台制图）}
-双轮全扫：0 CYCLER/0 HALT/0 混沌（全族极慢极紧凑，$\alpha\le0.36$）；FAST 31/MODERATE 129/FROZEN 119；四种结构原型（格子计数器/二进制移位/指数迭代器/洗牌器）；\textbf{40 对 Hamming-1 突变体全量化判定}：13 ROBUST-CANDIDATE（含主攻对 U 机影子关系实测至 $2\times10^{10}$：头距恒 $-6..-10$、$\approx24$ 格冻结缺陷集）/ 22 FORK-PERSISTS / 5 HOT-DIFF；decided 0（era-map 归纳为每台数百行 Rocq 量级原创工作，非移植）。
-
-\section{范式审计}
-
-三重述逐转移核查：cm2 动力学 = Conway 型分段仿射迭代（Conway 1972 不可判定类；Kurtz--Simon 2007 独立性）的具体实例；非 VASS/pushdown/SFT。\textbf{换语言不改变可解性}——数论工具箱是该类实例的标准装备，困难本体。M1 周期排除在重写语言下同型成立：两机墙同源（Conway 型），难度分档精确化（M1 = 无循环良基侧；cm2 = 避让无良基侧）。cm2 停机的 ZFC 独立性不可排除。
-
-\section{验证纪律与总台账}
-
-\begin{longtable}{lp{11cm}}
-\toprule
-级别 & 条目（合计）\\
-\midrule
-A & 停机刻画 $\times7$（M1 H1/H2、cm2 H、四连包 $\times4$，全部 casecheck 穷尽）；例程/相位引擎忠实 $\times3$ 套（M1 916 锚点、cm2 三重 2300 万检查点、quad 204,800 构型）；M1 支配引理、cm2 扫掠定理、序曲闭式（完整书面代数）\\
-A$^-$ & 族图闭包 $\times2$（M1 177 模式、cm2 294 节点）；分派表 $\times2$ 套；不变量网 $\times2$ 套；孤岛不变量；$\sigma$-换名；键集封闭\\
-B & 干链 60,562 + 扫掠 127,864 + 时代 138 万/283 万/562 对齐；guard 合计 $\sim10^{12}$ 步级零威胁；Brent $1.25\times10^9$；狩猎 $3\times10^{10}$；影子 $2\times10^{10}$\\
-C & M1 假设 M（$\equiv\nu_2$ 混沌，周期排除定理证硬）；cm2 轨迹避让（三技术失效证硬）；quad 五格规避（键图发散证硬）\\
-\bottomrule
-\end{longtable}
-
-对抗评审两轮共抓 12 major（全部修复）；誊写升级抓 6 处转写错误；独立复算 9/9 PASS + 7/7 PASS；主会话手工转写表对拍关闭共享转写风险（顺带抓获自身 2 处方向笔误）。中途撤回记录：模 3 不变量（M1，11,232 反例）、pop 排名（cm2，两次）、D3 公式（$L{+}R{-}1$）等——全部在档。
+对抗评审两轮共 12 major 全部修复（M1 轮 5、cm2 轮 7——后者含 gE-M1$\to$g6o2(R1) 毒链等可达性缺口，导致 cm2 从 C=0 诚实降级）；誊写升级抓 6 处转写错误（含 D1-L4/D4 参数错、DBL 规则误述）；独立复算 16/16 PASS；手工转写表对拍关闭共享转写风险（过程中抓获作者自身 2 处方向笔误）。\textbf{撤回记录}：模 3 不变量（cm2，11,232 反例）、pop 排名命题（两次：逐支 $+\{3..6\}$ 与无环初版，均被反例/审计否证，现由 M$_0$-递增观测承载 \grB{}）、D3 公式（$L{+}R{-}1$，独立审计 16 格网格更正）、triage 末构型逐位相同（修正为冻结骨架）。
 
 \section{复跑入口}
 
-\begin{itemize}
-\item M1：\texttt{attacks-sparse2/}（\texttt{sym4-table.txt} 1024 行、\texttt{sym5-table2.txt}、\texttt{ladder.json}、盲测配方见 \texttt{M1-nonthalt.tex} 附录）
-\item cm2：\texttt{attacks-cm2/}（\texttt{xval-macro/xval-fast/census2/census3/tailfront/dispatch/hclosure2/invariant/shape2} 一行可跑；\texttt{ocm.exe} oracle）
-\item 四连包：\texttt{attacks-quad/}（\texttt{casecheck-halt.mjs \&\& casecheck-island.mjs \&\& kclosure.mjs}；\texttt{quad6.exe <code> audit 1e9}）
-\item 地图：\texttt{attack-next.md}（91 台）、\texttt{soc-map.md} + \texttt{soc-work/}（279 台）、\texttt{soc-port/}（40 对移植判定）
-\item 论文：\texttt{M1-nonthalt.tex/.pdf}（英）、\texttt{M1-reduction-zh.tex/.pdf}（中）、\texttt{cm2-proof-full-zh.tex/.pdf}、\texttt{cm2-nonthalt-zh.tex/.pdf}、\texttt{M1-report-zh.pdf}
-\end{itemize}
+M1：\texttt{attacks-sparse2/}（\texttt{sym4-table.txt}、\texttt{sym5-table2.txt}、\texttt{ladder.json}；盲测配方 = \texttt{node ladder.mjs 64 200000} + $j_0$ 二分 + \texttt{node sym5.mjs A TAU H 40}）。cm2：\texttt{attacks-cm2/}（\texttt{xval-macro/xval-fast/census2/census3/tailfront/dispatch/hclosure2/invariant/shape2}；oracle \texttt{ocm.exe}；致死库 \texttt{lethal-db.json}）。四连包：\texttt{attacks-quad/}（\texttt{node casecheck-halt.mjs \&\& node casecheck-island.mjs \&\& node kclosure.mjs}；\texttt{quad6.exe <code> audit 1e9}）。地图与移植：\texttt{attack-next.md}、\texttt{soc-map.md}、\texttt{soc-port/}。论文：\texttt{M1-nonthalt.tex}（英，条件主定理）、\texttt{M1-reduction-zh.pdf}、\texttt{cm2-proof-full-zh.pdf}（注意：其 C=0 期结论已被评审轮降级，以本文与 \texttt{attack-cm2.md} 终版台账为准）、\texttt{M1-report-zh.pdf}。
 
 \end{document}
