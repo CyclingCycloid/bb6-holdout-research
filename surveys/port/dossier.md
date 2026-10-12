@@ -6,8 +6,8 @@
 
 ## 0. 终局结论（先读）
 
-- **decided：0 台。** 本轮未能把任何一台提升到社区计分级的 decided——两条产生 decided 的路径
-  （HALT 侧"轨迹到停机+精确步数"、NONHALT 侧"不变量封闭论证"）在本轮预算内都未走通，见 §5。
+- **decided：0 台。** 未把任何一台提升到社区计分级的 decided——两条产生 decided 的路径
+  （HALT 侧"轨迹到停机+精确步数"、NONHALT 侧"不变量封闭论证"）未完成，见 §5。
 - **但移植可行性从猜想变成了测量**：40 对全审计（§3）+ 主攻对影子关系深潜（§4）给出
   13 台 ROBUST-CANDIDATE（census 级证据；其中 4 对经逐时代影子追踪确证有界滞后，
   含主攻对至 2×10^10）与 27 台失败机理（§6）。
@@ -27,7 +27,7 @@ node -e "<见 pairs 段源码>"   # 见 soc-port/pairs 生成命令（§2 脚本
 ```
 从 `soc-codes.txt`（279 未决）× `led_now.csv`（HALT/NONHALT，限 Shift-overflow counter
 分类且带 mxdys .v 证书 108 台）计算 Hamming-1：**40 对 / 32 台唯一未决机**（soc-map §4
-的 16 对是其引理分布口径的子集；本轮以可复跑口径为准）。证书分布：
+的 16 对是其引理分布口径的子集；以可复跑口径为准）。证书分布：
 LongAccHaltv1×10（全 HALT 侧）、LongAccv1×10（全 NONHALT 侧）、LongLoopv2×16、
 LongLoopv3×2、SOCSSv2×1、SOCSSv5×1。全表：`soc-port/pairs.txt`。
 
@@ -56,7 +56,7 @@ census=单遍 12 转移计数；ev=事件日志；cp=指定步构形；dump=带�
   （3–19283，全对都有触发；无"永不触发"对）。
 - ROBUST-CANDIDATE ×13：差异被循环吸收的实测证据（§4/§6）。
 
-## 4. 主攻深潜：影子关系全表（本轮最强正结果）
+## 4. 主攻深潜：影子关系全表
 
 对全部 13 对 ROBUST-CANDIDATE 跑双机影子追踪（`trackall.mjs`，步点 5e7/1.5e8/3e8，
 滞后=hU−hP，popR=popU/popP）。**10 对紧影子（|lag|≤26）**、3 对 LongLoop 宽影子
@@ -92,7 +92,7 @@ vs P=`…0RF1LC1RC---`（HALT，LongAccHaltv1）。差异三维 write 1→0、ne
 
 判读：F0 重置差（写 0 进 B vs 写 1 进 C）被 era 地图吸收为"有界平移+固定缺陷"。
 若完成 era-map 归纳（§7），影子关系给出：U 的停机性=P 的停机性；叠加 P 的 HALT
-证书 → U HALT。本轮未完成该归纳，U 仍 undecided（诚实条款）。
+证书 → U HALT。该归纳未完成，U 仍 undecided。
 
 ## 5. 为什么没有 decided（两条路径的死因，如实记录）
 
