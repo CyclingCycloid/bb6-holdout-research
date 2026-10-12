@@ -63,14 +63,26 @@ A marker state is the $(A,h,\tau)$ at the end of a dance-family routine; the evo
 \end{definition}
 
 \begin{lemma}[standard lap word]\label{lem:lap}
-For each machine and each parameter $R\ge1$, the transition word of one lap macro step is
+For each machine and each parameter $R\ge2$, the (state, symbol) event word of one lap macro step is
 \[
-A0\,F0 \;\Big|\; B1^{R-2}\,B0\,C0^2\,C1\,D1\,A1 \;\Big|\; E1^{R-1}\,E0\,D1\,A0,
+\underbrace{A0\,B0\,C1\,D1\,A1\,E0\,D0\,F0}_{8}\;\Big|\;
+\underbrace{B1^{R-2}}_{R-2}\;\underbrace{B0\,C0\,C0\,C1\,D1\,A1}_{6}\;\Big|\;
+\underbrace{E1^{R-1}}_{R-1}\;\underbrace{E0\,D1\,A0}_{3},
 \]
-$2R+14$ steps in total, with net effect: right edge of the left reservoir $-1$, right reservoir $-2$, a deposit three cells away $+1$ (bookkeeping $(x{+}1,\,R{-}2,\,z{+}1)$), head one cell left.
+$8+(R{-}2)+6+(R{-}1)+3=2R+14$ events in total (an event = one (state, symbol); the final $A0$ is the boundary event shared with the next lap, the lap proper being $2R{+}13$ transitions); net effect $(x,R,z)\mapsto(x{+}1,\,R{-}2,\,z{+}1)$, the working window shifting one cell right with the head in the same relative position.
 \end{lemma}
-\begin{proof}
-The word is read off the transition table step by step; the parameter branches (residue classes of $R$ and boundaries $R\in\{1,2,3,4\}$) are verified instance-by-instance for $R\in\{1,\dots,40\}$ and against each machine's deep-scan lap anchors (about 780,000 laps in total) by cell-diff [casecheck-island].
+\begin{proof}[complete derivation for cm16; the other three machines analogously]
+Let the left seam be cells $g,g{+}1$ (values $0,0$), the right reservoir $1^R$ occupying $g{+}2..g{+}R{+}1$, the right seam $g{+}R{+}2,g{+}R{+}3$, the deposit $1^z$ from $g{+}R{+}4$. Head $A$ at $g$.
+
+\emph{Segment 1 (8 steps)}: $A0{=}\texttt{1RB}$ writes $1@g$, right; $B0{=}\texttt{0RC}$ at $g{+}1$; $C1{=}\texttt{1RD}$ at $g{+}2$; $D1{=}\texttt{0LA}$ writes $0@g{+}3$, left; $A1{=}\texttt{0LE}$ writes $0@g{+}2$, left; $E0{=}\texttt{0RD}$ at $g{+}1$; $D0{=}\texttt{1RF}$ writes $1@g{+}2$, right; $F0{=}\texttt{1RB}$ writes $1@g{+}3$, right. Now $g{+}2,g{+}3=1,1$, head $B$ at $g{+}4$ (inside the reservoir). Between steps 7 and 8 the tape shows a transient island ($g{+}1,g{+}2,g{+}3=0,1,0$) with head distance $\le1$.
+
+\emph{Segment 2 ($R{+}4$ steps)}: $B1{=}\texttt{1RB}$ keeps writing $1$ moving right across $g{+}4..g{+}R{+}1$ ($R{-}2$ cells); $B0$ at $g{+}R{+}2$ ($\texttt{0RC}$); $C0\,C0$ = two applications of $\texttt{1LC}$ writing $1$ at $g{+}R{+}3$ then $g{+}R{+}2$ (moving left); $C1$ at the reservoir end $g{+}R{+}1$ ($\texttt{1RD}$); $D1$ writes $0@g{+}R{+}2$; $A1$ writes $0@g{+}R{+}1$, moving left into $E$ at $g{+}R$.
+
+\emph{Segment 3 ($R{+}2$ steps)}: $E1{=}\texttt{1LE}$ keeps writing $1$ moving left back across $g{+}R..g{+}2$ ($R{-}1$ cells); $E0{=}\texttt{0RD}$ at $g{+}1$; $D1{=}\texttt{0LA}$ writes $0@g{+}2$, ending at $A$ on $g{+}1$ --- the start of the next lap.
+
+\emph{Net effect check}: the final tape has $g{=}1$ (left block $+1$); new left seam $g{+}1,g{+}2$; reservoir remnant $g{+}3..g{+}R$ ($R{-}2$ cells); new right seam $g{+}R{+}1,g{+}R{+}2$; $g{+}R{+}3{=}1$ absorbed into the deposit ($+1$). That is $(x{+}1,\,R{-}2,\,z{+}1)$, with the next lap's head on the left cell of the new left seam --- same relative position, window shifted by one. Step count $8+(R{-}2)+6+(R{-}1)+3=2R{+}14$.
+
+\emph{Cross-machine remark}: the word is \emph{event-level} (a sequence of (state, symbol) pairs) --- the move directions of the transitions may differ between machines (e.g.\ $D1$ is $\texttt{0LA}$, moving left, on cm16 but $\texttt{0RA}$, moving right, on cm26), yet the event sequence and net bookkeeping coincide; the per-machine geometry is verified by cell-diff on deep-scan anchors (about 780,000 laps in total) [casecheck-island].
 \end{proof}
 
 \begin{definition}[eras and resets]
