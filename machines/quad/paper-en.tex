@@ -96,7 +96,7 @@ An island is the pattern $(0^1,1^1,0^1)$ (a single-cell $1$-island). A danger ev
 \end{definition}
 
 \begin{theorem}[island invariant]\label{thm:island}
-Within the verified domain ($2\times10^7$ steps per machine, 892 island moments): every island occurrence is co-located with the destroyer wave (head distance $\le1$); the creator and destroyer of an island are the same passing wave, with existence window shorter than one lap. The island segments inside the standard lap word are exhausted by the word structure of Lemma~\ref{lem:lap} [casecheck-island, 39 assertions].
+Within the verified domain ($2\times10^7$ steps per machine, 892 island moments): every island occurrence is co-located with the destroyer wave (head distance $\le1$); island occurrences are transient --- within each lap islands exist in \emph{two} segments (correcting the earlier ``only the boundary $R{=}1$ segment''), with creator and destroyer the same passing wave and existence window shorter than one lap [casecheck-island, 39 assertions].
 \end{theorem}
 
 \begin{theorem}[safety within the vocabulary]\label{thm:vocab}
@@ -106,14 +106,19 @@ At every $A$-state landing covered by the verified routine vocabulary, the patte
 \section{Reduction and open problem}
 
 \begin{theorem}[reduction, per machine]\label{thm:reduction}
-For each machine $m\in\{16,26,51,52\}$: $m$ halts $\iff$ some era of its marker orbit contains a head-far visit of the $(0^1,1^1,0^1)$ pattern. Verified: four machines each $2\times10^{11}$ steps (guard mode, stepwise checking) with zero danger events; bare-machine deep scans (cm16 to $5\times10^{11}$ steps) with zero halts.
+For each machine $m\in\{16,26,51,52\}$ the following are equivalent:
+\begin{enumerate}
+\item $m$ halts;
+\item the criterion pattern of $m$ (the two-cell condition of Theorems~\ref{thm:h16}--\ref{thm:h52}) holds at an \emph{out-of-vocabulary} landing (a danger event).
+\end{enumerate}
+Machine verification: audit mode steps through five-cell checks at out-of-vocabulary landings ($10^9$ steps $\times$4) with zero danger occurrences; guard mode ($2\times10^{11}$ steps $\times$4, stepwise halt-precondition checking) with zero triggers; bare-machine deep scan of cm16 to $5\times10^{11}$ steps with zero halts.
 \end{theorem}
 \begin{proof}
-By Theorems~\ref{thm:h16}--\ref{thm:h52} (criteria) and Theorem~\ref{thm:vocab} (vocabulary safety): halting can occur only at $A$-states outside the vocabulary coverage, and the landing audit reduces these to head-far island visits [audit mode, $10^9$ steps $\times$4, stepwise five-cell checks, zero danger occurrences].
+(2)$\Rightarrow$(1): the criterion pattern triggers the in-edge chain of Theorems~\ref{thm:h16}--\ref{thm:h52}; the machine halts. (1)$\Rightarrow$(2): suppose a halt; then some criterion pattern is visited; by Theorem~\ref{thm:vocab} (vocabulary safety) the visit occurs at an $A$-state landing outside the vocabulary coverage; the enumeration completeness of out-of-vocabulary landings is carried by the census/era key coverage [A$^-$].
 \end{proof}
 
 \begin{conjecture}[five-cell avoidance]\label{conj:quad}
-For all four machines, the era orbit $(\mathfrak M^{(m)}_k)$ of the initial marker satisfies: for every $k$, the interior of era $\mathfrak M^{(m)}_k$ contains no head-far island visit.
+No danger event ever occurs in the runs of the four machines (formally: clause (2) of Theorem~\ref{thm:reduction} is false for all time).
 \end{conjecture}
 
 Refutation record: the local-abstraction route (key graphs) is dead --- in the radius-ladder experiment for key-set successor closure, $|K^*|$ grows by about $\times3.1$ per added radius (cm16: $99\to294\to939\to2863\to8879$ for $r=2..6$; two reruns reproduce digit-for-digit), with danger-key hits growing in step, so no finite fixed point exists for fixed-radius local abstraction [kclosure]. Research field: piecewise-affine trajectory avoidance of the same shape as the cm2/M1 residuals (classification by analogy; per-machine formal restatement not performed).
