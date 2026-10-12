@@ -1,0 +1,117 @@
+\documentclass[11pt]{ctexart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{pdftitle={BB(6) Holdout 战役总结果},pdfauthor={CyclingCycloid}}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+
+\title{\bfseries BB(6) Holdout 战役：全部结果汇编\\ \large M1、cm2、cm16/26/51/52、SOC 制图、范式审计与引理移植}
+\author{}
+\date{2026 年 10 月 12 日}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本文汇编本战役对 BB(6) holdout 的全部机器验证结果：六台深挖机（M1、cm2、cm16/26/51/52）的完整结构理论与条件非停机证书；四个负结果定理（周期排除、必要精度、剩余类否定、键图发散）；两张家族地图（Cubic/Quadratic Mess 91 台、Shift-overflow counter 279 台）；范式审计（Conway 类形式定位）；以及 Hamming-1 引理移植的 40 对全量化判定。全部断言按 A（转移级穷尽/完整代数）/ A$^-$（有限 case 表 + 结构归纳）/ B（有限深度轨道）/ C（依赖假设）分级；每台机器的验证链一行可复跑。
+\end{abstract}
+
+\section{机器清单与终态总表}
+
+\begin{longtable}{lllp{5.2cm}}
+\toprule
+机器 & 码 & 判定 & 严格界/残余\\
+\midrule
+M1 & \texttt{1RB1LA\_0RC0RD\_1LC1LA\_1RE1RD\_1LF0LA\_---0LE} & 不停机（条件，置信$\sim$98\%） & 无条件：类$\le$2000 $\Rightarrow$ $\gtrsim 2^{2^{2000}}$ 步；残余 = 假设 M $\equiv \nu_2$ 记录时刻表\\
+cm2 & \texttt{1RB1RA\_1LC0RC\_---0LD\_0LE0RF\_1RE0RA\_0LF1LB} & 不停机（条件，$\sim$90\%） & 无条件：停机刻画 + 扫掠定理 + 致死集地图；若停机 $>3\times10^{10}$ 步；残余 = LEM-R$'$ 型轨迹避让（Conway 类）\\
+cm16 & \texttt{1RB0LE\_0RC1RB\_1LC1RD\_1RF0LA\_0RD1LE\_1RB---} & 不停机（条件） & 无条件：停机判据 A 级 casecheck；若停机 $>2\times10^{11}$；残余 = 危险五格头远规避\\
+cm26 & \texttt{1RB1RC\_1LC0LE\_1RD1RC\_1LB0RA\_---0LF\_1RD1LF} & 同 cm16 & 与 cm16/51/52 共结构（era 层 562 对齐零错位）\\
+cm51 & \texttt{1RB1RA\_1LC0RC\_1RE0LD\_0RE0LF\_1RA---\_1RB1LF} & 同 cm16 & 同上\\
+cm52 & \texttt{1RB0LD\_1LC1RD\_0LE1LA\_0RB1RD\_---0LF\_1RA1LF} & 同 cm16 & 停机判据独立枚举（A1-左隙型）\\
+\bottomrule
+\end{longtable}
+
+六台机器截至 2026-10-12 在 mxdys 台账与 9/24 官方 815 清单中均为未决。
+
+\section{M1：结构理论与障碍定理}
+
+\subsection{结构}
+相位演算（九规则、精确步代价、956 锚点裸机对拍）；锚点族 $P(n)$；序曲定理（减半链闭式 $a_i+1=2^{m-i}w$，纯代数）；地标族 $L(\alpha,t;s)$ 与类 $h=\nu_2(\alpha+1)$；轮律强归纳（级联 + 普适阶梯 + 主控段）；支配引理（$W\ge 3\cdot2^{2h-52-2\log_2 h}\gg|Q|<2^{h+5}$，$h\ge82$ 恒正）；$\Delta t\le 40$（终点子结构）。
+
+\subsection{无条件结果}
+\begin{theorem}[停机不可达]
+停机构型 $G(a{=}3)$ 结构性不可达：轨道上一切 $G$-头满足 $a+1=2^j\cdot(\text{奇}\ge3)$；支配性对 $\pm1$ 扰动稳健（2980/2980 反事实闭合；对抗剖面 2-adic 不可实现且从不停机）。
+\end{theorem}
+
+\begin{theorem}[包络]
+类 $\le 2000$ 穷尽（基础表 1024 + 扩展 976/976）$\Rightarrow$ 按记录时刻表经验律（$\times4$/级），$\gtrsim 2^{2^{2000}}$ 步不停机。
+\end{theorem}
+
+\subsection{障碍（墙证硬）}
+\begin{theorem}[周期排除]
+签名动力学一阶有限状态但非最终周期：Brent $1.25\times10^9$ 步无环；$2.4\times10^6$ 梯残差两两互异；记录时刻表每级 $\times4$ 爬升。任何 $K$-位闭合将压制时刻表于深度 $K$ 以下——与爬升矛盾。
+\end{theorem}
+假设 M $\equiv$ 记录时刻表延续 $\equiv$ $\nu_2$-混沌（不可有限化）。
+
+\section{cm2：质量传送机与 Collatz 型归约}
+
+\subsection{结构}
+五状态波 + F 舞 + E 填充的``质量传送机''：宏例程七种（L1 引擎忠实 A 级：658 万 A-访问 + 1658 万边界三重对拍）；时代体制表（干链闭式 $(L{+}3,M{-}4,R{+}1,T)$，60,562 时代逐格验证）；族图头锚定闭包（294 节点不动点）；分派表 D1--D4（逐支显式不等式）；不变量网 INV-T/R/L/M。
+
+\subsection{停机刻画（A 级）}
+停机 $\iff$ 冲刺落点紧邻 $(0^1,1^1,0^1)$（H1）或 F 扫描左入空白（H2）；68 停机格普查复现、聚 4 族，全部被入口分类 + 不变量封死或确认为真致死域。
+
+\subsection{终局：Collatz 型}
+\begin{theorem}[归约]
+cm2 停机 $\iff$ 扫掠-重启分段仿射系统轨迹首次进入致死前像集 $P$（193 格全裸机验证）；若停机则 $>3\times10^{10}$ 步。
+\end{theorem}
+狩猎：$3\times10^{10}$ 步 / 283 万时代 / 122 万标记零命中；mod-3 护城河封死距离 1（143/193 格受护）；轨道相容最小距离 3、振荡无趋近。三技术（路线常数/剩余类/$Q$-不变量）全部确定性失效于 M2/M1 重启——墙证硬。扫掠定理（$Q=L-3R$ 守恒 $\square$、M4 生扫掠上 $L=3R$ $\square$）为真定理。
+
+\section{cm16/26/51/52：四连包}
+
+微观测停机 $\times4$（A 级，casecheck 204,800 构型 0 反例：cm16 = D 读 0 且 $[w{+}1]{=}1$ 等）；统一 lap 文法（每 lap $x{+}1/R{-}2/z{+}1$，78 万级锚点验证）；era 层四台同构（562 对齐零错位）；孤岛不变量（casecheck-island 全通：孤岛存在 $\Rightarrow$ 摧毁波同位）；五格审计 $\times4$ 危险图案头远出现 $=0$；guard $2\times10^{11}\times4$ 零威胁。
+残余：危险五格 \texttt{1,0,1,0,1} 的头远规避为轨迹性质——键图阶梯发散（$|K^*|$ 每半径 $\times3.1$：$99{\to}294{\to}939{\to}2863{\to}8879$），局部抽象路线判死（第三块墙证硬）。
+
+\section{家族地图}
+
+\subsection{Cubic/Quadratic Mess（91 台 triage）}
+91 台 $10^9$ 步内零停机零循环；CM = 立方族（$\alpha\approx0.33$）、QM = 平方族（$\alpha\approx0.50$）；无 CYCLER 送分题；cm16/26/51/52 二次亚族四台同构。六台深挖机的残余全部为 Conway 型轨迹避让——家族级结论（三重独立确证）。
+
+\subsection{Shift-overflow counter（279 台制图）}
+双轮全扫：0 CYCLER/0 HALT/0 混沌（全族极慢极紧凑，$\alpha\le0.36$）；FAST 31/MODERATE 129/FROZEN 119；四种结构原型（格子计数器/二进制移位/指数迭代器/洗牌器）；\textbf{40 对 Hamming-1 突变体全量化判定}：13 ROBUST-CANDIDATE（含主攻对 U 机影子关系实测至 $2\times10^{10}$：头距恒 $-6..-10$、$\approx24$ 格冻结缺陷集）/ 22 FORK-PERSISTS / 5 HOT-DIFF；decided 0（era-map 归纳为每台数百行 Rocq 量级原创工作，非移植）。
+
+\section{范式审计}
+
+三重述逐转移核查：cm2 动力学 = Conway 型分段仿射迭代（Conway 1972 不可判定类；Kurtz--Simon 2007 独立性）的具体实例；非 VASS/pushdown/SFT。\textbf{换语言不改变可解性}——数论工具箱是该类实例的标准装备，困难本体。M1 周期排除在重写语言下同型成立：两机墙同源（Conway 型），难度分档精确化（M1 = 无循环良基侧；cm2 = 避让无良基侧）。cm2 停机的 ZFC 独立性不可排除。
+
+\section{验证纪律与总台账}
+
+\begin{longtable}{lp{11cm}}
+\toprule
+级别 & 条目（合计）\\
+\midrule
+A & 停机刻画 $\times7$（M1 H1/H2、cm2 H、四连包 $\times4$，全部 casecheck 穷尽）；例程/相位引擎忠实 $\times3$ 套（M1 916 锚点、cm2 三重 2300 万检查点、quad 204,800 构型）；M1 支配引理、cm2 扫掠定理、序曲闭式（完整书面代数）\\
+A$^-$ & 族图闭包 $\times2$（M1 177 模式、cm2 294 节点）；分派表 $\times2$ 套；不变量网 $\times2$ 套；孤岛不变量；$\sigma$-换名；键集封闭\\
+B & 干链 60,562 + 扫掠 127,864 + 时代 138 万/283 万/562 对齐；guard 合计 $\sim10^{12}$ 步级零威胁；Brent $1.25\times10^9$；狩猎 $3\times10^{10}$；影子 $2\times10^{10}$\\
+C & M1 假设 M（$\equiv\nu_2$ 混沌，周期排除定理证硬）；cm2 轨迹避让（三技术失效证硬）；quad 五格规避（键图发散证硬）\\
+\bottomrule
+\end{longtable}
+
+对抗评审两轮共抓 12 major（全部修复）；誊写升级抓 6 处转写错误；独立复算 9/9 PASS + 7/7 PASS；主会话手工转写表对拍关闭共享转写风险（顺带抓获自身 2 处方向笔误）。中途撤回记录：模 3 不变量（M1，11,232 反例）、pop 排名（cm2，两次）、D3 公式（$L{+}R{-}1$）等——全部在档。
+
+\section{复跑入口}
+
+\begin{itemize}
+\item M1：\texttt{attacks-sparse2/}（\texttt{sym4-table.txt} 1024 行、\texttt{sym5-table2.txt}、\texttt{ladder.json}、盲测配方见 \texttt{M1-nonthalt.tex} 附录）
+\item cm2：\texttt{attacks-cm2/}（\texttt{xval-macro/xval-fast/census2/census3/tailfront/dispatch/hclosure2/invariant/shape2} 一行可跑；\texttt{ocm.exe} oracle）
+\item 四连包：\texttt{attacks-quad/}（\texttt{casecheck-halt.mjs \&\& casecheck-island.mjs \&\& kclosure.mjs}；\texttt{quad6.exe <code> audit 1e9}）
+\item 地图：\texttt{attack-next.md}（91 台）、\texttt{soc-map.md} + \texttt{soc-work/}（279 台）、\texttt{soc-port/}（40 对移植判定）
+\item 论文：\texttt{M1-nonthalt.tex/.pdf}（英）、\texttt{M1-reduction-zh.tex/.pdf}（中）、\texttt{cm2-proof-full-zh.tex/.pdf}、\texttt{cm2-nonthalt-zh.tex/.pdf}、\texttt{M1-report-zh.pdf}
+\end{itemize}
+
+\end{document}
