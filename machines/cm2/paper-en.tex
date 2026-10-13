@@ -59,29 +59,29 @@ Step through the table: $A0$ writes $1$ at $h$, moves right; $B$ reads the $0$ a
 \begin{lemma}[Fill]\label{lem:fill}
 Suppose $A$ reads $h$ with $\tau(h)=\tau(h{+}1)=\tau(h{-}1)=\tau(h{-}2)=0$. Then the macro step is exactly 8 transitions
 \[
-A0B0C1D0E0E0E1 \to A@h{+}2,
+A0B0C1D0E0E0E0E1 \to A@h{+}2,
 \]
-namely $A@h\,0{\to}B$, $B@h{+}1\,0{\to}C$, $C@h\,1{\to}D$, $D@h{-}1\,0{\to}E$, $E@h{-}2\,0{\xrightarrow{\texttt{1RE}}}E@h{-}1$, $E@h{-}1\,0{\to}E@h$, $E@h\,1{\to}E@h{+}1$, $E@h{+}1\,1{\xrightarrow{\texttt{0RA}}}A@h{+}2$, with net effect
+namely $A@h\,0{\to}B$, $B@h{+}1\,0{\to}C$, $C@h\,1{\to}D$, $D@h{-}1\,0{\to}E$, $E@h{-}2\,0{\xrightarrow{\texttt{1RE}}}E@h{-}1$, $E@h{-}1\,0{\to}E@h$, $E@h\,0{\xrightarrow{\texttt{1RE}}}E@h{+}1$, $E@h{+}1\,1{\xrightarrow{\texttt{0RA}}}A@h{+}2$, with net effect
 \[
 \tau(h{-}2)=\tau(h{-}1)=\tau(h)=1,\qquad \tau(h{+}1)=0,\qquad h\mapsto h+2 .
 \]
 \end{lemma}
 \begin{proof}
-As in Lemma~\ref{lem:lap}; the $1$ read by $E@h$ was written by $A$ in step one, that read by $E@h{+}1$ by $B$ in step two.
+As in Lemma~\ref{lem:lap}; note that $E@h$ reads $0$ ($C$ cleared $h$ already in step three), while the $1$ read by $E@h{+}1$ was written by $B$ in step two.
 \end{proof}
 
 \begin{lemma}[Dance]\label{lem:dance}
-Suppose $A$ reads $h$ with $\tau(h)=0$, $\tau(h{+}1)=0$, $\tau(h{-}1)=1$. Then the macro step has the form
+Suppose $A$ reads $h$ with $\tau(h)=0$, $\tau(h{+}1)=0$, $\tau(h{-}1)=1$. Then the macro step (from one $A$-visit to the next) is
 \[
-A0B0C1D1 \; F0^{\,s}F1 \; (B1C1D0E1)^{\,\ell}\, D1 \;\to\; A,
+A0B0C1D1 \; F0^{\,s}F1 \; B1C1D0E1 \;\to\; A@y{-}1,
 \]
-i.e.\ a 4-step preparation ($A$ writes $h$, $B$ writes $h{+}1$, $C$ erases $h$, $D$ erases $h{-}1$), then $F$ walks left across $s\ge0$ zeros to the first $1$-cell $y$, then each 4-step group erases one $(1,1,1)$ triple to the left of $y$, until $D$ reads a $1$ and triggers a sprint. In particular $s$ is determined by the configuration and the macro step is finite.
+i.e.\ a 4-step preparation ($A$ writes $h$, $B$ writes $h{+}1$, $C$ erases $h$, $D$ erases $h{-}1$), then $F$ walks left across $s\ge0$ zeros to the first $1$-cell $y$ ($F1$ keeps $1$ and moves left into $B$), then the 4-event group $B1C1D0E1$ ($B$ erases $y{-}1$, $C$ erases $y$, $E$ erases $y{-}2$), landing at $A@y{-}1$: $4+s+1+4=s+9$ transitions in all. If the front left of $y{-}2$ still reads $1$, the dance continues as a \emph{chain of Lap macro steps} (word $A0B0C1D0E1$, i.e.\ Lemma~\ref{lem:lap}): each round net-erodes one front cell and backfills the traversed region (the first 4-event group erases roughly one $(1,1,1)$ triple, subsequent rounds one cell each); the number of units is determined by the \emph{front geometry} --- when the front cell reads $0$ the dance enters a terminal branch ($E0$-backfill DanceFill type, sprint, or exit left). In particular $s$ and the unit count are determined by the configuration and the dance chain is finite.
 \end{lemma}
 \begin{proof}
-Step through the table; $F0=$\texttt{0LF} keeps $0$ and moves left, $F1=$\texttt{1LB} keeps $1$ and moves left into $B$; the four-step group $B1C1D0E1$ is read off the table; termination holds because the configuration has finite support, so a $1$ lies at finite distance left of $y$. Worked example ($\dots1^9 0^1 1^9 0^2 1^4\dots$, $A@19$): after 11 steps, $1^9 0^1 1^5 0^5 1^5\dots$ with $A@16$.
+Step through the table: $F0=$\texttt{0LF} keeps $0$ and moves left, $F1=$\texttt{1LB} keeps $1$ and moves left into $B$; in the first group $B1C1D0E1$, $B$ reads the $1$ at $y{-}1$ (prior value), $C$ the $1$ at $y$ (kept by $F$), $D$ the $0$ at $y{-}1$ (just erased by $B$), $E$ the $1$ at $y{-}2$. The landing $A@y{-}1$ reads $0$ (erased by $B$), $\tau(y)=0$ (erased by $C$), $\tau(y{-}2)=0$ (erased by $E$), and $\tau(y{-}3)$ is the front value --- $1$ gives exactly the Lap hypotheses (Lemma~\ref{lem:lap}), $0$ changes the branch ($E0{=}$\texttt{1RE} backfills moving right). Termination holds because the configuration has finite support: at finite distance left of the front a $0$ (or the tape end) must occur. Worked example ($\dots1^9 0^1 1^9 0^2 1^4\dots$, $A@19$, $s{=}2$): after 11 transitions, $1^9 0^1 1^5 0^5 1^5\dots$ with $A@16$.
 \end{proof}
 
-$\mathbf S$ (sprint: $A1=$\texttt{1RA} keeps moving right across a $1$-block) and $\mathbf{L1}$ (narrow gap: $A0B1C1D0E1$, 5 steps) are obtained likewise. $\mathbf{DanceFill}$ and $\mathbf{DBL}$ are Dance variants; their step words and all parameter branches are exhaustively verified instance-by-instance by the checkers \texttt{casecheck-*.mjs} (routine-layer total $77{,}580$ assertions, zero counterexamples); results cited below are marked[casecheck].
+$\mathbf S$ (sprint: $A1=$\texttt{1RA} keeps moving right across a $1$-block) and $\mathbf{L1}$ (narrow gap: $A0B1C1D0E1$, 5 steps) are obtained likewise. $\mathbf{DanceFill}$ and $\mathbf{DBL}$ are Dance variants (the $E0$-backfill type when the front reads $0$ / the deep-repeat type); their step words and all parameter branches are exhaustively verified instance-by-instance by the checkers \texttt{casecheck-*.mjs} (routine-layer total $77{,}633$ assertions, zero counterexamples); results cited below are marked[casecheck].
 
 \begin{theorem}[engine faithfulness]\label{lem:faith}
 The routine layer is step-for-step equivalent to direct simulation: three independent implementations agree on $6{,}586{,}326$ $A$-visits, $16{,}583{,}495$ routine boundaries and $3{\times}10^6$ steps; an independent audit agrees at fresh checkpoints at $3\times10^9$ and $7\times10^9$ steps ($3{,}000$ boundaries each).
@@ -115,7 +115,7 @@ g6o2 & $1^L0^61^RT$ (gap[2]) & Theorem~\ref{thm:dispatch}\\
 g3 & $1^L0^11^M0^31^RT$ ($0^3$gap[1]) & front $(g2,S)\to A(L{+}3,M{+}R{-}4,\mathrm{g5},S{+}1,T)$; $(g1,S{\ge}2)\to A(L{+}3,M{+}R,\mathrm{g3},S{-}2,T)$; $(g1,1)$ or empty-tail $R\le2$ variant $\to$ \textbf{lethal (Theorem~\ref{thm:lethal})}; empty tail $R\ge1$: sign dispatch (Theorem~\ref{thm:dispatch})\\
 g1g1 & $1^L0^11^M0^11^RT$ ($M$ left) & $R\ge2\to$g4A; $R{=}1\to$\textbf{lethal}\\
 g12 & $1^L0^11^M0^21^RT$ ($M$ left) & $M{=}1\to$g6; $M\ge2\to$A/g5B\\
-gE & $1^L0^11^M$ (empty tail) & $M{=}1\to$g6; $M{=}2\to$g5B(3,2); $M{=}4\to$g6; $M\ge5\to$A\\
+gE & $1^L0^11^M$ (empty tail) & $M{=}1\to$g6; $M{=}2\to$g5B(3,2); $M{=}3\to$ S$^3$+DanceFill branch: output $1^{L+5}$ empty tail, head outside the block on the right (outR class); $M{=}4\to$g6; $M\ge5\to$A\\
 g2L & $1^L0^21^M0^21^RT$ ($0^2$gap[1]) & $\to$g4; $M{=}1\to$\textbf{lethal}\\
 g4A & $1^L0^11^M0^41^RT$ (gap[1]) & by sign of $M{+}R{-}4\to$ g3/g6; $R{=}1\to$\textbf{lethal}\\
 g4 & $1^L0^41^M0^21^RT$ (gap[2]) & g4 self-loop / A\\
@@ -123,6 +123,8 @@ out/outR & head outside blocks & outLeft$\to$g2L; outR $\to$ A\\
 \bottomrule
 \end{tabular}
 \end{center}
+
+The $M{=}3$ row of the gE family is a marker genuinely visited by the real orbit: the $10^8$-step era trace passes through gE$(37,3)$ at step 5071 (\texttt{era1e8.tsv}); this row, together with the full grid $M\in\{1,2,3,4,9\}\times L\in\{11,35\}$, was re-verified by the closure of \texttt{census3.mjs} --- no halt, output families falling back inside the closure.
 
 \begin{theorem}[dry chain]\label{thm:dry}
 Let the marker state $1^L0^11^M0^51^RT\in A$ have $M\ge5$ and head $h_0=L{+}M{+}2$. Then the era equals $\mathrm{Lap}^{\times M}+\mathrm{Fill}+\mathrm S+\mathrm{Dance}$, and the output marker state is
@@ -134,7 +136,7 @@ Let the marker state $1^L0^11^M0^51^RT\in A$ have $M\ge5$ and head $h_0=L{+}M{+}
 (1) \emph{$\mathrm{Lap}^{\times M}$.} Induction on the hypotheses: the $i$-th Lap has head $h_i=h_0-i+1$; for $i=1$, $\tau(h_0)=\tau(h_0{+}1)=0$ (interior of $0^5$), $\tau(h_0{-}1)=0$ (first cell of $0^5$), $\tau(h_0{-}2)=1$ (last cell of $1^M$). If the $i$-th holds, its writes are $\tau(h_i{-}2)\to0$ and $\tau(h_i{+}1)\to1$; the next head is $h_{i+1}=h_i-1$, whose hypothesis cells are $h_{i+1}{+}1=h_i$ ($=0$, written by $C$), $h_{i+1}{-}1=h_i{-}2$ ($=0$, written just now), $h_{i+1}{-}2=h_i{-}3$ ($=1$, interior of $1^M$, of sufficient length for $i\le M-1$). Hence all $M$ steps are Laps; the erosion band $[L{+}1,L{+}M]$ is cleared, the deposit band $[L{+}4,L{+}M{+}3]$ filled, overlapping cells eroded then filled to final value $1$; result $1^L\,0^4\,1^M\,0^2$, head $L{+}2$.
 (2) \emph{Fill.} At head $L{+}2$ the four hypothesis cells $L{+}2,L{+}3,L{+}1,L$ are all $0$ ($L$ is the original $0^1$ gap cell, untouched by the erosion band), so Lemma~\ref{lem:fill} yields $1^{L+3}0^11^M0^2$, head $L{+}4$.
 (3) \emph{S.} From the left edge of $1^M$, $M$ steps to $L{+}M{+}4$ (first cell of $0^2$).
-(4) \emph{Dance.} The head sits in the gap[2] variant of $0^2$; the step word is that of Lemma~\ref{lem:dance} (the $F$-scan start differs by one); the net effect eats 4 cells from the right edge of $1^M$, deposits into $1^R$, and leaves a new working gap $0^5$ with head at gap[1]: $1^{L+3}0^11^{M-4}0^51^{R+1}T$. $T$ is never touched.
+(4) \emph{Dance.} The head sits in the gap[2] variant of $0^2$; the macro-step mechanism is that of Lemma~\ref{lem:dance} (the $F$-scan start differs by one), the dance chain advancing as a Lap chain per Lemma~\ref{lem:dance} until the front is exhausted; the net effect eats 4 cells from the right edge of $1^M$, deposits into $1^R$, and leaves a new working gap $0^5$ with head at gap[1]: $1^{L+3}0^11^{M-4}0^51^{R+1}T$. $T$ is never touched.
 \end{proof}
 
 \begin{theorem}[g5B dispatch]\label{thm:D1}
@@ -162,7 +164,7 @@ $M$ halts if and only if one of the following occurs:
 \end{theorem}
 \begin{proof}
 Halting $\iff$ some configuration has $C$ reading $0$. The only transitions into $C$ are $B0$ (\texttt{1LC}) and $F1$ (\texttt{1LB}).
-(i) Via $B0$: the cell $C$ then reads is the one $B$ just wrote $1$ into, so the value is $1$ and no halt occurs. A halt via $B$ therefore requires $B$ reading a $1$ (\texttt{0RC}, erase, move right) after which $C$ reads $[h{+}2]$. The sources of $B$ reading a $1$: after $A0$ (\texttt{1RB}, write 1, move right) $B$ reads $[h{+}1]$ --- the halt occurs iff $\tau(h{+}1)=1$ (prior value or $A$'s write) and $\tau(h{+}2)=0$: this is H1. After $F1$, $B$ reads $[y{-}1]$: if it is $0$, $B0$ writes $1$, moves left, and $C$ reads $[y{-}2]$ --- halt iff $\tau(y{-}1)=0$ and $\tau(y{-}2)=0$: this is H2. $B$ reading a $1$ has no other in-edge (the right-moving transitions of $D,E,F,A$ have targets other than $B$). The converse directions construct the halting paths directly.
+A trigger requires $B$ reading a $1$ (\texttt{0RC}, erase, move right) after which $C$ reads $[h{+}2]$; after $B0$ (\texttt{1LC}, write 1, move left) $C$ reads the $1$ just written by $B$ and no halt occurs. The in-edges of $B$ reading a $1$: after $A0$ (\texttt{1RB}, write 1, move right) $B$ reads $[h{+}1]$ --- the halt occurs iff $\tau(h{+}1)=1$ (prior value or $A$'s write) and $\tau(h{+}2)=0$: this is H1. After $F1$, $B$ reads $[y{-}1]$: if it is $0$, $B0$ writes $1$, moves left, and $C$ reads $[y{-}2]$ --- halt iff $\tau(y{-}1)=0$ and $\tau(y{-}2)=0$: this is H2. Apart from $A0$ and $F1$ there is no other in-edge of $B$ reading a $1$ (row-by-row check of the table: the only transitions with target $B$ are $A0$ and $F1$). The converse directions construct the halting paths directly.
 \end{proof}
 
 \section{Sweep conservation and the lethal set}
@@ -180,7 +182,7 @@ Along any sweep: $\mathrm{pop}=L{+}M{+}R$ is conserved; $Q:=L-3R$ is conserved; 
 \]
 \end{theorem}
 \begin{proof}
-Conservation: $(L{+}3)+(M{-}4)+(R{+}1)=L{+}M{+}R$ and $(L{+}3)-3(R{+}1)=L-3R$; $M\equiv M_0\bmod4$ since each era applies $M\mapsto M-4$. The formulas for $\Psi$ are the parameter expansions of the corresponding terminal branches of Theorems~\ref{thm:D1}/\ref{thm:dispatch} (instance verification $164/164$, $162/166$, $171/171$).
+Conservation: $(L{+}3)+(M{-}4)+(R{+}1)=L{+}M{+}R$ and $(L{+}3)-3(R{+}1)=L-3R$; $M\equiv M_0\bmod4$ since each era applies $M\mapsto M-4$. The formulas for $\Psi$ are the parameter expansions of the corresponding terminal branches of Theorems~\ref{thm:D1}/\ref{thm:dispatch} (instance verification $164/164$, $162/166$, $171/171$ --- the $162/166$ of $\Psi_{M3}$ is the exact count on the $R\ge5$ domain, the 4 instances with $R\le4$ being dispatched separately by the symbolic branch D4, hence no mismatch).
 \end{proof}
 
 \begin{definition}[lethal set $P$]
@@ -209,7 +211,7 @@ Moreover, machine verification gives $\mathfrak M_k\notin P$ for all $k\le 2{,}8
 If an empty-tail sweep is generated by an $M4$-reset ($\Psi_{M4}$), then its descendant M3-terminal $R$ values never enter the lethal lineage $\{8\cdot4^n-1:n\ge0\}=\{1,7,31,127,\dots\}$.
 \end{theorem}
 \begin{proof}
-On a $\Psi_{M4}$-generated sweep, $L=3R$ holds exactly (Theorem~\ref{thm:sweep} with $Q=0$), hence $\mathrm{pop}=4R\equiv0\pmod4$; the M3-terminal inherits $\mathrm{pop}\equiv0\pmod4$, while every lineage value satisfies $8\cdot4^n-1\equiv3\pmod4$. Contradiction.
+On a $\Psi_{M4}$-generated sweep, $L=3R$ holds exactly (Theorem~\ref{thm:sweep} with $Q=0$), hence $\mathrm{pop}=4R$; if the terminal $M=4$, the last era's output makes $\mathrm{pop}=4R{+}4$ --- in either case $\mathrm{pop}\equiv0\pmod4$, and the M3-terminal inherits $\mathrm{pop}\equiv0\pmod4$, while every lineage value satisfies $8\cdot4^n-1\equiv3\pmod4$. Contradiction.
 \end{proof}
 
 The initial marker, the g6 entries and the M3$\to$M3 self-closure of the lineage are checked branch-by-branch likewise[dispatch entry classification]. The unsealed entries are the M2- and M1-resets.
@@ -229,10 +231,15 @@ Verified: $k\le2{,}830{,}885$ ($3\times10^{10}$ steps); the minimum parameter di
 \end{enumerate}
 
 \begin{remark}
-Formal location: $(\mathfrak M_k)$ is the orbit of a piecewise-affine system; the avoidance problem belongs to the reachability class of piecewise-affine iterations (the family of concrete instances of Conway's 1972 undecidability; cf.\ the independence results of Kurtz--Simon 2007 --- see paradigm-audit.md). ZFC-independence of this machine's halting cannot be excluded.
+Formal location: $(\mathfrak M_k)$ is the orbit of a piecewise-affine system; the avoidance problem belongs to the reachability class of piecewise-affine iterations (the family of concrete instances of Conway's 1972 undecidability \cite{conway72}; cf.\ the independence results of Kurtz--Simon 2007 \cite{kurtzsimon07} --- see paradigm-audit.md). ZFC-independence of this machine's halting cannot be excluded.
 \end{remark}
 
 \section*{Reproduction}
-\texttt{ocm.exe} (bare-machine oracle); \texttt{xval-macro.mjs} (triple cross-validation); \texttt{census2/3.mjs} (regime census); \texttt{tailfront.mjs} (tail-front evolution); \texttt{dispatch.mjs} (dispatch tables); \texttt{hclosure2.mjs} (family-graph fixed point, 294 nodes); \texttt{shape2.mjs 1e10} (deep scan); \texttt{lethal-db.json} (the set $P$). All one-line commands; see \texttt{dossier.md}.
+\texttt{ocm.exe} (bare-machine oracle); \texttt{xval-macro.mjs} (triple cross-validation); \texttt{census2/3.mjs} (regime census; the gE grid includes $M{=}3$); \texttt{tailfront.mjs} (tail-front evolution); \texttt{dispatch.mjs} (dispatch tables); \texttt{hclosure2.mjs} (family-graph fixed point, 294 nodes; its dependency \texttt{ref-lib.mjs} is vendored into this directory, one-line runnable); \texttt{shape2.mjs 1e10} (deep scan); \texttt{lethal-db.json} (the set $P$). All one-line commands; see \texttt{dossier.md}.
+
+\begin{thebibliography}{9}
+\bibitem{conway72} J.~H. Conway, \emph{Unpredictable iterations}, in: Proc. 1972 Number Theory Conference (Boulder), 49--52. University of Colorado, 1972.
+\bibitem{kurtzsimon07} S.~A. Kurtz and J.~Simon, \emph{The undecidability of the generalized Collatz problem}, in: Theory and Applications of Models of Computation (TAMC 2007), LNCS 4484, 542--553. Springer, 2007.
+\end{thebibliography}
 
 \end{document}

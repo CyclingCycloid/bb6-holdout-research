@@ -14,12 +14,9 @@ Cubic Mess 家族（mxdys 台账行 736）。本战役第一台深挖机。
 | 文件 | 内容 |
 |---|---|
 | `paper-en.tex/.pdf` | Complete paper (English): conditional main theorem + envelope + exclusion theorem |
-| `reduction-zh.tex/.pdf` | 数学论文（中文）：归约链完全推导 |
-| `reduction-zh.tex/.pdf` | 归约链完整推导（中文，定理-证明体） |
-| `report-zh.tex/.pdf` | 成果报告（中文） |
+| `reduction-zh.tex/.pdf` | 数学论文（中文）：归约链完全推导（定理-证明体；与 cm2/quad 的 paper-zh 同性质，因内容为完全推导长文故名 reduction） |
 | `dossier.md` | 完整方法叙述（引理-证明-机器三元组 + 台账） |
 | `engines/` | 全套引擎与表：`sym4.mjs`（逐类直推）、`sym5.mjs`（主控+盲测配方）、`phase1.mjs`、`o1.exe`（oracle）、`sym4-table.txt`（1024 行）；ladder 用 `node ladder.mjs 64 200000` 再生 |
 | `verification/` | 对抗评审报告、独立复算报告 |
-| `drafts/` | 早期论文草稿（md 版） |
 
-复跑入口：见 `dossier.md` §复跑命令；第三方盲测配方在 `paper-en.pdf` 附录。
+复跑入口：见 `dossier.md` §持久表；第三方盲测配方在 `paper-en.pdf` 附录。

@@ -68,7 +68,7 @@ f(a,1)（任意 a ≥ 0，即 A 参数 b=0 的退化域）：锚点构形下机�
 ## 3. 复现指南
 
 ```bash
-cd bb6/sim
+cd tools/sim
 gcc -O2 -o anchor.exe anchor.c && ./anchor.exe "1RB1RE1LC0RA0RD1LB---1RC1LF1RE0LB0LE" 1e11   # E2
 node macro.mjs verify anchors_1e11.log                                                     # E3/E4
 gcc -O2 -o anchorstart.exe anchorstart.c && ./anchorstart.exe "1RB1RE1LC0RA0RD1LB---1RC1LF1RE0LB0LE" grid 30 40 3000000   # E5

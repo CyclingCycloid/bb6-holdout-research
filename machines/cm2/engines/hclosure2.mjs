@@ -4,7 +4,8 @@
 // head-run: gap -> exact width + offset class {1,2,3+}; block -> size class + 'L';
 // OUT: side + relative offset class {1,2,3,4+} to nearest run boundary.
 import { FastTape } from './macro3.mjs';
-import { build, parseRle, macroStepGuarded } from '../reverify-cm2/ref-lib.mjs';
+// ref-lib.mjs vendored from bb6/reverify-cm2 (import path fixed for this tree)
+import { build, parseRle, macroStepGuarded } from './ref-lib.mjs';
 import fs from 'fs';
 
 const gcls = n => n <= 6 ? String(n) : '7+';

@@ -98,7 +98,7 @@ for(const x of [1,2,4,7]) for(const y of [1,2,3,4,5,8,11]) for(const z of [1,2,5
   check('S5', {t:'S',r:[x,y,z,9,17]}, 1, 0);
 }
 // G2, G3, G4: head = middle of gap index 0 (offset 1)
-for(const a of [2,3,4,5,6,7,9,14,20]) for(const b of [2,3,5,10]){
+for(const a of [1,2,3,4,5,6,7,9,14,20]) for(const b of [2,3,5,10]){
   check('G2', {t:'G',r:[a,b]}, 0, 1);
   check('G3', {t:'G',r:[a,b,11]}, 0, 1);
   check('G4', {t:'G',r:[a,b,7,23]}, 0, 1);

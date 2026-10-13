@@ -12,9 +12,10 @@
 //     y==2             -> G_{k-1}(x+1, z+1, ...rest)              cost 7
 //     y==1             -> L_{k-1}(1, x+z+3, ...rest)              cost 2x+z+14
 //   G_k(a,b,...rest):
-//     a>=4             -> S_{k+1}(1, a-3, 1, b+1, ...rest)        cost 2a+3
-//     a==3             -> DEGENERATE (flag)                       [never on-orbit]
-//     a==2             -> L_{k+1}(1, b+1, b+1, ...rest)           cost 16
+//     a>=4             -> S_{k+2}(1, a-3, 1, b+1, ...rest)        cost 2a+3
+//     a==3             -> G_{k+1}(1, 1, b+1, ...rest)             cost 9   [two-block fold; then a==1]
+//     a==2             -> L_{k+1}(1, 3, b+1, ...rest)             cost 16
+//     a==1             -> HALT                                    cost 6
 //   L_k(r1,r2,r3,...rest):
 //     r3>=2            -> L_k(r1+1, r2, r3-1, ...rest)            cost 2*r2+5
 //     r3==1            -> k==3: R(r1+1, r2)   else S_{k-1}(r1+1, r2, ...rest)  cost 2*r2+5
@@ -42,8 +43,9 @@ export function step(c){
   if(c.t==='G'){
     const [a,b,...rest]=c.r;
     if(a>=4) return {c:{t:'S',r:[1,a-3,1,b+1,...rest]}, cost:2*a+3, rule:'G->S'};
-    if(a===2) return {c:{t:'L',r:[1,b+1,b+1,...rest]}, cost:16, rule:'G->L(a=2)'};
-    if(a===3) return {halt:true, cost:15, rule:'G(a=3)->HALT'};
+    if(a===3) return {c:{t:'G',r:[1,1,b+1,...rest]}, cost:9, rule:'G(a3)->G(1,1,b+1)'};
+    if(a===2) return {c:{t:'L',r:[1,3,b+1,...rest]}, cost:16, rule:'G(a2)->L(1,3,b+1)'};
+    if(a===1) return {halt:true, cost:6, rule:'G(a1)->HALT'};
     return {degenerate:`G a=${a}`};
   }
   if(c.t==='L'){
@@ -103,8 +105,9 @@ export function stepFast(c){
   if(c.t==='G'){
     const [a,b,...rest]=c.r;
     if(a>=4) return {c:{t:'S',r:[1,a-3,1,b+1,...rest]}, cost:2*a+3, rule:'G->S'};
-    if(a===2) return {c:{t:'L',r:[1,b+1,b+1,...rest]}, cost:16, rule:'G->L(a=2)'};
-    if(a===3) return {halt:true, cost:15, rule:'G(a=3)->HALT'};
+    if(a===3) return {c:{t:'G',r:[1,1,b+1,...rest]}, cost:9, rule:'G(a3)->G(1,1,b+1)'};
+    if(a===2) return {c:{t:'L',r:[1,3,b+1,...rest]}, cost:16, rule:'G(a2)->L(1,3,b+1)'};
+    if(a===1) return {halt:true, cost:6, rule:'G(a1)->HALT'};
     return {degenerate:`G a=${a}`};
   }
   if(c.t==='L'){

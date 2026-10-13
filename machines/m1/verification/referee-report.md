@@ -1,3 +1,4 @@
+> 历史文档（时点审稿记录，原文貌保留）：文中文件名为当时工作区名称——`M1-paper-en.md` 现为 `../paper-en.tex/.pdf`；`attack-sparse2.md`/`attacks-sparse2/` 为 M2/M3 校准分析（工件未归档，校准数据见 `../../surveys/triage/triage-calib.tsv`）；`REPORT.md` 现为 `meta/campaign-log.md`；`SESSION-STATE.md`、`ladder.json` 未归档（ladder 可由 `../engines/ladder.mjs` 再生）。
 # 审稿报告：M1 非停机证明（M1-paper-en.md / attack-sparse2.md / attacks-sparse2/）
 
 审稿人：对抗性数学 referee（2026-09-25/26）。只读审查 + 独立复算（未修改任何现有文件）。

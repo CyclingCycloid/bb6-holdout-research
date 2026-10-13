@@ -1,3 +1,4 @@
+> 历史文档（时点复算记录，原文貌保留）：复现命令中的 `../attacks-cm2/` 路径现为 `../engines/`；文中"本轮/agent 原工具"等为时点用语。
 # cm2 独立复算审计报告（reverify）
 
 - 审计对象：cm2 = `1RB1RA1LC0RC---0LD0LE0RF1RE0RA0LF1LB` 无条件非停机证明

@@ -19,3 +19,4 @@ Cubic Mess 家族。动力学：五状态波 + F 舞 + E 填充的"质量传送�
 | `dossier.md` | 方法叙述与全部实验记录（§1–§14） |
 | `engines/` | ocm.exe（oracle）、census/dispatch/hclosure2/tailfront/invariant/shape2 全套；lethal-db.json |
 | `verification/` | 对抗评审报告、独立复算报告 |
+| `history/` | 历史工作记录：论文成稿前的节草稿与对抗评审过程记录（sec9–sec13、fixround、final-sections；时点用语保留） |

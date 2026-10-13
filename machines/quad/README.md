@@ -5,7 +5,7 @@ Cubic Mess 家族的二次增长亚族（四台码见论文 §1）。
 ## 结果
 
 - 停机判据 ×4（每台独立枚举与穷尽验证）；lap 文法与时代代数（每台各自验证）；孤岛不变量；归约定理（每台）：停机 ⟺ 时代轨道出现头远 (0¹,1¹,0¹) 图案访问，已验 2×10^11 步 ×4 零危险事件。
-- 四台对应事实（分层，非同构定理）见论文 §4。
+- 四台对应关系（2026-10-12 起）：**已建立时代层对应定理（A−）——排空映射（era 内 lap 级联，R≥4 共享域）四台恒等，cm26 差显式奇 R 修正（终态剩余 {2,3} vs 其余 {1,2}），cm51/cm52 与 cm16 完全恒等**（`quad-equiv.mjs`：390 行逐键表 + 60 真实态反事实重放 + 轨道全量 166,980 era 排空恒等式）；**结构同构（转移级 / churn 重播种级）不成立**——转移表各异，churn 层表比较恒等 0/110（cm51 键必变、值可无界偏离），停机谓词不共轭（cm26 轨道自身的首时代开锚对其余三台停机）——非停机证明不可经对应传递，装配逐台独立。分层事实见论文 §4，定理与边界见 dossier §15。
 - 开放问题：五格避让猜想；局部抽象路线已由键图阶梯发散否证。
 - undecided 状态未改变。
 
@@ -16,4 +16,4 @@ Cubic Mess 家族的二次增长亚族（四台码见论文 §1）。
 | `paper-zh.tex/.pdf` | 数学论文（中文） |
 | `paper-en.tex/.pdf` | Mathematical paper (English edition) |
 | `dossier.md` | 完整方法叙述与全部实验记录 |
-| `engines/` | quad6.exe、casecheck-halt/island、kclosure、era/guard/深扫数据 |
+| `engines/` | quad6.exe、casecheck-halt/island、kclosure、quad-equiv（时代层对应）、era/guard/深扫数据 |

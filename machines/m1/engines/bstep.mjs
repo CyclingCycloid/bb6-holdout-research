@@ -29,8 +29,9 @@ export function stepFastB(c) {
   if (c.t === 'G') {
     const [a, b, ...rest] = c.r;
     if (a >= 4n) return { c: { t: 'S', r: [1n, a - 3n, 1n, b + 1n, ...rest] }, cost: 2n * a + 3n, rule: 'G->S' };
-    if (a === 2n) return { c: { t: 'L', r: [1n, b + 1n, b + 1n, ...rest] }, cost: 16n, rule: 'G(a2)->L' };
-    if (a === 3n) return { halt: true, cost: 15n, rule: 'G(a3)->HALT' };
+    if (a === 3n) return { c: { t: 'G', r: [1n, 1n, b + 1n, ...rest] }, cost: 9n, rule: 'G(a3)->G(1,1,b+1)' };
+    if (a === 2n) return { c: { t: 'L', r: [1n, 3n, b + 1n, ...rest] }, cost: 16n, rule: 'G(a2)->L(1,3,b+1)' };
+    if (a === 1n) return { halt: true, cost: 6n, rule: 'G(a1)->HALT' };
     return { degenerate: `G a=${a}` };
   }
   if (c.t === 'L') {

@@ -28,19 +28,26 @@ We give a complete structural analysis of the $6$-state, $2$-symbol
 Turing machine $M=$ \texttt{1RB1LA\_0RC0RD\_1LC1LA\_1RE1RD\_1LF0LA\_---\_0LE}
 and prove, conditional on a single precisely-stated computational
 assumption (master closure, Assumption~M), that it never halts from the
-blank tape; unconditionally, we prove non-halting over a doubly-exponential
-horizon covering every physically realizable run. The analysis proceeds by
+blank tape; unconditionally, non-halting holds over all runs whose round
+classes stay in the exhaustively verified range ($h\le2000$, sampled to
+$1.2\cdot10^{7}$) --- a doubly-exponential horizon whose step-count
+scaling is labeled as empirical (Proposition on the envelope). The
+analysis proceeds by
 a macroscopic phase calculus between visits of state $D$ to blank cells,
 a closed family of recurrent anchors, a halving-chain prologue, and a
 \emph{round law} proved by strong induction on the $2$-adic class
 $h=\nu_2(\alpha+1)$ of the leading counter, via a self-similar round
 decomposition (halving cascade, universal ladder, master segment).
 Magnitude decisions are handled unconditionally by a dominance inequality
-(Lemma~D); the halting branch is structurally unreachable for $h\ge82$
-and perturbation-robust; $\Delta t$ is structurally bounded by $40$. The
+(stated as Lemma~D of the companion derivation paper); the halting branch
+is structurally unreachable for $h\ge82$
+and perturbation-robust; $\Delta t(h)\in[2,9]$ on all verified classes.
+The
 single remaining assumption is shown to be equivalent, by a
 finite-state reduction, to the continuation of a record timetable of the
-autonomous $2$-adic walk, which is provably not eventually periodic --- the
+autonomous $2$-adic walk, whose $32$-bit slice is certified acyclic by a
+finite experiment (with non-eventual-periodicity beyond the slice stated
+as a conjecture) --- the
 precise, irreducible core of the problem. All other components are proved
 algebraically or verified exhaustively over declared finite domains;
 every claim is classified in a ledger (algebraic / exhaustive /
@@ -77,13 +84,29 @@ $M$, started on the blank tape, never halts, conditional on
 Assumption~\ref{ass:master} (master closure for all classes).
 \end{theorem}
 
-\begin{theorem}[unconditional envelope]\label{thm:envelope}
+\begin{proposition}[unconditional envelope, verified range; empirical status made explicit]\label{thm:envelope}
 Unconditionally, $M$ does not halt within any run whose round classes stay
 in the exhaustively verified range (all classes $h\le2000$; sampled
 agreement through $1.2\cdot10^{7}$) --- in step-count terms, non-halting
-is proven for a doubly-exponential horizon far beyond any physically or
-computationally realizable run.
-\end{theorem}
+is proven over a horizon that is doubly exponential in the class index
+(below $2^{2^{2000}}$ in the record-climb heuristic).
+\end{proposition}
+\begin{proof}[Status of the envelope]
+The finite part is unconditional: over the verified range the round table
+is single-path and carries no halting block (Theorem~\ref{thm:round},
+computational components of \S\ref{s:comp}); the anchors climb by
+$n'\ge n+6$ per exit, and the record timetable of the residual climbs by
+a measured factor $\approx4$ per class level, so the first arrival of
+class $h$ requires a number of rounds growing like $4^{h}$, each of
+supercubic cost in the anchor index --- hence the doubly-exponential
+horizon. The record climb, however, is a \emph{measured} law of the
+autonomous walk (Theorem~\ref{thm:noCycle}), not an unconditional
+theorem; we therefore state the envelope as a proposition whose
+step-count translation carries this explicitly labeled empirical
+component. A paper proof of an explicit lower bound
+$T(h)\ge2^{c\cdot2^{h}}$ (assembling $A_j\le\tau_j^2$ with the band
+$\Delta\alpha\le2h+6$) is left open.
+\end{proof}
 
 The proof occupies Sections~\ref{s:phase}--\ref{s:assembly}. Its skeleton:
 \begin{enumerate}
@@ -104,7 +127,7 @@ $(\alpha,t)$ depends only on the class $h=\vtwo{\alpha+1}$
 (Theorem~\ref{thm:round}, the \emph{round law}), proved by strong induction
 on $h$ via a halving cascade (Lemma~\ref{lem:cascade}), a universal ladder
 (Lemma~\ref{lem:ladder}), and a uniform master segment
-(Assumption~\ref{ass:master}, Proposition~\ref{prop:uniform}).
+(Assumption~\ref{ass:master}, uniformity clause --- Remark~\ref{rem:uniform}).
 \item (\S\ref{s:endgame}--\ref{s:assembly}) Exhausted-tail configurations
 exit to the next anchor with $n'\ge n+6$ and $n'\equiv3\pmod 6$
 (Theorem~\ref{thm:endgame}), and no reachable configuration is the halting
@@ -155,15 +178,18 @@ with the stated exact step counts:
 \text{(S$\ge$)} & S_k(\dots,x,y,z,\dots)\to S_k(\dots,x{+}1,\,y{-}2,\,z{+}1,\dots) & 2y+3,\quad y\ge3;\\[2pt]
 \text{(S2)} & S_k(\dots,x,2,z,\dots)\to G_{k-1}(\dots,x{+}1,\,z{+}1,\dots) & 7;\\[2pt]
 \text{(S1)} & S_k(\dots,x,1,z,\dots)\to L_{k-1}(\dots,1,\,x{+}z{+}3,\dots) & 2x+z+14;\\[2pt]
-\text{(G$\ge$)} & G_k(a,b,\dots)\to S_{k+1}(1,\,a{-}3,\,1,\,b{+}1,\dots) & 2a+3,\quad a\ge4;\\[2pt]
-\text{(G2)} & G_k(2,b,\dots)\to L_{k+1}(1,\,b{+}1,\,b{+}1,\dots) & 16;\\[2pt]
-\text{(G3)} & G_k(3,b,\dots)\to \HALT & 15;\\[2pt]
+\text{(G$\ge$)} & G_k(a,b,\dots)\to S_{k+2}(1,\,a{-}3,\,1,\,b{+}1,\dots) & 2a+3,\quad a\ge4;\\[2pt]
+\text{(G3)} & G_k(3,b,\dots)\to G_{k+1}(1,\,1,\,b{+}1,\dots) & 9;\\[2pt]
+\text{(G2)} & G_k(2,b,\dots)\to L_{k+1}(1,\,3,\,b{+}1,\dots) & 16;\\[2pt]
+\text{(G1)} & G_k(1,b,\dots)\to \HALT & 6;\\[2pt]
 \text{(L$\ge$)} & L_k(r_1,r_2,r_3,\dots)\to L_k(r_1{+}1,\,r_2,\,r_3{-}1,\dots) & 2r_2+5,\quad r_3\ge2;\\[2pt]
 \text{(L1)} & L_k(r_1,r_2,1,\dots)\to R/S_{k-1}(r_1{+}1,\,r_2,\dots) & 2r_2+5.
 \end{array}
 \]
 In (S1) the result is $R$ when $k=3$ and $L_{k-1}$ when $k\ge4$; in (L1) it
-is $R$ when $k=3$ and $S_{k-1}$ when $k\ge4$.
+is $R$ when $k=3$ and $S_{k-1}$ when $k\ge4$. The halting block (G1) ends
+with $F$ reading $0$; the block (G3) is an ordinary event block whose target
+$G(1,\cdot)$ halts in the next block.
 \end{lemma}
 
 \begin{proof}[Proof sketch]
@@ -192,27 +218,41 @@ $1$, growing the first run to length $a{+}1$; (iv) $B$ zeroes one cell of
 the old right run, creating the new $2$-gap; (v) $D$ marches right,
 rebuilding, so that the old right run of length $b$ leaves a residue $b-2$
 to the left of the new gap and a fresh run of length $1$ to its right:
-$S_3(a+1,b-2,1)$, at total cost $2b+3$. The remaining eight rules follow
+$S_3(a+1,b-2,1)$, at total cost $2b+3$. The remaining rules follow
 by the same kind of shuttling; each was derived stepwise from
-Table~\ref{tab:tm} and verified by exhaustive comparison with a
-step-level simulator over $916$ anchor trajectories, including all
-boundary cases $y\in\{1,2\}$, $a\in\{2,3\}$, $r_3=1$, and the halting case
-(G3).
+Table~\ref{tab:tm}. Rule-level faithfulness is machine-checked in two
+complementary ways: (i) the rule checker \texttt{rulecheck.mjs} compares
+every rule against the raw machine on parameter grids ($a\in\{1,\dots,20\}$,
+$b\in\{2,3,5,10\}$, tails of length $0$--$2$): $564/564$ rows agree exactly
+(this includes the boundary cases $y\in\{1,2\}$, $a\in\{1,2,3\}$, and the
+halting case (G1)); (ii) trajectory-level comparison of the phase engine
+against the raw oracle over $956$ anchor trajectories ($n=2..957$):
+$955$ agree field-by-field, including $16$ halting anchors with exact halt
+times; the single exception is $R(2,2)$, whose successor ($b=2<3$) lies
+outside the declared grammar and is flagged, not mis-computed (direct
+simulation halts at $+22$). An earlier version of the table carried a
+folded (G3)$\to\HALT$ row and an incorrect (G2) image
+$L(1,b{+}1,b{+}1)$; against that version the checker reported
+$531$ ok / $21$ bad, the bad rows being precisely (G2)/(G3) --- the
+correction here follows the raw-machine side of that checker.
 \end{proof}
 
 \begin{lemma}[halting criterion]\label{lem:halt}
 $M$ halts from an event configuration iff the phase trajectory reaches
-$G_k(3,b,\dots)$ for some $b$ and tail. Moreover, on every orbit
-considered below, no other rule can produce a halt, and $G(3,\cdot)$ is
-reached only if some leading head equals $3$.
+$G_k(1,b,\dots)$ for some $b$ and tail; equivalently, iff it reaches a
+$G$-state with leading head $a\in\{1,3\}$ (rule (G3) carries $G(3,\cdot)$
+to $G(1,\cdot)$ in one block). On every orbit considered below, the
+leading heads of all $G$-states are $\ge2$ and $\ne3$, so no other rule
+can produce a halt.
 \end{lemma}
 
 \begin{proof}
 The only undefined transition of Table~\ref{tab:tm} is $F$ reading $0$. An
-exhaustive check of the nine rules shows the state $F$ reads a $0$ in the
+exhaustive check of the ten rules shows the state $F$ reads a $0$ in the
 interior of an event block in exactly one grammar situation, namely the
-configuration $G(3,b,\dots)$ (rule (G3)); in all other blocks $F$ reads
-$1$s or the block ends at the next event first.
+configuration $G(1,b,\dots)$ (rule (G1)); in all other blocks $F$ reads
+$1$s or the block ends at the next event first. Rule (G3) is the sole
+in-rule source of $G(1,\cdot)$.
 \end{proof}
 
 \subsection{Sweeps}
@@ -335,7 +375,7 @@ $\rho$ give the three residues.
 
 \begin{theorem}[round law]\label{thm:round}
 There exist functions $\Delta\alpha,\Delta t:\nn_{\ge1}\to\nn$ with
-$\Delta\alpha(h)\equiv0\pmod6$ and $\Delta t(h)\in[2,8]$ such that for every
+$\Delta\alpha(h)\equiv0\pmod6$ and $\Delta t(h)\in[2,9]$ such that for every
 landmark $L(\alpha,t;s)$ of class $h$:
 \begin{enumerate}
 \item if $s\ge\Delta t(h)$, the phase trajectory returns to the landmark
@@ -479,18 +519,42 @@ Lemma~\ref{lem:class} ($c\ge0$, $u\ge0$, $w=6u+3$) and $t\ge2h+16$ is
 is forced uniformly over the entire domain, no split ever occurs, and the
 derivation terminates in $O(\mathrm{poly}(\log h))$ events at either the
 next real landmark (yielding $\Delta\alpha(h)\equiv0\bmod6$,
-$\Delta t(h)\in[2,8]$) or, if $s<\Delta t(h)$, at the anchor exit of
-Theorem~\ref{thm:round}(ii). 
+$\Delta t(h)\in[2,9]$) or, if $s<\Delta t(h)$, at the anchor exit of
+Theorem~\ref{thm:round}(ii). Moreover the derivation is \emph{$h$-uniform}:
+its complete form set depends on $h$ only through the ladder literals
+$(A_{j_0},\tau_{j_0})$ and the exponent offsets of the modified tail
+(the uniformity clause, spelled out in Remark~\ref{rem:uniform}); this is
+what allows the finite audits below to be lifted from the verified
+classes to all $h$.
 \end{assumption}
 
+\begin{remark}[the uniformity clause and its evidence]\label{rem:uniform}
+The $h$-uniformity clause of Assumption~\ref{ass:master} states that the
+master derivation depends on $h$ only through the ladder literals
+$(A_{j_0},\tau_{j_0})$ and the exponent offsets of the modified tail,
+whose margins grow monotonically with $h$ (the read window is bounded by
+$\Delta t+3$ while the tail begins at exponent $t\ge2h+16$). Under this
+clause, any failure of the single-path property at some $h_\ast>10^{6}$
+would be witnessed by a violation of one of finitely many margin
+inequalities, each monotone in $h$ beyond the verified range; the clause
+was verified concretely on all classes $h\le2000$ (exhaustively) and on
+sampled classes through $1.2\cdot10^{7}$. It is part of the assumption,
+not a separate theorem: the monotonicity argument above is a structural
+observation over the verified derivation shapes, and the safety proof
+cites it as such (conditional on Assumption~\ref{ass:master}).
+\end{remark}
+
 \begin{proposition}[evidence for Assumption~\ref{ass:master}]\label{prop:master}
-Assumption~\ref{ass:master} was verified by exhaustive single-path symbolic
+Assumption~\ref{ass:master} (single-path clause and uniformity clause
+alike) was verified by exhaustive single-path symbolic
 derivation: (i) for all $h=16,\dots,1024$, by direct agreement with the
 independent per-$h$ direct engine ($1009/1009$); (ii) for $h=1025,\dots,2000$
-exhaustively and for sampled $h$ up to $1.2\cdot10^{7}$ ($988$ table rows
+exhaustively and for sampled $h$ up to $1.2\cdot10^{7}$ ($976$ table rows
 plus on-the-fly ladder extensions, all single-path, all law-shape
 consistent); (iii) at eight classes
-$h\in[1028,1777]$ against numeric ground truth (exact); (iv) at fresh
+$h\in[1028,1777]$ against numeric ground truth (exact; the class $h=1538$
+among them realizes the rare value $\Delta t=9$, correcting the earlier
+bound $[2,8]$ --- see the erratum in the dossier); (iv) at fresh
 classes $h\in\{1823,2048,31337,666667\}$ --- at $h=1823$ with three-way
 agreement (master $=$ direct engine $=$ precomputed table) --- and at
 $h=45678$ via the published blind-test recipe, and --- with the ladder
@@ -498,16 +562,6 @@ recurrence computed on the fly rather than stored, cross-checked against
 the stored ladder at $h=1777$ --- at the fresh classes
 $h\in\{9999991,10^{7},10^{7}{+}3,12345679\}$, each single-path with
 $\Delta\alpha/h\approx1.3382$.
-\end{proposition}
-
-\begin{proposition}[uniformity]\label{prop:uniform}
-The master derivation depends on $h$ only through the ladder literals
-$(A_{j_0},\tau_{j_0})$ and the exponent offsets of the modified tail, whose
-margins grow monotonically with $h$ (the read window is bounded by
-$\Delta t+3$ while the tail begins at exponent $t\ge2h+16$). Hence any
-failure of Assumption~\ref{ass:master} at some $h_\ast>10^{6}$ would be
-witnessed by a violation of one of finitely many margin inequalities, each
-of which is monotone in $h$ beyond the verified range.
 \end{proposition}
 
 \begin{proof}[Proof of Theorem~\ref{thm:round}]
@@ -547,9 +601,10 @@ $2^{t+s+1}w-1$, which is the final run $2^{m}w-1$ of $\Phi(w,m)$; hence
 $t+s+1=m$. The sweep arithmetic then resolves the configuration into a
 two-run $R(n',n')$ with $n'=2^{m}w+c$. The congruence $c\equiv3\pmod6$
 and $c\ge3$ were verified symbolically for every endgame cell (all
-$h\le104$ exhaustively --- $513/513$ cells, including two independent
-re-audits), with the endgame anchor form additionally matched against
-constructed landmark walks ($216/216$). The growth inequality follows:
+$h\le160$ exhaustively --- $841/841$ cells, including two independent
+re-audits; the full $h\le1024$ grid adds $5049$ further cells, all passing,
+for the ledger total $5890$), with the endgame anchor form additionally
+matched against constructed landmark walks ($216/216$). The growth inequality follows:
 $n'-(n+3)=c\ge3$, i.e.\ $n'\ge n+6$.
 \end{proof}
 
@@ -557,7 +612,10 @@ $n'-(n+3)=c\ge3$, i.e.\ $n'\ge n+6$.
 
 \begin{theorem}[safety]\label{thm:safety}
 No configuration on any trajectory from $P(3)$ is of the form
-$G(3,\cdot)$.
+$G(1,\cdot)$ or $G(3,\cdot)$; in particular no $G$-state has leading head
+$a\in\{1,3\}$, and by Lemma~\ref{lem:halt} $M$ never enters the halting
+transition. (The master-segment part of the computational audit below is
+conditional on Assumption~\ref{ass:master} in the standard way.)
 \end{theorem}
 
 \begin{lemma}[exhaustiveness of the state classification]\label{lem:exhaust}
@@ -597,9 +655,11 @@ $\Psi\ge19$ is odd;
 (c) a landmark $G$-head $\alpha+3\cdot2^{t-3}w$ with $\alpha\equiv1\pmod6$,
 $\alpha\ge7$, and $3\cdot2^{t-3}w\ge3\cdot64\cdot3>12$: the head is odd
 (odd $+$ even) and $\ge19$.
-In cases (a)--(c), if $a\ne3$ is odd then $a+1=2^{j}\cdot(\text{odd}\ge3)$
-for some $j\ge1$, while $a=3$ would require $a+1=4=2^{2}\cdot1$ with odd
-part $1$: contradiction. Hence $a\ne3$ throughout these families.
+In cases (a)--(c), if $a$ is odd then $a+1=2^{j}\cdot(\text{odd}\ge3)$
+for some $j\ge1$, while $a\in\{1,3\}$ would require $a+1\in\{2,4\}
+=2^{j}\cdot1$ with odd part $1<3$: contradiction. The even values that
+occur ($a=w-1$ with $w\ge3$ odd) are $\ge2$ and even, hence also not in
+$\{1,3\}$. So $a\notin\{1,3\}$ throughout these families.
 
 \emph{Computational part (intermediate and master/endgame states).}
 The $G$-states inside sweeps, master segments, and endgames are exactly
@@ -607,12 +667,15 @@ those enumerated by the single-path derivations of
 Lemma~\ref{lem:exhaust}. The $2$-adic audit (exact two-variable $(u,c)$
 solvers) checked, over $273{,}654$ symbolic forms --- all round classes
 $h\le1024$, all endgame cells, and the full master-path form set (which,
-by Proposition~\ref{prop:uniform}, is $h$-uniform) --- that no form has
-head $3$ or reaches head $3$ under any admissible continuation of its
-symbolic domain: $0$ dangers, $0$ undecided.
+by the uniformity clause of Assumption~\ref{ass:master}
+(Remark~\ref{rem:uniform}), is $h$-uniform) --- that no form has a
+leading head with $a+1$ a power of $2$ (this excludes $a\in\{1,3,7,15,
+\dots\}$ simultaneously, in particular both halting heads) or reaches
+such a head under any admissible continuation of its symbolic domain:
+$0$ dangers, $0$ undecided.
 
 By Lemma~\ref{lem:exhaust} the two parts cover every $G$-state on the
-trajectory, and in neither part does head $3$ occur. By
+trajectory, and in neither part does a head in $\{1,3\}$ occur. By
 Lemma~\ref{lem:halt}, $M$ never enters the halting transition.
 \end{proof}
 
@@ -651,14 +714,15 @@ independently (scripts in the repository; each row is a one-line rerun):
 \toprule
 Component & Domain & Result\\
 \midrule
-Rule-level faithfulness (Lemma~\ref{lem:rules}) & $916$ anchors & all equal\\
+Rule-level grid (Lemma~\ref{lem:rules}) & $a\le20\times b\le10\times$ tails & $564/564$ (\texttt{rulecheck})\\
+Trajectory faithfulness (Lemma~\ref{lem:rules}) & $956$ anchors ($n{=}2..957$) & $955$ equal; $R(2,2)$ off-grammar\\
 Prologue (Theorem~\ref{thm:prologue}) & $n\le6003$; $m\le1200$ & $1052/1052$\\
 Cascade/entry (Lemmas~\ref{lem:cascade},\ref{lem:entryladder}) & $h\le60$ & $327/327$\\
 Ladder margins (Lemma~\ref{lem:ladder}) & $j<200000$ & $199997{+}199992$\\
 Base round law & $h\le15$ & single-path\\
 Induction step & $h=16..1024$ & $1009/1009$\\
-Master extension & $h=1025..1.2\cdot10^{7}$ & $988$ rows $+$ 4 fresh\\
-Endgame cells (Theorem~\ref{thm:endgame}) & $h\le160$ & $841/841$\\
+Master extension & $h=1025..1.2\cdot10^{7}$ & $976$ rows $+$ 4 fresh\\
+Endgame cells (Theorem~\ref{thm:endgame}) & $h\le160$ ($\le1024$) & $841/841$ ($5890$ total)\\
 Endgame forms vs.\ walks & $216$ cells & $216/216$\\
 $2$-adic safety audit & $273654$ forms & $0$ dangers\\
 \bottomrule
@@ -667,7 +731,8 @@ $2$-adic safety audit & $273654$ forms & $0$ dangers\\
 
 \paragraph{The residual in its final form.}
 Magnitude decisions are settled unconditionally by dominance ($h\ge82$;
-$h\le81$ pointwise); $\Delta t\le40$ is structural; the halting branch is
+$h\le81$ pointwise); $\Delta t(h)\in[2,9]$ on all verified classes
+(Theorem~\ref{thm:round}); the halting branch is
 unreachable and perturbation-robust ($2980/2980$ single/sparse-flip
 counterfactuals close safely; adversarial profiles diverge but are
 $2$-adically unrealizable and never halt). What remains is
@@ -676,20 +741,26 @@ exhaustive, sampled to $1.2\cdot10^{7}$). A finite-state reduction
 (\texttt{sigdyn.mjs}, \texttt{brent32.mjs}) shows this residual is exactly
 the continuation of the \emph{record timetable} of the autonomous walk:
 first arrivals of new class depths occur at rounds climbing by a factor
-$\approx4$ per level ($16@4{,}756$, $18@19{,}024$, $20@76{,}096$, \dots,
-$26@19{,}480{,}486$, and depth $\ge32$ by step $1{,}246{,}751{,}041$ of the
-residue kernel, which terminates at a bad residue with no cycle).
+$\approx4$ per level (measured schedule $17@19{,}024$, $19@76{,}096$,
+$21@304{,}383$, $22@1{,}217{,}531$, $24@4{,}870{,}122$, and depth $\ge32$
+by step $1{,}246{,}751{,}041$ of the residue kernel, which terminates at a
+bad residue --- the record-$32$ event --- with no cycle).
 
-\begin{theorem}[periodicity excluded]\label{thm:noCycle}
-The signature dynamics of the master derivation is a first-order
-finite-state system, but it is not eventually periodic: Brent cycle
-detection over $1.25\cdot10^{9}$ steps finds no cycle, and the ladder
-residues over $2.4\cdot10^{6}$ positions are pairwise distinct.
-Consequently no finite closure of Assumption~\ref{ass:master} exists within
-this architecture: any $K$-bit cycle would suppress the record timetable
-below depth $K$ forever, contradicting its observed climb. The residual is
-equivalent to the $\nu_2$-chaos of the autonomous walk --- the irreducible
-core the architecture avoids needing everywhere except at record events.
+\begin{theorem}[periodicity excluded on the verified slice; conjecture beyond]\label{thm:noCycle}
+On the $32$-bit slice of the signature dynamics (the residual kernel of
+the $K$-slice model at $K=32$): Brent cycle detection over
+$1.25\cdot10^{9}$ steps finds no cycle, and the kernel terminates at a bad
+residue (the record-$32$ event); the ladder residues over
+$2.4\cdot10^{6}$ positions are pairwise distinct. Within this
+architecture, any $K$-bit cycle of the kernel would suppress the record
+timetable below depth $K$ forever, contradicting the observed climb on
+the verified slice. Consequently no finite closure of
+Assumption~\ref{ass:master} exists at $K\le32$; the corresponding
+statement for $K>32$ --- equivalently, that the full signature dynamics
+is not eventually periodic --- is a \emph{conjecture} (the record climb
+is measured, not proved, beyond the slice). The residual is equivalent to
+the $\nu_2$-chaos of the autonomous walk --- the irreducible core the
+architecture avoids needing everywhere except at record events.
 \end{theorem}
 
 Formalizing Lemma~\ref{lem:rules} and the dominance inequality in a proof

@@ -7,6 +7,7 @@
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{conjecture}[theorem]{Conjecture}
@@ -23,19 +24,19 @@
 \section{The four machines and conventions}
 
 \begin{center}\small
-\begin{tabular}{lll}
+\begin{tabular}{llll}
 \toprule
-Machine & Transition table & Halting transition\\
+Machine & Transition table & Halting transition & Sole in-edge(s) of the halting state\\
 \midrule
-cm16 & \texttt{1RB0LE\_0RC1RB\_1LC1RD\_1RF0LA\_0RD1LE\_1RB---} & $F$ on $0$\\
-cm26 & \texttt{1RB1RC\_1LC0LE\_1RD1RC\_1LB0RA\_---0LF\_1RD1LF} & $E$ on $0$\\
-cm51 & \texttt{1RB1RA\_1LC0RC\_1RE0LD\_0RE0LF\_1RA---\_1RB1LF} & $E$ on $0$\\
-cm52 & \texttt{1RB0LD\_1LC1RD\_0LE1LA\_0RB1RD\_---0LF\_1RA1LF} & $D$ on $0$\\
+cm16 & \texttt{1RB0LE\_0RC1RB\_1LC1RD\_1RF0LA\_0RD1LE\_1RB---} & $F$ on $1$ & $D0=\texttt{1RF}$\\
+cm26 & \texttt{1RB1RC\_1LC0LE\_1RD1RC\_1LB0RA\_---0LF\_1RD1LF} & $E$ on $0$ & $B1=\texttt{0LE}$\\
+cm51 & \texttt{1RB1RA\_1LC0RC\_1RE0LD\_0RE0LF\_1RA---\_1RB1LF} & $E$ on $1$ & $C0=\texttt{1RE}$, $D0=\texttt{0RE}$\\
+cm52 & \texttt{1RB0LD\_1LC1RD\_0LE1LA\_0RB1RD\_---0LF\_1RA1LF} & $E$ on $0$ & $C0=\texttt{0LE}$\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-Bi-infinite tape, initially all $0$, head at cell $0$, state $A$. The four halting transitions occupy different positions; criteria are established independently per machine (\S2), followed by the common era algebra (\S3), the verified correspondence facts (\S4), and the per-machine reduction and open problem (\S5--\S6). All criterion- and routine-layer assertions are exhaustively verified by two checkers: \texttt{casecheck-halt.mjs} (204,800 configurations, 111,257 halting instances, zero counterexamples, entry enumeration ENUM-OK $\times$4) and \texttt{casecheck-island.mjs} (39 assertions, all passing).
+Bi-infinite tape, initially all $0$, head at cell $0$, state $A$. The fourth column was checked row-by-row against the transition tables (the transitions into the halting state are exactly those listed, no others). The four halting transitions occupy different positions; criteria are established independently per machine (\S2), followed by the era algebra and the era-level correspondence (\S3), the verified correspondence facts (\S4), and the per-machine reduction and open problem (\S5--\S6). The criterion layer is exhaustively verified by \texttt{casecheck-halt.mjs} (204,800 configurations, 111,257 halting instances, zero counterexamples, entry enumeration ENUM-OK $\times$4); the routine-layer island assertions are verified by \texttt{casecheck-island.mjs} (39 assertions, all passing, \textbf{cm16 only} --- see the domain statement of Theorem~\ref{thm:island}).
 
 \section{Halt criteria (independent per machine)}
 
@@ -52,9 +53,25 @@ cm51 halts if and only if at some time state $C$ or $D$ reads a $0$ at cell $w$ 
 cm52 halts if and only if at some time state $C$ reads a $0$ at cell $c$ with $\tau(c{-}1)=0$.
 \end{theorem}
 
-\begin{proof}[Method (identical form for all four)]
-Halting $\iff$ reaching the machine's halting state reading $0$. Enumerate at transition level all in-edges of the halting state (as in Theorem 4.1 of the cm2 paper: trace the provenance of the cell values read), reducing ``halting state reads $0$'' to the visit of a specific two-cell local pattern; then instantiate both directions over all configurations in the pattern window: configurations satisfying the pattern halt within finitely many steps, the others leave the window along their routine branches. Exhaustiveness via the checker: frozen skeleton (per machine, from deep scans) $\times$ working-triple boundaries $\times$ head classes, 204,800 cells, both directions, zero counterexamples [casecheck-halt].
+\begin{proof}[cm16]
+The halting transition is $F$ reading $1$ ($F1$ undefined). The sole in-edge of $F$ is $D0=\texttt{1RF}$: $D$ reads $0$ at cell $w$, writes $1$ there, moves right to $w{+}1$ entering $F$; so every arrival of $F$ immediately follows a $D0$, and the cell $F$ reads is exactly $w{+}1$. Hence the machine halts iff after some $D0$ we have $\tau(w{+}1)=1$, which is the stated criterion. (The trigger condition $\tau(w)=0$ of $D0$ is contained in ``$D$ reads a $0$ at $w$''.) Both directions follow from this single in-edge chain.
 \end{proof}
+
+\begin{proof}[cm26]
+The halting transition is $E$ reading $0$. The sole in-edge of $E$ is $B1=\texttt{0LE}$: $B$ reads $1$ at cell $q$, writes $0$ there, moves \textbf{left} to $q{-}1$ entering $E$; the cell $E$ reads is $q{-}1$. Halting $\iff$ after some $B1$ we have $\tau(q{-}1)=0$.
+\end{proof}
+
+\begin{proof}[cm51]
+The halting transition is $E$ reading $1$. The in-edges of $E$ are exactly two: $C0=\texttt{1RE}$ and $D0=\texttt{0RE}$, both moving \textbf{right} (after writing, to $w{+}1$ entering $E$). Hence halting $\iff$ after some $C0$ or $D0$ we have $\tau(w{+}1)=1$.
+\end{proof}
+
+\begin{proof}[cm52]
+The halting transition is $E$ reading $0$. The sole in-edge of $E$ is $C0=\texttt{0LE}$: $C$ reads $0$ at cell $c$, moves left to $c{-}1$ entering $E$, and $E$ reads $\tau(c{-}1)$.
+\end{proof}
+
+\begin{remark}
+The four proofs are purely transition-level (enumerating one or two in-edges) and use no dynamics; the role of the checker is to cross-check the statement of the criteria against all instantiated configurations (guarding against typos), not a necessary part of the proofs.
+\end{remark}
 
 \section{Lap grammar and era algebra}
 
@@ -62,31 +79,46 @@ Halting $\iff$ reaching the machine's halting state reading $0$. Enumerate at tr
 A marker state is the $(A,h,\tau)$ at the end of a dance-family routine; the evolution between consecutive markers is one era. The blank-tape initial segment enters the first marker by direct simulation.
 \end{definition}
 
-\begin{lemma}[standard lap word]\label{lem:lap}
-For each machine and each parameter $R\ge2$, the (state, symbol) event word of one lap macro step is
-\[
-\underbrace{A0\,B0\,C1\,D1\,A1\,E0\,D0\,F0}_{8}\;\Big|\;
-\underbrace{B1^{R-2}}_{R-2}\;\underbrace{B0\,C0\,C0\,C1\,D1\,A1}_{6}\;\Big|\;
-\underbrace{E1^{R-1}}_{R-1}\;\underbrace{E0\,D1\,A0}_{3},
-\]
-$8+(R{-}2)+6+(R{-}1)+3=2R+14$ events in total (an event = one (state, symbol); the final $A0$ is the boundary event shared with the next lap, the lap proper being $2R{+}13$ transitions); net effect $(x,R,z)\mapsto(x{+}1,\,R{-}2,\,z{+}1)$, the working window shifting one cell right with the head in the same relative position.
+\begin{lemma}[machine-specific lap words, one per machine]\label{lem:lap}
+From \emph{each machine's own canonical anchor} (the realization $\rho_M$ of Definition~\ref{def:abstract} in \S\ref{sec:corr}), the (state, symbol) event word and period of one lap (round) --- on the drain domain $Rge4$ (the cm16 row also covering the casecheck grid $Rge2$) --- with $R$ = lap-start reservoir and the final event the pivot boundary event shared with the next round, are:
+\begin{center}\small
+\begin{tabular}{llc}
+\toprule
+Machine & round event word & period\\
+\midrule
+cm16 & $A0\,B0\,C1\,D1\,A1\,E0\,D0\,F0\;B1^{R-2}\;B0\,C0\,C0\,C1\,D1\,A1\;E1^{R-1}\;E0\,D1\;({+}A0)$ & $2R{+}13$\\
+cm26 & $D0\,B1\,E1\,F1^{R-2}\,F0\,D1\,A1\,C1^{R-4}\,C0\;({+}D0)$ & $2R{+}1$\\
+cm51 & $A0\,B0\,C1\,D1\,F1^{R-1}\,F0\,B1\,C1\,D0\,E0\,A1^{R-3}\;({+}A0)$ & $2R{+}5$\\
+cm52 & $C0\,E1\,F1^{R-1}\,F0\,A1\,D1\,D0\,B1\,D1^{R-3}\,D0\,B0\;({+}C0)$ & $2R{+}5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The net effect is $(x,R,z)\mapsto(x{+}1,\,R{-}2,\,z{+}1)$ for all four machines. The cm16 row is the word in the paper's standard configuration (left seam $0^2$, $A$ on the seam's first cell, right reservoir $1^R$, right seam $0^2$, deposit $1^z$): $2R{+}14$ events in total (the final $A0$ being the boundary event, the round proper $2R{+}13$ transitions), the working window shifting one cell right with the head in the same relative position.
 \end{lemma}
-\begin{proof}[complete derivation for cm16; the other three machines analogously]
+\begin{proof}
+Complete derivation for the cm16 row; rows 2--4 are machine-verified (below).
+
 Let the left seam be cells $g,g{+}1$ (values $0,0$), the right reservoir $1^R$ occupying $g{+}2..g{+}R{+}1$, the right seam $g{+}R{+}2,g{+}R{+}3$, the deposit $1^z$ from $g{+}R{+}4$. Head $A$ at $g$.
 
 \emph{Segment 1 (8 steps)}: $A0{=}\texttt{1RB}$ writes $1@g$, right; $B0{=}\texttt{0RC}$ at $g{+}1$; $C1{=}\texttt{1RD}$ at $g{+}2$; $D1{=}\texttt{0LA}$ writes $0@g{+}3$, left; $A1{=}\texttt{0LE}$ writes $0@g{+}2$, left; $E0{=}\texttt{0RD}$ at $g{+}1$; $D0{=}\texttt{1RF}$ writes $1@g{+}2$, right; $F0{=}\texttt{1RB}$ writes $1@g{+}3$, right. Now $g{+}2,g{+}3=1,1$, head $B$ at $g{+}4$ (inside the reservoir). Between steps 7 and 8 the tape shows a transient island ($g{+}1,g{+}2,g{+}3=0,1,0$) with head distance $\le1$.
 
 \emph{Segment 2 ($R{+}4$ steps)}: $B1{=}\texttt{1RB}$ keeps writing $1$ moving right across $g{+}4..g{+}R{+}1$ ($R{-}2$ cells); $B0$ at $g{+}R{+}2$ ($\texttt{0RC}$); $C0\,C0$ = two applications of $\texttt{1LC}$ writing $1$ at $g{+}R{+}3$ then $g{+}R{+}2$ (moving left); $C1$ at the reservoir end $g{+}R{+}1$ ($\texttt{1RD}$); $D1$ writes $0@g{+}R{+}2$; $A1$ writes $0@g{+}R{+}1$, moving left into $E$ at $g{+}R$.
 
-\emph{Segment 3 ($R{+}2$ steps)}: $E1{=}\texttt{1LE}$ keeps writing $1$ moving left back across $g{+}R..g{+}2$ ($R{-}1$ cells); $E0{=}\texttt{0RD}$ at $g{+}1$; $D1{=}\texttt{0LA}$ writes $0@g{+}2$, ending at $A$ on $g{+}1$ --- the start of the next lap.
+\emph{Segment 3 ($R{+}2$ steps)}: $E1{=}\texttt{1LE}$ keeps writing $1$ moving left back across $g{+}R..g{+}2$ ($R{-}1$ cells); $E0{=}\texttt{0RD}$ at $g{+}1$; $D1{=}\texttt{0LA}$ writes $0@g{+}2$, ending at $A$ on $g{+}1$ --- the start of the next round.
 
-\emph{Net effect check}: the final tape has $g{=}1$ (left block $+1$); new left seam $g{+}1,g{+}2$; reservoir remnant $g{+}3..g{+}R$ ($R{-}2$ cells); new right seam $g{+}R{+}1,g{+}R{+}2$; $g{+}R{+}3{=}1$ absorbed into the deposit ($+1$). That is $(x{+}1,\,R{-}2,\,z{+}1)$, with the next lap's head on the left cell of the new left seam --- same relative position, window shifted by one. Step count $8+(R{-}2)+6+(R{-}1)+3=2R{+}14$.
-
-\emph{Cross-machine remark}: the word is \emph{event-level} (a sequence of (state, symbol) pairs) --- the move directions of the transitions may differ between machines (e.g.\ $D1$ is $\texttt{0LA}$, moving left, on cm16 but $\texttt{0RA}$, moving right, on cm26), yet the event sequence and net bookkeeping coincide; the per-machine geometry is verified by cell-diff on deep-scan anchors (about 780,000 laps in total) [casecheck-island].
+\emph{Net effect check}: the final tape has $g{=}1$ (left block $+1$); new left seam $g{+}1,g{+}2$; reservoir remnant $g{+}3..g{+}R$ ($R{-}2$ cells); new right seam $g{+}R{+}1,g{+}R{+}2$; $g{+}R{+}3{=}1$ absorbed into the deposit ($+1$). That is $(x{+}1,\,R{-}2,\,z{+}1)$, with the next round's head on the left cell of the new left seam --- same relative position, window shifted by one. Step count $2R{+}14$. The word and net effect were re-verified verbatim on the parameter grid $R\in\{13,20,40\}$ by \texttt{casecheck-island.mjs} (cm16). Rows 2--4: the machine-specific words from each canonical anchor were verified verbatim on the parameter grid $R=4..21$ and several $(L,Z)$ environments (\texttt{ref-words-param.mjs}/\texttt{ref-words-small.mjs}, equivalence-referee session); the periods are pinned independently by the EV intervals of \texttt{quad6.exe} ($R{=}8/13/20/21\to$ cm16 $29/39/53/55$, cm26 $17/27/41/43$, cm51/cm52 $21/31/45/47$).
 \end{proof}
 
+\begin{remark}[from the paper's standard configuration the other three machines do \emph{not} execute the cm16 word]\label{rem:lapdiff}
+The table requires each machine's \emph{own} canonical-anchor geometry. If one starts instead from the paper's standard configuration (the cm16 geometry: left seam $0^2$, $A$ on the left seam), the third and fourth events are forced by the transition table to deviate: on cm26 $C1=\texttt{1RC}$ goes to $C$ (not $D$), on cm52 $C1=\texttt{1LA}$ goes to $A$, and on cm51 $D1=\texttt{0LF}$ goes to $F$ (not $A$) --- the three machines deviate at the 3rd/4th event already (independent check \texttt{ref-lapword.mjs}: the actual words begin $A0\,B0\,C1\,C1\,C1\cdots$ for cm26, $A0\,B0\,C1\,D1\,F1\,F1\cdots$ for cm51, and $A0\,B0\,C1\,A1\,D1\,D0\,B1\cdots$ for cm52). The correct common layer of the four machines is the \emph{era level} (the drain-map level): Theorem~\ref{thm:drain} in \S\ref{sec:corr}.
+\end{remark}
+
+\begin{remark}[era structure (verified facts)]
+The per-lap bookkeeping of cm16 is given by Lemma~\ref{lem:lap} (right reservoir $-2$ per lap). Reservoir exhaustion triggers the drain and the churn reset; the reset-branch key sets (key = (position class, neighborhood block count)) collected from deep scans: cm16/26/51 share 78 keys identically, cm52 has 89. The drain layer is an affine cascade (Theorem~\ref{thm:drain}); the churn/reseed layer has no closed form (table-level evidence of Proposition~\ref{prop:boundary}).
+\end{remark}
+
 \begin{definition}[eras and resets]
-One era = the lap chain up to reservoir exhaustion + the drain routine + the reset. Reservoir parameters $(L,M,R)$ evolve along the chain by Lemma~\ref{lem:lap}; draining triggers a churn cascade (reseeding). Era key sets (key = (position class, neighborhood block count)) collected from deep scans: cm16/26/51 share 78 keys identically; cm52 has 89.
+One era = the lap chain up to reservoir exhaustion + the drain routine + the reset. The working triple $(x,R,z)$ evolves along the chain by Lemma~\ref{lem:lap} (cm16; the other machines at their own pivot events, Lemma~\ref{lem:lap} and Theorem~\ref{thm:drain}); draining triggers a churn cascade (reseeding). Era key sets (key = (position class, neighborhood block count)) collected from deep scans: cm16/26/51 share 78 keys identically; cm52 has 89.
 \end{definition}
 
 \section{The era system: data and structure}
@@ -104,18 +136,43 @@ The right reservoir decreases by steps of 2 along the lap chain until exhaustion
 \end{remark}
 
 \begin{remark}[cross-machine alignment data]
-The large-era $(L_0,R_0)$ sequences of the four machines align over 562 measured pairs at constant offsets ($0$ or $+1$) with zero misalignment (deep-scan prefix, at the $5\times10^9$-step scale); the era key sets are 78 keys, identical key-by-key, for cm16/26/51 and 89 for cm52 (due to criterion and skeleton differences). These are observations (grade B), not used as theorems.
+The large-era $(L_0,R_0)$ sequences of the four machines align over 562 measured pairs (remeasured as $(\Delta L,\Delta R)$ vector offsets: m26$\leftrightarrow$m16 $\in\{(1,0){:}556,(0,2){:}6\}$, m51$\leftrightarrow$m16 $\in\{(1,{-}1){:}556,(0,1){:}6\}$, m52$\leftrightarrow$m16 constant $(0,2)$, each with 6 flip points) with zero misalignment (prefix of the $3\times10^9$-step era census); the era key sets are 78 keys, identical key-by-key, for cm16/26/51 and 89 for cm52 (the shared 78 plus 11 right-edge keys). These are observations, not used as theorems; moreover the table-level comparison proves this alignment to be a \emph{trajectory phenomenon}, not a consequence of drain-layer identity (Proposition~\ref{prop:boundary}(iii)).
 \end{remark}
 
-\section{Verified correspondence facts between the four machines}
+\section{Correspondence between the four machines: the drain-layer theorem and three boundaries}\label{sec:corr}
 
-\begin{remark}
+\begin{definition}[abstract marked states and canonical realization]\label{def:abstract}
+An abstract marked state is $s=(b,\mathrm{pos})$: $b$ lists all $1$-block lengths and $\mathrm{pos}$ indexes the working triple (the abstraction of an \emph{era-anchor event}; churn-phase pivot events lie outside this domain). The canonical realization $\rho_M(s)$ separates blocks by $0^1$ except inside the triple, where the seam widths are machine constants $cm16{=}(2,2)$, $cm26{=}cm52{=}(1,1)$, $cm51{=}(1,2)$; the head and state are the machine's anchor event ($cm16$: $A0$ at the $L|R$ seam start; $cm26{=}D0$, $cm51{=}A0$, $cm52{=}C0$ at the $R|Z$ seam start). Fidelity evidence: 8 real anchors (S1's five plus the equivalence referee's three new ones, at depths $2{,}000{,}090/777{,}816/123{,}526$) with rebuild $==$ real (era records field-by-field) plus event-class scans (400 pivot-event windows per machine: zero violations on era-anchor events) [\texttt{quad-equiv.mjs} S1 + \texttt{ref-fidelity.mjs}; see dossier \S15 / attack-quad.md \S15].
+\end{definition}
+
+\begin{theorem}[drain-layer correspondence]\label{thm:drain}
+Let $F_M(s)$ denote the map from $\rho_M(s)$ to the exhaustion of the current era, with output the lap count $\nu$ and the closing triple $(eL,eR,eZ)$. On the shared domain $R\ge4$:
+\begin{enumerate}
+\item $F_{cm51}=F_{cm52}=F_{cm16}$ field-by-field (and also at $R=3$);
+\item $F_{cm26}=\sigma\circ F_{cm16}$, where the correction $\sigma$ acts only on odd $R$: $\nu_{26}=\nu_{16}-1$ and $(eL,eR,eZ)_{26}=(eL-1,\;eR+2,\;eZ-1)_{16}$;
+\item the terminal residues are $eR\in\{1,2\}$ ($cm16/51/52$) or $\{2,3\}$ ($cm26$), and always $eL=L_0+\tfrac{R_0-eR}{2}$, $eZ=Z_0+\tfrac{R_0-eR}{2}$.
+\end{enumerate}
+$R=3$ is a structural divergence point ($3$ is already $cm26$'s odd terminal residue, so $cm26$ has no drain continuation, while the other three run one further lap to $1$); for $R\le2$ the map enters the churn layer, outside this theorem. The correspondence is abstract: the lap periods differ per machine ($2R{+}13$/$2R{+}1$/$2R{+}5$/$2R{+}5$, $R$ = lap-start reservoir; Lemma~\ref{lem:lap}).
+\end{theorem}
+\begin{proof}[evidence grade (machine-checked)]
+(i) whole-orbit: over the $3\times10^9$-step era census the identity of (3) holds exactly for all $166{,}976$ \emph{complete} eras of the four machines (one cap-truncated snapshot per machine excluded, four in all); (ii) synthetic table: of the 390 rows (78 shared keys $\times$ 5 parameter sets), the 110 all-clean rows contain 90 non-exhausted-input rows identical (with $\sigma$) $90/90$ (the remaining 20 rows have $R\le2$ exhausted inputs, outside the shared domain); (iii) counterfactual replay of real-orbit states: $30/30$ on $R\ge4$. Independent referee re-run (\texttt{ref-sigma.mjs}): even $R$ $220/220$ identical, odd $R$ $220/220$ via $\sigma$ ($R$ up to 439), $R=3$ divergent $20/20$.
+\end{proof}
+
+\begin{proposition}[three boundaries of the correspondence]\label{prop:boundary}
+\begin{enumerate}
+\item (churn layer) the eraB (post-reseed) component is identical on $0/110$ clean shared rows and $0/40$ real states; $cm51$'s key changed in all $150$ observed cases (largest value deviation $(-991,-598,0)$; unboundedness unproved), while $cm26$ agrees pairwise on $13/110$ rows (key kept $95/110$) --- the churn maps are non-identical (by counterexample), with no known quotient.
+\item (halt predicate) the halt outcome is not a function on the abstract states: the first era-opening anchor of $cm26$'s own orbit, $(5,4,2,2)$ at $\mathrm{pos}\,0$ (step 134), evolves normally for $cm26$ but halts for $cm16$ at step $170$, $cm51$ at $990$, $cm52$ at $6294$ (reproduced by two independent engines). Halting therefore does not transfer through the era correspondence; non-halting proofs are assembled per machine.
+\item (large-era alignment is a trajectory phenomenon) over 562 aligned pairs with $R_0\ge500$ the offsets are vector-valued with flips (see the remark above) --- a trajectory phenomenon, not a consequence of the drain-layer identity (which constrains only the within-era bookkeeping).
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}[summary of the layered facts]
 The following are layered facts, not an isomorphism theorem (the four transition tables differ; no transition-level isomorphism exists):
 \begin{enumerate}
-\item the lap grammar and bookkeeping are the same on all four machines (Lemma~\ref{lem:lap}, verified per machine);
-\item the large-era $(L_0,R_0)$ sequences align over 562 pairs at constant offsets ($0$ or $+1$) with zero misalignment --- an observation on the deep-scan prefix [at the $5\times10^9$-step scale];
+\item the net bookkeeping $(+1,-2,+1)$ is the same on all four machines (Lemma~\ref{lem:lap} machine-specific words + the $166{,}976$-complete-era census identity), the intra-era drain maps are identical on the shared domain $R\ge4$ (Theorem~\ref{thm:drain}, cm26's explicit odd-$R$ correction), while the lap event words are machine-specific (Remark~\ref{rem:lapdiff}) and the churn/halting layers do not correspond (Proposition~\ref{prop:boundary});
+\item the large-era alignment is a vector-offset trajectory phenomenon (Proposition~\ref{prop:boundary}(iii); $3\times10^9$-step census);
 \item end configurations agree bit-for-bit only on the frozen skeleton; working triples differ by $\pm100$ (a correction of the earlier ``bitwise identical'' measurement);
-\item the halt criteria have different sources (Theorems~\ref{thm:h16}--\ref{thm:h52}); non-halting assembly proceeds independently per machine.
+\item the halt criteria have different sources (Theorems~\ref{thm:h16}--\ref{thm:h52}); non-halting assembly proceeds independently per machine (Proposition~\ref{prop:boundary}(ii)).
 \end{enumerate}
 \end{remark}
 
@@ -126,16 +183,19 @@ An island is the pattern $(0^1,1^1,0^1)$ (a single-cell $1$-island). A danger ev
 \end{definition}
 
 \begin{theorem}[island invariant]\label{thm:island}
-Within the verified domain ($2\times10^7$ steps per machine, 892 island moments): every island occurrence is co-located with the destroyer wave (head distance $\le1$); island occurrences are transient --- within each lap islands exist in \emph{two} segments (correcting the earlier ``only the boundary $R{=}1$ segment''), with creator and destroyer the same passing wave and existence window shorter than one lap [casecheck-island, 39 assertions].
+\emph{Verified domain: cm16 alone, $2\times10^7$ steps (near step $10^9$), 892 island moments} [casecheck-island, 39 assertions; the checker's machine constant is cm16]. Within this domain: every island occurrence is co-located with the destroyer wave (head distance $\le1$); island occurrences are transient --- within each lap islands exist in \emph{two} segments (correcting the earlier ``only the boundary $R{=}1$ segment''), with creator and destroyer the same passing wave and existence window shorter than one lap. The cross-machine evidence is the audit deep scan ($10^9$ steps $\times$4: head-far five-cell counts islFar $=0$, dangers $=0$; head-near counts 208,450/85,307/85,307/85,314) [quad6.exe audit; see dossier \S5c].
 \end{theorem}
 
 \begin{definition}[vocabulary, audit and guard]
-The \emph{verified vocabulary} is the set of routine branches actually occurring and catalogued in deep scans and censuses (the standard lap word with its parameter branches, drain branches, churn reseed branches; the authoritative inventory is the era data and the classifier of \texttt{quad.c}). \emph{Audit mode}: at every $A$-state landing, check whether the danger pattern (a head-far $(0^1,1^1,0^1)$) appears in the five-cell window (head neighborhood $\pm2$), stepping to a given depth. \emph{Guard mode}: at every step, check directly whether the machine's criterion (the two-cell condition of Theorems~\ref{thm:h16}--\ref{thm:h52}) holds, stepping to a given depth.
+The \emph{verified vocabulary} is the set of routine branches actually occurring and catalogued in deep scans and censuses, consisting of three families: (a) the standard lap word with its parameter branches (Lemma~\ref{lem:lap}, $R\ge2$); (b) the drain branches (the wave-departure scripts for $R\in\{1,2,3,4\}$); (c) the churn reseed branches. The branch index is the era key ((position class, neighborhood block count)), with measured key sets of 78/78/78/89 for the four machines (cm52 including 11 right-edge keys); the per-key parameterized output tables are authoritative in the census/era data and the classifier of \texttt{quad.c} (rerun entries at the end of the paper). \emph{Audit mode}: at every $A$-state landing, check whether the danger pattern (a head-far $(0^1,1^1,0^1)$) appears in the five-cell window (head neighborhood $\pm2$), stepping to a given depth. \emph{Guard mode}: at every step, check directly whether the machine's criterion (the two-cell condition of Theorems~\ref{thm:h16}--\ref{thm:h52}) holds, stepping to a given depth.
 \end{definition}
 
 \begin{theorem}[safety within the vocabulary]\label{thm:vocab}
-At every $A$-state landing covered by the verified routine vocabulary, the pattern preconditions of Theorems~\ref{thm:h16}--\ref{thm:h52} do not occur (sprint-landing right gaps $\ge2$; island positions excluded by Theorem~\ref{thm:island}).
+At every $A$-state landing covered by the verified routine vocabulary, the pattern preconditions of Theorems~\ref{thm:h16}--\ref{thm:h52} do not occur: sprint-landing right gaps $\ge2$; island positions excluded by Theorem~\ref{thm:island}; landing windows of the drain branches checked cell-by-cell against the census.
 \end{theorem}
+\begin{proof}
+Three branches are checked. (i) Sprint branch: the landing geometry is given by the word structure --- the terminal event of a dance-family word places the head on the second cell of the new working gap with at least two $0$s to its right, so the two-cell criterion fails; this is a verbatim property of the word structure (entry-enumeration of \texttt{casecheck-halt}, $\times$4 machines). (ii) Island branch: Theorem~\ref{thm:island} (cm16 transition-level + orbit audit; four-machine audit deep scan islFar$=0$). (iii) Drain branch: the landing five-cell windows of the drain branches were checked instance-by-instance on the census key grid (78/78/78/89 keys $\times$ parameter grid), zero danger hits [casecheck/census data]. The three branches exhaust the vocabulary families.
+\end{proof}
 
 \section{Reduction and open problem}
 
@@ -148,16 +208,20 @@ For each machine $m\in\{16,26,51,52\}$ the following are equivalent:
 Machine verification: audit mode steps through five-cell checks at out-of-vocabulary landings ($10^9$ steps $\times$4) with zero danger occurrences; guard mode ($2\times10^{11}$ steps $\times$4, stepwise halt-precondition checking) with zero triggers; bare-machine deep scan of cm16 to $5\times10^{11}$ steps with zero halts.
 \end{theorem}
 \begin{proof}
-(2)$\Rightarrow$(1): the criterion pattern triggers the in-edge chain of Theorems~\ref{thm:h16}--\ref{thm:h52}; the machine halts. (1)$\Rightarrow$(2): suppose a halt; then some criterion pattern is visited; by Theorem~\ref{thm:vocab} (vocabulary safety) the visit occurs at an $A$-state landing outside the vocabulary coverage; the enumeration completeness of out-of-vocabulary landings is carried by the census/era key coverage [A$^-$].
+(2)$\Rightarrow$(1): the criterion pattern triggers the in-edge chain of Theorems~\ref{thm:h16}--\ref{thm:h52}; the machine halts. (1)$\Rightarrow$(2): suppose a halt; then some criterion pattern is visited; by Theorem~\ref{thm:vocab} (vocabulary safety) the visit occurs at an $A$-state landing outside the vocabulary coverage; the enumeration completeness of out-of-vocabulary landings is carried by the census/era key coverage (a finite closure observed in deep scans: the last new key of the four machines appears at steps 274/156/164/263 respectively, with zero new keys over the subsequent $10^9$ steps --- an empirical fact, not a theorem).
 \end{proof}
 
 \begin{conjecture}[five-cell avoidance]\label{conj:quad}
 No danger event ever occurs in the runs of the four machines (formally: clause (2) of Theorem~\ref{thm:reduction} is false for all time).
 \end{conjecture}
 
-Refutation record: the local-abstraction route (key graphs) is dead --- in the radius-ladder experiment for key-set successor closure, $|K^*|$ grows by about $\times3.1$ per added radius (cm16: $99\to294\to939\to2863\to8879$ for $r=2..6$; two reruns reproduce digit-for-digit), with danger-key hits growing in step, so no finite fixed point exists for fixed-radius local abstraction [kclosure]. Research field: piecewise-affine trajectory avoidance of the same shape as the cm2/M1 residuals (classification by analogy; per-machine formal restatement not performed).
+\begin{remark}[radius-ladder experiment on the local abstraction (an observation, not a theorem)]\label{rem:kclosure}
+In the radius-ladder experiment for the key-set successor closure of cm16 ($r=2..6$), $|K^*|$ grows by about $\times3.1$ per added radius ($99\to294\to939\to2863\to8879$; two reruns reproduce digit-for-digit), with danger-key hits growing in step ($2\to96$) [kclosure]. \emph{Observation}: over the measured range the closure grows without bound in the radius. The experiment stops at $r=6$; the statement ``no finite fixed point exists for fixed-radius local abstraction'' is a \emph{conjecture} for $r>6$ (no growth argument proved).
+\end{remark}
+
+Research field: piecewise-affine trajectory avoidance of the same shape as the cm2/M1 residuals (classification by analogy; per-machine formal restatement not performed).
 
 \section*{Reproduction}
-\texttt{node casecheck-halt.mjs \&\& node casecheck-island.mjs \&\& node kclosure.mjs}; \texttt{quad6.exe <code> audit 1000000000}; \texttt{quad6.exe <code> guard 200000000000}. All one-line commands.
+\texttt{node casecheck-halt.mjs \&\& node casecheck-island.mjs \&\& node kclosure.mjs \&\& node quad-equiv.mjs} (the last is the era-level correspondence experiment of Theorem~\ref{thm:drain}/Proposition~\ref{prop:boundary}); \texttt{quad6.exe <code> audit 1000000000}; \texttt{quad6.exe <code> guard 200000000000}. All one-line commands.
 
 \end{document}

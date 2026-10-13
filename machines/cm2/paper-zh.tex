@@ -59,29 +59,29 @@ A@h\,0 \xrightarrow{\texttt{1RB}} B@h{+}1\,0 \xrightarrow{\texttt{1LC}} C@h\,1 \
 \begin{lemma}[Fill]\label{lem:fill}
 设 $A$ 读 $h$，$\tau(h)=\tau(h{+}1)=\tau(h{-}1)=\tau(h{-}2)=0$。则宏步恰 8 步
 \[
-A0B0C1D0E0E0E1 \to A@h{+}2,
+A0B0C1D0E0E0E0E1 \to A@h{+}2,
 \]
-逐步为 $A@h\,0{\to}B$、$B@h{+}1\,0{\to}C$、$C@h\,1{\to}D$、$D@h{-}1\,0{\to}E$、$E@h{-}2\,0{\xrightarrow{\texttt{1RE}}}E@h{-}1$、$E@h{-}1\,0{\to}E@h$、$E@h\,1{\to}E@h{+}1$、$E@h{+}1\,1{\xrightarrow{\texttt{0RA}}}A@h{+}2$；净效应
+逐步为 $A@h\,0{\to}B$、$B@h{+}1\,0{\to}C$、$C@h\,1{\to}D$、$D@h{-}1\,0{\to}E$、$E@h{-}2\,0{\xrightarrow{\texttt{1RE}}}E@h{-}1$、$E@h{-}1\,0{\to}E@h$、$E@h\,0{\xrightarrow{\texttt{1RE}}}E@h{+}1$、$E@h{+}1\,1{\xrightarrow{\texttt{0RA}}}A@h{+}2$；净效应
 \[
 \tau(h{-}2)=\tau(h{-}1)=\tau(h)=1,\qquad \tau(h{+}1)=0,\qquad h\mapsto h+2 .
 \]
 \end{lemma}
 \begin{proof}
-同引理~\ref{lem:lap} 逐步核对；注意 $E@h$ 读到 $1$ 是 $A$ 在第一步所写，$E@h{+}1$ 读到 $1$ 是 $B$ 在第二步所写。
+同引理~\ref{lem:lap} 逐步核对；注意 $E@h$ 读到 $0$（$C$ 在第 3 步已把 $h$ 清 0），$E@h{+}1$ 读到 $1$ 是 $B$ 在第二步所写。
 \end{proof}
 
 \begin{lemma}[Dance]\label{lem:dance}
-设 $A$ 读 $h$，$\tau(h)=0$，$\tau(h{+}1)=0$，$\tau(h{-}1)=1$。则宏步为
+设 $A$ 读 $h$，$\tau(h)=0$，$\tau(h{+}1)=0$，$\tau(h{-}1)=1$。则该宏步（$A$-访问到 $A$-访问）为
 \[
-A0B0C1D1 \; F0^{\,s}F1 \; (B1C1D0E1)^{\,\ell}\, D1 \;\to\; A,
+A0B0C1D1 \; F0^{\,s}F1 \; B1C1D0E1 \;\to\; A@y{-}1,
 \]
-即 4 步准备（$A$ 写 $h$、$B$ 写 $h{+}1$、$C$ 擦 $h$、$D$ 擦 $h{-}1$），$F$ 在 $s\ge 0$ 个连续 $0$ 上左行至首个 $1$ 格 $y$，随后每 4 步擦去 $y$ 左侧一个 $(1,1,1)$ 三连组，直至 $D$ 读到 $1$ 触发冲刺。特别地 $s$ 由构型决定，宏步有限。
+即 4 步准备（$A$ 写 $h$、$B$ 写 $h{+}1$、$C$ 擦 $h$、$D$ 擦 $h{-}1$），$F$ 在 $s\ge 0$ 个连续 $0$ 上左行至首个 $1$ 格 $y$（$F1$ 保写左行入 $B$），随后 4 事件组 $B1C1D0E1$（$B$ 擦 $y{-}1$、$C$ 擦 $y$、$E$ 擦 $y{-}2$），落点 $A@y{-}1$，共 $4+s+1+4=s+9$ 步。若 $y{-}2$ 之左前沿仍为 $1$，则舞蹈以 \textbf{Lap 宏步链}延续（词 $A0B0C1D0E1$，即引理~\ref{lem:lap}）：每轮净蚀前沿 $1$ 格并回填已过区域（首个 4 事件组擦去约一个 $(1,1,1)$ 三连组，此后每轮 1 格）；单元个数由\textbf{前沿几何}决定——前沿格读 $0$ 时舞蹈转入终止分支（$E0$ 回填型 DanceFill、冲刺或左出）。特别地 $s$ 与单元个数由构型决定，舞蹈链有限。
 \end{lemma}
 \begin{proof}
-逐步执行；$F0=$\texttt{0LF} 保持 $0$ 左行、$F1=$\texttt{1LB} 保持 $1$ 左行入 $B$；$B1C1D0E1$ 四步组由转移表直接给出；终止性因带在 $y$ 左侧有限远处有 $1$（构型有限支撑）。工作样例（$\dots1^9 0^1 1^9 0^2 1^4\dots$，$A@19$）：$11$ 步后 $1^9 0^1 1^5 0^5 1^5\dots$、$A@16$。
+逐步执行转移表：$F0=$\texttt{0LF} 保持 $0$ 左行、$F1=$\texttt{1LB} 保持 $1$ 左行入 $B$；首组 $B1C1D0E1$ 中 $B$ 读 $y{-}1$ 之 $1$（原值）、$C$ 读 $y$ 之 $1$（$F$ 保写）、$D$ 读 $y{-}1$ 之 $0$（$B$ 所擦）、$E$ 读 $y{-}2$ 之 $1$。落点 $A@y{-}1$ 读 $0$（$B$ 所擦）、$\tau(y)=0$（$C$ 所擦）、$\tau(y{-}2)=0$（$E$ 所擦），$\tau(y{-}3)$ 为前沿值——为 $1$ 时恰为 Lap 前件（引理~\ref{lem:lap}），为 $0$ 时分支改变（$E0{=}$\texttt{1RE} 回填右行）。终止性因带有限支撑、前沿左侧有限远处必遇 $0$ 或带外。工作样例（$\dots1^9 0^1 1^9 0^2 1^4\dots$，$A@19$，$s{=}2$）：$11$ 步后 $1^9 0^1 1^5 0^5 1^5\dots$、$A@16$。
 \end{proof}
 
-$\mathbf S$（冲刺：$A1=$\texttt{1RA} 保持右行，越过 $1$-块）与 $\mathbf{L1}$（窄洞：$A0B1C1D0E1$，5 步）类似逐步可得。$\mathbf{DanceFill}$、$\mathbf{DBL}$ 为 Dance 的变体支，其逐步字与全部参数分支由校验器 \texttt{casecheck-*.mjs} 对参数域逐实例穷尽验证（例程层断言合计 $77{,}580$ 条、零反例）；本文引用其结论时以〔casecheck〕标注。
+$\mathbf S$（冲刺：$A1=$\texttt{1RA} 保持右行，越过 $1$-块）与 $\mathbf{L1}$（窄洞：$A0B1C1D0E1$，5 步）类似逐步可得。$\mathbf{DanceFill}$、$\mathbf{DBL}$ 为 Dance 的变体支（前沿遇 $0$ 时的 $E0$-回填型 / 深层重复型），其逐步字与全部参数分支由校验器 \texttt{casecheck-*.mjs} 对参数域逐实例穷尽验证（例程层断言合计 $77{,}633$ 条、零反例）；本文引用其结论时以〔casecheck〕标注。
 
 \begin{theorem}[引擎忠实]\label{lem:faith}
 宏例程层与逐步模拟逐步等价：三个独立实现在 $6{,}586{,}326$ 个 $A$-访问、$16{,}583{,}495$ 个例程边界、$3{\times}10^6$ 步上全同；独立审计在 $3\times10^9$、$7\times10^9$ 步新鲜检查点各 $3{,}000$ 边界全同。
@@ -115,7 +115,7 @@ g6o2 & $1^L0^61^RT$（gap[2]） & 见定理~\ref{thm:dispatch}\\
 g3 & $1^L0^11^M0^31^RT$（$0^3$gap[1]） & 尾首 $(g2,S)\to A(L{+}3,M{+}R{-}4,\mathrm{g5},S{+}1,T)$；$(g1,S{\ge}2)\to A(L{+}3,M{+}R,\mathrm{g3},S{-}2,T)$；$(g1,1)$ 或尾空 $R\le2$ 变体 $\to$ \textbf{致死（定理~\ref{thm:lethal}）}；尾空 $R\ge1$ 按符号分派（定理~\ref{thm:dispatch}）\\
 g1g1 & $1^L0^11^M0^11^RT$（$M$ 左缘） & $R\ge2\to$g4A；$R{=}1\to$\textbf{致死}\\
 g12 & $1^L0^11^M0^21^RT$（$M$ 左缘） & $M{=}1\to$g6；$M\ge2\to$A/g5B\\
-gE & $1^L0^11^M$（尾空） & $M{=}1\to$g6；$M{=}2\to$g5B(3,2)；$M{=}4\to$g6；$M\ge5\to$A\\
+gE & $1^L0^11^M$（尾空） & $M{=}1\to$g6；$M{=}2\to$g5B(3,2)；$M{=}3\to$ S$^3$+DanceFill 支：输出 $1^{L+5}$ 空尾、头在块外右侧（outR 类）；$M{=}4\to$g6；$M\ge5\to$A\\
 g2L & $1^L0^21^M0^21^RT$（$0^2$gap[1]） & $\to$g4；$M{=}1\to$\textbf{致死}\\
 g4A & $1^L0^11^M0^41^RT$（gap[1]） & 按 $M{+}R{-}4$ 符号 $\to$ g3/g6；$R{=}1\to$\textbf{致死}\\
 g4 & $1^L0^41^M0^21^RT$（gap[2]） & g4 自环 / A\\
@@ -123,6 +123,8 @@ out/outR & 头在块外 & outLeft$\to$g2L；outR $\to$ A\\
 \bottomrule
 \end{tabular}
 \end{center}
+
+gE 族的 $M{=}3$ 行为实轨真实经过的标记：$10^8$ 步 era 轨迹于第 5071 步经过 gE$(37,3)$（\texttt{era1e8.tsv}）；该行与全部 $M\in\{1,2,3,4,9\}\times L\in\{11,35\}$ 网格经 \texttt{census3.mjs} 闭包复核，无 halt、输出族落回闭包内。
 
 \begin{theorem}[干链]\label{thm:dry}
 设标记态 $1^L0^11^M0^51^RT\in A$、$M\ge5$、头 $h_0=L{+}M{+}2$。则该时代 = $\mathrm{Lap}^{\times M}+\mathrm{Fill}+\mathrm S+\mathrm{Dance}$，且输出标记态为
@@ -134,7 +136,7 @@ out/outR & 头在块外 & outLeft$\to$g2L；outR $\to$ A\\
 (1) \emph{$\mathrm{Lap}^{\times M}$}。归纳验证前件：第 $i$ 次 Lap 头在 $h_i=h_0-i+1$；$i=1$ 时 $\tau(h_0)=\tau(h_0{+}1)=0$（$0^5$ 内部）、$\tau(h_0{-}1)=0$（$0^5$ 首格）、$\tau(h_0{-}2)=1$（$1^M$ 末格）。若第 $i$ 次成立，其写入为 $\tau(h_i{-}2)\to0$、$\tau(h_i{+}1)\to1$；第 $i{+}1$ 次的头 $h_{i+1}=h_i-1$，前件格 $h_{i+1}{+}1=h_i$（$=0$，$C$ 所写）、$h_{i+1}{-}1=h_i{-}2$（$=0$，本步所写）、$h_{i+1}{-}2=h_i{-}3$（$=1$，$1^M$ 内部，$i\le M-1$ 时足长）。故 $M$ 次全为 Lap；侵蚀带 $[L{+}1,L{+}M]$ 全清 0，存入带 $[L{+}4,L{+}M{+}3]$ 逐格写 1，重叠区先蚀后存终值 $1$；结果 $1^L\,0^4\,1^M\,0^2$，头 $L{+}2$。
 (2) \emph{Fill}。头 $L{+}2$，四前件格 $L{+}2,L{+}3,L{+}1,L$ 全为 $0$（$L$ 为原 $0^1$ 间隙格，未被侵蚀带触及），引理~\ref{lem:fill} 给 $1^{L+3}0^11^M0^2$、头 $L{+}4$。
 (3) \emph{S}。头在 $1^M$ 左缘，$M$ 步至 $L{+}M{+}4$（$0^2$ 首格）。
-(4) \emph{Dance}。头在 $0^2$ 的 gap[2] 变体，逐步字与引理~\ref{lem:dance} 相同（$F$ 扫描起点差 1）；净效应吃 $1^M$ 右缘 4 格、存入 $1^R$、新工作间隙 $0^5$，头回 gap[1]。得 $1^{L+3}0^11^{M-4}0^51^{R+1}T$。$T$ 全程未被触碰。
+(4) \emph{Dance}。头在 $0^2$ 的 gap[2] 变体，宏步机制与引理~\ref{lem:dance} 相同（$F$ 扫描起点差 1），舞蹈链按引理以 Lap 链推进至前沿耗尽；净效应吃 $1^M$ 右缘 4 格、存入 $1^R$、新工作间隙 $0^5$，头回 gap[1]。得 $1^{L+3}0^11^{M-4}0^51^{R+1}T$。$T$ 全程未被触碰。
 \end{proof}
 
 \begin{theorem}[g5B 分派]\label{thm:D1}
@@ -163,7 +165,7 @@ $M$ 停机当且仅当下列二者之一发生：
 \end{theorem}
 \begin{proof}
 停机 ⟺ 到达 $C$ 读 $0$。转移表中以 $C$ 为目标者仅 $B0$（\texttt{1LC}）与 $F1$（\texttt{1LB}）。
-(i) 经 $B0$：$C$ 所读格为 $B$ 刚写 $1$ 之格，值恒 $1$，不触发。故触发需 $B$ 读 $1$（\texttt{0RC}，擦除右行）后 $C$ 读 $[h{+}2]$。$B$ 读 $1$ 的来源：$A0$（\texttt{1RB} 写 1 右行）后 $B$ 读 $[h{+}1]$——触发当且仅当 $\tau(h{+}1)=1$（原值或 $A$ 所写）且 $\tau(h{+}2)=0$，即 H1。$F1$ 后 $B$ 读 $[y{-}1]$：若为 $0$ 则 $B0$ 写 1 左行、$C$ 读 $[y{-}2]$——触发当且仅当 $\tau(y{-}1)=0$ 且 $\tau(y{-}2)=0$，即 H2。$B$ 读 1 无其他入边（$D,E,F,A$ 的右行转移分别入 $E,F,A,B$ 之外的目标）。逆方向逐条构造即得停机路径。
+(i) 触发必经 $B$ 读 $1$（\texttt{0RC}，擦除右行）后 $C$ 读 $[h{+}2]$；而 $B0$（\texttt{1LC} 写 1 左行）后 $C$ 所读为 $B$ 刚写的 $1$，不触发。$B$ 读 $1$ 的入边：$A0$（\texttt{1RB} 写 1 右行）后 $B$ 读 $[h{+}1]$——触发当且仅当 $\tau(h{+}1)=1$（原值或 $A$ 所写）且 $\tau(h{+}2)=0$，即 H1。$F1$ 后 $B$ 读 $[y{-}1]$：若为 $0$ 则 $B0$ 写 1 左行、$C$ 读 $[y{-}2]$——触发当且仅当 $\tau(y{-}1)=0$ 且 $\tau(y{-}2)=0$，即 H2。除上述 $A0$ 与 $F1$ 外 $B$ 无其他读 $1$ 的入边（逐行核对转移表：各态写入 $B$ 的转移仅 $A0$ 与 $F1$，其余以 $B$ 为目标的转移不存在）。逆方向逐条构造即得停机路径。
 \end{proof}
 
 \section{扫掠守恒与致死集}
@@ -181,7 +183,7 @@ $M$ 停机当且仅当下列二者之一发生：
 \]
 \end{theorem}
 \begin{proof}
-守恒：$(L{+}3)+(M{-}4)+(R{+}1)=L{+}M{+}R$；$(L{+}3)-3(R{+}1)=L-3R$；$M\equiv M_0 \bmod 4$ 因每时代 $M\mapsto M-4$。$\Psi$ 各式由定理~\ref{thm:D1}/\ref{thm:dispatch} 对应终端支给出（$M4$ 支即 $M\in\{1,4\}\to$g6 族的参数展开；实例验证 $164/164$、$162/166$、$171/171$）。
+守恒：$(L{+}3)+(M{-}4)+(R{+}1)=L{+}M{+}R$；$(L{+}3)-3(R{+}1)=L-3R$；$M\equiv M_0 \bmod 4$ 因每时代 $M\mapsto M-4$。$\Psi$ 各式由定理~\ref{thm:D1}/\ref{thm:dispatch} 对应终端支给出（$M4$ 支即 $M\in\{1,4\}\to$g6 族的参数展开；实例验证 $164/164$、$162/166$、$171/171$——其中 $\Psi_{M3}$ 的 $162/166$ 为 $R\ge5$ 域上的精确值，4 个 $R\le4$ 特例经 D4 的符号分派另行处理，故非失配）。
 \end{proof}
 
 \begin{definition}[致死集 $P$]
@@ -210,7 +212,7 @@ $P$ = 满足下列之一的标记态参数格：(i) g1g1 族 $R=1$；(ii) g3 族
 若某空尾扫掠由 $M4$-重启（$\Psi_{M4}$）生成，则其后代 M3-终点的 $R$ 值不落致死谱系 $\{8\cdot4^n-1:n\ge0\}=\{1,7,31,127,\dots\}$。
 \end{theorem}
 \begin{proof}
-$\Psi_{M4}$ 生成的扫掠上 $L=3R$ 精确成立（定理~\ref{thm:sweep}：$Q=0$ 初值），故 $\mathrm{pop}=4R$。M3-终点继承 $\mathrm{pop}\equiv0\pmod4$；而谱系值 $8\cdot4^n-1\equiv 3\pmod 4$。矛盾。
+$\Psi_{M4}$ 生成的扫掠上 $L=3R$ 精确成立（定理~\ref{thm:sweep}：$Q=0$ 初值），故 $\mathrm{pop}=4R$；若终点 $M=4$，终态为 $(L{+}3,\,0,\,R{+}1)$ 前的末时代输出使 $\mathrm{pop}=4R{+}4$——无论哪种情形 $\mathrm{pop}\equiv0\pmod4$，M3-终点继承 $\mathrm{pop}\equiv0\pmod4$；而谱系值 $8\cdot4^n-1\equiv 3\pmod 4$。矛盾。
 \end{proof}
 
 初始标记、g6 入口与 M3$\to$M3 谱系自封闭性同理逐支核对〔dispatch 入口分类〕。未封闭的入口：M2-重启与 M1-重启。
@@ -230,10 +232,15 @@ $\Psi_{M4}$ 生成的扫掠上 $L=3R$ 精确成立（定理~\ref{thm:sweep}：$Q
 \end{enumerate}
 
 \begin{remark}
-范式定位：$(\mathfrak M_k)$ 是分段仿射系统的轨道，避让问题属分段仿射迭代的可达性类（Conway 1972 不可判定类的具体实例谱系；Kurtz--Simon 2007 独立性结果的适用范围见 paradigm-audit.md）。本机器停机命题的 ZFC 独立性不可排除。
+范式定位：$(\mathfrak M_k)$ 是分段仿射系统的轨道，避让问题属分段仿射迭代的可达性类（Conway 1972 不可判定类的具体实例谱系 \cite{conway72}；Kurtz--Simon 2007 独立性结果的适用范围见 paradigm-audit.md \cite{kurtzsimon07}）。本机器停机命题的 ZFC 独立性不可排除。
 \end{remark}
 
 \section*{复跑}
-\texttt{ocm.exe}（裸机 oracle）；\texttt{xval-macro.mjs}（忠实性三重对拍）；\texttt{census2/3.mjs}（体制普查）；\texttt{tailfront.mjs}（尾首演化）；\texttt{dispatch.mjs}（分派表）；\texttt{hclosure2.mjs}（族图不动点 294 节点）；\texttt{shape2.mjs 1e10}（深扫）；\texttt{lethal-db.json}（$P$ 库）。全部一行执行，见 \texttt{dossier.md}。
+\texttt{ocm.exe}（裸机 oracle）；\texttt{xval-macro.mjs}（忠实性三重对拍）；\texttt{census2/3.mjs}（体制普查，gE 网格含 $M{=}3$）；\texttt{tailfront.mjs}（尾首演化）；\texttt{dispatch.mjs}（分派表）；\texttt{hclosure2.mjs}（族图不动点 294 节点；其依赖 \texttt{ref-lib.mjs} 已并入本目录，可一行执行）；\texttt{shape2.mjs 1e10}（深扫）；\texttt{lethal-db.json}（$P$ 库）。全部一行执行，见 \texttt{dossier.md}。
+
+\begin{thebibliography}{9}
+\bibitem{conway72} J.~H. Conway, \emph{Unpredictable iterations}, in: Proc. 1972 Number Theory Conference (Boulder), 49--52. University of Colorado, 1972.
+\bibitem{kurtzsimon07} S.~A. Kurtz and J.~Simon, \emph{The undecidability of the generalized Collatz problem}, in: Theory and Applications of Models of Computation (TAMC 2007), LNCS 4484, 542--553. Springer, 2007.
+\end{thebibliography}
 
 \end{document}

@@ -13,8 +13,9 @@ function step1(c){
     if(y===1n){if(rest.length===0)return{c:{t:'R',r:[1n,x+z+3n]}};return{c:{t:'L',r:[1n,x+z+3n,...rest]}};}}
   if(c.t==='G'){const[a,b,...rest]=c.r;
     if(a>=4n)return{c:{t:'S',r:[1n,a-3n,1n,b+1n,...rest]}};
-    if(a===2n)return{c:{t:'L',r:[1n,b+1n,b+1n,...rest]}};
-    if(a===3n)return{halt:true};
+    if(a===3n)return{c:{t:'G',r:[1n,1n,b+1n,...rest]}};
+    if(a===2n)return{c:{t:'L',r:[1n,3n,b+1n,...rest]}};
+    if(a===1n)return{halt:true};
     return{degenerate:'G a='+a};}
   if(c.t==='L'){const[r1,r2,r3,...rest]=c.r;
     if(r3>=2n)return{c:{t:'L',r:[r1+1n,r2,r3-1n,...rest]}};

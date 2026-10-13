@@ -1,7 +1,7 @@
 # SPARSE1 (BB(6) holdout) macro-analysis report — 2026-09-25
 
 Machine: `1RB0RB1LB0LC1RD1LC1RE0RA0RF1RA---1LB`
-(holdouts list `bb6/holdouts/BB6_holdouts_1003.txt` line 521; bbchallenge URL
+(holdouts list the holdouts list (now `data/holdouts-aug30/`) line 521; bbchallenge URL
 `https://bbchallenge.org/1RB0RB_1LB0LC_1RD1LC_1RE0RA_0RF1RA_---1LB`).
 
 ## 0. Machine identity — CRITICAL transcription note
@@ -21,7 +21,7 @@ This **disagrees with the prose table in the tasking** (`D: 0→0RA,1→0RF; E: 
 which corresponds to a *different* code `1RB0RB1LB0LC1RD1LC0RA0RF0RD1RA1LB---`. The 36-char code
 (given twice in the tasking, and matching the holdouts file) is authoritative; note **halt is F
 reading 0, not 1**. Evidence: my simulator, parsing only the 36-char string, reproduces the user's
-`bb6/sim/sparse1.log` (3,080,240 BLK lines, 2×10^7 steps) **byte-for-byte** — so that log was made
+the archived simulator log (sparse1.log, 2×10^7 steps) (3,080,240 BLK lines, 2×10^7 steps) **byte-for-byte** — so that log was made
 from the true machine, while the checkpoint numbers quoted in the tasking ((3420,747) at 10^7 etc.)
 were **not** (they belong to the mis-transcribed table; e.g. at 10^7 the true tape is
 `1^916 0 1^981 0 11`). All analysis below is for the true code. [EXACT-COMPUTE]
@@ -31,10 +31,9 @@ route code (`nodes/6.cd412996.js`) shows that for code-form URLs the status badg
 UNDECIDED* (`P.UNDECIDED`) and the machine is simulated client-side — no database record is fetched.
 The public REST API (`api.bbchallenge.org/machine/<id>`) is numeric-ID only (e.g. machine 1 →
 "decided"), so no by-code DB status exists; the machine stands in the local Aug-30-2026 undecided
-holdout list. WebFetch/web-reader return only the SPA shell; browser rendering is unavailable in
-this agent (checked).
+holdout list. WebFetch/web-reader return only the SPA shell (no server-rendered status).
 
-## 1. Tooling (all in `bb6/attacks-sparse1/`)
+## 1. Tooling (all in the engines directory `../../engines/attacks-sparse1/`)
 
 * `sim.c` — validated simulator (modes: `blk` = blockscan replica, `dumpwin`, `cfills`, `anchors`).
   The `blk` mode reproduces `sparse1.log` exactly for the full 2×10^7 steps (diff clean).
@@ -178,7 +177,7 @@ under G/S; all modular proofs ≤ 64 dead.**
 ## 8. Reproduction
 
 ```
-cd bb6/attacks-sparse1
+cd machines/early/engines/attacks-sparse1
 gcc -O2 -o sim.exe sim.c        && ./sim.exe blk 20000000 | diff - <(grep -v DONE ../sim/sparse1.log)   # empty
 gcc -O2 -o astart.exe astart.c  && ./astart.exe grid 120 64 3000000 > grid_m120_k64.log
 node fcheck.mjs grid_m120_k64.log     # cells=8655 … bad=0

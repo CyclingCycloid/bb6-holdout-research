@@ -364,7 +364,7 @@ steps ≈ 2^435789. This extends the user's 10^5-step verification twentyfold. [
   structurally insufficient. A proof, if one exists, must be an exact-arithmetic argument
   (e.g. a clever exact invariant linking the pair (u,v) across cycles), or must exploit
   additional TM-level structure not visible in the two-counter recurrence.
-- Promising directions for future agents implied by this work: (a) exploit the exact
+- Promising follow-up directions implied by this work: (a) exploit the exact
   cycle-map product representation (L7) to hunt for an exact conserved/modular-with-sign
   quantity of the pair (u, v mod 2^{k}−1-style moduli tied to each cycle) — the per-cycle
   moduli 2^i(2^{i+1}−1) vary with the cycle, which is why fixed-m fails (L6), but a

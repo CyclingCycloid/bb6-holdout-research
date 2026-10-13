@@ -7,6 +7,7 @@
 
 \newtheorem{theorem}{定理}[section]
 \newtheorem{lemma}[theorem]{引理}
+\newtheorem{proposition}[theorem]{命题}
 \newtheorem{definition}[theorem]{定义}
 \newtheorem{remark}[theorem]{注}
 \newtheorem{conjecture}[theorem]{猜想}
@@ -35,7 +36,7 @@ cm52 & \texttt{1RB0LD\_1LC1RD\_0LE1LA\_0RB1RD\_---0LF\_1RA1LF} & $E$ 读 $0$ & $
 \end{tabular}
 \end{center}
 
-记号 \texttt{sXY} = 写 $s$、移动 $X\in\{L,R\}$、转态 $Y$。带双无限、初始全 0、头在格 0、状态 $A$。第四列由转移表逐行核对（各机指向停机态的转移恰为所列，别无其他）。判据层与例程层的全部断言另由两个校验器穷尽验证：\texttt{casecheck-halt.mjs}（204,800 构型、111,257 停机实例、零反例、入口穷举 $\times$4）与 \texttt{casecheck-island.mjs}（39 断言全过）。
+记号 \texttt{sXY} = 写 $s$、移动 $X\in\{L,R\}$、转态 $Y$。带双无限、初始全 0、头在格 0、状态 $A$。第四列由转移表逐行核对（各机指向停机态的转移恰为所列，别无其他）。判据层的全部断言由 \texttt{casecheck-halt.mjs} 穷尽验证（204,800 构型、111,257 停机实例、零反例、入口穷举 $\times$4）；例程层孤岛断言由 \texttt{casecheck-island.mjs} 验证（39 断言全过，\textbf{cm16 单机}，见定理~\ref{thm:island} 的域声明）。
 
 \section{停机判据（每台独立，转移级完整证明）}
 
@@ -77,16 +78,25 @@ cm52 停机 $\iff$ 某时刻状态 $C$ 读格 $c$ 之 $0$ 且 $\tau(c{-}1)=0$。
 标记态 = 舞族例程结束时的 $(A,h,\tau)$；相邻标记态之间为一个时代。空带起始段经直接模拟进入首次标记。
 \end{definition}
 
-\begin{lemma}[标准 lap 字]\label{lem:lap}
-对每台机器、每个参数 $R\ge2$，一个 lap 宏步的（状态,读）事件字为
-\[
-\underbrace{A0\,B0\,C1\,D1\,A1\,E0\,D0\,F0}_{8\ \text{步}}\;\Big|\;
-\underbrace{B1^{R-2}}_{R-2\ \text{步}}\;\underbrace{B0\,C0\,C0\,C1\,D1\,A1}_{6\ \text{步}}\;\Big|\;
-\underbrace{E1^{R-1}}_{R-1\ \text{步}}\;\underbrace{E0\,D1\,A0}_{3\ \text{步}},
-\]
-共 $8+(R{-}2)+6+(R{-}1)+3=2R+14$ 个事件（事件 = 一次（状态,读）；末事件 $A0$ 为与下一 lap 共享的边界事件，lap 本体 $2R{+}13$ 次转移）；净效应 $(x,R,z)\mapsto(x{+}1,\,R{-}2,\,z{+}1)$，工作窗整体右移一格、头相对工作窗位置不变。
+\begin{lemma}[机型 lap 字（四台各自）]\label{lem:lap}
+从\textbf{各机自身的典范锚点}（定义见~\S\ref{sec:corr} 的 $\rho_M$）出发（$Rge4$ 的排空域；cm16 行亦含 $Rge2$ 的 casecheck 参数格），一个 lap（圈）的（状态,读）事件字与周期为（$R$ = 圈首储量；末事件为与下一圈共享的 pivot 边界事件）：
+\begin{center}\small
+\begin{tabular}{llc}
+\toprule
+机器 & 圈事件字 & 周期\\
+\midrule
+cm16 & $A0\,B0\,C1\,D1\,A1\,E0\,D0\,F0\;B1^{R-2}\;B0\,C0\,C0\,C1\,D1\,A1\;E1^{R-1}\;E0\,D1\;(+A0)$ & $2R{+}13$\\
+cm26 & $D0\,B1\,E1\,F1^{R-2}\,F0\,D1\,A1\,C1^{R-4}\,C0\;(+D0)$ & $2R{+}1$\\
+cm51 & $A0\,B0\,C1\,D1\,F1^{R-1}\,F0\,B1\,C1\,D0\,E0\,A1^{R-3}\;(+A0)$ & $2R{+}5$\\
+cm52 & $C0\,E1\,F1^{R-1}\,F0\,A1\,D1\,D0\,B1\,D1^{R-3}\,D0\,B0\;(+C0)$ & $2R{+}5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+四台的净效应同为 $(x,R,z)\mapsto(x{+}1,\,R{-}2,\,z{+}1)$。cm16 行即在论文标准构型（左缝 $0^2$、$A$ 于左缝首格、右库 $1^R$、右缝 $0^2$、存款 $1^z$）下的字，共 $2R{+}14$ 个事件（末事件 $A0$ 为边界事件，lap 本体 $2R{+}13$ 次转移），工作窗整体右移一格、头相对工作窗位置不变。
 \end{lemma}
-\begin{proof}[cm16 的完整推导；其余三台同法]
+\begin{proof}
+cm16 行的完整推导（其余三行经机型字校验器机器验证，见下）。
+
 设左缝为格 $g,g{+}1$（$0,0$），右库 $1^R$ 占 $g{+}2..g{+}R{+}1$，右缝 $g{+}R{+}2,g{+}R{+}3$，存款 $1^z$ 自 $g{+}R{+}4$。头 $A$ 在 $g$。
 
 \emph{段一（8 步）}：$A0{=}\texttt{1RB}$ 写 $1@g$、右行；$B0{=}\texttt{0RC}$ 于 $g{+}1$；$C1{=}\texttt{1RD}$ 于 $g{+}2$；$D1{=}\texttt{0LA}$ 写 $0@g{+}3$、左行；$A1{=}\texttt{0LE}$ 写 $0@g{+}2$、左行；$E0{=}\texttt{0RD}$ 于 $g{+}1$；$D0{=}\texttt{1RF}$ 写 $1@g{+}2$、右行；$F0{=}\texttt{1RB}$ 写 $1@g{+}3$、右行。此时 $g{+}2,g{+}3=1,1$，头 $B$ 在 $g{+}4$（库内）。段内第 7--8 步间带面出现瞬态孤岛（$g{+}1,g{+}2,g{+}3=0,1,0$），头距 $\le1$。
@@ -95,13 +105,15 @@ cm52 停机 $\iff$ 某时刻状态 $C$ 读格 $c$ 之 $0$ 且 $\tau(c{-}1)=0$。
 
 \emph{段三（$R{+}2$ 步）}：$E1{=}\texttt{1LE}$ 保写左行扫回 $g{+}R..g{+}2$（$R{-}1$ 格）；$E0{=}\texttt{0RD}$ 于 $g{+}1$；$D1{=}\texttt{0LA}$ 写 $0@g{+}2$，左行至 $A$ 于 $g{+}1$——下一 lap 起点。
 
-\emph{净效应核对}：终带为 $g{=}1$（左库 $+1$）；新左缝 $g{+}1,g{+}2$；库残段 $g{+}3..g{+}R$（$R{-}2$ 格）；新右缝 $g{+}R{+}1,g{+}R{+}2$；$g{+}R{+}3{=}1$ 并入存款（$+1$）。即 $(x{+}1,\,R{-}2,\,z{+}1)$，下一 lap 头在新左缝左格——相对位置不变，工作窗右移一格。步数 $8+(R{-}2)+6+(R{-}1)+3=2R{+}14$。
-
-\emph{跨机说明}：字是\textbf{事件级}的（状态,读序列）——各台转移的移动方向可不同（如 $D1$ 在 cm16 为 $\texttt{0LA}$ 左行、在 cm26 为 $\texttt{0RA}$ 右行），但事件序列与净簿记一致；逐台几何由 cell-diff 在深扫锚点上验证（合计约 78 万 lap）〔casecheck-island〕。
+\emph{净效应核对}：终带为 $g{=}1$（左库 $+1$）；新左缝 $g{+}1,g{+}2$；库残段 $g{+}3..g{+}R$（$R{-}2$ 格）；新右缝 $g{+}R{+}1,g{+}R{+}2$；$g{+}R{+}3{=}1$ 并入存款（$+1$）。即 $(x{+}1,\,R{-}2,\,z{+}1)$，下一 lap 头在新左缝左格——相对位置不变，工作窗右移一格。步数 $8+(R{-}2)+6+(R{-}1)+3=2R{+}14$。字与净效应由 \texttt{casecheck-island.mjs} 于参数格 $R\in\{13,20,40\}$ 逐字复核（cm16）。其余三行：从各机典范锚点出发的机型字在 $R=4..21$ 参数格与多组 $(L,Z)$ 环境上逐字验证（\texttt{ref-words-param.mjs}/\texttt{ref-words-small.mjs}，等价评审），周期由 \texttt{quad6.exe} 的 EV 间隔独立钉死（$R{=}8/13/20/21\to$ cm16 $29/39/53/55$、cm26 $17/27/41/43$、cm51/cm52 $21/31/45/47$）。
 \end{proof}
 
+\begin{remark}[自论文标准构型出发，其余三台\textbf{不}执行 cm16 字]\label{rem:lapdiff}
+上表要求各机\textbf{自身典范锚点}的几何。若强行从论文标准构型（cm16 几何：左缝 $0^2$、$A$ 于左缝）出发，事件字的第 3、4 个事件由转移表强制偏离：cm26 的 $C1=\texttt{1RC}$ 转入 $C$（非 $D$），cm52 的 $C1=\texttt{1LA}$ 转入 $A$，cm51 的 $D1=\texttt{0LF}$ 转入 $F$（非 $A$）——三台在第 3/4 事件处即偏离（独立复核 \texttt{ref-lapword.mjs}：cm26 实际字以 $A0\,B0\,C1\,C1\,C1\cdots$ 起，cm51 以 $A0\,B0\,C1\,D1\,F1\,F1\cdots$ 起，cm52 以 $A0\,B0\,C1\,A1\,D1\,D0\,B1\cdots$ 起）。四台正确的公共对应位于\textbf{时代层}（排空映射层），见~\S\ref{sec:corr} 定理~\ref{thm:drain}。
+\end{remark}
+
 \begin{remark}[时代结构（已验证事实）]
-逐 lap 簿记由引理~\ref{lem:lap} 给出（每 lap 右库 $-2$）。库存耗尽触发排空与 churn 重置；重置分支的键集（键 =（位置类， 邻域块数））经深扫采集：cm16/26/51 各 78 键逐键相同、cm52 为 89 键。本文不声明时代层的闭式映射——逐键的输出表以 census/era 数据为准（复跑入口见文末）。
+cm16 的逐 lap 簿记由引理~\ref{lem:lap} 给出（每 lap 右库 $-2$）。库存耗尽触发排空与 churn 重置；重置分支的键集（键 =（位置类， 邻域块数））经深扫采集：cm16/26/51 各 78 键逐键相同、cm52 为 89 键。排空层为仿射级联（定理~\ref{thm:drain}），churn/重播种层无闭式（命题~\ref{prop:boundary} 的表级证据）。
 \end{remark}
 
 \section{时代系统：数据与结构}
@@ -119,18 +131,43 @@ cm52 停机 $\iff$ 某时刻状态 $C$ 读格 $c$ 之 $0$ 且 $\tau(c{-}1)=0$。
 \end{remark}
 
 \begin{remark}[跨机对齐数据]
-四台的大时代 $(L_0,R_0)$ 序列实测 562 对齐、常量偏移（$0$ 或 $+1$）、零错位（深扫前缀，$5\times10^9$ 步级）；era 键集 cm16/26/51 各 78 键\textbf{逐键相同}，cm52 为 89 键（判据与骨架差异所致）。此为观测事实（B 级），不作为定理使用。
+四台的大时代 $(L_0,R_0)$ 序列实测 562 对齐（重测为 $(\Delta L,\Delta R)$ 矢量偏移：m26↔m16 $\in\{(1,0){:}556,(0,2){:}6\}$、m51↔m16 $\in\{(1,{-}1){:}556,(0,1){:}6\}$、m52↔m16 恒 $(0,2)$，各含 6 个翻转点）、零错位（$3\times10^9$ 步 era 普查前缀）；era 键集 cm16/26/51 各 78 键\textbf{逐键相同}，cm52 为 89 键（共享 78 + 11 个右缘键）。此为观测事实，不作为定理使用；且表级比较证明该对齐是\textbf{轨迹现象}而非排空层恒等式的推论（命题~\ref{prop:boundary}(iii)）。
 \end{remark}
 
-\section{四台间已验证的对应事实}
+\section{四台间的对应：排空层定理与三层边界}\label{sec:corr}
 
-\begin{remark}
+\begin{definition}[抽象标记态与典范实现]\label{def:abstract}
+抽象标记态 $s=(b,\mathrm{pos})$：$b$ 为全带 $1$-块长向量，$\mathrm{pos}$ 为工作三元组 $(b_{\mathrm{pos}},b_{\mathrm{pos}+1},b_{\mathrm{pos}+2})$ 的位置（\textbf{时代锚事件}处的构型抽象；churn 相的 pivot 事件不属此域）。典范实现 $\rho_M(s)$：块间以 $0^1$ 相隔，唯三元组内部缝宽为机型常数 $cm16{=}(2,2)$、$cm26{=}cm52{=}(1,1)$、$cm51{=}(1,2)$；头与态取该机的锚点事件（$cm16$ 为 $A0$ 于 $L|R$ 缝首格，$cm26{=}D0$、$cm51{=}A0$、$cm52{=}C0$ 于 $R|Z$ 缝首格）。忠实性证据：8 个真实锚（S1 5 个 + 等价评审 3 个新锚，深度 $2{,}000{,}090/777{,}816/123{,}526$）rebuild $==$ real（era 记录逐字段）+ 事件类扫描（每台 400 个 pivot 事件窗：时代锚事件零违例）〔\texttt{quad-equiv.mjs} S1 + \texttt{ref-fidelity.mjs}；详见 dossier §15 / attack-quad.md §15〕。
+\end{definition}
+
+\begin{theorem}[排空层对应]\label{thm:drain}
+设 $F_M(s)$ 为从 $\rho_M(s)$ 起跑到本时代排空为止的映射，输出圈数 $\nu$ 与闭三元组 $(eL,eR,eZ)$。则在共享域 $R\ge4$ 上：
+\begin{enumerate}
+\item $F_{cm51}=F_{cm52}=F_{cm16}$（逐字段；且在 $R=3$ 亦恒等）；
+\item $F_{cm26}=\sigma\circ F_{cm16}$，修正 $\sigma$ 仅作用于奇 $R$ 输入：$\nu_{26}=\nu_{16}-1$，$(eL,eR,eZ)_{26}=(eL-1,\;eR+2,\;eZ-1)_{16}$；
+\item 终态剩余 $eR\in\{1,2\}$（$cm16/51/52$）或 $\{2,3\}$（$cm26$），且恒有 $eL=L_0+\tfrac{R_0-eR}{2}$、$eZ=Z_0+\tfrac{R_0-eR}{2}$。
+\end{enumerate}
+$R=3$ 为结构分歧点：$cm26$ 无排空延续（$3$ 已是其奇终态），其余三台再跑一圈至 $1$；$R\le2$ 时 $F_M$ 进入 churn 层（不属本定理域）。对应是抽象层的：圈周期机型各异（$2R{+}13$/$2R{+}1$/$2R{+}5$/$2R{+}5$，$R$ 为圈首储量，引理~\ref{lem:lap}）。
+\end{theorem}
+\begin{proof}[证据等级（机器验证）]
+(i) 轨道全量：$3\times10^9$ 步 era 普查的 $166{,}976$ 条\textbf{完整}时代（四台合计）恒等式 (3) 精确、零反例（另每台 1 条 cap 截断快照除外，共 4 条）；(ii) 合成表：78 共享键 $\times$ 5 参数组的 390 行中 110 全清洁行，其 90 个非排空输入行恒等（含 $\sigma$）$90/90$（余 20 行为 $R\le2$ 排空输入，在共享域外）；(iii) 真实轨道态反事实重放：$R\ge4$ 行 $30/30$。等价评审独立复核（\texttt{ref-sigma.mjs}）：$\sigma$ 网格偶 $R$ $220/220$ 恒等、奇 $R$ $220/220$（$R$ 至 439），$R=3$ 分歧 $20/20$。
+\end{proof}
+
+\begin{proposition}[对应不传递的三条边界]\label{prop:boundary}
+\begin{enumerate}
+\item（churn 层）eraB（重播种后下一时代开参数）在共享清洁行上四台恒等 $0/110$、真实态 $0/40$：$cm51$ 键实测 $150/150$ 改变（最大值偏离 $(-991,-598,0)$；无界性未证）；$cm26$ 成对部分重合（$13/110$ 行 eraB 开三元组与 $cm16$ 相同，键保 $95/110$）。故 churn 映射非恒等（由分歧行证），且无已知商结构。
+\item（停机谓词）停机结局不是抽象态上的函数：$cm26$ 轨道自身的首个时代开锚 $(5,4,2,2)@\,\mathrm{pos}\,0$（步 $134$）对 $cm26$ 正常演进，而 $cm16$ 停机于第 $170$ 步、$cm51$ 于第 $990$ 步、$cm52$ 于第 $6294$ 步（双引擎复现）。因此停机性不可经时代层对应传递，非停机证明逐台装配。
+\item（大时代对齐是轨迹现象）$562$ 对 $R_0\ge500$ 大时代的 $(L_0,R_0)$ 序列按秩对齐时 $(\Delta L,\Delta R)$ 取分段矢量值（见上注）——是轨迹现象而非排空层恒等式的推论（排空层恒等只约束时代内演化的簿记）。
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}[分层事实总表]
 以下为分层事实，非同构定理（四台转移表各异，转移级同构不存在）：
 \begin{enumerate}
-\item lap 文法与簿记在四台上同一（引理~\ref{lem:lap}，每台各自验证）；
-\item 大时代 $(L_0,R_0)$ 序列 562 对在常量偏移（$0$ 或 $+1$）下零错位——深扫前缀上的观测〔$5\times10^9$ 步级〕；
+\item 净簿记 $(+1,-2,+1)$ 四台同一（引理~\ref{lem:lap} 机型字 + $166{,}976$ 完整时代普查恒等式），时代内排空映射在 $R\ge4$ 共享域恒等（定理~\ref{thm:drain}，cm26 奇 $R$ 显式修正），而 lap 事件字机型各异（注~\ref{rem:lapdiff}）、churn/停机层不对应（命题~\ref{prop:boundary}）；
+\item 大时代对齐为矢量偏移轨迹现象（命题~\ref{prop:boundary}(iii)；$3\times10^9$ 步级普查）；
 \item 末端构型仅冻结骨架逐位相同，工作三元组差 $\pm100$（对早期``逐位相同''测量结论的修正）；
-\item 停机判据不同源（定理~\ref{thm:h16}--\ref{thm:h52}：四台的停机态、入边与图案方向互不相同），非停机装配逐台独立进行。
+\item 停机判据不同源（定理~\ref{thm:h16}--\ref{thm:h52}：四台的停机态、入边与图案方向互不相同），非停机装配逐台独立进行（命题~\ref{prop:boundary}(ii)）。
 \end{enumerate}
 \end{remark}
 
@@ -141,16 +178,19 @@ cm52 停机 $\iff$ 某时刻状态 $C$ 读格 $c$ 之 $0$ 且 $\tau(c{-}1)=0$。
 \end{definition}
 
 \begin{theorem}[孤岛不变量]\label{thm:island}
-在验证域内（每台 $2\times10^7$ 步，892 个孤岛时刻）：孤岛每次出现均与摧毁波同位（头距 $\le1$）；孤岛的出现为瞬态——每个 lap 内孤岛存在于\textbf{两}个段（修正早期``仅边界 $R{=}1$ 段''的说法），且创造者与摧毁者为同一道经过波，存在窗口短于一个 lap〔casecheck-island，39 断言全过〕。
+\textbf{验证域：cm16 单机，$2\times10^7$ 步（步 $10^9$ 邻域），892 个孤岛时刻}〔casecheck-island，39 断言全过；该校验器的机器码常量即 cm16〕。在此域内：孤岛每次出现均与摧毁波同位（头距 $\le1$）；孤岛的出现为瞬态——每个 lap 内孤岛存在于\textbf{两}个段（修正早期``仅边界 $R{=}1$ 段''的说法），且创造者与摧毁者为同一道经过波，存在窗口短于一个 lap。四台的跨机证据为 audit 深扫（$10^9$ 步 $\times$4：五格图案头远计数 islFar $=0$、危险 $=0$；头同位计数 208,450/85,307/85,307/85,314）〔quad6.exe audit，见 dossier §5c〕。
 \end{theorem}
 
 \begin{definition}[词表、audit 与 guard]
-\textbf{已验证词表} = 深扫与 census 中实际出现并归档的例程分支集（标准 lap 字及其参数分支、排空分支、churn 重播种分支；完整清单以 era 数据与 \texttt{quad.c} 的分类器为准）。\textbf{audit 模式}：在每个 $A$-态落点处检查五格窗口（头邻域 $\pm2$）是否出现危险图案（头远 $(0^1,1^1,0^1)$），逐步执行至给定深度。\textbf{guard 模式}：每一步直接检查该机判据（定理~\ref{thm:h16}--\ref{thm:h52} 的二格条件）是否成立，逐步执行至给定深度。
+\textbf{已验证词表} = 深扫与 census 中实际出现并归档的例程分支集，由三族构成：(a) 标准 lap 字及其参数分支（引理~\ref{lem:lap}，$R\ge2$）；(b) 排空分支（$R\in\{1,2,3,4\}$ 的波离脚本）；(c) churn 重播种分支。分支索引为 era 键（（位置类, 邻域块数）），四台实测键集分别为 78/78/78/89 个（cm52 含 11 个右缘键）；逐键的参数化输出表以 census/era 数据与 \texttt{quad.c} 分类器为准（复跑入口见文末）。\textbf{audit 模式}：在每个 $A$-态落点处检查五格窗口（头邻域 $\pm2$）是否出现危险图案（头远 $(0^1,1^1,0^1)$），逐步执行至给定深度。\textbf{guard 模式}：每一步直接检查该机判据（定理~\ref{thm:h16}--\ref{thm:h52} 的二格条件）是否成立，逐步执行至给定深度。
 \end{definition}
 
 \begin{theorem}[词表内安全]\label{thm:vocab}
-在已验证词表覆盖的一切 $A$-态落点处，定理~\ref{thm:h16}--\ref{thm:h52} 的图案前提不出现：冲刺落点的右间隙 $\ge2$（落点几何由字结构给出）；孤岛位被定理~\ref{thm:island} 排除；排空分支的落点窗口经 census 逐格核对。
+在已验证词表覆盖的一切 $A$-态落点处，定理~\ref{thm:h16}--\ref{thm:h52} 的图案前提不出现：冲刺落点的右间隙 $\ge2$；孤岛位被定理~\ref{thm:island} 排除；排空分支的落点窗口经 census 逐格核对。
 \end{theorem}
+\begin{proof}
+分三支核对。(i) 冲刺支：落点几何由例程字结构给出——舞族字的终止事件把头置于新工作间隙的第 2 格，其右侧至少 2 个 $0$，判据的二格条件（右邻为 $1$ 或左邻组合）不成立；此为字结构的逐字性质（\texttt{casecheck-halt} 的入口穷举枚举 $\times$4 台）。（ii) 孤岛支：定理~\ref{thm:island}（cm16 转移级 $+$ 轨道审计；四台 audit 深扫 islFar$=$0）。（iii) 排空支：排空分支的落点五格窗口在 census 键网格（78/78/78/89 键 $\times$ 参数格）上逐实例核对，零危险命中〔casecheck/census 数据〕。三支穷尽词表的分支族。
+\end{proof}
 
 \section{归约与开放问题}
 
@@ -163,20 +203,20 @@ cm52 停机 $\iff$ 某时刻状态 $C$ 读格 $c$ 之 $0$ 且 $\tau(c{-}1)=0$。
 机器验证：audit 模式对词表外落点逐步五格检查（$10^9$ 步 $\times$4）危险出现 $=0$；guard 模式（$2\times10^{11}$ 步 $\times$4，逐步检查停机前提）零触发；裸机深扫 cm16 至 $5\times10^{11}$ 步零停机。
 \end{theorem}
 \begin{proof}
-(2)$\Rightarrow$(1)：判据图案成立即触发定理~\ref{thm:h16}--\ref{thm:h52} 的入边链，停机。(1)$\Rightarrow$(2)：设停机，则某判据图案被访问；由定理~\ref{thm:vocab}（词表内安全），该访问必在词表覆盖之外的 $A$-态落点处；词表外落点的枚举完备性由 census/era 键集覆盖承载〔A$^-$〕。
+(2)$\Rightarrow$(1)：判据图案成立即触发定理~\ref{thm:h16}--\ref{thm:h52} 的入边链，停机。(1)$\Rightarrow$(2)：设停机，则某判据图案被访问；由定理~\ref{thm:vocab}（词表内安全），该访问必在词表覆盖之外的 $A$-态落点处；词表外落点的枚举完备性由 census/era 键集覆盖承载（该覆盖为深扫观测的有限封闭：四台末新键分别出现于第 274/156/164/263 步，此后 $10^9$ 步零新键——经验事实，非定理）。
 \end{proof}
 
 \begin{conjecture}[五格避让]\label{conj:quad}
 四台机器的运行中危险事件永不发生（形式化：定理~\ref{thm:reduction}(2) 恒假）。
 \end{conjecture}
 
-\begin{theorem}[局部抽象否证]\label{thm:kclosure}
-对 cm16 的键图后继封闭做半径阶梯实验（$r=2..6$）：$|K^*|=99\to294\to939\to2863\to8879$，每加一半径约 $\times3.1$，危险键命中同步增长（$2\to96$）；复跑两次逐位复现。故固定半径的局部抽象不存在有限不动点〔kclosure〕。
-\end{theorem}
+\begin{remark}[局部抽象的阶梯实验（观察，非定理）]\label{rem:kclosure}
+对 cm16 的键图后继封闭做半径阶梯实验（$r=2..6$）：$|K^*|=99\to294\to939\to2863\to8879$，每加一半径约 $\times3.1$，危险键命中同步增长（$2\to96$）；复跑两次逐位复现〔kclosure〕。\textbf{观察}：在实测范围内封闭集随半径无界增长。实验截止于 $r=6$；``固定半径的局部抽象不存在有限不动点''对 $r>6$ 为\textbf{猜想}（增长论证未证）。
+\end{remark}
 
 研究域定位：残余为 lap/era 仿射系统的轨迹避让，与 cm2/M1 残余同型（类比归类；逐台形式重述未做）。
 
 \section*{复跑}
-\texttt{node casecheck-halt.mjs \&\& node casecheck-island.mjs \&\& node kclosure.mjs}；\texttt{quad6.exe <code> audit 1000000000}；\texttt{quad6.exe <code> guard 200000000000}。
+\texttt{node casecheck-halt.mjs \&\& node casecheck-island.mjs \&\& node kclosure.mjs \&\& node quad-equiv.mjs}（后者即定理~\ref{thm:drain}/命题~\ref{prop:boundary} 的时代层对应实验）；\texttt{quad6.exe <code> audit 1000000000}；\texttt{quad6.exe <code> guard 200000000000}。
 
 \end{document}

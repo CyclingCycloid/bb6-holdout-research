@@ -1,3 +1,4 @@
+> 历史文档（时点审稿记录，原文貌保留）：审稿对象 `cm2-proof-full-zh.tex`/`cm2-nonthalt-zh.tex` 已被 `../paper-zh.tex/.pdf`（及 paper-en）取代；`attack-cm2.md` 的叙述现分散于 `../dossier.md` 与 `../case-tables.md`；`attacks-cm2/` 引擎现为 `../engines/`。
 # cm2 非停机证明 · 对抗性审稿报告（referee-report-cm2）
 
 - 审稿对象：`cm2-proof-full-zh.tex`（完整版）、`cm2-nonthalt-zh.tex`（紧凑版）、`attack-cm2.md`、`cm2-reverify-report.md`、引擎 `attacks-cm2/`（macro3/hclosure/tailfront/dispatch/census2/census3/runsim）。

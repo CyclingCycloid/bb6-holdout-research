@@ -1,6 +1,6 @@
 # Attack report: BMO 11 — the five-rule rewrite game of machine `1RB0LD_0LC0RE_1LA0RD_0RB0LC_1RC1RF_0LD---`
 
-Date: 2026-09-25. Working directory: `bb6/attacks-bmo11/`. This report merges two attack sessions on BMO 11 in that directory (the main session and a continuation session whose C engines extended the numbers; all overlapping claims were cross-validated and agree exactly — see §7). Methodology adapted from `bb6/attack-bmo10.md`.
+Date: 2026-09-25. Working directory: `machines/early/engines/attacks-bmo11/`. This report merges two attack passes on BMO 11 in that directory (the main session and a continuation session whose C engines extended the numbers; all overlapping claims were cross-validated and agree exactly — see §7). Methodology adapted from `attack-bmo10.md` (same directory).
 
 **Verdict: OPEN, with strong NO evidence, a completely decoded TM↔game correspondence (including the previously unresolved "regime change"), and a sharply identified proof obstruction of the same class as BMO 10's.**
 

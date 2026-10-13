@@ -1,7 +1,7 @@
 # Attack report: BMO 10 (with a lighter pass on BMO 11) — the Beaver Math Olympiad rewrite games
 
-Date: 2026-09-25. Working directory: `bb6/attacks-bmo10/` (all scripts and logs referenced below live there).
-Cross-references: `bb6/bmo-5-8-10-11.md` (dossier confirming BMO 10/11 have zero published analysis), `bb6/sim/tm.exe` (pre-existing C TM simulator, cross-validated).
+Date: 2026-09-25. Working directory: `machines/early/engines/attacks-bmo10/` (all scripts and logs referenced below live there).
+Cross-references: `bmo-5-8-10-11.md` (same directory) (dossier confirming BMO 10/11 have zero published analysis), `tools/sim/tm.exe` (pre-existing C TM simulator, cross-validated).
 
 **Verdict up front.**
 

@@ -27,8 +27,8 @@ for (const M of [1,9,36]) for (const R of [1,2,7]) for (const [tf,S] of [['E',0]
 // g6 offset1/2 with tail fronts
 for (const off of [1,2]) for (const [L,R] of [[3,2],[18,6],[99,50]]) for (const [tf,S] of [['E',0],['g1',1],['g1',3],['g2',1],['g2',9]])
   add(`g6o${off}(L${L},${tf}${S})`, [{v:1,len:L},{v:0,len:6},{v:1,len:R},...(tf==='E'?tE():t1(tf,S))], L+off);
-// gE corrected: head M.left = L+1, M in {1,2,4,9}
-for (const M of [1,2,4,9]) for (const L of [11,35])
+// gE corrected: head M.left = L+1, M in {1,2,3,4,9} (M=3 added 2026-10-13: real orbit visits gE(37,3) at t=5071, era1e8.tsv)
+for (const M of [1,2,3,4,9]) for (const L of [11,35])
   add(`gE(M${M})`, [{v:1,len:L},{v:0,len:1},{v:1,len:M}], L+1);
 // g2L: 1^L 0^2 1^M 0^2 1^R T, head at the first g2's gap[1] = L+1
 for (const M of [2,5,20]) for (const L of [1,3,8]) for (const [tf,S] of [['E',0],['g1',1],['g2',9]])
