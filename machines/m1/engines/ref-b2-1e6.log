@@ -1,0 +1,36 @@
+@k=0 n=9 e1r=2 lk=0 l3=0 births=3 pow2=0
+@k=131072 n=1614333 e1r=365381 lk=19083 l3=19119 births=946088 pow2=0
+@k=262144 n=3228669 e1r=730759 lk=38169 l3=38239 births=1892189 pow2=0
+@k=393216 n=4843005 e1r=1096137 lk=57256 l3=57358 births=2838293 pow2=0
+@k=524288 n=6457329 e1r=1461514 lk=76342 l3=76476 births=3784384 pow2=0
+@k=655360 n=8071677 e1r=1826894 lk=95428 l3=95597 births=4730493 pow2=0
+@k=786432 n=9686013 e1r=2192272 lk=114515 l3=114716 births=5676596 pow2=0
+@k=917504 n=11300349 e1r=2557651 lk=133600 l3=133836 births=6622696 pow2=0
+DONE anchors=1000000 finalN=12316389 collapsedSteps=32723109
+roots: E1r=2787614 (3|A violations=0, q_min=3) Lk=145614 L3=145869 anchorRoot=0 TOTAL=3079097
+E1r share of roots = 90.533%  L-exit share = 9.467%
+all births (incl descendants)=7218164 pow2=0 inheritBad=0
+reentries: total=3669365 moat b≡2mod3 violations=0 even-b=2787614
+anchor n mod 12: {"3":6021,"9":993979}
+maxM=21; m-records (21):
+  m=1 k=0 n=3 ==3·2^m−3 OK
+  m=2 k=1 n=9 ==3·2^m−3 OK
+  m=3 k=2 n=21 ==3·2^m−3 OK
+  m=4 k=4 n=45 ==3·2^m−3 OK
+  m=5 k=8 n=93 ==3·2^m−3 OK
+  m=6 k=16 n=189 ==3·2^m−3 OK
+  m=7 k=32 n=381 ==3·2^m−3 OK
+  m=8 k=63 n=765 ==3·2^m−3 OK
+  m=9 k=125 n=1533 ==3·2^m−3 OK
+  m=10 k=250 n=3069 ==3·2^m−3 OK
+  m=11 k=500 n=6141 ==3·2^m−3 OK
+  m=12 k=999 n=12285 ==3·2^m−3 OK
+  m=13 k=1997 n=24573 ==3·2^m−3 OK
+  m=14 k=3992 n=49149 ==3·2^m−3 OK
+  m=15 k=7983 n=98301 ==3·2^m−3 OK
+  m=16 k=15965 n=196605 ==3·2^m−3 OK
+  m=17 k=31928 n=393213 ==3·2^m−3 OK
+  m=18 k=63854 n=786429 ==3·2^m−3 OK
+  m=19 k=127706 n=1572861 ==3·2^m−3 OK
+  m=20 k=255411 n=3145725 ==3·2^m−3 OK
+  m=21 k=510821 n=6291453 ==3·2^m−3 OK

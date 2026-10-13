@@ -1,0 +1,128 @@
+[
+ {
+  "key": "L3|j0|A125",
+  "members": 4,
+  "A0": "153629",
+  "D": "184320",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "L3|j0|A13",
+  "members": 4,
+  "A0": "9229",
+  "D": "18432",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "L3|j0|A19",
+  "members": 4,
+  "A0": "294931",
+  "D": "589824",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "L3|j0|A25",
+  "members": 1,
+  "A0": "9437209",
+  "D": "144",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "L3|j0|A29",
+  "members": 4,
+  "A0": "92189",
+  "D": "184320",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "L3|j0|A7",
+  "members": 8,
+  "A0": "583",
+  "D": "1152",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "L3|j0|A77",
+  "members": 4,
+  "A0": "30749",
+  "D": "184320",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "L3|j2|A76",
+  "members": 256,
+  "A0": "76",
+  "D": "144",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "L3|j4|A16",
+  "members": 8,
+  "A0": "36880",
+  "D": "73728",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "Lk|j0|A17",
+  "members": 2,
+  "A0": "36881",
+  "D": "73728",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "Lk|j0|A77",
+  "members": 35,
+  "A0": "77",
+  "D": "144",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "Lk|j1|A14",
+  "members": 2,
+  "A0": "9230",
+  "D": "18432",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "Lk|j2|A20",
+  "members": 2,
+  "A0": "294932",
+  "D": "589824",
+  "pow": {
+   "hit": false
+  }
+ },
+ {
+  "key": "Lk|j3|A8",
+  "members": 325,
+  "A0": "584",
+  "D": "1152",
+  "pow": {
+   "hit": false
+  }
+ }
+]

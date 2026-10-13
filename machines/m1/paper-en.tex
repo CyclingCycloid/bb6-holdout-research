@@ -48,15 +48,32 @@ finite-state reduction, to the continuation of a record timetable of the
 autonomous $2$-adic walk, whose $32$-bit slice is certified acyclic by a
 finite experiment (with non-eventual-periodicity beyond the slice stated
 as a conjecture) --- the
-precise, irreducible core of the problem. Two further theorems, unconditional
+precise, irreducible core of the problem. Two further groups of results,
+unconditional
 with respect to Assumption~M, are proved along the way: a mod-3 ledger --- from
 step $54$ on, every phase configuration of $M$ has run-sum divisible by $3$, so
 an entire half-space of configurations (including the Conway-chain entry
 $S(3,1,3)$) is unconditionally unreachable and the re-entry and anchor
-congruences hold as theorems --- and a halt equivalence: $M$ halts iff some
-S-even birth value $A=x+y/2+1$ is a power of two (both directions algebraic;
-empirically, $2{,}908$ births in the first $10^{7}$ phase events, none a power
-of two), with per-depth raw-reproduced witnesses (through depth $3$) showing
+congruences hold as theorems --- and a complete birth-sequence theory:
+a halt equivalence ($M$ halts iff some S-even birth value $A=x+y/2+1$ is a
+power of two; both directions algebraic), sharpened by \emph{root reduction}
+to ``iff some \emph{root} birth is a power of two'' (descendant births halve
+exactly, preserving odd parts); \emph{all E1-reentry roots are killed
+unconditionally} ($3\mid A$, a corollary of the ledger; $90.5\%$ of all
+roots); a \emph{parity kill of dangerous keys} ($q\equiv1\bmod144\wedge q>1
+\Rightarrow q\ge145\Rightarrow$ not a power; $19$ of the $20$ observed
+classes permanently safe by key definition); and the \emph{drift law}
+$\mathrm{M''}$ --- eight window families with the unified form
+$A=3\cdot2^{k-1}w+2^{j}\mu$ at window positions
+$13/26/50/99/110/194/219/220$, every family parity-killed, with the
+$m\le40$ synthetic assertion table ($60$ segments, $0$ powers, $56/56$ exact
+$F_{26}$ identities) --- which compresses the residual of Assumption~M into a
+single arithmetic sentence in birth coordinates: the conditional chain of
+the main theorem is thereby refined to ``never halts $\Leftarrow$
+$\mathrm{M''}$ $+$ class preservation'', with the three precise gaps to an
+unconditional proof (window-enumeration completeness $=$ M; conditionality of
+class preservation; $m>25$ as a constructed-anchor property) stated
+explicitly. Per-depth raw-reproduced witnesses (through depth $3$) show
 that birth guards fail at every finite depth, stated at witnessed level. All
 other components are proved
 algebraically or verified exhaustively over declared finite domains;
@@ -94,6 +111,12 @@ $M$, started on the blank tape, never halts, conditional on
 Assumption~\ref{ass:master} (master closure for all classes).
 \end{theorem}
 
+A second form of the conditional chain --- ``never halts $\Leftarrow$ drift
+law $\mathrm{M''}$ $+$ class preservation'' --- is established in
+\S\ref{s:ledger} (Corollary~\ref{cor:assembly2}); by
+Proposition~\ref{prop:drift}(d) the two forms carry the same non-halting
+content within the established architecture.
+
 \begin{proposition}[unconditional envelope, verified range; empirical status made explicit]\label{thm:envelope}
 Unconditionally, $M$ does not halt within any run whose round classes stay
 in the exhaustively verified range (all classes $h\le2000$; sampled
@@ -122,7 +145,13 @@ $\Sigma\not\equiv0\pmod3$ is unreachable from step $54$ on (an entire
 half-space, with no appeal to any verified class range), and ``$M$ never
 halts'' is equivalent to ``no power-of-two S-even birth ever occurs'' --- the
 verified domain of the latter equivalence being the first $10^{7}$ phase
-events ($2{,}908$ births, none a power of two; grade B).
+events ($2{,}908$ births, none a power of two; grade B); by root reduction
+(Theorem~\ref{thm:root}) it is further equivalent to ``no power-of-two
+\emph{root} birth ever occurs'', whose verified domain is: $30{,}791{,}021$
+root births over $10^{7}$ anchors with $0$ powers, all $20$ observed classes
+safe ($18$ by key definition $+$ Lk$|$j3 single-point $+$ L3$|$j4 family
+form), all eight dangerous window families killed through constructed
+anchors $a\le300$, and the $m\le40$ assertion table all passing (grade B).
 \end{proof}
 
 The proof occupies Sections~\ref{s:phase}--\ref{s:assembly}. Its skeleton:
@@ -138,6 +167,15 @@ grammar configuration $G(3,\cdot)$ (Lemma~\ref{lem:halt}).
 \emph{anchor} $P(3)$, and every anchor $P(n)$ is carried, by an explicit
 halving chain of length $m=\nu_2(n+3)$, into a standard family
 $\Phi(w,m)$, $n+3=2^m w$, $w$ odd (Theorem~\ref{thm:prologue}).
+\item (\S\ref{s:ledger}) Unconditionally with respect to
+Assumption~\ref{ass:master}: the mod-3 ledger (an entire half-space of
+configurations unreachable from step $54$ on), the halt equivalence via
+power-of-two births and its root-reduction sharpening, the E1-reentry kill,
+the parity kill of dangerous keys, the L-exit class snapshot, and the drift
+law $\mathrm{M''}$ --- yielding the second form of the conditional chain,
+``never halts $\Leftarrow$ $\mathrm{M''}$ $+$ class preservation''
+(Corollary~\ref{cor:assembly2}), with the three precise gaps stated
+(Remark~\ref{rem:gaps}).
 \item (\S\ref{s:landmark}--\ref{s:ladder}) The $\Phi$-trajectory visits
 \emph{landmarks} $L(\alpha,t;s)$ indexed by a leading counter
 $\alpha\equiv1\pmod 6$ and a time parameter $t$; the evolution of
@@ -359,16 +397,26 @@ $n\equiv3\pmod6$, $n\le6003$ ($1001$ values), and for
 $m\in\{13,\dots,1200\}$, $w\in\{3,9,21\}$.
 \end{remark}
 
-\section{The mod-3 ledger and 2-adic births}\label{s:ledger}
+\section{The mod-3 ledger and the birth sequence}\label{s:ledger}
 
-This section contributes two theorems that are \emph{unconditional} (they do not
-rely on Assumption~\ref{ass:master}) --- a mod-3 ledger for the whole orbit
-(Theorem~\ref{thm:mod3}) and a halt equivalence in terms of power-of-two births
-(Theorem~\ref{thm:haltpow}) --- together with witnessed-level propositions on
-the pollution of birth guards (Propositions~\ref{prop:depth1}
-and~\ref{prop:cascade}). Together they seal the mod-3 side unconditionally and
-condense the entire residual content of halt-exclusion into a single 2-adic
-statement about birth values.
+This section contributes a chain of results that are \emph{unconditional} with respect to
+Assumption~\ref{ass:master}: a mod-3 ledger for the whole orbit
+(Theorem~\ref{thm:mod3}), a halt equivalence in terms of power-of-two births
+(Theorem~\ref{thm:haltpow}) with its root-reduction sharpening
+(Theorem~\ref{thm:root}), unconditional safety of all E1-reentry root births
+(Lemma~\ref{lem:e1}), a per-key parity kill (Theorem~\ref{thm:parity}), the
+L-exit class-table snapshot (Proposition~\ref{prop:classes}), the m-record
+timetable (Proposition~\ref{prop:mrecords}), the drift law $\mathrm{M''}$ ---
+the final explicit form of the residual (Proposition~\ref{prop:drift}) --- and
+the synthetic assertion table through $m=40$
+(Proposition~\ref{prop:m2640}); witnessed-level propositions on
+the pollution of birth guards follow
+(Propositions~\ref{prop:depth1} and~\ref{prop:cascade}). Together they seal the
+mod-3 side unconditionally, kill all E1-reentry roots, kill every identified
+L-exit family by pure parity, and condense the entire residual content of
+halt-exclusion into the single statement $\mathrm{M''}$, whose precise
+three-ring gap to an unconditional proof is spelled out
+(Remark~\ref{rem:gaps}).
 
 \begin{definition}[ledger invariant $I_0$]\label{def:I0}
 For a configuration $C$ let $\Sigma(C)$ denote the sum of its runs. $I_0$ is
@@ -514,7 +562,377 @@ plus the independent event-level raw re-verification. Empirical companion
 (grade B): in the first $10^{7}$ phase events there are $2{,}908$ S-even
 births, none a power of two; an independent re-check of $5\times10^{5}$
 events finds $647$ births, none. The entire content of Assumption~M condenses
-to the single sentence ``no power-of-two birth ever occurs''.
+to the single sentence ``no power-of-two birth ever occurs''. The next two
+subsections compress that sentence further, onto \emph{root} births and then
+onto the dangerous keys of L-exits, ending with the explicit form
+$\mathrm{M''}$ of the residual.
+
+\subsection{Root reduction and E1-reentry safety}
+
+\begin{definition}[root and descendant births]\label{def:rootbirth}
+A birth (Definition~\ref{def:birth}) is exactly one of the following by its
+entry edge: an \emph{E1 root}, entering the even sweep via (R) from $R(a,b)$
+with $b$ even, $A=a+b/2+1$ --- on the orbit, the re-entries $R(1,b)$ ($b$ even)
+and the anchor initializations $R(n,n)$ ($n$ even); an \emph{L-exit root},
+entering via (L1) from $L(r_1,r_2,\overline r)$ with $r_2$ even,
+$A=\sigma+r_2/2+1$ with $\sigma=r_1+r_3$ ($L_3$ relays through
+$R(\sigma,r_2)$ with the same formula: $L_3\to R(\sigma,r_2)\to
+S(\sigma{+}1,r_2{-}2,1)$, $A=\sigma+1+\frac{r_2-2}{2}+1=\sigma+r_2/2+1$); or a
+\emph{descendant}, entering via (G$\ge$) from $G(a,\overline r)$ with $a$ odd
+$\ge5$, of value $A'=(a{+}1)/2$ --- where $a{+}1$ is exactly the birth value
+that produced that $G$-state (the (S2) landing head is $A-1$; sweep invariant
+in the proof of Theorem~\ref{thm:haltpow}).
+\end{definition}
+
+\begin{theorem}[root reduction]\label{thm:root}
+Every descendant birth has exactly half the value of its chain's root birth;
+inductively, \emph{the odd part of every birth equals the odd part of its
+chain's root birth}. In particular,
+\[
+M\ \text{halts}\iff\ \text{some \emph{root} birth has } A=2^{t}\ (t\ge2).
+\]
+\end{theorem}
+\begin{proof}
+By Definition~\ref{def:rootbirth} descendant values $A'=(a{+}1)/2=A/2$ halve
+exactly, so odd parts are chain-invariant.
+($\Leftarrow$) Let a root birth have $A=2^{t}$: its even sweep lands via (S2)
+in the $G$-state with head $2^{t}-1$, after which the halving composite
+(Lemma applied as in Theorem~\ref{thm:prologue}) runs
+$2^{t}-1\to2^{t-1}-1\to\cdots\to7\to3$, reaching the halt form $G(3,\cdot)$
+after $t-2$ steps --- every head on the chain has the form $2^{s}-1\ge3$,
+independently of $b$ and the tail (carried verbatim); by Lemma~\ref{lem:halt}
+$M$ halts.
+($\Rightarrow$) This is the ($\Rightarrow$) of Theorem~\ref{thm:haltpow}: a
+halt gives some S-even birth equal to $2^{t}$; if that birth is a descendant
+its odd part is $1$, hence its chain root has odd part $1$, i.e.\ the root is
+a power $2^{s}$.
+\end{proof}
+
+\begin{proof}[Proof status (grade A$^-$)]
+The classification algebra is as above (resting on rule faithfulness and the
+halving composite); the exhaustive machine evidence for the provenance
+classification (grade B, adversarial re-audit ref-b1): over $2\times10^{7}$
+uncollapsed events / $572$ anchors, all $4{,}120$ births originate from R/L/G
+only ($8{,}576{,}839$ S-interior repeats correctly deduplicated), every
+$R$ tagged $L_3$ comes from the $L_3\to R$ relay; every $G$-entry head
+$a{+}1$ equals the S-entry birth value that produced it ($0$ violations);
+descendant inheritance $A'=(a_{\mathrm{prev}}{+}1)/2$ ($0$ violations);
+descendant odd part $=$ nearest root odd part ($0$ violations); the
+uncollapsed and collapsed engines agree term-by-term on the $(\mathrm{ty},A)$
+root sequences ($0$ mismatches; births10's $600$-anchor cross-check
+independently reproduced); an independent raw-machine simulator reproduces
+the first $12$ anchor transitions of the blank-tape run exactly in both
+$n'$ and cost.
+\end{proof}
+
+\begin{lemma}[E1-reentry root safety]\label{lem:e1}
+Every re-entry $R(1,b)$ on the orbit satisfies $b\equiv2\pmod3$
+(Theorem~\ref{thm:mod3}, unconditional). If moreover $b$ is even (the only
+case that births), then $b\equiv2\pmod6$, $b\ge8$, and
+\[
+A=\tfrac b2+2\ \equiv\ 1+2\equiv0\pmod3,\qquad A\ge6 .
+\]
+Hence \emph{no E1-reentry root birth is ever a power of two} ---
+unconditionally with respect to Assumption~M.
+\end{lemma}
+\begin{proof}
+$b\equiv2\pmod6$ gives $b/2\equiv1\pmod3$; the domain $b\ge3$ with
+$b\equiv2\pmod6$ forces $b\ge8$, so $A\ge6$; and $2^{t}\not\equiv0\pmod3$.
+\end{proof}
+Empirical companion (grade B, independent counter ref-b2): over $10^{6}$
+anchors, all $2{,}787{,}614$ E1-reentry root births satisfy $3\mid A$ ($0$
+exceptions; all with $b\equiv2\pmod6$; least odd part $3$); all
+$3{,}669{,}365$ re-entries (either parity of $b$) have $b\equiv2\pmod3$.
+
+\begin{lemma}[sharpened AP power criterion]\label{lem:ap}
+Let $D=2^{s}u$ ($u$ odd) $>0$ and $A_0=2^{j}q_0$ ($q_0$ odd) with $j<s$.
+Then the arithmetic progression $\{A_0+Dk:k\ge0\}$ contains a power of two
+\emph{iff} $q_0=1$ (i.e.\ $A_0$ itself is a power). For $j\ge s$ containment
+is decidable: $\exists\,t\ge s$ with $2^{t}\ge A_0$ and $2^{t}\equiv
+A_0\pmod D$ (a discrete logarithm modulo $u$; a correct implementation must
+enumerate the full preperiod-$s$ plus period $\mathrm{ord}_u(2)$ structure of
+$2^{t}\bmod D$).
+\end{lemma}
+\begin{proof}
+For $j<s$ every member has $\vtwo{\cdot}$ exactly $j$ and odd part
+$q_0+2^{s-j}uk$, odd and affinely increasing $\ge q_0$; a power (odd part
+$1$) occurs iff $q_0=1$.
+\end{proof}
+
+\subsection{L-exit roots: the class snapshot, the parity kill, and pairing}
+
+\begin{proposition}[L-exit class-table snapshot; declared domain $10^{7}$
+anchors]\label{prop:classes}
+Within anchor indices $\le10^{7}$ (final value $n\le123{,}164{,}085\approx
+1.23\times10^{8}$, $m=\vtwo{n+3}\le25$; collapsed-engine per-event walks,
+cross-checked term-by-term against the uncollapsed step semantics on $600$
+anchors, $0$ mismatches):
+\textbf{(a)} there are $30{,}791{,}021$ root births, \textbf{none a power of
+two}; composition (exact counts at $10^{6}$ anchors, independently reproduced
+digit-for-digit): E1-reentries $2{,}787{,}614$ ($90.53\%$ \emph{of roots},
+killed unconditionally by Lemma~\ref{lem:e1}; at the $10^{7}$ scale E1r is
+covered by the lemma and the L-exits by the direct scan\footnote{The $10^{7}$
+sweep (births7) performs the power check only on L-exit roots (the E1r branch
+carries no check); the E1r-side evidence chain is Lemma~\ref{lem:e1}
+(unconditional) plus the full $10^{6}$-anchor direct scan, $3\mid A$ in all
+cases.}), L-exits $291{,}483$ ($9.47\%$; Lk $145{,}614$ $+$ L3 $145{,}869$).
+\textbf{(b)} Every L-exit root falls into one of \textbf{20 classes} keyed by
+the 4-segment key $(\mathrm{ty},\vtwo{A},A\bmod144,q\bmod144)$ ($=17$
+3-segment coarse keys; the main chain L3$|$j2 splits into $4$ $q$-subclasses);
+each class fits an arithmetic progression $\{A_0+Dk\}$ ($D$ = gcd of observed
+differences; fit consistent with all observed members, independently
+re-verified), with observed modulus family $D=2^{s}u$, $u\in\{9,45\}$,
+$s\in\{4,7,11,12,13,16\}$. Representative classes ($A_0+Dk$): L3$|$j2
+$=76+144k$; Lk$|$j0 $=77+144k$; Lk$|$j3 $=584+1152k$; Lk$|$j1
+$=9230+18432k$; L3$|$j0 $=583+1152k$; L3$|$j4 $=36880+73728k$; Lk$|$j2
+$=294932+589824k$; odd classes $A\equiv\{7,13,19,25,29,77,125\}\pmod{144}$;
+late classes $A\equiv\{26,28,29\}\pmod{144}$ (first at anchors
+$1{,}021{,}640$ / $2{,}043{,}278$ / $4{,}086{,}554$).
+\textbf{(c) Pairing law.} Every Lk class $(\sigma,r_2)$ pairs with an L3
+class $(\sigma{-}1,r_2)$ at the same $r_2$, with
+$A_{\mathrm{Lk}}=A_{\mathrm{L3}}+1$ ($14{,}560/14{,}560$ over all $10^{5}$
+anchors, zero violations; the converse fails for $7{,}305/14{,}587$ L3 roots,
+which have no Lk partner).
+\textbf{(d)} The table saturates after anchor $4{,}086{,}554$ (the $m{=}24$
+record): $5.9\times10^{6}$ further anchors produce no new class. Cumulative
+raw TM steps $\gtrsim10^{23}$ (re-estimated $\sim10^{24}$ from the verified
+$16$--$22n^{2}$ cost band).
+\end{proposition}
+
+Certification layers (with the four corrections of the adversarial audit
+birth-referee incorporated):
+\begin{itemize}
+\item \textbf{18 of the 20 classes are unconditionally safe by key
+definition}: their residue $A\bmod144$ lies outside
+$\{2^{t}\bmod144\}=\{1,2,4,8,16,32,64,128,112,80\}$, so \emph{no} member ---
+present or future --- is a power of two.
+\item \textbf{Lk$|$j3 ($A\equiv8\bmod144$) is a single-point collision}: its
+only power, $8$, is below the least observed member $584$; and $A=8$ would
+require $q\equiv1$, i.e.\ the \emph{unobserved} key (Lk,3,8,1), not this
+class.
+\item \textbf{L3$|$j4 ($A\equiv16\bmod144$) is the unique effective
+collision class} (its power family $t\in\{4,10,16,\dots\}$ is unbounded): its
+members form the family $A=9\cdot2^{12}W+16$ ($W$ odd $\ge1$,
+$r_2-\sigma=30$) with odd part $2304W+1>1$ --- power-free \emph{conditional
+on the family form} ($25/25$ orbital members at $10^{5}$ anchors $+$ $6/6$
+synthetic members verified individually; direct scan $W\le2\times10^{6}$, $0$
+powers).
+\item \textbf{Artifact reality}: the offline certification artifact
+(births11) contains \textbf{14} (3-segment-key) classes --- its member
+sources omit the three late classes; those three are covered by mod-144
+residue-class supersets (independent exhaustive brute-force decider).
+\textbf{AP extrapolation direction:} when $D_{\mathrm{fit}}$ is a multiple of
+the true period, the fitted progression is a \emph{subset} of the class
+completion, not a superset --- a power-free fit does not certify a power-free
+class (counterexample: the true class $\{80+48k\}$ contains $128$, while the
+observations $80,176,272$ fit the power-free $\{80+96k\}$). The actual load
+carried by the AP fit is consistency with all observed members (verified) and
+the extrapolation of the L3$|$j4 family form (explicitly conditional).
+\footnote{The power-containment decider powInAP of births11 shows
+$1{,}722$ \emph{false negatives} in a $30{,}000$-case synthetic cross-check
+(the $s{=}0$ branch is skipped entirely for odd $D$; the discrete-log loop
+breaks out early) and $249$ false positives --- harmless for the $14$
+certified classes (all have $j<s$, the defective branches untriggered;
+independently re-verified by an enumeration-based decider) but \emph{not to
+be reused as-is for new classes at $m>25$}; the correct tool is the
+preperiod-plus-period enumerator of Lemma~\ref{lem:ap}.}
+\end{itemize}
+
+\begin{theorem}[parity kill of dangerous keys]\label{thm:parity}
+Let $A=2^{j}q$ ($q$ odd) be any birth value; $A$ is a power of two iff $q=1$.
+Hence: (i) $q\not\equiv1\pmod{144}\Rightarrow q\ne1\Rightarrow$ not a power;
+(ii) $q\equiv1\pmod{144}\wedge q>1\Rightarrow q\ge145\Rightarrow$ not a power;
+(iii) $j=0$ ($A$ odd) $\Rightarrow$ not a power. Counting with the full
+4-segment keys, \textbf{19 of the 20 observed classes} have $q$-segment
+$\not\equiv1\pmod{144}$ --- \emph{permanently safe by key definition}
+(including Lk$|$j3$|$A8$|$q73); the unique $q\equiv1$ class is L3$|$j4 (its
+family-level elimination is Proposition~\ref{prop:drift}). Every dangerous
+key $(\cdot,j\ge1,2^j\bmod144,1)$ contains at most one power, $A=2^j$ (the
+key fixes $\vtwo{A}=j$), excluded at the family level: members satisfy
+$A=3\cdot2^{k-1}w+2^{j}\mu\ge3\cdot2^{k-1}\cdot3+2^{j}>2^{j}$ ($w\ge3$,
+$\mu\ge1$).
+\end{theorem}
+\begin{proof}
+A power of two has odd part $1$; (i)--(iii) are immediate, and the $19/20$
+count is a key-segment check against Proposition~\ref{prop:classes}. The
+magnitude inequality is as displayed.
+\end{proof}
+
+\begin{proposition}[m-record chain and class-generation timetable; declared
+domain $10^{7}$ anchors]\label{prop:mrecords}
+(Independent full re-run ref-b6, digit-for-digit.) The m-records $m=1..25$
+all occur exactly at $n=3\cdot2^{m}-3$ (the pure $w=3$ doubling chain, direct
+transfers $n\to2n{+}3$: $3\to9\to21\to\cdots\to100663293$), at anchor indices
+$0,1,2,4,8,\dots,8{,}173{,}106$. \textbf{Of the first $25$ m-records, $14$
+create a new class} ($m\in\{4,5,7,8,11,12,13,14,16,17,21,22,23,24\}$, plus
+five additional instants at $w\in\{9,15,21\}$); the record anchors
+$m=18,19,20,25$ create none. The table is unsaturated through $10^{7}$
+anchors (last new class at anchor $4{,}086{,}554$); \emph{``the class table
+grows without bound in $m$'' is a trend inference, not a theorem} --- the
+per-$m$ visits of the $w=3$ chain guarantee unbounded \emph{opportunity} for
+growth, while per-$m$ generation is content of Assumption~M.
+\end{proposition}
+
+\subsection{The drift law $\mathrm{M''}$: the final
+explicit form of the residual}
+
+Every L-exit root birth satisfies $A=\sigma+r_2/2+1=(3\sigma+d)/2+1$
+($d=r_2-\sigma$). Synthetic experiments (constructed anchors $P(2^{a}w-3)$
+walked directly in the collapsed engine, $w\equiv3\pmod6$) show that births
+with $q\equiv1\pmod{144}$ occur only in \emph{clean geometric-head windows}
+--- L-configuration run vectors
+\begin{gather*}
+\text{Lk-type }(\sigma=2^{k}w{+}1):\quad
+[\,1,\ 2^{k}w{+}c,\ 2^{k}w,\ 2^{k+1}w,\ 2^{k+2}w{-}1\,],\\
+\text{L3-relay }(\sigma=2^{k}w\ \text{exactly}):\quad
+[\,1,\ 2^{k}w{+}c,\ 2^{k}w{-}1\,]\\
+\text{or with geometric tail}\quad [\,1,\ 2^{k}w{+}c,\ 2^{k}w,\ 2^{k+1}w{-}1\,],
+\end{gather*}
+each window $k$ contributing an \emph{affine family}, linear in the window
+parameter $w$:
+\begin{equation}\label{eq:family}
+A=3\cdot2^{k-1}\,w+2^{j}\mu,\qquad \mu\in\{1,145,289,\dots\}\ \text{odd
+with}\ \mu\equiv1\!\pmod{144},\qquad d=2(m_0{-}1)-3\varepsilon,
+\end{equation}
+with $m_0=2^{j}\mu$ and $\varepsilon\in\{0,1\}$ the $+1$-offset of $\sigma$
+(Lk windows $\varepsilon=1$, L3 windows $\varepsilon=0$; the values
+$d=30,59,126,251,288,510,576,575$ all match). \emph{The coefficient
+$2^{k-1}$ is a property of the window $k$, not of the class}: the class
+L3$|$j4 in the form $9\cdot2^{12}W+16=3\cdot2^{12}w+16$ ($W=w/3$, odd
+automatically since $w\equiv3\bmod6$) is specific to the $k=13$ window, and
+its members occur only in anchor segments with $\vtwo{n+3}=13$. Write
+\emph{$\mathrm{M'}$} (the residual arithmetic proposition) for: every L-exit
+root birth $A=\sigma+r_2/2+1$ in every segment of the anchor sequence has
+odd part $q\ge3$ (equivalently $A\notin\{2^{t}:t\ge2\}$).
+
+\begin{proposition}[drift law; family census]\label{prop:drift}
+(a) \emph{Verified family table} (census: $a=13..300\times w\in\{3,9,15\}$,
+$864$ segments, all $1{,}683$ births with $q\equiv1$ \emph{fully classified},
+each member verified against the exact identity; synthetic extension
+$a=13..80\times6w$: $408$ segments, $7{,}062$ root births, all $336$
+$q\equiv1$ births inside $\{F_{13},F_{26},F_{50}\}$, $0$ powers):
+\begin{center}\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{rllrlrll}
+\toprule
+window $k$ & type & key & $\sigma$-form & $d$ & $A$-form & first / persist. & members\\
+\midrule
+13 & L3 & (L3,4,16,1) & $2^{13}w$ & 30 & $3\cdot2^{12}w+2^4$ &
+$a{=}13$ (exact) & 3\\
+26 & Lk & (Lk,5,32,1) & $2^{26}w{+}1$ & 59 & $3\cdot2^{25}w+2^5$ &
+$a\ge27$ (persist.) & 822\\
+50 & L3 & (L3,6,64,1) & $2^{50}w$ & 126 & $3\cdot2^{49}w+2^6$ &
+$a{=}50$ (exact) & 3\\
+99 & Lk & (Lk,7,128,1) & $2^{99}w{+}1$ & 251 & $3\cdot2^{98}w+2^7$ &
+$a\ge100$ (persist.) & 603\\
+110 & L3 & (L3,0,1,1) odd & $2^{110}w$ & 288 & $3\cdot2^{109}w+145$ &
+$a{=}110$ (exact) & 3\\
+194 & L3 & (L3,8,256,1) & $2^{194}w$ & 510 & $3\cdot2^{193}w+2^8$ &
+$a{=}194$ (exact) & 3\\
+219 & L3 & (L3,0,1,1) odd & $2^{219}w$ & 576 & $3\cdot2^{218}w+289$ &
+$a{=}219$ (exact) & 3\\
+219 & Lk & (Lk,1,2,1) & $2^{219}w{+}1$ & 575 & $3\cdot2^{218}w+2\cdot145$ &
+$a\ge220$ (persist.) & 243\\
+\bottomrule
+\end{tabular}
+\end{center}
+The odd part of each family equals $3\cdot2^{k-1-j}w+\mu$, odd: for $k{=}13$,
+$\ge768w+1\ge2305$; for $k{}=26$, $\ge3\cdot2^{20}w+1\ge9{,}437{,}185$; the
+same shape, larger, for $k{=}99/194$; the odd families ($j{=}0$) are
+$\ge145/289$; the $k{=}219$-Lk family is $\ge3\cdot2^{217}w+145\ge145$ ---
+\emph{all eight families are parity-killed} (all $1{,}683$ $q\equiv1$ members
+pass).
+\textbf{(b) Structural facts.} (1) The persistent families ($k=26,99,219$-Lk)
+have $\sigma$ and $A$ independent of the anchor level $a$ (after first
+appearance every segment hits the same $(\sigma,A)$, varying only with $w$)
+--- mid-ladder windows (round-law locality: the $\alpha$-walk is autonomous
+and triggers on passage); the level-exact families ($k=13,50,110,194,219$-L3)
+occur only at levels whose endgame lands exactly in that window. (2) The
+window positions $\{13,26,50,99,110,194,219\}$ (the eighth family first
+appears at level $220$) form two near-doubling chains ($13\to26\to50\to99\to
+194$ and $110\to219$) --- consistent with the timetable of the
+$\vtwo{\cdot}$-record chaos (the non-periodicity clause of
+Theorem~\ref{thm:noCycle}: new bits injected forever $\Rightarrow$ new
+windows expected forever). (3) Beyond these eight families there is
+\emph{no other} $q\equiv1\pmod{144}$ birth in the census or synthetic range;
+$0$ powers; all E1r births divisible by $3$; all landings $\equiv3\pmod6$ and
+$\ge n+6$. The constructed anchors $a\le80$ produce several further
+$q\not\equiv1$ keys (e.g.\ Lk$|$j1$|$A62$|$q31, first at $a{=}49$) --- all
+safe by key definition (Theorem~\ref{thm:parity}(i)).
+\textbf{(c) $\mathrm{M''}$ (drift law).} For every $m\ge1$ and every
+$w\equiv3\pmod6$, the $q\equiv1\pmod{144}$ L-exit root births in the segment
+of the anchor $n=2^{m}w-3$ belong to finitely many window families
+$\{F_k\}_{k\in K(m)}$ ($K$ monotone, $K\cap[1,300]=\{13,26,50,99,110,194,
+219\}$), each of the form~\eqref{eq:family} with odd part odd and $\ge145$.
+\textbf{(d) Equivalence statement.} $\mathrm{M''}\Rightarrow\mathrm{M'}$
+(``no L-exit root birth on the orbit has odd part $q=1$''); conversely, given
+the enumeration ring (every dangerous key belongs to some window family),
+$\mathrm{M'}\Leftrightarrow\mathrm{M''}$. Relation to Assumption~M:
+$\mathrm{M}\Rightarrow$ class preservation $\wedge\,\mathrm{M'}$
+(Theorem~\ref{thm:main} $+$ the contrapositive of Theorem~\ref{thm:root}),
+while $\mathrm{M'}\wedge$ class preservation $\Rightarrow$ non-halting
+(Corollary~\ref{cor:assembly2}) --- so within the established architecture
+$\mathrm{M''}$ (together with class preservation) \emph{carries exactly the
+entire non-halting content of Assumption~M}: the endgame/round-law part of M
+determines when windows activate, and $\mathrm{M''}$ compresses M into a
+single arithmetic sentence in birth coordinates.
+\end{proposition}
+
+\begin{proposition}[synthetic assertion table for $m=26..40$]\label{prop:m2640}
+Over $60$ segments ($15$ levels $\times\,w\in\{3,9,15,21\}$) of constructed
+anchors walked directly, all assertions pass: $0$ power births ($60/60$);
+all E1r divisible by $3$; all landings $\equiv3\pmod6$ with $\Delta\ge6$
+($60/60$). At $a=26$: \emph{zero} $q\equiv1$ members (the $k{=}26$ window
+not yet active; the $k{=}13$ key (L3,4,16,1) has no recurrence in $26..40$).
+At $a=27..40$ ($56$ $q\equiv1$ members): \emph{56/56 satisfy the exact
+$F_{26}$ identity} $A=3\cdot2^{25}w+32=9\cdot2^{25}W+32$ ($W=w/3\in
+\{1,3,5,7\}$, all odd --- structural from $w\equiv3\pmod6$),
+$\sigma=2^{26}w+1$, $r_2-\sigma=59$, $\vtwo{A}=5$, odd part
+$q=3\cdot2^{20}w+1$ odd $\ge9{,}437{,}185>1$, hence not a power.
+Cross-checks: the $a=13$ segment reproduces the orbital observations
+term-by-term ($R(24576,24606)\to A=36880$; $R(12305,36886)\to A=30749$); the
+orbital members $w=27,33,3501,6357$ also lie in $F_{13}$ (verified
+digit-by-digit against $12288w+16$).
+\end{proposition}
+
+\begin{corollary}[conditional assembly; the $\mathrm{M''}$ route]\label{cor:assembly2}
+Assume (i) $\mathrm{M'}$ (equivalently $\mathrm{M''}$ under the enumeration
+ring) and (ii) class preservation (every anchor $n_k\equiv3\pmod 6$). Then
+$M$, started on the blank tape, never halts.
+\end{corollary}
+\begin{proof}
+By Theorem~\ref{thm:root} a halt requires a root birth equal to $2^{t}$.
+Roots split into: E1-reentries (excluded unconditionally by
+Lemma~\ref{lem:e1}); anchor initializations ($n$ odd $\Rightarrow$ first
+sweep $y=n-2$ odd $\Rightarrow$ no birth --- guaranteed by class
+preservation); L-exits (excluded by $\mathrm{M'}$).
+\end{proof}
+The class-preservation clause is \emph{necessary}: even-anchor births are an
+independent genuine power channel --- at $n=10,42,170,682,\dots$ the anchor
+birth $A=3n/2+1=16,64,256,1024,\dots$ is exactly a power of two, matching a
+subfamily of the known even-$n$ halting set $\{10,26,42,\dots\}$.
+
+\begin{remark}[the three precise gaps; unconditional resolution refused]\label{rem:gaps}
+All assertion tables pass ($0$ powers, $56/56$, all eight families killed,
+class tables and growth as stated), but the proof chain does not close ---
+exactly three rings are missing:
+\textbf{(1) unbounded window enumeration $=$ M:} the dangerous-key set grows
+with $m$ (one family $\to$ eight by $a\le300$) with no evidence of stopping
+(the $\vtwo{\cdot}$-record timetable $\Rightarrow$ new windows expected
+forever); ``every family is parity-killed'' does not imply ``these are all
+the families'' --- the $m\le2000$ table exhaustion plus synthetic $300$ is an
+empirical closure.
+\textbf{(2) class preservation is conditional} (L7/M-architecture,
+Corollary~\ref{cor:assembly2}(ii)): even-anchor births are an independent
+real power channel.
+\textbf{(3) $m>25$ is a constructed-anchor property:} the synthetic
+verification uses the collapsed engine (cross-validated by the births10
+uncollapsed $0$-mismatch check $+$ the independent raw machine on $12/12$
+anchors exactly), the constructed-anchor segments were not individually
+re-checked at the raw level, and the ``orbital'' reading of $m=26..40$
+depends on the orbit actually reaching those anchors (the m-record chain is
+machine-confirmed through $m\le25$; beyond that belongs to M,
+Proposition~\ref{prop:mrecords}).
+\end{remark}
 
 \begin{proposition}[depth-1 birth guards are not closed]\label{prop:depth1}
 Let $I_1$ be $I_0$ together with same-shape algebraic guards at each birth
@@ -955,8 +1373,8 @@ The following components are carried by exhaustive symbolic computation and
 are stated precisely so that they can be re-audited or formalized
 independently (scripts in the repository; each row is a one-line rerun):
 
-\begin{center}
-\begin{tabular}{lll}
+\begin{center}\small
+\begin{tabular}{@{}p{5.0cm}p{3.9cm}p{6.6cm}@{}}
 \toprule
 Component & Domain & Result\\
 \midrule
@@ -974,6 +1392,15 @@ $2$-adic safety audit & $273654$ forms & $0$ dangers\\
 Ledger closure (Theorem~\ref{thm:mod3}) & boundary $+$ $2^{40}$ random & $219{,}398$ author $+$ $20{,}508$ independent steps ($k\le10$), $0$ violations\\
 Ledger orbit (Theorems~\ref{thm:mod3}, \ref{thm:haltpow}) & $10^{7}$ events & $0$ violations; $2{,}908$ births, $0$ powers\\
 Independent raw re-check & $5\cdot10^{5}$ events & $647$ births, $0$ powers\\
+Root partition (Theorem~\ref{thm:root}; ref-b1) & $2\times10^{7}$ uncollapsed events, $572$ anchors & $0$ provenance/inheritance/odd-part violations; raw $12/12$ anchors\\
+E1-reentry scan (Lemma~\ref{lem:e1}; ref-b2) & $10^{6}$ anchors & $2{,}787{,}614/2{,}787{,}614$ with $3\mid A$; $3{,}669{,}365$ re-entries all $b\equiv2\bmod3$\\
+Birth census (Proposition~\ref{prop:classes}; births5--7) & $10^{7}$ anchors & $30{,}791{,}021$ roots, $0$ powers (L-exit direct; E1r by lemma $+$ $10^{6}$ scan)\\
+Uncollapsed cross-check (births10) & $600$ anchors, $9.5\times10^{6}$ events & $4{,}322$ births, $0$ mismatches\\
+Class certification (Proposition~\ref{prop:classes}; births11, ref-b3/b4) & $20$ classes & $14$ AP-certified $+$ $3$ residue supersets; Lk$|$j3 single point; L3$|$j4 family ($W\le2\times10^{6}$, $0$ powers); pairing $14{,}560/14{,}560$\\
+m-records (Proposition~\ref{prop:mrecords}; ref-b6) & $10^{7}$ anchors & $m=1..25$ all at $3\cdot2^{m}-3$; $14/25$ create classes\\
+Family census (Proposition~\ref{prop:drift}; v7-census) & $a=13..300\times\{3,9,15\}$ & $864$ walks; $1{,}683$ $q\equiv1$ all in $8$ families; parity kill all\\
+Synthetic families (v7-synth) & $a=13..80\times6w$ & $408$ walks; $7{,}062$ births; $336$ $q\equiv1$ in $\{F_{13},F_{26},F_{50}\}$; $0$ powers\\
+$m{=}26..40$ assertions (Proposition~\ref{prop:m2640}) & $15$ levels $\times4w$ & $60$ segments: $0$ powers; $56/56$ exact $F_{26}$ form\\
 Depth-1 guard search (Proposition~\ref{prop:depth1}) & $S/L$ tails $\le6$ & $1255$ violations, one class\\
 Cascade witnesses (Proposition~\ref{prop:cascade}) & $5$ chains & $13/15/33/152/542$ events, raw halt\\
 \bottomrule
@@ -995,7 +1422,14 @@ first arrivals of new class depths occur at rounds climbing by a factor
 $\approx4$ per level (measured schedule $17@19{,}024$, $19@76{,}096$,
 $21@304{,}383$, $22@1{,}217{,}531$, $24@4{,}870{,}122$, and depth $\ge32$
 by step $1{,}246{,}751{,}041$ of the residue kernel, which terminates at a
-bad residue --- the record-$32$ event --- with no cycle).
+bad residue --- the record-$32$ event --- with no cycle). In birth
+coordinates the same residual takes the explicit form
+$\mathrm{M''}$ (Proposition~\ref{prop:drift}): the dangerous-key families
+grow with the window index exactly as the record timetable prescribes, and
+``never halts $\Leftarrow$ $\mathrm{M''}$ $+$ class preservation''
+(Corollary~\ref{cor:assembly2}) matches the master-closure chain in
+non-halting content (Remark~\ref{rem:gaps} for the precise three-ring
+difference).
 
 \begin{theorem}[periodicity excluded on the verified slice; conjecture beyond]\label{thm:noCycle}
 On the $32$-bit slice of the signature dynamics (the residual kernel of

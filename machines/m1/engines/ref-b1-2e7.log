@@ -1,0 +1,7 @@
+[raw] anchors (step,n): (54,3) (627,9) (5487,21) (17738,33) (44546,45) (87367,57) (154051,69) (236490,81) (360978,93) (495456,105) (695676,117) (910871,129) (1204751,141) (1536352,153)
+[raw-vs-engine] 12/12 anchor transitions exact in n' AND cost (bad=0)
+[walk] anchors=572 events=20000000 births=8580959 roots=1760 children=2360
+[sources] R=1678 (incl ANCHOR-init births=0) L=82 G=2360 S-interior-dups=8576839 other=0
+[checks] L3provenanceBad=0 inheritBad=0 oddPartBad=0 gHeadBad=0 sweepOK
+[E1r] count=1595 3|A violations=0  |  [pow2 odd-part-1 births]=0  |  even-anchor births=0 (ANCHOR-labelled=0)
+[seq] roots un=1760 col=1760 mismatches=0

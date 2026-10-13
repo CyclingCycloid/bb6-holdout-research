@@ -1,0 +1,32 @@
+  disagree A0=329450 D=21: bf={"hit":true,"t":"19","p":"524288"} cf={"hit":false} (cf FALSE-NEGATIVE = unsafe-direction bug)
+  disagree A0=134212 D=236: bf={"hit":true,"t":"74","p":"18889465931478580854784"} cf={"hit":false} (cf FALSE-NEGATIVE = unsafe-direction bug)
+  disagree A0=953328 D=104: bf={"hit":true,"t":"30","p":"1073741824"} cf={"hit":false} (cf FALSE-NEGATIVE = unsafe-direction bug)
+  disagree A0=586875 D=13: bf={"hit":true,"t":"28","p":"268435456"} cf={"hit":false} (cf FALSE-NEGATIVE = unsafe-direction bug)
+  disagree A0=202832 D=19: bf={"hit":true,"t":"24","p":"16777216"} cf={"hit":false} (cf FALSE-NEGATIVE = unsafe-direction bug)
+  disagree A0=626868 D=52: bf={"hit":true,"t":"27","p":"134217728"} cf={"hit":false} (cf FALSE-NEGATIVE = unsafe-direction bug)
+[1] synthetic cross-check: tested=30000 bf-hits=2488 cf-hits=1015 disagreements=1971
+    cf11 false negatives (says safe, power present): 1722  |  cf11 false positives (says hit, none present): 249
+[2] births11-classes.json: 14 classes
+  L3|j0|A125: members=4 A0=153629 D=184320 bf=safe cf11=safe 
+  L3|j0|A13: members=4 A0=9229 D=18432 bf=safe cf11=safe 
+  L3|j0|A19: members=4 A0=294931 D=589824 bf=safe cf11=safe 
+  L3|j0|A25: members=1 A0=9437209 D=144 bf=safe cf11=safe 
+  L3|j0|A29: members=4 A0=92189 D=184320 bf=safe cf11=safe 
+  L3|j0|A7: members=8 A0=583 D=1152 bf=safe cf11=safe 
+  L3|j0|A77: members=4 A0=30749 D=184320 bf=safe cf11=safe 
+  L3|j2|A76: members=256 A0=76 D=144 bf=safe cf11=safe 
+  L3|j4|A16: members=8 A0=36880 D=73728 bf=safe cf11=safe 
+  Lk|j0|A17: members=2 A0=36881 D=73728 bf=safe cf11=safe 
+  Lk|j0|A77: members=35 A0=77 D=144 bf=safe cf11=safe 
+  Lk|j1|A14: members=2 A0=9230 D=18432 bf=safe cf11=safe 
+  Lk|j2|A20: members=2 A0=294932 D=589824 bf=safe cf11=safe 
+  Lk|j3|A8: members=325 A0=584 D=1152 bf=safe cf11=safe 
+  ALL SAFE (brute force): true
+  LATE Lk|j1|A26: A0=9437210 residue 26 in pow144? false; bf on residue class {r+144k}: safe; bf on guessed AP: safe
+  LATE L3|j2|A28: A0=37748764 residue 28 in pow144? false; bf on residue class {r+144k}: safe; bf on guessed AP: safe
+  LATE Lk|j0|A29: A0=37748765 residue 29 in pow144? false; bf on residue class {r+144k}: safe; bf on guessed AP: safe
+[3] inversion demo: true class {80+48k} contains 2^7=128? true
+    observed 80,176,272 -> D_fit=96 (multiple of true period 48: true)
+    fitted AP {A0+D_fit·k} power-free? bf={"hit":false} cf11={"hit":false}
+    => "D_fit multiple of true period => fitted AP superset" is FALSE: fitted AP {80+96k} misses 128 which the true class contains.
+[4] L3|j4 family A=9·2^12·W+16 (W odd, 1..2e6): powers of two found = 0; odd part q=2304W+1 always odd>1: true
