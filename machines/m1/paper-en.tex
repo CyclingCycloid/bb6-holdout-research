@@ -48,7 +48,17 @@ finite-state reduction, to the continuation of a record timetable of the
 autonomous $2$-adic walk, whose $32$-bit slice is certified acyclic by a
 finite experiment (with non-eventual-periodicity beyond the slice stated
 as a conjecture) --- the
-precise, irreducible core of the problem. All other components are proved
+precise, irreducible core of the problem. Two further theorems, unconditional
+with respect to Assumption~M, are proved along the way: a mod-3 ledger --- from
+step $54$ on, every phase configuration of $M$ has run-sum divisible by $3$, so
+an entire half-space of configurations (including the Conway-chain entry
+$S(3,1,3)$) is unconditionally unreachable and the re-entry and anchor
+congruences hold as theorems --- and a halt equivalence: $M$ halts iff some
+S-even birth value $A=x+y/2+1$ is a power of two (both directions algebraic;
+empirically, $2{,}908$ births in the first $10^{7}$ phase events, none a power
+of two), with per-depth raw-reproduced witnesses (through depth $3$) showing
+that birth guards fail at every finite depth, stated at witnessed level. All
+other components are proved
 algebraically or verified exhaustively over declared finite domains;
 every claim is classified in a ledger (algebraic / exhaustive /
 assumption-dependent).
@@ -105,7 +115,14 @@ theorem; we therefore state the envelope as a proposition whose
 step-count translation carries this explicitly labeled empirical
 component. A paper proof of an explicit lower bound
 $T(h)\ge2^{c\cdot2^{h}}$ (assembling $A_j\le\tau_j^2$ with the band
-$\Delta\alpha\le2h+6$) is left open.
+$\Delta\alpha\le2h+6$) is left open. Independently of the class range, the
+shape of the unconditional envelope is sharpened by
+Theorems~\ref{thm:mod3} and~\ref{thm:haltpow}: every configuration with
+$\Sigma\not\equiv0\pmod3$ is unreachable from step $54$ on (an entire
+half-space, with no appeal to any verified class range), and ``$M$ never
+halts'' is equivalent to ``no power-of-two S-even birth ever occurs'' --- the
+verified domain of the latter equivalence being the first $10^{7}$ phase
+events ($2{,}908$ births, none a power of two; grade B).
 \end{proof}
 
 The proof occupies Sections~\ref{s:phase}--\ref{s:assembly}. Its skeleton:
@@ -113,8 +130,9 @@ The proof occupies Sections~\ref{s:phase}--\ref{s:assembly}. Its skeleton:
 \item (\S\ref{s:phase}) A phase calculus for the instants when the head, in
 state $D$, reads a $0$. Between two such instants the machine executes a
 fully determined finite block of elementary steps, and the possible tape
-shapes at these instants form a finite grammar with nine transition rules
-(Lemma~\ref{lem:rules}). The unique halting path passes through a single
+shapes at these instants form a finite grammar with ten transition rules
+(nine non-halting event edges and the halting block; Lemma~\ref{lem:rules}).
+The unique halting path passes through a single
 grammar configuration $G(3,\cdot)$ (Lemma~\ref{lem:halt}).
 \item (\S\ref{s:prologue}) The blank-tape run reaches at step $54$ an
 \emph{anchor} $P(3)$, and every anchor $P(n)$ is carried, by an explicit
@@ -339,6 +357,234 @@ and the chain above does not apply. The theorem is algebraic and holds for
 all $m\ge1$; it was additionally machine-witnessed for all
 $n\equiv3\pmod6$, $n\le6003$ ($1001$ values), and for
 $m\in\{13,\dots,1200\}$, $w\in\{3,9,21\}$.
+\end{remark}
+
+\section{The mod-3 ledger and 2-adic births}\label{s:ledger}
+
+This section contributes two theorems that are \emph{unconditional} (they do not
+rely on Assumption~\ref{ass:master}) --- a mod-3 ledger for the whole orbit
+(Theorem~\ref{thm:mod3}) and a halt equivalence in terms of power-of-two births
+(Theorem~\ref{thm:haltpow}) --- together with witnessed-level propositions on
+the pollution of birth guards (Propositions~\ref{prop:depth1}
+and~\ref{prop:cascade}). Together they seal the mod-3 side unconditionally and
+condense the entire residual content of halt-exclusion into a single 2-adic
+statement about birth values.
+
+\begin{definition}[ledger invariant $I_0$]\label{def:I0}
+For a configuration $C$ let $\Sigma(C)$ denote the sum of its runs. $I_0$ is
+the set of configurations satisfying: (i) $\Sigma\equiv0\pmod3$; (ii) domain:
+$R(a,b)$ with $b\ge3$; $S(x,y,z,\overline r)$ with $y\ge1$; $G(a,b,\overline
+r)$ with $a\ge2$; $L(r_1,r_2,r_3,\overline r)$ with $r_2\ge3$ and $r_3\ge1$;
+(iii) boundary guards BG1: $G(2,b,\overline r)$ requires $b\ge2$ and
+$b\equiv2\pmod3$; BG2: $S(1,2,z,\overline r)$ requires $z\equiv1\pmod3$.
+Both guards are \emph{forced} by closure: BG2 because (S2) births
+$G(2,z{+}1)$, which must pass BG1; BG1 because the $\Sigma$-increment of the
+(G2) edge in the derivation engine's form is $b+1$ (at the raw level the
+increment is constantly $+3$; Remark~\ref{rem:g2}). Under
+$\Sigma\wedge\mathrm{BG2}$ the three-run class $S(1,2,z)$ is empty
+($z\equiv0$ contradicts $z\equiv1$); the class $S(1,2,z,\overline r)$ with
+$k\ge4$ is nonempty by tail freedom, and the orbit runs precisely there
+((G$\ge$) at $a=5$ births $S(1,2,1,b{+}1,\overline r)$, $z=1$).
+\end{definition}
+
+\begin{lemma}[unique reachable value of $G(2,\cdot)$]\label{lem:g22}
+The grammar-reachable configurations $G(2,b,\overline r)$ are exactly those
+with $b=2$ (including the geometric-tail family $\Phi(3,m)$).
+\end{lemma}
+\begin{proof}
+The only in-rule source of a $G$-state is (S2),
+$S(x,2,z,\overline r)\to G(x{+}1,z{+}1,\overline r)$; head $2$ forces $x=1$ at
+the sweep terminal. An $S$-entry with $x=1$ can only come from (G$\ge$)
+((R) births $x=a{+}1\ge2$; (L1) births $x=r_1{+}1\ge2$; (S$\ge$) sweeps
+increase $x$), i.e.\ $S(1,a{-}3,1,b{+}1,\overline r)$ with $z=1$ fixed;
+reaching $y=2$ with $x$ still $1$ forces the sweep length $j=0$, i.e.\ $a=5$,
+yielding $S(1,2,1,b{+}1)\to G(2,2,b{+}1,\overline r)$.
+\end{proof}
+
+\begin{theorem}[mod-3 ledger; unconditional w.r.t.\ Assumption~M]\label{thm:mod3}
+(a) \emph{Closure.} Every member of $I_0$ steps to a member of $I_0$ under
+each of the ten rules of Lemma~\ref{lem:rules}, the only exceptions being the
+halt forms $G(3,b,\overline r)$ (classified, not violations).
+(b) \emph{Seed.} The blank-tape orbit enters $R(3,3)\in I_0$ at step $54$
+($\Sigma=6$). (c) \emph{Conclusion.} Every phase (grammar) configuration of
+$M$ from step $54$ on satisfies $\Sigma\equiv0\pmod3$. Consequently every
+re-entry $R(1,b)$ has $b\equiv2\pmod3$; every anchor $R(n,n)$ has
+$n\equiv0\pmod3$; any halt must occur at a $\Sigma\equiv0$ form
+$G(3,b,\overline r)$; and every configuration with $\Sigma\not\equiv0$ ---
+including the Conway-chain entry $S(3,1,3)$ ($\Sigma=7$) --- is unreachable,
+an entire half-space. $I_0$ does not exclude halting (the halt forms
+$G(3,\cdot)$ can lie in $I_0$); the entire residual content of
+halt-exclusion lies on the 2-adic birth side (Theorem~\ref{thm:haltpow}).
+\end{theorem}
+\footnote{Granularity of the halt segment: the folded block
+(G3)$+$(G1) ($15$ steps total) contains, at $+9$ steps, the intermediate
+event $G(1,1,b{+}1,\overline r)$ --- the target of (G3), outside the
+$G$-domain ($a\ge2$) of $I_0$ but still with $\Sigma\equiv0$ (the (G3)
+$\Sigma$-identity has $\Delta=0$; spot-verified against the raw machine). The
+universal statement of Theorem~\ref{thm:mod3}(c) is thus pinned to
+\emph{phase (grammar) configurations}.}
+
+Proof status (grade A$^-$, closure part): the closure is given by per-edge
+elementary affine identities plus guard transfers --- (R):
+$(a{+}1)+(b{-}2)+1=a+b$; (S$\ge$) and (L$\ge$): translations; (S2):
+$(x{+}1)+(z{+}1)=x{+}z{+}2$; (S1), both branches: $+3$; (G$\ge$):
+$1+(a{-}3)+1+(b{+}1)=a+b$; (G3): $\Delta=0$; (G2): Remark~\ref{rem:g2};
+(L1), both branches: $+1$ --- each hand-checkable, and re-verified by machine
+sweeps: the author's boundary enumeration of $219{,}398$ $I_0$ member-steps
+plus $2^{40}$-scale random member-steps (the assertion total fluctuates by
+about $\pm60$ with the random sampling; the deterministic core reproduces
+digit-for-digit), and an independent heterogeneous closure grid of $20{,}508$
+member-steps with run counts up to $k\le10$ and $a=0$ probes. The reduction
+of closure to bounded run count is carried by locality (each rule rewrites
+only the first three runs; both guards read only the first three).
+Event-level raw fidelity was independently re-verified (all ten rules,
+boundary grids plus $2^{24}$-scale random); the seed is triple-sourced (two
+simulators plus an independent raw-machine parse). The orbit side is a
+redundant confirmation (the induction already yields the all-times
+statement): $10^{7}$ phase events with zero violations ($406$ anchors, all
+$n\equiv0$; $1{,}485$ re-entries, all $b\equiv2$); an independent re-check of
+$5\times10^{5}$ events with zero violations ($91$ anchors, $332$ re-entries);
+the trajectory library of $1{,}357{,}014$ states with zero violations
+($R$-family decomposition $825=547+150+128$, all $a+b\equiv0$). The $112$
+halt forms $G(3,\cdot)$ mentioned above are an enumeration count of the
+closure grid, not an orbit observation (the orbit count of $G(3,\cdot)$ is
+$0$).
+
+\begin{remark}[raw fidelity domain of (G2)]\label{rem:g2}
+Raw truth: the (G2) edge maps $G(2,b,\overline r)\to L(1,3,b{+}1,\overline
+r)$ for \emph{all} $b\ge2$ (raw-verified for $b\in\{2,3,5,8,11,14\}$ with
+three tail shapes; verbatim the (G2) row of Lemma~\ref{lem:rules}, whose
+rule checker $564/564$ also covers (G2) at each $b$), with $\Sigma$-increment
+constantly $+3$ --- so the mod-3 ledger is preserved by the true machine on
+all of $I_0$ \emph{without appeal to BG1} (under the raw identity BG1 becomes
+superfluous; only the engine-level bookkeeping needs it). The derivation
+engine of the ledger analysis suite carries the simplified image
+$L(1,b{+}1,b{+}1,\overline r)$, which agrees with the raw machine precisely
+at $b=2$; by Lemma~\ref{lem:g22} this is the unique grammar-reachable value,
+so the distortion site $G(2,b\neq2)$ is unreachable, and even if it were
+entered (started from an off-grammar configuration) the increment $+3$ would
+still preserve the ledger. Accordingly, the reading ``ten rules $=$ raw
+machine'' must be qualified: the rule table is event-level raw-faithful on
+the grammar domain; on the off-grammar layer ($G(2,b\neq2)$) the engine uses
+the simplified image, with no effect on the ledger.
+\end{remark}
+
+\begin{definition}[S-even birth]\label{def:birth}
+An event whose configuration is an $S(x,y,z,\overline r)$ with $y$ even
+($y\ge2$) is called an \emph{S-even birth} (the entry of that even sweep);
+its \emph{birth value} is
+\[
+A \;=\; x+\tfrac{y}{2}+1 .
+\]
+\end{definition}
+
+\begin{theorem}[halt equivalence via power-of-two births]\label{thm:haltpow}
+$M$ (started on the blank tape) halts if and only if some S-even birth value
+$A=x+y/2+1$ on its phase trajectory is a power of two; equivalently
+$A\in\{4,8,16,\dots\}$ (always $A\ge3$, since $x\ge1$ and $y\ge2$; for $A=3$
+the sweep terminal has head $2$ and feeds the non-halting (G2) channel).
+\end{theorem}
+\begin{proof}
+First, the \emph{sweep invariant}: (S$\ge$) preserves $A$, since
+$(x{+}1)+\frac{y-2}{2}+1=x+\frac y2+1$; a birth sweep terminates at
+$S(x',2,z')$ with $x'=x+\frac{y-2}{2}$, and (S2) lands in the $G$-state with
+head $x'{+}1=A-1$.
+($\Leftarrow$) Let some birth have $A=2^{t}$ ($t\ge2$). Its sweep terminal
+$G$-state has head $2^{t}-1$ (odd, $\ge3$). For $t=2$ this is already the
+halt form $G(3,\cdot)$. For $t\ge3$ the head is $\ge7$ and odd, and the
+halving composite of Theorem~\ref{thm:prologue} (on the two leading runs,
+$(a,b)\mapsto\bigl(\frac{a-1}{2},\frac{a-1}{2}\bigr)$ with the tail carried
+verbatim) applies at each step: the head chain runs
+$2^{t}-1\to2^{t-1}-1\to\cdots\to7\to3$ (every head on the chain has the form
+$2^{s}-1\ge3$, never the value $5$, never the $G(2,\cdot)$ channel), ending
+at the halt form $G(3,\cdot)$; by Lemma~\ref{lem:halt}, $M$ halts.
+($\Rightarrow$) Suppose $M$ halts. By Lemma~\ref{lem:halt} the trajectory
+reaches a $G$-state with head $3$; the only in-rule source of
+$G(3,z{+}1,\overline r)$ is (S2) acting on $S(2,2,z,\overline r)$. That
+$S$-state has $y=2$ and lies inside some even sweep (or is itself its entry);
+the sweep invariant gives the birth value at that sweep's entry
+$A=2+\frac22+1=4=2^{2}$, a power of two.
+\end{proof}
+
+Proof status (grade A$^-$, both directions): both directions are elementary
+algebra, resting on rule faithfulness and the uniqueness of the halt form
+(heads $\in\{1,3\}$ with only the (G3)/(G1) exits, raw-verified broadly);
+rule faithfulness is the B-grade check (rulecheck $564/564$, $956$ anchors)
+plus the independent event-level raw re-verification. Empirical companion
+(grade B): in the first $10^{7}$ phase events there are $2{,}908$ S-even
+births, none a power of two; an independent re-check of $5\times10^{5}$
+events finds $647$ births, none. The entire content of Assumption~M condenses
+to the single sentence ``no power-of-two birth ever occurs''.
+
+\begin{proposition}[depth-1 birth guards are not closed]\label{prop:depth1}
+Let $I_1$ be $I_0$ together with same-shape algebraic guards at each birth
+site (odd part of the birth value $\ge3$; the $f_2$ guard for $G(2,\cdot)$;
+$w\equiv2\pmod3$ at $A=3$ sites; exact forms in the
+\texttt{invariant-casecheck} suite). Then $I_1$ contains the entire real
+orbit (trajectory library: $1{,}357{,}014$ states, zero violations), but
+$I_1$ is \emph{not} closed: a closure search over the declared domain ($S/L$
+tails of length $\le6$) yields $1{,}255$ violations, all of a single class
+--- an odd-$r_2$ $L$ arming, via (L1), its S-odd child, whose local guard is
+blind to the child's next-step birth.
+\end{proposition}
+
+\begin{proposition}[per-depth pollution of birth guards; witnessed]\label{prop:cascade}
+For every tested depth $d\in\{1,2,3\}$ there is a configuration in $I_0$
+whose pipeline has $d-1$ S-even births that are not powers of two, followed
+by a power-of-two birth, and which truly halts:
+\begin{center}
+\begin{tabular}{clllr}
+\toprule
+depth & witness & birth sequence & phase events & raw steps\\
+\midrule
+$d{=}1$ & $L[1,3,1,3,1]$ & $8,4$ & 13 & 195\\
+$d{=}1'$ & $S[1,1,1,1,1,1]$ & $8,4$ & 15 & 230\\
+$d{=}1''$ & $G[4,2,7,5]$ & $16,8,4$ & 33 & 728\\
+$d{=}2$ & $S[3,2,25,43,23,12,4,2]$ & $5,64$ & 152 & 10,313\\
+$d{=}3$ & $S[12,28,23,42,14,22,38,31]$ & $27,71,128$ & 542 & 71,856\\
+\bottomrule
+\end{tabular}
+\end{center}
+All five witnesses were independently reproduced at the raw-machine level
+(event-by-event tape agreement with the phase configurations, raw halt
+confirmation, full chains inside $I_0$; additionally, the apparent
+non-halting witness $S[39,34,5,30,43,19,37]$ of the $400$-step-capped search
+halts within $442$ events under a larger cap --- a cap artifact, not a
+counterexample). Moreover \emph{residue-class refinement is impossible}: the
+bad births $\{2^{t}\}$ have residues mod $12$ in $\{4,8\}$, the very classes
+occupied by the orbit's own S-even heads (the $A\bmod12$ histogram covers
+$\{0,\dots,9\}$, with $9{,}282$ cases $A\equiv4$ and $396$ cases
+$A\equiv8$); the intra-class split is exactly $\nu_2$ --- irreducibly
+2-adic. The entry edges of bad births form a \emph{family of birth-entry
+edges}: (L1) dominant (the $1{,}255$ violations of $I_1$ and the $d=2$
+witness both enter through it), with (R) also occurring (the $d=3$ witness
+enters through (R)$\to S_3$); the pollution mechanism is the per-level
+translation of the (S1)/(L1) pipeline (Remark~\ref{rem:translate}).
+\end{proposition}
+
+\begin{remark}[structural translation for $d\ge4$; not proved]\label{rem:translate}
+After each per-level repair (a depth-$d$ guard reads ``the first $d$ births
+of the pipeline are non-powers-of-two''), an edge of the same shape
+reappears one level deeper in the next $L$-round: each repair translates the
+same-shaped pipeline by one level. Per-depth witnesses for every $d\ge4$ are
+\emph{expected} from this mechanism (random search stably produces fresh
+witnesses at each depth), but their per-$d$ existence is precisely the
+statement at issue and is not claimed here; ``no finite guard depth closes''
+is accordingly stated at witnessed level (Proposition~\ref{prop:cascade} plus
+this mechanism), not as a theorem.
+\end{remark}
+
+\begin{remark}[relation to the no-precision conjecture]\label{rem:noprec2}
+The companion derivation paper states the no-precision conjecture for coarse
+templates (per-run residues at a fixed modulus plus linear inequalities);
+Proposition~\ref{prop:cascade} does not prove it and does not change its
+status. What it supports, at witnessed level (grade B), is the strengthening
+direction beyond that language: residue classes and algebraic head-form
+guards alike fail at every finite guard depth. The forcing edges are not on
+the mod-3 side (Theorem~\ref{thm:mod3} seals that side completely) but at
+the 2-adic birth sites: the entry edges form a family ((L1) dominant, (R)
+also occurring), with the (S1)/(L1) pipeline translating one level deeper
+per repair (Remark~\ref{rem:translate}).
 \end{remark}
 
 \section{Landmarks and classes}\label{s:landmark}
@@ -725,6 +971,11 @@ Master extension & $h=1025..1.2\cdot10^{7}$ & $976$ rows $+$ 4 fresh\\
 Endgame cells (Theorem~\ref{thm:endgame}) & $h\le160$ ($\le1024$) & $841/841$ ($5890$ total)\\
 Endgame forms vs.\ walks & $216$ cells & $216/216$\\
 $2$-adic safety audit & $273654$ forms & $0$ dangers\\
+Ledger closure (Theorem~\ref{thm:mod3}) & boundary $+$ $2^{40}$ random & $219{,}398$ author $+$ $20{,}508$ independent steps ($k\le10$), $0$ violations\\
+Ledger orbit (Theorems~\ref{thm:mod3}, \ref{thm:haltpow}) & $10^{7}$ events & $0$ violations; $2{,}908$ births, $0$ powers\\
+Independent raw re-check & $5\cdot10^{5}$ events & $647$ births, $0$ powers\\
+Depth-1 guard search (Proposition~\ref{prop:depth1}) & $S/L$ tails $\le6$ & $1255$ violations, one class\\
+Cascade witnesses (Proposition~\ref{prop:cascade}) & $5$ chains & $13/15/33/152/542$ events, raw halt\\
 \bottomrule
 \end{tabular}
 \end{center}

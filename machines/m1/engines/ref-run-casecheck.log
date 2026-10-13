@@ -1,0 +1,21 @@
+(T3) symbolic edge identities (2000 random 45-bit points each):
+  E1 R->S3: OK (2000/2000)
+  E2 S-sweep: OK (2000/2000)
+  E3 S(y2)->G: OK (2000/2000)
+  E4 S3(y1)->R: OK (2000/2000)
+  E5 S(y1)->L: OK (2000/2000)
+  E6 G->S: OK (2000/2000)
+  E7 G(2)->L: OK (2000/2000)
+  E8 L-sweep: OK (2000/2000)
+  E9a L3->R: OK (2000/2000)
+  E9b L->S: OK (2000/2000)
+  guard transfers: OK
+(T1) exhaustive small-space closure sweep (boundary values included):
+  219398 member-steps closure-checked; G(3,·) halt-forms seen: 112 (inside I0: 112 — I0 does NOT exclude halt; see honesty note)
+  5589 large-magnitude (2^40-scale) random member-steps: OK
+(T2) orbit from R(3,3): 10^7 phase events, I0 checked at every event:
+  events processed; violations of I0: 0
+  anchors seen: 406 (all n = 0 mod 3 guaranteed by I0), R(1,b) re-entries: 1485 (b = 2 mod 3 failures: 0)
+  companion (M-side, empirical): fresh S-even births: 2908, power-of-2 births: 0
+
+TOTAL: 470385 assertions passed, 0 failed
